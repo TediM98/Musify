@@ -1,0 +1,49 @@
+.station-details-container {
+  display: flex;
+
+  & .station-content {
+    flex: 1;
+    flex-flow: column;
+    justify-content: flex-end;
+  }
+
+  & .station-img {
+    height: 235px;
+    width: 235px;
+    margin-inline-end: 24px;
+
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & h1 {
+    font-size: 4rem;
+  }
+
+  & .song-detail::before {
+    content: '•';
+    margin: 0 4px;
+  }
+
+  & .app-icon {
+    height: 24px;
+    width: 24px;
+    inset-inline-start: 0px;
+
+    & img {
+      border-radius: 50%;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  & .song-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+}
