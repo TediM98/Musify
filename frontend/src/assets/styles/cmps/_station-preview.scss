@@ -1,0 +1,10 @@
+.station-card {
+  background-color: $card-color;
+  padding: 16px;
+  width: 100%;
+  border-radius: 10px;
+  font-family: CircularBlack;
+  & .content {
+    color: $clr2;
+  }
+}
