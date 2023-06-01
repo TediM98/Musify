@@ -1,0 +1,7 @@
+.station-list {
+  display: grid;
+  grid-gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: 1fr;
+  font-size: 1rem;
+}

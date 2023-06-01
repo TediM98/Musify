@@ -80,13 +80,13 @@ const demoStation = [
         "createdBy": {
             "_id": "u101",
             "fullname": "Puki Ben David",
-            "imgUrl": "http://some-photo/"
+            "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg"
         },
         "likedByUsers": ['{minimal-user}', '{minimal-user}'],
         "songs": [
             {
                 "id": "s1001",
-                "songTitle": "Cissy Strut",
+                "title": "Cissy Strut",
                 "bandName": "The Meters",
                 "url": "youtube/song.mp4",
                 "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
@@ -119,7 +119,7 @@ const demoStation = [
         "createdBy": {
             "_id": "u102",
             "fullname": "Johnny Rebel",
-            "imgUrl": "http://some-photo/"
+            "imgUrl": "https://i.ytimg.com/vi/1w7OgIMMRc4/mqdefault.jpg"
         },
         "likedByUsers": ['{minimal-user}', '{minimal-user}', '{minimal-user}'],
         "songs": [
@@ -151,7 +151,7 @@ const demoStation = [
         "createdBy": {
             "_id": "u103",
             "fullname": "Laid-Back Lou",
-            "imgUrl": "http://some-photo/"
+            "imgUrl": "https://i.ytimg.com/vi/5qap5aO4i9A/mqdefault.jpg"
         },
         "likedByUsers": [],
         "songs": [
@@ -165,9 +165,9 @@ const demoStation = [
             },
             {
                 "id": "s1005",
-                "title": "Jack Johnson - Better Together",
+                "title": "Lofi girl",
                 "url": "youtube/song.mp4",
-                "imgUrl": "https://i.ytimg.com/vi/EtI6E6TFRZE/mqdefault.jpg",
+                "imgUrl": "https://i.ytimg.com/vi/5qap5aO4i9A/mqdefault.jpg",
                 "addedBy": '{minimal-user}',
                 "addedAt": 162521765266
             }
