@@ -1,0 +1,352 @@
+{
+    "kind": "youtube#searchListResponse",
+    "etag": "DNkLkId0tV1GIk-AK2RTBpDUxmk",
+    "nextPageToken": "CAoQAA",
+    "regionCode": "IL",
+    "pageInfo": {
+      "totalResults": 20627,
+      "resultsPerPage": 10
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "JABcJXwbbi3M31vjkFleKpbhju0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "N3gN9Up6hmc"
+        },
+        "snippet": {
+          "publishedAt": "2009-10-09T02:47:07Z",
+          "channelId": "UCGw6MmQ7odKJOz1yOKBlGpQ",
+          "title": "Sonic Youth - 100% (Official Music Video)",
+          "description": "REMASTERED IN HD! Official Music Video for 100% performed by Sonic Youth. Follow Sonic Youth: Instagram: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/N3gN9Up6hmc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/N3gN9Up6hmc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/N3gN9Up6hmc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "SonicYouthVEVO",
+          "liveBroadcastContent": "none",
+          "publishTime": "2009-10-09T02:47:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LA3R9_9Xt44ychqtIQLFc36wfCc",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "8JGBNkLM9_8"
+        },
+        "snippet": {
+          "publishedAt": "2009-10-07T15:34:56Z",
+          "channelId": "UCGw6MmQ7odKJOz1yOKBlGpQ",
+          "title": "Sonic Youth - Bull In The Heather (Official Music Video)",
+          "description": "REMASTERED IN HD! Official Music Video for Bull In The Heather performed by Sonic Youth. Follow Sonic Youth: Instagram: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/8JGBNkLM9_8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/8JGBNkLM9_8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/8JGBNkLM9_8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "SonicYouthVEVO",
+          "liveBroadcastContent": "none",
+          "publishTime": "2009-10-07T15:34:56Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "fpo7v9GTClNtLQSQJAWW2Ojxo3Q",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "2CXD8PK6Djc"
+        },
+        "snippet": {
+          "publishedAt": "2009-10-07T05:47:24Z",
+          "channelId": "UCGw6MmQ7odKJOz1yOKBlGpQ",
+          "title": "Sonic Youth - Sunday",
+          "description": "Official Music Video for Sunday performed by Sonic Youth. Follow Sonic Youth: Instagram: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/2CXD8PK6Djc/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/2CXD8PK6Djc/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/2CXD8PK6Djc/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "SonicYouthVEVO",
+          "liveBroadcastContent": "none",
+          "publishTime": "2009-10-07T05:47:24Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "lZ-cIOodrHzvNFZlUMiyWuvYht4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "RIIEbrMXs20"
+        },
+        "snippet": {
+          "publishedAt": "2009-10-07T00:20:52Z",
+          "channelId": "UCGw6MmQ7odKJOz1yOKBlGpQ",
+          "title": "Sonic Youth - Sugar Kane",
+          "description": "Official Music Video for Sugar Kane performed by Sonic Youth. Follow Sonic Youth: Instagram: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/RIIEbrMXs20/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/RIIEbrMXs20/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/RIIEbrMXs20/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "SonicYouthVEVO",
+          "liveBroadcastContent": "none",
+          "publishTime": "2009-10-07T00:20:52Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "NzKRbMfNlctoXKxA5019WiadDIo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Q_OpUZSGlT4"
+        },
+        "snippet": {
+          "publishedAt": "2020-07-22T16:00:09Z",
+          "channelId": "UCGxLOaA_QnWLhTnf5depKLg",
+          "title": "Sonic Youth Full Set | From The Basement",
+          "description": "Enjoy Sonic Youth's full From The Basement set! Track listing: 01:26 - The Sprawl 10:45 - Incinerate 16:15 - Hey Joni 20:42 - Jams ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Q_OpUZSGlT4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Q_OpUZSGlT4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Q_OpUZSGlT4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "From The Basement",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-07-22T16:00:09Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "cSxXa1T0eqAglBzG325OlrP3lrI",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "hUcShyAarjw"
+        },
+        "snippet": {
+          "publishedAt": "2020-07-10T19:00:07Z",
+          "channelId": "UCOWV89Ww70Uw4Jr8Rmc1GBA",
+          "title": "Sonic Youth - Live at Campo Pequeno Lisboa 1993",
+          "description": "Sonic Youth's first concert in Portugal. Recorded Live at Campo Pequeno Lisbon, Portugal July 14, 1993 Filmed by Zé F. Pinheiro ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/hUcShyAarjw/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/hUcShyAarjw/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/hUcShyAarjw/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Sonic Youth",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-07-10T19:00:07Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "aXPqYdm6nJLOj7QDs1pw6yRZ3Rg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "10rLJjBLQZ8"
+        },
+        "snippet": {
+          "publishedAt": "2015-07-17T12:18:10Z",
+          "channelId": "UC7Ot1CZwD2fBUgP7YncvpLQ",
+          "title": "Teen Age Riot",
+          "description": "Provided to YouTube by TuneCore Teen Age Riot · Sonic Youth Daydream Nation (Deluxe Edition) ℗ 1988 Squeaky Squawk ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/10rLJjBLQZ8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/10rLJjBLQZ8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/10rLJjBLQZ8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Sonic Youth - Topic",
+          "liveBroadcastContent": "none",
+          "publishTime": "2015-07-17T12:18:10Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "w8DVpMhPsyCPvfVxqlhS80ENl5k",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "PKBtVe-krtM"
+        },
+        "snippet": {
+          "publishedAt": "2013-12-05T10:52:48Z",
+          "channelId": "UCmroI-tqI5nZObjItuyvnsQ",
+          "title": "Sonic Youth - &quot;Bad Moon Rising&quot; [Full LP] (1985)",
+          "description": "Bad Moon Rising es el segundo álbum de la banda Sonic Youth editado en 1985. Track List: 01. Intro – 00:00 02. Brave Men Run ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/PKBtVe-krtM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/PKBtVe-krtM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/PKBtVe-krtM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Brahiam Garcia Flores",
+          "liveBroadcastContent": "none",
+          "publishTime": "2013-12-05T10:52:48Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "r_epew-3F-WOpOBa2LiarIf2hCA",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "xi3ZPT9iSNo"
+        },
+        "snippet": {
+          "publishedAt": "2009-10-07T19:32:00Z",
+          "channelId": "UCGw6MmQ7odKJOz1yOKBlGpQ",
+          "title": "Sonic Youth - Cinderella&#39;s Big Score",
+          "description": "Music video by Sonic Youth performing Cinderella's Big Score. (C) 2004 Geffen Records.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/xi3ZPT9iSNo/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/xi3ZPT9iSNo/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/xi3ZPT9iSNo/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "SonicYouthVEVO",
+          "liveBroadcastContent": "none",
+          "publishTime": "2009-10-07T19:32:00Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "TiKAhAv5zhsQvgzDFNhxz1di_m8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "HrKttSi7EmM"
+        },
+        "snippet": {
+          "publishedAt": "2009-10-07T07:28:44Z",
+          "channelId": "UCGw6MmQ7odKJOz1yOKBlGpQ",
+          "title": "Sonic Youth - Reena (Closed Captioned)",
+          "description": "Music video by Sonic Youth performing Reena. (C) 2006 Geffen Records.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/HrKttSi7EmM/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/HrKttSi7EmM/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/HrKttSi7EmM/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "SonicYouthVEVO",
+          "liveBroadcastContent": "none",
+          "publishTime": "2009-10-07T07:28:44Z"
+        }
+      }
+    ]
+  }

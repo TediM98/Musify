@@ -6,7 +6,7 @@ import {
   updateStation,
   removeStation,
 } from '../store/station.actions.js'
-
+import { StationPlayer } from "../cmps/player.jsx";
 // import { stationService } from '../services/station.service.js'
 import { stationService } from '../services/station.service.local.js'
 
@@ -44,6 +44,7 @@ export function StationIndex() {
   return (
     <div className="main-layout">
       <h3>Hello from stat ion Index</h3>
+      <StationPlayer />
     </div>
   )
 }
