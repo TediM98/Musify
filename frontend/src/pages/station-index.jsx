@@ -11,7 +11,9 @@ import {
 
 // For local service
 import { stationService } from '../services/station.service.local.js'
+
 import { StationList } from '../cmps/station-list.jsx'
+
 
 export function StationIndex() {
   const stations = useSelector(
@@ -22,13 +24,15 @@ export function StationIndex() {
     loadStations()
   }, [])
 
-  async function onRemoveStation(stationId) {
-    try {
-      await removeStation(stationId)
-    } catch (err) {
-      console.log('Could not remove station')
-    }
-  }
+  // async function onRemoveStation(stationId) {
+  //   try {
+  //     await removeStation(stationId)
+  //   } catch (err) {
+  //     console.log('Could not remove station')
+  //   }
+  // }
+
+
 
   // async function onAddStation() {
   //   const station = stationService.getEmptyStation()
@@ -46,7 +50,7 @@ export function StationIndex() {
 
   if (!stations) return <div>Loading...</div>
   return (
-    <div className='main-layout home-page'>
+    <section className='main-layout home-page'>
       <h3>Good afterNoon</h3>
 
       <h3>Your top mixes</h3>
@@ -61,6 +65,6 @@ export function StationIndex() {
       <StationList
         stations={stations}
       />
-    </div>
+    </section>
   )
 }

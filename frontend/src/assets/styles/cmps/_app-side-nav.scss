@@ -1,0 +1,15 @@
+.nav-conatiner {
+  font-family: CircularBlack;
+  background-color: $card-color;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  grid-column: 1;
+  padding: 24px;
+  font-size: 0.8125rem;
+  height: 90vh;
+  width: 200px;
+  padding-inline-end: 0;
+  letter-spacing: 0.06em;
+  word-spacing: -0.1em;
+}

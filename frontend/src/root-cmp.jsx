@@ -3,14 +3,16 @@ import { Routes, Route } from 'react-router'
 
 import routes from './routes'
 
-import { AppHeader } from './cmps/app-header'
+import { SideNav } from './cmps/side-nav'
+import { AppHeader } from './cmps/app-header.jsx'
 import { AppFooter } from './cmps/app-footer'
 import { UserDetails } from './pages/user-details'
 
 export function RootCmp() {
   return (
-    <div>
+    <section className='app-layout flex' >
       <AppHeader />
+      <SideNav />
       <main>
         <Routes>
           {routes.map((route) => (
@@ -24,7 +26,7 @@ export function RootCmp() {
           <Route path="user/:id" element={<UserDetails />} />
         </Routes>
       </main>
-      <AppFooter />
-    </div>
+      {/* <AppFooter /> */}
+    </section>
   )
 }

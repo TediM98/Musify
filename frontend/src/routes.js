@@ -10,7 +10,8 @@ const routes = [
     {
         path: '/',
         component: <StationIndex />,
-        label: 'Stations'
+        label: 'Home',
+
     },
     {
         path: 'search',
@@ -27,16 +28,16 @@ const routes = [
     //     component: <StationGenre />,
     //     label: 'Genre'
     // },
-    {
-        path: 'login',
-        component: <Login />,
-        label: 'Login'
-    },
-    {
-        path: 'about',
-        component: <AboutUs />,
-        label: 'About us'
-    },
+    // {
+    //     path: 'login',
+    //     component: <Login />,
+    //     label: 'Login'
+    // },
+    // {
+    //     path: 'about',
+    //     component: <AboutUs />,
+    //     label: 'About us'
+    // },
     // {
     //     path: 'chat',
     //     component: <ChatApp />,
