@@ -69,10 +69,123 @@ function getEmptyStation() {
     }
 }
 
+const demoStation = [
+    {
+        "_id": "5cksxjas89xjsa8xjsa8jxs09",
+        "name": "Funky Monks",
+        "tags": [
+            "Funk",
+            "Happy"
+        ],
+        "createdBy": {
+            "_id": "u101",
+            "fullname": "Puki Ben David",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": ['{minimal-user}', '{minimal-user}'],
+        "songs": [
+            {
+                "id": "s1001",
+                "songTitle": "Cissy Strut",
+                "bandName": "The Meters",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
+                "addedBy": '{minimal-user}',
+                "addedAt": 162521765262
+            },
+            {
+                "id": "mUkfiLjooxs",
+                "title": "The JB's - Pass The Peas",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
+                "addedBy": {}
+            },
+        ],
+        "msgs": [
+            {
+                id: 'm101',
+                from: '{mini-user}',
+                txt: 'Manish?'
+            }
+        ],
+    },
+    {
+        "_id": "5cksj98as98as9d8a9d8as9d",
+        "name": "Rocking Rebels",
+        "tags": [
+            "Rock",
+            "Rebellion"
+        ],
+        "createdBy": {
+            "_id": "u102",
+            "fullname": "Johnny Rebel",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": ['{minimal-user}', '{minimal-user}', '{minimal-user}'],
+        "songs": [
+            {
+                "id": "s1002",
+                "title": "AC/DC - Highway to Hell",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://i.ytimg.com/vi/l482T0yNkeo/mqdefault.jpg",
+                "addedBy": '{minimal-user}',
+                "addedAt": 162521765263
+            },
+            {
+                "id": "s1003",
+                "title": "Guns N' Roses - Sweet Child O' Mine",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://i.ytimg.com/vi/1w7OgIMMRc4/mqdefault.jpg",
+                "addedBy": '{minimal-user}',
+                "addedAt": 162521765264
+            }
+        ]
+    },
+    {
+        "_id": "5ckssad123jasdjklas123jask",
+        "name": "Chill Vibes",
+        "tags": [
+            "Relaxing",
+            "Mellow"
+        ],
+        "createdBy": {
+            "_id": "u103",
+            "fullname": "Laid-Back Lou",
+            "imgUrl": "http://some-photo/"
+        },
+        "likedByUsers": [],
+        "songs": [
+            {
+                "id": "s1004",
+                "title": "Norah Jones - Don't Know Why",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://i.ytimg.com/vi/tO4dxvguQDk/mqdefault.jpg",
+                "addedBy": '{minimal-user}',
+                "addedAt": 162521765265
+            },
+            {
+                "id": "s1005",
+                "title": "Jack Johnson - Better Together",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://i.ytimg.com/vi/EtI6E6TFRZE/mqdefault.jpg",
+                "addedBy": '{minimal-user}',
+                "addedAt": 162521765266
+            }
+        ]
+    },
+
+]
+
+_createStations()
+function _createStations() {
+    let stations = utilService.loadFromStorage(STORAGE_KEY)
+    if (!stations || !stations.length) {
+        stations = demoStation
+        utilService.saveToStorage(STORAGE_KEY, stations)
+    }
+}
+
+
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
-
-
-
-
