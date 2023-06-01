@@ -6,7 +6,7 @@ import {
   updateStation,
   removeStation,
 } from '../store/station.actions.js'
-
+import { StationPlayer } from "../cmps/player.jsx";
 // import { stationService } from '../services/station.service.js'
 
 // For local service
@@ -61,6 +61,7 @@ export function StationIndex() {
       <StationList
         stations={stations}
       />
+      <StationPlayer />
     </div>
   )
 }
