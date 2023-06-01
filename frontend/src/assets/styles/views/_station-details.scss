@@ -1,0 +1,121 @@
+.station-details-container {
+  display: flex;
+
+  & .station-content {
+    flex: 1;
+    flex-flow: column;
+    justify-content: flex-end;
+  }
+
+  & .station-img {
+    height: 235px;
+    width: 235px;
+    margin-inline-end: 24px;
+
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & h1 {
+    font-size: 6rem;
+    margin: 0.58em 0px 0.12em;
+    margin-top: 8px;
+  }
+
+  & .song-detail::before {
+    content: '•';
+    margin: 0 4px;
+  }
+
+  & .app-icon {
+    height: 24px;
+    width: 24px;
+    inset-inline-start: 0px;
+
+    & img {
+      border-radius: 50%;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  & .song-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+}
+
+.station-actions {
+  padding-block: 24px;
+
+  & .btn-more-options {
+    background: transparent;
+    border: 0;
+
+    & .icon-options {
+      fill: #b3b3b3;
+
+      &:hover {
+        fill: #ffffff;
+      }
+    }
+  }
+
+  & .action-container {
+    & .like-station-icon {
+      background: transparent;
+      border: 0;
+      color: hsla(0, 0%, 100%, 0.7);
+      display: flex;
+      padding: 0;
+      align-items: center;
+      margin-right: 32px;
+
+      & .heart-icon {
+        fill: #b3b3b3;
+        height: 32px;
+        width: 32px;
+      }
+
+      & :hover {
+        fill: #ffffff;
+      }
+    }
+  }
+
+  & .btn-play-container {
+    margin-right: 32px;
+
+    & .btn-play {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      background-color: $bgclr3;
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    & .play-icon {
+      width: 44px;
+      height: 44px;
+      fill: #fff;
+    }
+
+    & .btn-play-container {
+      width: 44px;
+      height: 44px;
+    }
+  }
+}
