@@ -61,6 +61,7 @@ export function StationIndex() {
       <StationList
         stations={stations}
       />
+      <StationPlayer />
     </div>
   )
 }
