@@ -15,7 +15,7 @@ export const stationService = {
     getEmptyStation,
     addStationMsg
 }
-window.cs = stationService
+window.cs = stationService // FOR DEBUGGING ONLY
 
 
 async function query(filterBy = { txt: '', }) {

@@ -1,5 +1,6 @@
 import { AboutUs } from './pages/about-us.jsx'
 import { Login } from './pages/login.jsx'
+import { StationDetails } from './pages/station-details.jsx'
 import { StationIndex } from './pages/station-index.jsx'
 import { StationSearch } from './pages/station-search.jsx'
 // import { ChatApp } from './pages/chat-app.jsx'
@@ -16,27 +17,12 @@ const routes = [
         component: <StationSearch />,
         label: 'Search'
     },
-    // {
-    //     path: 'playlist',
-    //     component: <PlayList />,
-    //     label: 'Search'
-    // },
-    // {
-    //     path: 'artist',
-    //     component: <Artist />,
-    //     label: 'Artist'
-    // },
-    // {
-    //     path: 'album',
-    //     component: <Album />,
-    //     label: 'Album'
-    // },
-    // {
-    //     path: 'track',
-    //     component: <Track />,
-    //     label: 'Track'
-    // },
-    // {
+    {
+        path: 'station',
+        component: <StationDetails />,
+        label: 'Station'
+    },
+    // { SAME AS STATION DETAILS
     //     path: 'genre',
     //     component: <StationGenre />,
     //     label: 'Genre'
