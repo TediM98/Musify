@@ -33,6 +33,11 @@
   }
 }
 
+.parmanent-nav {
+  position: sticky;
+  top: 0;
+  margin-top: -8px;
+}
 .main-nav {
   padding: 0.3em;
 }
