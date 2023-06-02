@@ -1,0 +1,42 @@
+.app-header {
+  display: grid;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  background-color: rgba(88, 96, 136, 0.16);
+  transition: 1s ease;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  &.app-header > div {
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em;
+  }
+  & nav {
+    gap: 6px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  & .btn-go-back,
+  .btn-go-next {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    & svg {
+      fill: #fff;
+    }
+  }
+  & button {
+    background-color: #fff;
+    color: #000;
+    height: 2.4em;
+    width: 7.4em;
+    margin: 0.11em;
+    border-radius: 500px;
+  }
+}
