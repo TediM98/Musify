@@ -11,7 +11,6 @@ const routes = [
         path: '/',
         component: <StationIndex />,
         label: 'Home',
-
     },
     {
         path: 'search',

@@ -1,15 +1,30 @@
-.nav-conatiner {
+.app-nav {
   font-family: CircularBlack;
   background-color: $card-color;
-  color: #ffffff;
+  color: $clr2;
   display: flex;
   flex-direction: column;
   grid-column: 1;
-  padding: 24px;
-  font-size: 0.8125rem;
-  height: 90vh;
-  width: 200px;
-  padding-inline-end: 0;
+  font-size: 1rem;
+  width: 18em;
   letter-spacing: 0.06em;
-  word-spacing: -0.1em;
+  padding: 0.6em 0em 0em 2em;
+  border-radius: 7px;
+  & a {
+    transition: color 0.4s;
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    height: 3em;
+    color: #b3b3b3;
+    text-decoration: none;
+    fill: white;
+  }
+  &:active {
+    color: $clr1;
+  }
+}
+
+.main-nav {
+  padding: 0.3em;
 }
