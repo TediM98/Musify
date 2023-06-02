@@ -7,7 +7,7 @@ import { playerService } from '../services/player.service'
 import { setIsPlaying } from '../store/player.actions'
 //GET https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=The%20office&key=[YOUR_API_KEY] HTTP/1.1
 
-//console.log(trackService.getVideos('joy division')) //----------------DO NOT ERASE, COMMENTED TO PREVENT YT API BLOCK
+// console.log(trackService.getVideos('joy division')) //----------------DO NOT ERASE, COMMENTED TO PREVENT YT API BLOCK
 
 export function StationPlayer() {
   const [searchTerm, setSearchTerm] = useState(null)
