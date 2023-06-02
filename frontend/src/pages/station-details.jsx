@@ -3,19 +3,36 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { stationService } from '../services/station.service.local'
 import logo from '../assets/img/musify-logo.jpg'
 import play from '../assets/img/play-station.svg'
-import threedots from '../assets/img/3dots.svg'
+import { bgcService } from '../services/bgc.service'
+
+// import threedots from '../assets/img/3dots.svg'
 
 export function StationDetails() {
   const [station, setStation] = useState(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-  // const { stationId } = useParams()
+  const { stationId } = useParams()
   const navigate = useNavigate()
-  const stationId = '5cksxjas89xjsa8xjsa8jxs09'
+  // const stationId = '5ckssad123jasdjklas123jask'
+  const [bgc, setBgc] = useState(null)
   useEffect(() => {
     if (stationId.length > 1) {
-      loadStation()
+      loadStation().then(getBgc())
     }
   }, [stationId])
+
+  // useEffect(() => {
+  //   getBgc()
+  // }, [stationId])
+
+  async function getBgc() {
+    try {
+      const color = await bgcService.getColorFromUrl(
+        `${station.createdBy.imgUrl}`
+      )
+      if (color) setBgc(color)
+    } catch (err) {
+      console.log('Could not load color', err)
+    }
+  }
 
   async function loadStation() {
     try {
@@ -31,10 +48,18 @@ export function StationDetails() {
 
   if (!station) return <div>Loading...</div>
   return (
-    <section className="details-container main-layout">
-      <div className="station-details-container">
+    <section className="details-container detail-layout">
+      <div
+        className="station-details-container full"
+        style={{ backgroundColor: bgc }}
+      >
         <div className="station-img">
-          <img src={station.createdBy.imgUrl} alt="station-img"></img>
+          <img
+            // crossOrigin="anonymous"
+            className="img"
+            src={station.createdBy.imgUrl}
+            alt="station-img"
+          ></img>
         </div>
         <div className="station-content flex">
           <span>playlist</span>

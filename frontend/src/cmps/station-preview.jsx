@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export function StationPreview({ station }) {
-
   return (
     <Link to={`/station/${station._id}`}>
       <section className="station-card">
