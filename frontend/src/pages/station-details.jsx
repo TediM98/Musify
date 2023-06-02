@@ -9,26 +9,29 @@ import { bgcService } from '../services/bgc.service'
 
 export function StationDetails() {
   const [station, setStation] = useState(null)
-  // const { stationId } = useParams()
+  const { stationId } = useParams()
   const navigate = useNavigate()
-  const stationId = '5ckssad123jasdjklas123jask'
+  // const stationId = '5ckssad123jasdjklas123jask'
   const [bgc, setBgc] = useState(null)
-
   useEffect(() => {
     if (stationId.length > 1) {
-      loadStation()
+      loadStation().then(getBgc())
     }
   }, [stationId])
 
-  useEffect(() => {
-    getBgc()
-  }, [stationId])
+  // useEffect(() => {
+  //   getBgc()
+  // }, [stationId])
 
   async function getBgc() {
-    const color = await bgcService.getColorFromUrl(
-      `${station.createdBy.imgUrl}`
-    )
-    if (color) setBgc(color)
+    try {
+      const color = await bgcService.getColorFromUrl(
+        `${station.createdBy.imgUrl}`
+      )
+      if (color) setBgc(color)
+    } catch (err) {
+      console.log('Could not load color', err)
+    }
   }
 
   async function loadStation() {
@@ -52,7 +55,7 @@ export function StationDetails() {
       >
         <div className="station-img">
           <img
-            // crossorigin="anonymous"
+            // crossOrigin="anonymous"
             className="img"
             src={station.createdBy.imgUrl}
             alt="station-img"

@@ -6,10 +6,8 @@ export const bgcService = {
 }
 
 export async function getColorFromUrl(url) {
-
-  const fac = new FastAverageColor()
-  fac.crossOrigin = 'anonymous';
   try {
+    const fac = new FastAverageColor()
     const color = await fac.getColorAsync(url)
     return color.hex
   }
