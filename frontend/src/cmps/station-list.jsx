@@ -3,6 +3,7 @@ import { StationPreview } from './station-preview'
 
 
 export function StationList({ stations }) {
+
   return (
     <section className='station-list'>
       {
