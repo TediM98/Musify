@@ -1,5 +1,6 @@
-import axios from 'axios'
+import { stationService } from "./station.service.local";
 import {utilService} from './util.service.js'
+import { httpService } from "./http.service.js";
 
 
 export const trackService = {
@@ -14,7 +15,7 @@ function getVideos(term) {
 
     console.log('Getting from Network')
     
-    return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&maxResults=1&key=AIzaSyCp8KMTEjR9frWUGpSnc8Cw5cLVe7wRRDM&q=${term}`)
+    return httpService.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&maxResults=1&key=AIzaSyCp8KMTEjR9frWUGpSnc8Cw5cLVe7wRRDM&q=${term}`)
         .then(res => res.data.items)
         .then(ytVideos => ytVideos.map(ytVideo => ({
             id: ytVideo.id.videoId,

@@ -11,9 +11,9 @@ import { UserDetails } from './pages/user-details'
 export function RootCmp() {
   return (
     <section className='app-layout flex' >
-      <AppHeader />
       <SideNav />
       <main>
+        <AppHeader />
         <Routes>
           {routes.map((route) => (
             <Route
