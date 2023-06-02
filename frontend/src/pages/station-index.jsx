@@ -6,14 +6,13 @@ import {
   updateStation,
   removeStation,
 } from '../store/station.actions.js'
-import { StationPlayer } from "../cmps/player.jsx";
+import { StationPlayer } from '../cmps/player.jsx'
 // import { stationService } from '../services/station.service.js'
 
 // For local service
 import { stationService } from '../services/station.service.local.js'
 
 import { StationList } from '../cmps/station-list.jsx'
-
 
 export function StationIndex() {
   const stations = useSelector(
@@ -32,8 +31,6 @@ export function StationIndex() {
   //   }
   // }
 
-
-
   // async function onAddStation() {
   //   const station = stationService.getEmptyStation()
   //   station.vendor = prompt('Vendor?')
@@ -50,23 +47,16 @@ export function StationIndex() {
 
   if (!stations) return <div>Loading...</div>
   return (
-    <section className='main-layout home-page'>
+    <section className="main-layout home-page">
       <h3>Good afterNoon</h3>
 
       <h3>Your top mixes</h3>
-      <StationList
-        stations={stations}
-      />
+      <StationList stations={stations} />
       <h3>More like Mac miller</h3>
-      <StationList
-        stations={stations}
-      />
+      <StationList stations={stations} />
       <h3>Recently played</h3>
-      <StationList
-        stations={stations}
-      />
+      <StationList stations={stations} />
       <StationPlayer />
     </section>
-
   )
 }

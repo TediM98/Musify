@@ -12,11 +12,9 @@ export function StationDetails() {
   const { stationId } = useParams()
   const navigate = useNavigate()
   // const stationId = '5ckssad123jasdjklas123jask'
-  const [bgc, setBgc] = useState(null)
+  const [bgc, setBgc] = useState('black')
   useEffect(() => {
-    if (stationId.length > 1) {
-      loadStation().then(getBgc())
-    }
+    if (stationId) loadStation().then(getBgc())
   }, [stationId])
 
   // useEffect(() => {
@@ -25,10 +23,8 @@ export function StationDetails() {
 
   async function getBgc() {
     try {
-      const color = await bgcService.getColorFromUrl(
-        `${station.createdBy.imgUrl}`
-      )
-      if (color) setBgc(color)
+      const color = await bgcService.getColorFromUrl(station.createdBy.imgUrl)
+      setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
     }
@@ -80,7 +76,7 @@ export function StationDetails() {
         <div className="action-container flex">
           <div className="btn-play-container">
             <button className="btn-play">
-              <span>
+              <span onClick="onChange()">
                 <img src={play} alt="play-button" className="play-icon"></img>
               </span>
             </button>
