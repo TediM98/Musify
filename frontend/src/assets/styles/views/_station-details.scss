@@ -1,5 +1,8 @@
 .station-details-container {
   display: flex;
+  width: 100vw;
+  padding: 60px 30px 24px;
+  gap: 25px;
 
   & .station-content {
     flex: 1;
@@ -10,7 +13,6 @@
   & .station-img {
     height: 235px;
     width: 235px;
-    margin-inline-end: 24px;
 
     & img {
       height: 100%;

@@ -1,6 +1,3 @@
-
-
-
 export function StationPreview({ station }) {
   return (
     <section className="station-card">
