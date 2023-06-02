@@ -58,12 +58,14 @@ export function StationDetails() {
           ></img>
         </div>
         <div className="station-content flex">
-          <span>playlist</span>
-          <h1>{station.name}</h1>
+          <span>Playlist</span>
+          <h1>Daily Mix 1</h1>
+          <span className="station-desc">desc........</span>
           <div className="song-details-container">
-            <div className="app-icon">
+            <div className="app-icon flex">
               <img src={logo} alt="icon"></img>
             </div>
+            <span>Musify</span>
             <span className="song-detail">
               {station.likedByUsers.length} likes
             </span>
@@ -105,6 +107,29 @@ export function StationDetails() {
               <path d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
             </svg>
           </button>
+        </div>
+      </section>
+      <section className="song-list">
+        <div className="song-list-header">
+          <div></div>
+          <span className="list-song-idx">#</span>
+          <div className="list-song-title">Title</div>
+          <div></div>
+          <div className="list-song-date">Date Added</div>
+          <small>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              height="16"
+              width="16"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="Svg-sc-ytk21e-0 uPxdw"
+            >
+              <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z" />
+              <path d="M8 3.25a.75.75 0 01.75.75v3.25H11a.75.75 0 010 1.5H7.25V4A.75.75 0 018 3.25z" />
+            </svg>
+          </small>
         </div>
       </section>
     </section>
