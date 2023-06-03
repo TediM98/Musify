@@ -19,7 +19,7 @@
     color: #b3b3b3;
     text-decoration: none;
     fill: white;
-    &:hover {
+    &:h {
       color: $clr1;
     }
   }
@@ -43,5 +43,5 @@
   top: 8px;
 }
 .main-nav {
-  padding: 0.3em;
+  padding: 8px;
 }

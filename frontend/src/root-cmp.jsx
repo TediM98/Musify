@@ -1,8 +1,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
 
+import { StationPlayer } from './cmps/player.jsx'
 import routes from './routes'
-
 import { SideNav } from './cmps/side-nav'
 import { AppHeader } from './cmps/app-header.jsx'
 import { AppFooter } from './cmps/app-footer'
@@ -25,8 +25,8 @@ export function RootCmp() {
           ))}
           <Route path="user/:id" element={<UserDetails />} />
         </Routes>
+        <StationPlayer />
       </main>
-      {/* <AppFooter /> */}
     </section>
   )
 }

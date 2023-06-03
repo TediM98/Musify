@@ -46,21 +46,21 @@ async function save(station) {
     return savedStation
 }
 
-// async function addStationMsg(stationId, txt) {
-//     // Later, this is all done by the backend
-//     const station = await getById(stationId)
-//     if (!station.msgs) station.msgs = []
+async function addStationMsg(stationId, txt) {
+    // Later, this is all done by the backend
+    const station = await getById(stationId)
+    if (!station.msgs) station.msgs = []
 
-//     const msg = {
-//         id: utilService.makeId(),
-//         by: userService.getLoggedinUser(),
-//         txt
-//     }
-//     station.msgs.push(msg)
-//     await storageService.put(STORAGE_KEY, station)
+    const msg = {
+        id: utilService.makeId(),
+        by: userService.getLoggedinUser(),
+        txt
+    }
+    station.msgs.push(msg)
+    await storageService.put(STORAGE_KEY, station)
 
-//     return msg
-// }
+    return msg
+}
 
 function getEmptyStation() {
     return {
@@ -86,9 +86,8 @@ const demoStation = [
         "songs": [
             {
                 "id": "s1001",
-                "title": "Cissy Strut",
-                "bandName": "The Meters",
-                "url": "youtube/song.mp4",
+                "title": "Cissy Strut - The Meters",
+                "url": "https://www.youtube.com/watch?v=mUkfiLjooxs",
                 "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
                 "addedBy": '{minimal-user}',
                 "addedAt": 162521765262
@@ -96,7 +95,7 @@ const demoStation = [
             {
                 "id": "mUkfiLjooxs",
                 "title": "The JB's - Pass The Peas",
-                "url": "youtube/song.mp4",
+                "url": "https://www.youtube.com/watch?v=mUkfiLjooxs",
                 "imgUrl": "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
                 "addedBy": {}
             },
@@ -126,7 +125,7 @@ const demoStation = [
             {
                 "id": "s1002",
                 "title": "AC/DC - Highway to Hell",
-                "url": "youtube/song.mp4",
+                "url": "https://www.youtube.com/watch?v=l482T0yNkeo",
                 "imgUrl": "https://i.ytimg.com/vi/l482T0yNkeo/mqdefault.jpg",
                 "addedBy": '{minimal-user}',
                 "addedAt": 162521765263
@@ -134,7 +133,7 @@ const demoStation = [
             {
                 "id": "s1003",
                 "title": "Guns N' Roses - Sweet Child O' Mine",
-                "url": "youtube/song.mp4",
+                "url": "https://www.youtube.com/watch?v=1w7OgIMMRc4",
                 "imgUrl": "https://i.ytimg.com/vi/1w7OgIMMRc4/mqdefault.jpg",
                 "addedBy": '{minimal-user}',
                 "addedAt": 162521765264
@@ -158,7 +157,7 @@ const demoStation = [
             {
                 "id": "s1004",
                 "title": "Norah Jones - Don't Know Why",
-                "url": "youtube/song.mp4",
+                "url": "https://www.youtube.com/watch?v=tO4dxvguQDk",
                 "imgUrl": "https://i.ytimg.com/vi/tO4dxvguQDk/mqdefault.jpg",
                 "addedBy": '{minimal-user}',
                 "addedAt": 162521765265
@@ -166,7 +165,7 @@ const demoStation = [
             {
                 "id": "s1005",
                 "title": "Lofi girl",
-                "url": "youtube/song.mp4",
+                "url": "https://www.youtube.com/watch?v=jfKfPfyJRdk",
                 "imgUrl": "https://i.ytimg.com/vi/5qap5aO4i9A/mqdefault.jpg",
                 "addedBy": '{minimal-user}',
                 "addedAt": 162521765266
