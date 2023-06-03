@@ -1,6 +1,5 @@
 .station-details-container {
   display: flex;
-  width: 100vw;
   padding: 60px 30px 24px;
   gap: 25px;
   font-family: CircularBold;
@@ -112,7 +111,7 @@
       position: relative;
       width: 56px;
       height: 56px;
-      background-color: $bgclr3;
+      background-color: $clr4;
       border: none;
       border-radius: 50%;
       padding: 0;
@@ -122,6 +121,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      & :hover {
+        background-color: $clr4-light;
+        border-radius: 50%;
+      }
     }
 
     & .play-icon {
