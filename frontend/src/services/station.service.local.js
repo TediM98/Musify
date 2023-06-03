@@ -90,7 +90,7 @@ const demoStation = [
                 "url": "https://www.youtube.com/watch?v=mUkfiLjooxs",
                 "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
                 "addedBy": '{minimal-user}',
-                "addedAt": 162521765262
+                "addedAt": 162521765262,
             },
             {
                 "id": "mUkfiLjooxs",

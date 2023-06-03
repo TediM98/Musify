@@ -1,3 +1,14 @@
+.options-close {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+.options-close.inactive {
+  width: 0vw;
+  height: 0vh;
+}
+
 .station-details-container {
   display: flex;
   padding: 60px 30px 24px;
@@ -83,6 +94,9 @@
   }
 
   & .action-container {
+    align-items: center;
+    justify-content: start;
+
     & .like-station-icon {
       background: transparent;
       border: 0;
@@ -174,5 +188,37 @@
 
   & .Svg-sc-ytk21e-0 {
     fill: currentColor;
+  }
+
+  & .track-wrapper {
+    display: grid;
+    grid-template-columns: 0 40px 40px 2fr 1.5fr 1.72fr;
+    font-size: 0.875rem;
+    height: 56px;
+    align-items: center;
+    gap: 10px;
+    color: $clr2;
+    font-family: CircularLight;
+
+    & .track-idx {
+      justify-self: center;
+      font-size: 1rem;
+      padding-right: 4px;
+    }
+
+    * .track-name {
+      grid-column: -5;
+    }
+
+    & .track-img-container {
+      width: 40px;
+      height: 40px;
+
+      & .track-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }
