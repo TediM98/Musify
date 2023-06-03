@@ -23,6 +23,10 @@ export function StationPlayer() {
     playerService.getTop5Vids(searchTerm).then((res) => console.log('res', res))
   }, [searchTerm])
 
+  // useEffect(() => {
+  //   handlePlay()
+  // }, [isPlaying])
+
   const urlTop5res =
     'https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=AIzaSyCnIU7BggBEDwYjvfLXe8uRRHSIVbyXZg8&q={value}'
 
