@@ -1,6 +1,7 @@
-$playBtnImg: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgaGVpZ2h0PSIxNiIgd2lkdGg9IjE2IiBhcmlhLWhpZGRlbj0idHJ1ZSIgdmlld0JveD0iMCAwIDE2IDE2IiBkYXRhLWVuY29yZS1pZD0iaWNvbiIgY2xhc3M9IlN2Zy1zYy15');
 
 .player-container{
+    
+    bottom: 0;
     position: sticky;
     display: flex;
     align-content: center;
@@ -10,32 +11,35 @@ $playBtnImg: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     background-color: rgb(0, 0, 0);
 }
 .player{
-   
+    display: flex;
+    align-content: center;
+    align-items: baseline;
+    justify-content: center;
     
-    .stopBtn{
+    & .stopBtn{
         margin: 16px;
         
     }
-    .backBtn{
+    & .backBtn{
         background:none;
         border: none;
         margin: 16px;
     }
-    .fwdBton{
+    & .fwdBton{
         background:none;
         border: none;
       
         margin: 16px;
     }
-}
-
-.playBtn{
-
-    :hover{
-        transform: scale(1.2);
+    
+& .playBtn{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    &:hover{
+        transform: scale(1.15);
     }
-    // display: flex;
-    // align-items: center;
+   
   
     height: 32px;
     width: 32px;
@@ -43,4 +47,5 @@ $playBtnImg: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     border: 1px solid white;
     border-radius: 50%;
     background-color: white;
+}
 }

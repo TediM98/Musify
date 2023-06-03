@@ -78,7 +78,7 @@ export function StationPlayer() {
   }
 
   return (
-    <div className='player-container'>
+    <div className='player-container main-layout full'>
       <YouTube videoId="3tD2HJ-TQaM" opts={opts} onReady={handlePlayerReady} />
       <div className='player'>
         {/* <button className='stopBtn' onClick={handleStop}>Stop</button> */}
