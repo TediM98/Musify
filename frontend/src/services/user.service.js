@@ -96,3 +96,25 @@ function getLoggedinUser() {
 
 
 
+// const user = {
+//     _id: "u101",
+//     username: "Muko",
+//     password: "mukmuk",
+//     fullname: "Muki Muka",
+//     imgUrl: "http://some-img",
+//     likedSongs: [
+//       {
+//         _id: "u106",
+//         fullname: "Dob",
+//         imgUrl: "http://some-img"
+//       }
+//     ],
+//     playLists: [
+//       {
+//         _id: "u105",
+//         fullname: "Bob",
+//         imgUrl: "http://some-img"
+//       }
+//     ],
+//     savedStoryIds: ["s104", "s111", "s123"]
+//   }

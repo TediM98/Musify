@@ -25,8 +25,8 @@ export function RootCmp() {
           ))}
           <Route path="user/:id" element={<UserDetails />} />
         </Routes>
-        <StationPlayer />
       </main>
+      <StationPlayer />
     </section>
   )
 }

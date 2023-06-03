@@ -1,5 +1,7 @@
 import axios from "axios"
 
+
+
 const API_KEY = 'AIzaSyCnIU7BggBEDwYjvfLXe8uRRHSIVbyXZg8'
 const urlWikipidia = 'https://en.wikipedia.org/w/api.php?&origin=*&action=query&list=search&srsearch=${serch}&format=json'
 
