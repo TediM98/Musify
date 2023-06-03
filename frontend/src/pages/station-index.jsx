@@ -1,12 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import {
-  loadStations,
-  addStation,
-  updateStation,
-  removeStation,
-} from '../store/station.actions.js'
-import { StationPlayer } from '../cmps/player.jsx'
+import { loadStations, addStation, updateStation, removeStation, } from '../store/station.actions.js'
+
 // import { stationService } from '../services/station.service.js'
 
 // For local service
@@ -33,7 +28,7 @@ export function StationIndex() {
 
   // async function onAddStation() {
   //   const station = stationService.getEmptyStation()
-  //   station.vendor = prompt('Vendor?')
+  //   station.name = prompt('Vendor?')
   //   try {
   //     const savedStation = await addStation(station)
   //   } catch (err) {
@@ -56,7 +51,7 @@ export function StationIndex() {
       <StationList stations={stations} />
       <h3>Recently played</h3>
       <StationList stations={stations} />
-      <StationPlayer />
+
     </section>
   )
 }
