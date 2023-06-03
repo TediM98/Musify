@@ -7,7 +7,7 @@
   margin-top: 2px;
   align-items: center;
   padding: 0;
-  background-color: rgba(88, 96, 136, 0.16);
+  background-color: transparent;
   transition: 1s ease;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -24,7 +24,7 @@
   }
   & .btn-go-back,
   .btn-go-next {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #000000b3;
     border-radius: 50%;
     height: 32px;
     width: 32px;
@@ -33,12 +33,15 @@
       fill: #fff;
     }
   }
+
   & button {
-    background-color: #fff;
-    color: #000;
-    height: 2.4em;
-    width: 7.4em;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 400;
+    height: 39px;
+    width: 86px;
     margin: 0.11em;
     border-radius: 500px;
+    font-family: CircularBlack;
   }
 }
