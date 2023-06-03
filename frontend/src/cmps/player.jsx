@@ -1,19 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react'
 import YouTube from 'react-youtube'
-import { useSelector } from 'react-redux'
 
 import { trackService } from '../services/track.service'
 import { playerService } from '../services/player.service'
 import { setIsPlaying } from '../store/player.actions'
+import { useSelector } from 'react-redux'
+import { SET_IS_PLAYING } from '../store/player.reducer'
+import { store } from '../store/store'
 //GET https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=The%20office&key=[YOUR_API_KEY] HTTP/1.1
 
-console.log(trackService.getVideos('joy division')) //----------------DO NOT ERASE, COMMENTED TO PREVENT YT API BLOCK
+// console.log(trackService.getVideos('joy division')) //----------------DO NOT ERASE, COMMENTED TO PREVENT YT API BLOCK
 
 export function StationPlayer() {
   const [searchTerm, setSearchTerm] = useState(null)
   const [player, setPlayer] = useState(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-  // const isPlaying = useSelector((storeState) => storeState.playerModule)
+  // const [isPlaying, setIsPlaying] = useState(false)
+  const isPlaying = useSelector(
+    (storeState) => storeState.playerModule.isPlaying
+  )
 
   useEffect(() => {
     playerService.getTop5Vids(searchTerm).then((res) => console.log('res', res))
@@ -28,11 +32,14 @@ export function StationPlayer() {
     if (player) {
       if (!isPlaying) {
         player.playVideo()
-        setIsPlaying(true)
+        // setIsPlaying(true)
       } else {
         player.pauseVideo()
-        setIsPlaying(false)
+        // setIsPlaying(false)
       }
+      setIsPlaying(!isPlaying)
+
+      // store.dispatch({ type: SET_IS_PLAYING, isPlaying: !isPlaying })
     }
   }
 
@@ -40,6 +47,7 @@ export function StationPlayer() {
     if (player) {
       player.stopVideo()
       setIsPlaying(false)
+      // store.dispatch({ type: SET_IS_PLAYING, isPlaying: false })
     }
   }
 

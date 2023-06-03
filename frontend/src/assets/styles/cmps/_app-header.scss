@@ -1,9 +1,10 @@
 .app-header {
   display: grid;
   position: sticky;
-  top: 0;
+  top: 8px;
   z-index: 30;
   flex-direction: row;
+  margin-top: 2px;
   align-items: center;
   padding: 0;
   background-color: rgba(88, 96, 136, 0.16);
@@ -14,6 +15,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5em;
+    width: calc(100vw - 325px);
   }
   & nav {
     gap: 6px;

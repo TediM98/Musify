@@ -4,9 +4,34 @@
   width: 100%;
   border-radius: 10px;
   font-family: CircularBlack;
+  position: relative;
+  & .btn-play-playlist {
+    height: 48px;
+    width: 48px;
+    background-color: #1fdf64;
+    padding: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 49%;
+    right: 6%;
+    opacity: 0;
+    box-shadow: 0 1px 5px #000;
+    transition: opacity 0.4s, top 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background-color: #3bef7d;
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
   & h3,
   img {
     cursor: pointer;
+    border-radius: 5px;
+    object-fit: cover;
   }
   & .content {
     color: $clr2;
