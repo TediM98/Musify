@@ -8,6 +8,9 @@ export const trackService = {
 }
 const KEY = 'videosDB'
 
+const debouncedGetVideos = utilService.debounce(getVideos);
+debouncedGetVideos('term') ////debounced getvideos
+
 
 function getVideos(term) {
     const termVideosMap = utilService.loadFromStorage(KEY) || {}
@@ -33,3 +36,4 @@ function getVideos(term) {
         })
         
 }
+
