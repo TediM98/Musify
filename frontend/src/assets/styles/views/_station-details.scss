@@ -127,19 +127,19 @@
       align-items: center;
       justify-content: center;
 
-      & :hover {
+      &:hover {
         background-color: $clr4-light;
         border-radius: 50%;
       }
     }
 
-    & .play-icon {
+    .play-icon {
       width: 44px;
       height: 44px;
       fill: #fff;
     }
 
-    & .btn-play-container {
+    .btn-play-container {
       width: 44px;
       height: 44px;
     }
