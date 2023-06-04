@@ -1,31 +1,74 @@
-.table {
+:root {
+  --min-column-width: 270px;
+  --item-height: 80px;
+  --column-gap: 24px;
+  --row-gap: 16px;
+  --column-width: 204px;
+  --column-count: 4;
+  --grid-gap: 24px;
+  --min-container-width: 432px;
+}
+.section-highlights {
+  grid-gap: var(--row-gap) var(--column-gap);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 400px));
-  grid-gap: 10px;
-}
+  grid-template: auto/repeat(auto-fill, minmax(max(var(--min-column-width), 25%), 1fr));
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.header {
-  font-weight: bold;
-}
-
-.cell {
-  padding: 8px;
-  border: 1px solid #ddd;
-}
-
-@media (max-width: 768px) {
-  .table {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  & :hover {
+    h4 {
+      text-decoration: underline;
+    }
+  }
+  img {
+    min-height: var(--item-height);
+    min-width: var(--item-height);
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    position: relative;
+    width: 25%;
   }
 }
-
-@media (max-width: 480px) {
-  .table {
-    grid-template-columns: 1fr;
-  }
+.station-name-table {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-flex: 1;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  align-items: center;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 1;
+  flex: 1;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+h4 {
+  -webkit-box-orient: vertical;
+  font-size: 16px;
+  font-family: CircularSp;
+  -webkit-box-direction: normal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.table-data {
+  cursor: pointer;
+  background-color: hsla(0, 0%, 100%, 0.1);
+  border-radius: 4px;
+  height: var(--item-height);
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }

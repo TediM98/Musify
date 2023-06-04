@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStations } from '../store/station.actions.js'
 
-
 // For local service
 import { StationList } from '../cmps/station-list.jsx'
 import { StationTalbe } from '../cmps/station-table.jsx'
@@ -19,7 +18,6 @@ export function StationIndex() {
   function getGreetings() {
     var myDate = new Date()
     var hrs = myDate.getHours()
-    console.log(hrs)
     let greet
 
     if (hrs < 12) {

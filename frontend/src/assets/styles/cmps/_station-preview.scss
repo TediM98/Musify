@@ -1,14 +1,15 @@
 .station-card {
   background-color: $card-color;
   padding: 16px;
-  width: 100%;
+  width: 12.8em;
+  height: 17.8em;
   border-radius: 10px;
   font-family: CircularBlack;
   position: relative;
   & .btn-play-playlist {
     height: 48px;
     width: 48px;
-    background-color: #1fdf64;
+    background-color: $clr4;
     padding: 10px;
     border-radius: 50%;
     position: absolute;
@@ -21,21 +22,24 @@
     justify-content: center;
     align-items: center;
   }
-
-  & h3,
+  h3 {
+    margin-top: 1em;
+  }
   img {
     cursor: pointer;
+    height: 155px;
+    width: 155px;
     border-radius: 5px;
     object-fit: cover;
   }
   & .content {
     color: $clr2;
-    font-size: 13px;
+    font-size: 0.9em;
     cursor: pointer;
   }
   &:hover {
     & .btn-play-playlist {
-      background-color: #3bef7d;
+      background-color: $clr4;
       opacity: 1;
       cursor: pointer;
     }
