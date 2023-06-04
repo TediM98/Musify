@@ -75,7 +75,7 @@ export function StationDetails() {
           </div>
           <div className="station-content flex">
             <span>Playlist</span>
-            <h1>Daily Mix 1</h1>
+            <h1>{station.name}</h1>
             <span className="station-desc">desc........</span>
             <div className="song-details-container">
               <div className="app-icon flex">
@@ -119,9 +119,8 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${
-                    open === stationId ? 'active' : 'inactive'
-                  }`}
+                  className={`dropdown-menu ${open === stationId ? 'active' : 'inactive'
+                    }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem />
@@ -175,9 +174,8 @@ export function StationDetails() {
                         </button>
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${
-                              open === track.id ? 'active' : 'inactive'
-                            }`}
+                            className={`dropdown-menu ${open === track.id ? 'active' : 'inactive'
+                              }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem />

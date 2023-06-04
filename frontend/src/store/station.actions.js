@@ -55,23 +55,23 @@ export async function addStation(station) {
         store.dispatch(getActionAddStation(savedStation))
         return savedStation
     } catch (err) {
-        console.log('Cannot add station', err)
+        console.log('Cannot add station!!!', err)
         throw err
     }
 }
 
-export function updateStation(station) {
-    return stationService.save(station)
-        .then(savedStation => {
-            console.log('Updated Station:', savedStation)
-            store.dispatch(getActionUpdateStation(savedStation))
-            return savedStation
-        })
-        .catch(err => {
-            console.log('Cannot save station', err)
-            throw err
-        })
-}
+// export function updateStation(station) {
+//     return stationService.save(station)
+//         .then(savedStation => {
+//             console.log('Updated Station:', savedStation)
+//             store.dispatch(getActionUpdateStation(savedStation))
+//             return savedStation
+//         })
+//         .catch(err => {
+//             console.log('Cannot save station', err)
+//             throw err
+//         })
+// }
 
 
 // Demo for Optimistic Mutation

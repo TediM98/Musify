@@ -1,11 +1,9 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadStations, addStation, updateStation, removeStation, } from '../store/station.actions.js'
+import { loadStations } from '../store/station.actions.js'
 
-// import { stationService } from '../services/station.service.js'
 
 // For local service
-import { stationService } from '../services/station.service.local.js'
 import { StationList } from '../cmps/station-list.jsx'
 import { StationTalbe } from '../cmps/station-table.jsx'
 
@@ -19,31 +17,21 @@ export function StationIndex() {
   }, [])
 
   function getGreetings() {
-    var myDate = new Date();
-    var hrs = myDate.getHours();
+    var myDate = new Date()
+    var hrs = myDate.getHours()
     console.log(hrs)
-    let greet;
+    let greet
 
     if (hrs < 12) {
-      greet = "Good Morning";
+      greet = "Good Morning"
     } else if (hrs >= 12 && hrs <= 17) {
-      greet = "Good Afternoon";
+      greet = "Good Afternoon"
     } else if (hrs >= 17 && hrs <= 24) {
-      greet = "Good Evening";
+      greet = "Good Evening"
     }
-    return greet;
+    return greet
   }
 
-  async function onRemoveStation(stationId) {
-    try {
-      await removeStation(stationId)
-    } catch (err) {
-      console.log('Could not remove station')
-    }
-  }
-  // function onAddStationMsg(station) {
-  //   console.log(`TODO Adding msg to station`)
-  // }
   if (!stations) return <div>Loading...</div>
   return (
     <section className="main-layout home-page">
