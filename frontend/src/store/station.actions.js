@@ -39,6 +39,7 @@ export async function loadStations() {
 }
 
 export async function removeStation(stationId) {
+    console.log('stationId', stationId)
     try {
         await stationService.remove(stationId)
         store.dispatch(getActionRemoveStation(stationId))

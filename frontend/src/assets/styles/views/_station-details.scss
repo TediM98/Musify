@@ -166,7 +166,7 @@
     display: grid;
     grid-template-columns: 0 40px 40px 2fr 1.5fr 1.72fr;
     text-transform: uppercase;
-    border-bottom: 1px solid $clr3-light;
+    border-bottom: 1px solid $clr3-dark;
     border-radius: 0;
     margin-bottom: 15px;
     height: 35px;
@@ -190,7 +190,7 @@
     width: 30px;
   }
 
-  & .Svg-sc-ytk21e-0 {
+  & .duration-icon {
     fill: currentColor;
   }
 
@@ -233,6 +233,12 @@
       & .handle-song-icon-container {
         display: block;
         text-align: center;
+
+        .handle-play-icon {
+          fill: #ffffff;
+          width: 14px;
+          height: 14px;
+        }
       }
     }
 
@@ -260,6 +266,8 @@
       justify-self: center;
       font-size: 1rem;
       padding-right: 4px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: 400;
     }
 
     * .song-name {

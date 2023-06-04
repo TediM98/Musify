@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStations } from '../store/station.actions.js'
 
-
 // For local service
 import { StationList } from '../cmps/station-list.jsx'
 import { StationTalbe } from '../cmps/station-table.jsx'
@@ -23,11 +22,11 @@ export function StationIndex() {
     let greet
 
     if (hrs < 12) {
-      greet = "Good Morning"
+      greet = 'Good Morning'
     } else if (hrs >= 12 && hrs <= 17) {
-      greet = "Good Afternoon"
+      greet = 'Good Afternoon'
     } else if (hrs >= 17 && hrs <= 24) {
-      greet = "Good Evening"
+      greet = 'Good Evening'
     }
     return greet
   }

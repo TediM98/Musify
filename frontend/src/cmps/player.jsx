@@ -76,8 +76,8 @@ export function StationPlayer() {
             </button>
             <button className="playBtn" onClick={handlePlay}>
               {isPlaying
-                ? svgService.playerPlayTrackIcon
-                : svgService.playerPauseTrackIcon}
+                ? svgService.playerPauseTrackIcon
+                : svgService.playerPlayTrackIcon}
             </button>
             <button className="fwdBtn" onClick={handleForward}>
               {svgService.playerFwdTrackIcon}

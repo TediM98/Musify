@@ -10,6 +10,7 @@ import { svgService } from '../services/svg.service'
 import { StationPlayer } from '../cmps/player'
 import YouTube from 'react-youtube'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions'
+import { removeStation } from '../store/station.actions'
 
 export function StationDetails() {
   const [station, setStation] = useState(null)
@@ -18,6 +19,9 @@ export function StationDetails() {
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
+  const songPlaying = useSelector(
+    (storeState) => storeState.playerModule.songPlaying
+  )
   const player = useSelector((storeState) => storeState.playerModule.player)
 
   const { stationId } = useParams()
@@ -25,7 +29,15 @@ export function StationDetails() {
 
   useEffect(() => {
     if (stationId) loadStation().then(getBgc())
-  }, [stationId, player])
+  }, [stationId])
+
+  useEffect(() => {
+    if (songPlaying.length < 1) {
+      console.log('station.songs[0].id', station.songs[0].id)
+      setSongPlaying(station.songs[0].id)
+    }
+    console.log('songPlaying', songPlaying)
+  }, [])
 
   function toggleModal(buttonName) {
     setOpen(buttonName === open ? null : buttonName)
@@ -53,6 +65,7 @@ export function StationDetails() {
 
   function onChangePlayerStatus() {
     // handlePlay()
+
     if (player) {
       if (!isPlaying) {
         player.playVideo()
@@ -61,12 +74,20 @@ export function StationDetails() {
       }
       setIsPlaying(!isPlaying)
     }
-    console.log('Playing from details')
   }
 
   function onChangeSongPlaying(songId) {
     setSongPlaying(songId)
     onChangePlayerStatus()
+  }
+
+  async function onRemoveStation(stationId) {
+    try {
+      await removeStation(stationId)
+      navigate('/')
+    } catch (err) {
+      console.error('Could not remove station')
+    }
   }
 
   if (!station) return <div>Loading...</div>
@@ -137,11 +158,15 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${open === stationId ? 'active' : 'inactive'
-                    }`}
+                  className={`dropdown-menu ${
+                    open === stationId ? 'active' : 'inactive'
+                  }`}
                 >
                   <ul className=" clean-list">
-                    <DropDownItem />
+                    <DropDownItem
+                      onRemoveStation={onRemoveStation}
+                      stationId={stationId}
+                    />
                   </ul>
                 </div>
               </div>
@@ -203,8 +228,9 @@ export function StationDetails() {
                         </button>
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${open === song.id ? 'active' : 'inactive'
-                              }`}
+                            className={`dropdown-menu ${
+                              open === song.id ? 'active' : 'inactive'
+                            }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem />
