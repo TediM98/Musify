@@ -5,7 +5,6 @@ import logo from '../assets/img/musify-logo.jpg'
 import play from '../assets/img/play-station.svg'
 import { bgcService } from '../services/bgc.service'
 import { useSelector } from 'react-redux'
-import { StationPlayer } from '../cmps/player'
 import { DropDownItem } from '../cmps/dropdown-item'
 import { svgService } from '../services/svg.service'
 
@@ -24,8 +23,6 @@ export function StationDetails() {
   }, [stationId])
 
   function toggleModal(buttonName) {
-    console.log('station.id', station.id)
-    console.log('open', open)
     setOpen(buttonName === open ? null : buttonName)
   }
 
@@ -44,11 +41,11 @@ export function StationDetails() {
       setStation(station)
       return station
     } catch (err) {
-      console.log('Had issues in station details', err)
-      console.log('Cannot load station')
+      console.log('Cannot load station', err)
       navigate('/')
     }
   }
+
   function onChangePlayerStatus() {
     // handlePlay()
     console.log('Playing from details')
@@ -115,7 +112,7 @@ export function StationDetails() {
             </button>
             <div className="options-container">
               <button
-                onClick={() => toggleModal(stationId)} // Pass the button name as an argument
+                onClick={() => toggleModal(stationId)}
                 className="btn-options-close"
               >
                 {svgService.optionsIcon}
@@ -144,13 +141,13 @@ export function StationDetails() {
             <small>{svgService.durationIcon}</small>
           </div>
           <ul className="clean-list">
-            {station.songs.map((track) => {
+            {station.songs.map((track, idx) => {
               return (
                 <div className="track-list-container">
                   <li className="track-wrapper">
                     <span></span>
                     <div className="track-idx">
-                      <span>{station.songs.indexOf(track) + 1}</span>
+                      <span>{idx + 1}</span>
                     </div>
                     <div className="track-img-container">
                       <img
@@ -170,18 +167,8 @@ export function StationDetails() {
                         {svgService.heartIcon}
                       </button>
                       <div className="list-options-container">
-                        {/* <button
-                          onClick={() => {
-                            setOpen(!open)
-                          }}
-                          className={`btn-list-options ${
-                            open ? 'active' : 'inactive'
-                          }`}
-                        >
-                          {svgService.optionsIcon}
-                        </button> */}
                         <button
-                          onClick={() => toggleModal(track.id)} // Pass the button name as an argument
+                          onClick={() => toggleModal(track.id)}
                           className="btn-list-options"
                         >
                           {svgService.optionsIcon}

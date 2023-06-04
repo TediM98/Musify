@@ -22,11 +22,6 @@ const routes = [
         component: <StationDetails />,
         label: 'Station'
     },
-    // { SAME AS STATION DETAILS
-    //     path: 'genre',
-    //     component: <StationGenre />,
-    //     label: 'Genre'
-    // },
     // {
     //     path: 'login',
     //     component: <Login />,
@@ -43,10 +38,7 @@ const routes = [
     //     label: 'Chat'
     // },
     // {
-    //     path: '/',
-    //     component: <HomePage />,
-    //     label: 'Home 🏠',
-    // },
+
 ]
 
 export default routes

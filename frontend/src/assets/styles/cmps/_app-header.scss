@@ -7,21 +7,24 @@
   margin-top: 2px;
   align-items: center;
   padding: 0;
-  background-color: transparent;
+  background-color: $bgclr2;
   transition: 1s ease;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+
   &.app-header > div {
     justify-content: space-between;
     align-items: center;
     padding: 1.5em;
     width: calc(100vw - 325px);
   }
+
   & nav {
     gap: 6px;
     align-items: center;
     justify-content: space-between;
   }
+
   & .btn-go-back,
   .btn-go-next {
     background-color: #000000b3;

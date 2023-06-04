@@ -1,8 +1,5 @@
 
-// import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
-import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
 
 
 const STORAGE_KEY = 'station'
@@ -13,38 +10,55 @@ export const stationService = {
     save,
     remove,
     getEmptyStation,
-    addStationMsg
 }
 window.cs = stationService // FOR DEBUGGING ONLY
 
 
 async function query(filterBy = { txt: '', }) {
-    return httpService.get(STORAGE_KEY, filterBy)
+    try {
+        return await httpService.get(STORAGE_KEY, filterBy)
+    }
+    catch (err) {
+        console.log('Could not filter')
+        throw err
+    }
 }
 
-function getById(stationId) {
-    return httpService.get(`station/${stationId}`)
+async function getById(stationId) {
+    try {
+        return httpService.get(`station/${stationId}`)
+    }
+    catch (err) {
+        console.log('Could not get station')
+        throw err
+    }
 }
 
 async function remove(stationId) {
-    return httpService.delete(`station/${stationId}`)
+    try {
+        return httpService.delete(`station/${stationId}`)
+    }
+    catch (err) {
+        console.log('Could not remove station')
+        throw err
+    }
 }
+
 async function save(station) {
     var savedStation
-    if (station._id) {
-        savedStation = await httpService.put(`station/${station._id}`, station)
-
-    } else {
-        savedStation = await httpService.post('station', station)
+    try {
+        if (station._id) {
+            savedStation = await httpService.put(`station/${station._id}`, station)
+        } else {
+            savedStation = await httpService.post('station', station)
+        }
+        return savedStation
     }
-    return savedStation
+    catch (err) {
+        console.log('Could not save station')
+        throw err
+    }
 }
-
-async function addStationMsg(stationId, txt) {
-    const savedMsg = await httpService.post(`station/${stationId}/msg`, { txt })
-    return savedMsg
-}
-
 
 function getEmptyStation() {
     return {

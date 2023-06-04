@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import YouTube from 'react-youtube'
 
 import { trackService } from '../services/track.service'
-import { playerService } from '../services/player.service'
 import { setIsPlaying } from '../store/player.actions'
 import { useSelector } from 'react-redux'
-import { SET_IS_PLAYING } from '../store/player.reducer'
-import { store } from '../store/store'
+import { svgService } from '../services/svg.service'
 //GET https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=The%20office&key=[YOUR_API_KEY] HTTP/1.1
 
 // console.log(trackService.getVideos('joy division')) //----------------DO NOT ERASE, COMMENTED TO PREVENT YT API BLOCK
@@ -14,21 +12,9 @@ import { store } from '../store/store'
 export function StationPlayer() {
   const [searchTerm, setSearchTerm] = useState(null)
   const [player, setPlayer] = useState(null)
-  // const [isPlaying, setIsPlaying] = useState(false)
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
-
-  // useEffect(() => {
-  //   playerService.getTop5Vids(searchTerm).then((res) => console.log('res', res))
-  // }, [searchTerm])
-
-  // useEffect(() => {
-  //   handlePlay()
-  // }, [isPlaying])
-
-  const urlTop5res =
-    'https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=AIzaSyCnIU7BggBEDwYjvfLXe8uRRHSIVbyXZg8&q={value}'
 
   let gTop5Vids = []
 
@@ -36,14 +22,10 @@ export function StationPlayer() {
     if (player) {
       if (!isPlaying) {
         player.playVideo()
-        // setIsPlaying(true)
       } else {
         player.pauseVideo()
-        // setIsPlaying(false)
       }
       setIsPlaying(!isPlaying)
-
-      // store.dispatch({ type: SET_IS_PLAYING, isPlaying: !isPlaying })
     }
   }
 
@@ -51,7 +33,6 @@ export function StationPlayer() {
     if (player) {
       player.stopVideo()
       setIsPlaying(false)
-      // store.dispatch({ type: SET_IS_PLAYING, isPlaying: false })
     }
   }
 
@@ -82,33 +63,44 @@ export function StationPlayer() {
   }
 
   return (
-    <div className='main-player-section full'>
-    <div className='player-container flex'>
-      <YouTube videoId="3tD2HJ-TQaM" opts={opts} onReady={handlePlayerReady} />
-      <div className='left-controls'>
-          left elements
-        </div>
-        <div className='center-controls'>
+    <div className="main-player-section full">
+      <div className="player-container flex">
+        <YouTube
+          videoId="3tD2HJ-TQaM"
+          opts={opts}
+          onReady={handlePlayerReady}
+        />
+        <div className="left-controls">left elements</div>
+        <div className="center-controls">
+          <div className="top-center-controls">
+            <button className="backBtn" onClick={handleBackward}>
+              {svgService.goBackIcon}
+            </button>
+            <button className="playBtn" onClick={handlePlay}>
+              {isPlaying
+                ? svgService.playerPlayTrackIcon
+                : svgService.playerPauseTrackIcon}
+            </button>
+            <button className="fwdBtn" onClick={handleForward}>
+              {svgService.playerFwdTrackIcon}
+            </button>
+          </div>
 
-          <div className='top-center-controls'>
-        <button className='backBtn' onClick={handleBackward}><svg xmlns="http://www.w3.org/2000/svg" role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" className="Svg-sc-ytk21e-0 ldgdZj"><path d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z" fill="#b3b3b3" /></svg></button>
-        <button className='playBtn' onClick={handlePlay}>{isPlaying ? <svg xmlns="http://www.w3.org/2000/svg" role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" className="Svg-sc-ytk21e-0 ldgdZj"><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" className="Svg-sc-ytk21e-0 ldgdZj"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z" /></svg>}</button>
-        <button className='fwdBton' onClick={handleForward}><svg xmlns="http://www.w3.org/2000/svg" role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" className="Svg-sc-ytk21e-0 ldgdZj"><path d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z" fill="#b3b3b3" /></svg></button>
+          <div className="bottom-center-controls flex">
+            <div className="time-stamp start">00:00</div>
+            <div className="progress-bar ">
+              <input
+                className="progress-bar-element"
+                type="range"
+                min="0"
+                max="100"
+              ></input>
+            </div>
+            <div className="time-stamp end">05:00</div>
+          </div>
         </div>
-        
-        <div className='bottom-center-controls flex'>
-          <div className='time-stamp start'>00:00</div>
-        <div className='progress-bar '>
-          <input className="progress-bar-element" type='range' min='0' max='100'></input>
-        </div>
-        <div className='time-stamp end'>05:00</div>
-        </div>
-        </div>
-        <div className='right-controls'>
-          right elements
-        </div>
-      
-    </div>
+        <div className="right-controls">right elements</div>
+      </div>
     </div>
   )
 }

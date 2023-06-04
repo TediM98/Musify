@@ -42,15 +42,11 @@ export function AppHeader() {
       )} */
   // )
   return (
-    <header className='app-header content-layout '>
-      <div className='flex '>
-        <nav className='flex '>
-          <button className='btn-go-back'>
-            {svgService.btnGoBackHeader}
-          </button>
-          <button className='btn-go-next'>
-            {svgService.btnGoNextHeader}
-          </button>
+    <header className="app-header content-layout ">
+      <div className="flex ">
+        <nav className="flex ">
+          <button className="btn-go-back">{svgService.btnGoBackHeader}</button>
+          <button className="btn-go-next">{svgService.btnGoNextHeader}</button>
         </nav>
         <section>
           <button className="btn-signup">

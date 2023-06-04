@@ -7,11 +7,10 @@ import {
 } from './player.reducer.js'
 
 export function setIsPlaying(isPlaying) {
-    // store.dispatch({ type: SET_IS_PLAYING, isPlaying: isPlaying })
     store.dispatch({ type: SET_IS_PLAYING, isPlaying: isPlaying });
 }
 
-export function setSongPlaying(songPlaying){
+export function setSongPlaying(songPlaying) {
 
-    store.dispatch({type: SONG_PLAYING,songPlaying:songPlaying })
+    store.dispatch({ type: SONG_PLAYING, songPlaying: songPlaying })
 }
