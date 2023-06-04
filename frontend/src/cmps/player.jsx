@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import YouTube from 'react-youtube'
 
 import { trackService } from '../services/track.service'
-import { setIsPlaying } from '../store/player.actions'
+import { setIsPlaying, setPlayer } from '../store/player.actions'
 import { useSelector } from 'react-redux'
 import { svgService } from '../services/svg.service'
 //GET https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=The%20office&key=[YOUR_API_KEY] HTTP/1.1
@@ -11,7 +11,8 @@ import { svgService } from '../services/svg.service'
 
 export function StationPlayer() {
   const [searchTerm, setSearchTerm] = useState(null)
-  const [player, setPlayer] = useState(null)
+  // const [player, setPlayer] = useState(null)
+  const player = useSelector((storeState) => storeState.playerModule.player)
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -19,15 +20,9 @@ export function StationPlayer() {
     (storeState) => storeState.playerModule.songPlaying
   )
 
-  let gTop5Vids = []
-
   const handlePlay = () => {
     if (player) {
-      if (!isPlaying) {
-        player.playVideo()
-      } else {
-        player.pauseVideo()
-      }
+      !isPlaying ? player.playVideo() : player.pauseVideo()
       setIsPlaying(!isPlaying)
     }
   }
@@ -69,7 +64,7 @@ export function StationPlayer() {
     <div className="main-player-section full">
       <div className="player-container flex">
         <YouTube
-          videoId="3tD2HJ-TQaM"
+          videoId={songPlaying} // SONG PLAYING
           opts={opts}
           onReady={handlePlayerReady}
         />
