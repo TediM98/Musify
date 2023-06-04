@@ -20,11 +20,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover {
-      background-color: #3bef7d;
-      opacity: 1;
-      cursor: pointer;
-    }
   }
 
   & h3,
@@ -37,5 +32,12 @@
     color: $clr2;
     font-size: 13px;
     cursor: pointer;
+  }
+  &:hover {
+    & .btn-play-playlist {
+      background-color: #3bef7d;
+      opacity: 1;
+      cursor: pointer;
+    }
   }
 }

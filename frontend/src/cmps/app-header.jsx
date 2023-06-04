@@ -1,3 +1,4 @@
+import { svgService } from '../services/svg.service.js'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 
@@ -45,10 +46,10 @@ export function AppHeader() {
       <div className='flex '>
         <nav className='flex '>
           <button className='btn-go-back'>
-            <svg xmlns="http://www.w3.org/2000/svg" role="img" height="16" width="16" aria-hidden="true" className="Svg-sc-ytk21e-0 eNWijz IYDlXmBmmUKHveMzIPCF" viewBox="0 0 16 16" data-encore-id="icon"><path d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z" /></svg>
+            {svgService.btnGoBackHeader}
           </button>
           <button className='btn-go-next'>
-            <svg xmlns="http://www.w3.org/2000/svg" role="img" height="16" width="16" aria-hidden="true" className="Svg-sc-ytk21e-0 eNWijz IYDlXmBmmUKHveMzIPCF" viewBox="0 0 16 16" data-encore-id="icon"><path d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z" /></svg>
+            {svgService.btnGoNextHeader}
           </button>
         </nav>
         <section>

@@ -1,0 +1,31 @@
+.table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 400px));
+  grid-gap: 10px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.header {
+  font-weight: bold;
+}
+
+.cell {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  .table {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    grid-template-columns: 1fr;
+  }
+}
