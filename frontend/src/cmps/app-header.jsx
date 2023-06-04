@@ -1,6 +1,8 @@
 import { svgService } from '../services/svg.service.js'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
+import { trackService } from "../services/track.service.js";
+
 
 export function AppHeader() {
   // const user = useSelector((storeState) => storeState.userModule.user)
@@ -41,6 +43,10 @@ export function AppHeader() {
         </section>
       )} */
   // )
+
+
+
+
   return (
     <header className="app-header content-layout ">
       <div className="flex ">
@@ -48,6 +54,11 @@ export function AppHeader() {
           <button className="btn-go-back">{svgService.btnGoBackHeader}</button>
           <button className="btn-go-next">{svgService.btnGoNextHeader}</button>
         </nav>
+
+
+
+        
+
         <section>
           <button className="btn-signup">
             <span>Sign Up</span>

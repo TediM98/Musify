@@ -2,7 +2,8 @@ export const SET_IS_PLAYING = 'SET_IS_PLAYING'
 export const SONG_PLAYING = 'SONG_IS_PLAYING'
 const initialState = {
     isPlaying: false,
-    songPlaying: {}
+    songPlaying: {},
+    searchResults :{}
 }
 
 export function playerReducer(state = initialState, action) {
