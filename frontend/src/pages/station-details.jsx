@@ -25,7 +25,7 @@ export function StationDetails() {
 
   useEffect(() => {
     if (stationId) loadStation().then(getBgc())
-  }, [stationId])
+  }, [stationId, player])
 
   function toggleModal(buttonName) {
     setOpen(buttonName === open ? null : buttonName)
@@ -93,7 +93,7 @@ export function StationDetails() {
           </div>
           <div className="station-content flex">
             <span>Playlist</span>
-            <h1>Daily Mix 1</h1>
+            <h1>{station.name}</h1>
             <span className="station-desc">desc........</span>
             <div className="song-details-container">
               <div className="app-icon flex">
@@ -137,9 +137,8 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${
-                    open === stationId ? 'active' : 'inactive'
-                  }`}
+                  className={`dropdown-menu ${open === stationId ? 'active' : 'inactive'
+                    }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem />
@@ -167,10 +166,16 @@ export function StationDetails() {
                 <div className="song-list-container" key={song.id}>
                   <li className="song-wrapper">
                     <span></span>
-                    <div className="song-idx">
-                      <span onClick={() => onChangeSongPlaying(song.id)}>
-                        {idx + 1}
-                      </span>
+                    <div className="song-idx-container flex">
+                      <span className="song-idx">{idx + 1}</span>
+                    </div>
+                    <div
+                      className="handle-song-icon-container"
+                      onClick={() => onChangeSongPlaying(song.id)}
+                    >
+                      {isPlaying
+                        ? svgService.playerPauseTrackIcon
+                        : svgService.playerPlayTrackIcon}
                     </div>
                     <div className="song-img-container">
                       <img
@@ -198,9 +203,8 @@ export function StationDetails() {
                         </button>
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${
-                              open === song.id ? 'active' : 'inactive'
-                            }`}
+                            className={`dropdown-menu ${open === song.id ? 'active' : 'inactive'
+                              }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem />

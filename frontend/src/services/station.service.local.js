@@ -2,6 +2,8 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import emptyStationImg from '../assets/img/empty-station-img.jpg';
+
 
 const STORAGE_KEY = 'station'
 
@@ -64,8 +66,17 @@ async function addStationMsg(stationId, txt) {
 
 function getEmptyStation() {
     return {
-        name: '',
-        artist: '',
+        _id: "",
+        name: "My playlist #1 ",
+        tags: [],
+        createdBy: {
+            _id: "u555",
+            fullname: "",
+            imgUrl: emptyStationImg
+        },
+        likedByUsers: [],
+        songs: [],
+        msgs: [],
     }
 }
 

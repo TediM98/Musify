@@ -10,8 +10,14 @@ export function StationPreview({ station }) {
         </button>
         <h3>{station.name}</h3>
         <div className="content">
-          <div>{station.songs[0].title}</div>
-          <div>{station.songs[1].title.slice(0, 20)}...</div>
+          {station.songs.length > 0 ? (
+            <>
+              <div>{station.songs[0].title}</div>
+              <div>{station.songs[1].title.slice(0, 20)}...</div>
+            </>
+          ) : (
+            <div></div>
+          )}
         </div>
       </section>
     </Link>

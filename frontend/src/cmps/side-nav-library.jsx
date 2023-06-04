@@ -1,16 +1,20 @@
-import { Link } from 'react-router-dom'
-import { svgService } from '../services/svg.service'
+import { Link } from "react-router-dom"
+import { svgService } from "../services/svg.service"
 
-export function SideNavLibrary() {
+export function SideNavLibrary({ onAddStation }) {
+
   return (
     <section className="app-nav library">
-      <Link to={`/station/library`}>
-        {svgService.libraryIcon}
-        <section className="">
+      <li className="flex library-add-station-btn">
+        <Link to={`/station/library`}>
+          {svgService.libraryIcon}
           <span>Your Library</span>
-          <button className="add-station-btn">{svgService.addSationBtn}</button>
-        </section>
-      </Link>
-    </section>
+        </Link>
+        <button title="Add station" onClick={onAddStation} className="add-station-btn">
+          {svgService.addSationBtn}
+        </button>
+
+      </li>
+    </section >
   )
 }
