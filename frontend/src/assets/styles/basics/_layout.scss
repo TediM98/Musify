@@ -1,15 +1,14 @@
 .main-layout {
   display: grid;
   grid-template-columns: 8px 1fr 8px;
-
+  background-color: $bgclr2;
+  border-radius: 5px;
   > * {
     grid-column: 2;
-
     &.full {
       grid-column: 1 /-1;
     }
   }
-
   //   @include for-narrow-layout {
   //     grid-template-columns:
   //       minmax(20px, 1fr)
@@ -30,17 +29,11 @@
   //   }
 }
 
-.app-layout {
-  // height: calc(100vh - 90px);
-}
-
 .detail-layout {
   display: grid;
   grid-template-columns: 30px 1fr 30px;
-
   > * {
     grid-column: 2;
-
     &.full {
       grid-column: 1 /-1;
     }

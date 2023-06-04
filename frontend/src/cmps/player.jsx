@@ -19,9 +19,9 @@ export function StationPlayer() {
     (storeState) => storeState.playerModule.isPlaying
   )
 
-  useEffect(() => {
-    playerService.getTop5Vids(searchTerm).then((res) => console.log('res', res))
-  }, [searchTerm])
+  // useEffect(() => {
+  //   playerService.getTop5Vids(searchTerm).then((res) => console.log('res', res))
+  // }, [searchTerm])
 
   // useEffect(() => {
   //   handlePlay()

@@ -52,7 +52,9 @@ export function AppHeader() {
           </button>
         </nav>
         <section>
-          <button className="btn-signup">Sign Up</button>
+          <button className="btn-signup">
+            <span>Sign Up</span>
+          </button>
           <button className="btn-login">Log in</button>
         </section>
       </div>
