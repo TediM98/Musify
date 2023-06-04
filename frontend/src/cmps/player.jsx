@@ -60,6 +60,10 @@ export function StationPlayer() {
     },
   }
 
+
+
+
+  
   return (
     <div className="main-player-section full">
       <div className="player-container flex">
@@ -85,19 +89,22 @@ export function StationPlayer() {
           </div>
 
           <div className="bottom-center-controls flex">
+            <div className="progress-bar flex">
             <div className="time-stamp start">00:00</div>
-            <div className="progress-bar ">
               <input
                 className="progress-bar-element"
                 type="range"
                 min="0"
                 max="100"
-              ></input>
+                
+                />
+              <div className="time-stamp end">05:00</div>
             </div>
-            <div className="time-stamp end">05:00</div>
+            
           </div>
         </div>
-        <div className="right-controls">right elements</div>
+        
+            <div className="right-controls">right elements</div>
       </div>
     </div>
   )
