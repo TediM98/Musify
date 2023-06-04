@@ -60,7 +60,7 @@ export function StationDetails() {
         }}
         className={`options-close ${open ? 'active' : 'inactive'}`}
       ></div>
-      <section className="details-container detail-layout">
+      <section className="details-container details-layout">
         <div
           className="station-details-container full"
           style={{ backgroundColor: bgc }}
@@ -141,34 +141,34 @@ export function StationDetails() {
             <small>{svgService.durationIcon}</small>
           </div>
           <ul className="clean-list">
-            {station.songs.map((track, idx) => {
+            {station.songs.map((song, idx) => {
               return (
-                <div className="track-list-container">
-                  <li className="track-wrapper">
+                <div className="song-list-container">
+                  <li className="song-wrapper">
                     <span></span>
-                    <div className="track-idx">
+                    <div className="song-idx">
                       <span>{idx + 1}</span>
                     </div>
-                    <div className="track-img-container">
+                    <div className="song-img-container">
                       <img
-                        src={track.imgUrl}
-                        alt="track-img"
-                        className="track-img"
+                        src={song.imgUrl}
+                        alt="song-img"
+                        className="song-img"
                       ></img>
                     </div>
-                    <div className="track-title">
-                      <span className="track-name">{track.title}</span>
+                    <div className="song-title">
+                      <span className="song-name">{song.title}</span>
                     </div>
-                    <div className="track-created-at">
-                      {new Date(track.addedAt).toLocaleDateString()}
+                    <div className="song-created-at">
+                      {new Date(song.addedAt).toLocaleDateString()}
                     </div>
                     <div className="list-options flex">
-                      <button className="btn-like-track">
+                      <button className="btn-like-song">
                         {svgService.heartIcon}
                       </button>
                       <div className="list-options-container">
                         <button
-                          onClick={() => toggleModal(track.id)}
+                          onClick={() => toggleModal(song.id)}
                           className="btn-list-options"
                         >
                           {svgService.optionsIcon}
@@ -176,7 +176,7 @@ export function StationDetails() {
                         <div className="dropdown-container">
                           <div
                             className={`dropdown-menu ${
-                              open === track.id ? 'active' : 'inactive'
+                              open === song.id ? 'active' : 'inactive'
                             }`}
                           >
                             <ul className=" clean-list">

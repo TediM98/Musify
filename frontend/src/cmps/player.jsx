@@ -15,6 +15,9 @@ export function StationPlayer() {
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
+  const songPlaying = useSelector(
+    (storeState) => storeState.playerModule.songPlaying
+  )
 
   let gTop5Vids = []
 

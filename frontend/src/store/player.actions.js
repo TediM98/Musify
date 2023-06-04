@@ -1,5 +1,4 @@
 import { store } from './store.js'
-import { useDispatch } from 'react-redux';
 
 import {
     SET_IS_PLAYING,

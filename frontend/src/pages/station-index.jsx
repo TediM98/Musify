@@ -1,6 +1,11 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadStations, addStation, updateStation, removeStation, } from '../store/station.actions.js'
+import {
+  loadStations,
+  addStation,
+  updateStation,
+  removeStation,
+} from '../store/station.actions.js'
 
 // import { stationService } from '../services/station.service.js'
 
@@ -19,19 +24,19 @@ export function StationIndex() {
   }, [])
 
   function getGreetings() {
-    var myDate = new Date();
-    var hrs = myDate.getHours();
+    var myDate = new Date()
+    var hrs = myDate.getHours()
     console.log(hrs)
-    let greet;
+    let greet
 
     if (hrs < 12) {
-      greet = "Good Morning";
+      greet = 'Good Morning'
     } else if (hrs >= 12 && hrs <= 17) {
-      greet = "Good Afternoon";
+      greet = 'Good Afternoon'
     } else if (hrs >= 17 && hrs <= 24) {
-      greet = "Good Evening";
+      greet = 'Good Evening'
     }
-    return greet;
+    return greet
   }
 
   async function onRemoveStation(stationId) {
@@ -47,7 +52,7 @@ export function StationIndex() {
   if (!stations) return <div>Loading...</div>
   return (
     <section className="main-layout home-page">
-      <section className='station-table main-layout'>
+      <section className="station-table main-layout">
         <h3>{getGreetings()}</h3>
         <StationTalbe stations={stations} />
       </section>

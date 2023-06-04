@@ -13,6 +13,6 @@ export function playerReducer(state = initialState, action) {
         case SONG_PLAYING:
             return { ...state, songPlaying: action.songPlaying }
         default:
-            return state;
+            return state
     }
 }
