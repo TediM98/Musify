@@ -18,7 +18,6 @@ export function StationIndex() {
   function getGreetings() {
     var myDate = new Date()
     var hrs = myDate.getHours()
-    console.log(hrs)
     let greet
 
     if (hrs < 12) {

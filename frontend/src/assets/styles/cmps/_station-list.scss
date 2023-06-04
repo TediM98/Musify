@@ -1,20 +1,21 @@
 .station-list {
-  display: grid;
+  display: flex;
   gap: 18px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: 1fr;
   font-size: 1rem;
   padding: 15px;
+  .station-card {
+    flex: 0 0 auto;
+  }
 }
 @media (max-width: 768px) {
   .station-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 480px) {
   .station-list {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

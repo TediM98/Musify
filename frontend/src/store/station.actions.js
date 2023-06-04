@@ -56,7 +56,7 @@ export async function addStation(station) {
         store.dispatch(getActionAddStation(savedStation))
         return savedStation
     } catch (err) {
-        console.log('Cannot add station!!!', err)
+        console.log('Cannot add station', err)
         throw err
     }
 }
