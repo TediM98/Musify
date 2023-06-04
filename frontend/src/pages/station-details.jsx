@@ -7,6 +7,9 @@ import { bgcService } from '../services/bgc.service'
 import { useSelector } from 'react-redux'
 import { DropDownItem } from '../cmps/dropdown-item'
 import { svgService } from '../services/svg.service'
+import { StationPlayer } from '../cmps/player'
+import YouTube from 'react-youtube'
+import { setIsPlaying, setSongPlaying } from '../store/player.actions'
 
 export function StationDetails() {
   const [station, setStation] = useState(null)
@@ -15,6 +18,8 @@ export function StationDetails() {
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
+  const player = useSelector((storeState) => storeState.playerModule.player)
+
   const { stationId } = useParams()
   const navigate = useNavigate()
 
@@ -48,7 +53,20 @@ export function StationDetails() {
 
   function onChangePlayerStatus() {
     // handlePlay()
+    if (player) {
+      if (!isPlaying) {
+        player.playVideo()
+      } else {
+        player.pauseVideo()
+      }
+      setIsPlaying(!isPlaying)
+    }
     console.log('Playing from details')
+  }
+
+  function onChangeSongPlaying(songId) {
+    setSongPlaying(songId)
+    onChangePlayerStatus()
   }
 
   if (!station) return <div>Loading...</div>
@@ -142,12 +160,17 @@ export function StationDetails() {
           </div>
           <ul className="clean-list">
             {station.songs.map((song, idx) => {
+              {
+                console.log('song', song)
+              }
               return (
-                <div className="song-list-container">
+                <div className="song-list-container" key={song.id}>
                   <li className="song-wrapper">
                     <span></span>
                     <div className="song-idx">
-                      <span>{idx + 1}</span>
+                      <span onClick={() => onChangeSongPlaying(song.id)}>
+                        {idx + 1}
+                      </span>
                     </div>
                     <div className="song-img-container">
                       <img
