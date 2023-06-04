@@ -1,14 +1,3 @@
-.options-close {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-}
-
-.options-close.inactive {
-  width: 0vw;
-  height: 0vh;
-}
-
 .station-details-container {
   display: flex;
   padding: 60px 30px 24px;
@@ -80,22 +69,24 @@
 .station-actions {
   padding-block: 24px;
 
-  & .btn-more-options {
-    background: transparent;
-    border: 0;
+  & .icon-options {
+    fill: #b3b3b3;
 
-    & .icon-options {
-      fill: #b3b3b3;
-
-      &:hover {
-        fill: #ffffff;
-      }
+    &:hover {
+      fill: #ffffff;
     }
   }
 
   & .action-container {
     align-items: center;
     justify-content: start;
+
+    & .options-container {
+      & .btn-options-close {
+        border: 0;
+        background: transparent;
+      }
+    }
 
     & .like-station-icon {
       background: transparent;
@@ -158,7 +149,20 @@
 .song-list {
   margin-block-end: 40px;
 
+  & .list-options {
+    & .list-options-container {
+      position: relative;
+
+      & .btn-list-options {
+        background: transparent;
+        border: 0;
+      }
+    }
+  }
+
   & .song-list-header {
+    position: sticky;
+    top: 0;
     display: grid;
     grid-template-columns: 0 40px 40px 2fr 1.5fr 1.72fr;
     text-transform: uppercase;
@@ -200,6 +204,36 @@
     color: $clr2;
     font-family: CircularLight;
 
+    &:hover {
+      & .btn-like-track {
+        opacity: 1;
+      }
+
+      & .btn-list-options {
+        opacity: 1;
+      }
+    }
+
+    & .btn-list-options {
+      opacity: 0;
+    }
+
+    & .btn-like-track {
+      opacity: 0;
+      border: 0;
+      background: transparent;
+
+      & .heart-icon {
+        fill: $clr2;
+        height: 16px;
+        width: 16px;
+
+        &:hover {
+          fill: #fff;
+        }
+      }
+    }
+
     & .track-idx {
       justify-self: center;
       font-size: 1rem;
@@ -220,5 +254,23 @@
         object-fit: cover;
       }
     }
+  }
+}
+
+.options-close {
+  background: transparent;
+  width: 0;
+  height: 0;
+  border: 0;
+
+  &.active {
+    position: absolute;
+    width: calc(100% - 330px);
+    height: calc(100% - 100px);
+  }
+
+  &.inactive {
+    width: 0;
+    height: 0;
   }
 }

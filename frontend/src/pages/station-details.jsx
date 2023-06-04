@@ -12,7 +12,7 @@ import { svgService } from '../services/svg.service'
 export function StationDetails() {
   const [station, setStation] = useState(null)
   const [bgc, setBgc] = useState('black')
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(null)
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -22,6 +22,12 @@ export function StationDetails() {
   useEffect(() => {
     if (stationId) loadStation().then(getBgc())
   }, [stationId])
+
+  function toggleModal(buttonName) {
+    console.log('station.id', station.id)
+    console.log('open', open)
+    setOpen(buttonName === open ? null : buttonName)
+  }
 
   async function getBgc() {
     try {
@@ -109,16 +115,16 @@ export function StationDetails() {
             </button>
             <div className="options-container">
               <button
-                onClick={() => {
-                  setOpen(!open)
-                }}
-                className={`btn-more-options ${open ? 'active' : 'inactive'}`}
+                onClick={() => toggleModal(stationId)} // Pass the button name as an argument
+                className="btn-options-close"
               >
                 {svgService.optionsIcon}
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${open ? 'active' : 'inactive'}`}
+                  className={`dropdown-menu ${
+                    open === stationId ? 'active' : 'inactive'
+                  }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem />
@@ -159,20 +165,39 @@ export function StationDetails() {
                     <div className="track-created-at">
                       {new Date(track.addedAt).toLocaleDateString()}
                     </div>
-                    <div className="options">
+                    <div className="list-options flex">
                       <button className="btn-like-track">
                         {svgService.heartIcon}
                       </button>
-                      <button
-                        onClick={() => {
-                          setOpen(!open)
-                        }}
-                        className={`btn-list-options ${
-                          open ? 'active' : 'inactive'
-                        }`}
-                      >
-                        {svgService.optionsIcon}
-                      </button>
+                      <div className="list-options-container">
+                        {/* <button
+                          onClick={() => {
+                            setOpen(!open)
+                          }}
+                          className={`btn-list-options ${
+                            open ? 'active' : 'inactive'
+                          }`}
+                        >
+                          {svgService.optionsIcon}
+                        </button> */}
+                        <button
+                          onClick={() => toggleModal(track.id)} // Pass the button name as an argument
+                          className="btn-list-options"
+                        >
+                          {svgService.optionsIcon}
+                        </button>
+                        <div className="dropdown-container">
+                          <div
+                            className={`dropdown-menu ${
+                              open === track.id ? 'active' : 'inactive'
+                            }`}
+                          >
+                            <ul className=" clean-list">
+                              <DropDownItem />
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </li>
                 </div>
