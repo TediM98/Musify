@@ -197,14 +197,8 @@ export function StationDetails() {
                         </button>
                         <div className="dropdown-container">
                           <div
-<<<<<<< HEAD
-                            className={`dropdown-menu ${open === track.id ? 'active' : 'inactive'
+                            className={`dropdown-menu ${open === song.id ? 'active' : 'inactive'
                               }`}
-=======
-                            className={`dropdown-menu ${
-                              open === song.id ? 'active' : 'inactive'
-                            }`}
->>>>>>> ecac86d19a28c0f3cb7e2096fe58795d6ccbe95a
                           >
                             <ul className=" clean-list">
                               <DropDownItem />
