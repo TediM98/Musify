@@ -35,7 +35,7 @@ export function StationIndex() {
   if (!stations) return <div>Loading...</div>
   return (
     <section className="main-layout home-page">
-      <section className='station-table main-layout'>
+      <section className="station-table main-layout">
         <h3>{getGreetings()}</h3>
         <StationTalbe stations={stations} />
       </section>

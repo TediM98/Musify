@@ -1,7 +1,7 @@
-import { stationService } from "./station.service.local";
+import { stationService } from "./station.service.local"
 import { utilService } from './util.service.js'
-import { httpService } from "./http.service.js";
-import axios from "axios";
+import { httpService } from "./http.service.js"
+import axios from "axios"
 
 
 export const trackService = {
@@ -11,7 +11,7 @@ const KEY = 'videosDB'
 const apiKey = 'AIzaSyB7HGhEzWj5biXGaa4zaAeKyGvcjzoiH3g'
 
 
-const debouncedGetVideos = utilService.debounce(getVideos);
+const debouncedGetVideos = utilService.debounce(getVideos)
 // console.log(debouncedGetVideos('roxy music')) ////debounced getvideos
 console.log(getVideos('roxy music'))
 

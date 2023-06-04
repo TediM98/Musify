@@ -7,6 +7,9 @@ import { bgcService } from '../services/bgc.service'
 import { useSelector } from 'react-redux'
 import { DropDownItem } from '../cmps/dropdown-item'
 import { svgService } from '../services/svg.service'
+import { StationPlayer } from '../cmps/player'
+import YouTube from 'react-youtube'
+import { setIsPlaying, setSongPlaying } from '../store/player.actions'
 
 export function StationDetails() {
   const [station, setStation] = useState(null)
@@ -15,6 +18,8 @@ export function StationDetails() {
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
+  const player = useSelector((storeState) => storeState.playerModule.player)
+
   const { stationId } = useParams()
   const navigate = useNavigate()
 
@@ -48,7 +53,20 @@ export function StationDetails() {
 
   function onChangePlayerStatus() {
     // handlePlay()
+    if (player) {
+      if (!isPlaying) {
+        player.playVideo()
+      } else {
+        player.pauseVideo()
+      }
+      setIsPlaying(!isPlaying)
+    }
     console.log('Playing from details')
+  }
+
+  function onChangeSongPlaying(songId) {
+    setSongPlaying(songId)
+    onChangePlayerStatus()
   }
 
   if (!station) return <div>Loading...</div>
@@ -60,7 +78,7 @@ export function StationDetails() {
         }}
         className={`options-close ${open ? 'active' : 'inactive'}`}
       ></div>
-      <section className="details-container detail-layout">
+      <section className="details-container details-layout">
         <div
           className="station-details-container full"
           style={{ backgroundColor: bgc }}
@@ -140,42 +158,53 @@ export function StationDetails() {
             <small>{svgService.durationIcon}</small>
           </div>
           <ul className="clean-list">
-            {station.songs.map((track, idx) => {
+            {station.songs.map((song, idx) => {
+              {
+                console.log('song', song)
+              }
               return (
-                <div className="track-list-container">
-                  <li className="track-wrapper">
+                <div className="song-list-container" key={song.id}>
+                  <li className="song-wrapper">
                     <span></span>
-                    <div className="track-idx">
-                      <span>{idx + 1}</span>
+                    <div className="song-idx">
+                      <span onClick={() => onChangeSongPlaying(song.id)}>
+                        {idx + 1}
+                      </span>
                     </div>
-                    <div className="track-img-container">
+                    <div className="song-img-container">
                       <img
-                        src={track.imgUrl}
-                        alt="track-img"
-                        className="track-img"
+                        src={song.imgUrl}
+                        alt="song-img"
+                        className="song-img"
                       ></img>
                     </div>
-                    <div className="track-title">
-                      <span className="track-name">{track.title}</span>
+                    <div className="song-title">
+                      <span className="song-name">{song.title}</span>
                     </div>
-                    <div className="track-created-at">
-                      {new Date(track.addedAt).toLocaleDateString()}
+                    <div className="song-created-at">
+                      {new Date(song.addedAt).toLocaleDateString()}
                     </div>
                     <div className="list-options flex">
-                      <button className="btn-like-track">
+                      <button className="btn-like-song">
                         {svgService.heartIcon}
                       </button>
                       <div className="list-options-container">
                         <button
-                          onClick={() => toggleModal(track.id)}
+                          onClick={() => toggleModal(song.id)}
                           className="btn-list-options"
                         >
                           {svgService.optionsIcon}
                         </button>
                         <div className="dropdown-container">
                           <div
+<<<<<<< HEAD
                             className={`dropdown-menu ${open === track.id ? 'active' : 'inactive'
                               }`}
+=======
+                            className={`dropdown-menu ${
+                              open === song.id ? 'active' : 'inactive'
+                            }`}
+>>>>>>> ecac86d19a28c0f3cb7e2096fe58795d6ccbe95a
                           >
                             <ul className=" clean-list">
                               <DropDownItem />

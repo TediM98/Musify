@@ -194,7 +194,7 @@
     fill: currentColor;
   }
 
-  & .track-wrapper {
+  & .song-wrapper {
     display: grid;
     grid-template-columns: 0 40px 40px 2fr 1.5fr 1.72fr;
     font-size: 0.875rem;
@@ -205,7 +205,7 @@
     font-family: CircularLight;
 
     &:hover {
-      & .btn-like-track {
+      & .btn-like-song {
         opacity: 1;
       }
 
@@ -218,7 +218,7 @@
       opacity: 0;
     }
 
-    & .btn-like-track {
+    & .btn-like-song {
       opacity: 0;
       border: 0;
       background: transparent;
@@ -234,21 +234,21 @@
       }
     }
 
-    & .track-idx {
+    & .song-idx {
       justify-self: center;
       font-size: 1rem;
       padding-right: 4px;
     }
 
-    * .track-name {
+    * .song-name {
       grid-column: -5;
     }
 
-    & .track-img-container {
+    & .song-img-container {
       width: 40px;
       height: 40px;
 
-      & .track-img {
+      & .song-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
