@@ -27,24 +27,24 @@
 
   & .btn-go-back,
   .btn-go-next {
-    background-color: #000000b3;
+    background-color: $bgclr1;
     border-radius: 50%;
     height: 32px;
     width: 32px;
     cursor: pointer;
     & svg {
-      fill: #fff;
+      fill: $clr1;
     }
   }
 
   & button {
-    background-color: #ffffff;
-    color: #000000;
+    font-family: CircularBlack;
+    background-color: $clr1;
+    color: $bgclr1;
     font-weight: 400;
     height: 39px;
     width: 86px;
     margin: 0.11em;
     border-radius: 500px;
-    font-family: CircularBlack;
   }
 }

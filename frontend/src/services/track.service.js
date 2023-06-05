@@ -43,3 +43,5 @@ function getVideos(term) {
 // AIzaSyB7HGhEzWj5biXGaa4zaAeKyGvcjzoiH3g
 
 // OG STRING GET:   https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&maxResults=1&key=AIzaSyCp8KMTEjR9frWUGpSnc8Cw5cLVe7wRRDM&q=${term}
+
+// `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=YOUR_API_KEY` INDIVIDUAL SONG REQUEST

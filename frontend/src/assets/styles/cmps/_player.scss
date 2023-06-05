@@ -25,12 +25,15 @@
   align-content: center;
   align-items: baseline;
   justify-content: center;
+
   .backBtn,
-  .fwdBtn {
+  .fwdBtn,
+  .muteBtn{
     background: none;
     border: none;
     margin: 16px;
     transition: color 0.3s;
+
     &:hover {
       color: white;
     }
@@ -40,9 +43,11 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
     &:hover {
       transform: scale(1.15);
     }
+
     height: 32px;
     width: 32px;
     border: 1px solid white;
@@ -50,58 +55,68 @@
     background-color: white;
   }
 }
+
 .center-controls {
   display: flex;
-  width: 36vw;
+  width: 40vw;
   flex-direction: column;
   align-items: center;
 
   .progress-bar {
-    
+
     width: 100%;
     height: 100%;
-gap: 0.35rem;
-    border-radius: 2px;
+    gap: 0.35rem;
+
   }
 
-  
-  .time-stamp{
-    font-size: 0.6rem;
+
+  .time-stamp {
+    font-size: 0.6875rem;
     font-family: CircularLight;
-    color:#a7a7a7;
+    color: #a7a7a7;
   }
-  
-}
-
-.progress-bar-element {
-  display: flex;
-  -webkit-appearance: none;
-  border-radius: 2px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  transition: width 0.3s ease;
-  width: 33vw;
-  height: 4px;
-  align-content: center;
-  justify-content: center;
-}
-
-.progress-bar-element::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 5px;
-  height: 5px;
-  background-color: transparent;
-}
-
-.progress-bar-element:hover::-webkit-slider-thumb{
-  border-radius: 50%;
-  transform: scale(3);
-  background-color: #ffffff;
-}
-  
-.progress-bar-element::-webkit-slider-runnable-track {
-  background:  #1db954 ;
-  
-  height: 2px;
 
 }
-  
+.muteBtn{
+  background: none;
+  // border: 2px solid white;
+  border: none;
+  margin: 16px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: white;
+  }
+}
+// .progress-bar-element {
+//   display: flex;
+//   -webkit-appearance: none;
+//   border-radius: 2px;
+//   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+//   transition: width 0.3s ease;
+//   width: 33vw;
+//   height: 4px;
+//   align-content: center;
+//   justify-content: center;
+// }
+
+// .progress-bar-element::-webkit-slider-thumb {
+//   -webkit-appearance: none;
+//   width: 5px;
+//   height: 5px;
+//   background-color: transparent;
+// }
+
+// .progress-bar-element:hover::-webkit-slider-thumb{
+//   border-radius: 50%;
+//   transform: scale(3);
+//   background-color: #ffffff;
+// }
+
+// .progress-bar-element::-webkit-slider-runnable-track {
+//   background:  #1db954 ;
+
+//   height: 2px;
+
+// }

@@ -3,30 +3,13 @@
   grid-template-columns: 8px 1fr 8px;
   background-color: $bgclr2;
   border-radius: 5px;
+  padding-top: 0.1em;
   > * {
     grid-column: 2;
     &.full {
       grid-column: 1 /-1;
     }
   }
-  //   @include for-narrow-layout {
-  //     grid-template-columns:
-  //       minmax(20px, 1fr)
-  //       minmax(auto, $mobile-breakpoint)
-  //       minmax(20px, 1fr);
-  //   }
-  //   @include for-normal-layout {
-  //     grid-template-columns:
-  //       minmax(20px, 1fr)
-  //       minmax(auto, $narrow-breakpoint)
-  //       minmax(20px, 1fr);
-  //   }
-  //   @include for-wide-layout {
-  //     grid-template-columns:
-  //       minmax(20px, 1fr)
-  //       minmax(auto, $normal-breakpoint)
-  //       minmax(20px, 1fr);
-  //   }
 }
 
 .details-layout {

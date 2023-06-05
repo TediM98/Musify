@@ -1,13 +1,5 @@
-:root {
-  --min-column-width: 270px;
-  --item-height: 80px;
-  --column-gap: 24px;
-  --row-gap: 16px;
-  --column-width: 204px;
-  --column-count: 4;
-  --grid-gap: 24px;
-  --min-container-width: 432px;
-}
+@import '../setup/variables';
+
 .section-highlights {
   grid-gap: var(--row-gap) var(--column-gap);
   display: grid;
@@ -42,7 +34,7 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   align-items: center;
-  color: #fff;
+  color: $clr1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,7 +56,7 @@ h4 {
 }
 .table-data {
   cursor: pointer;
-  background-color: hsla(0, 0%, 100%, 0.1);
+  background-color: $clr3-dark;
   border-radius: 4px;
   height: var(--item-height);
   overflow: hidden;
