@@ -2,11 +2,10 @@ import React from 'react'
 import { Routes, Route } from 'react-router'
 
 import { StationPlayer } from './cmps/player.jsx'
-import routes from './routes'
-import { SideNav } from './cmps/side-nav'
+import routes from './routes.js'
+import { SideNav } from './cmps/side-nav.jsx'
 import { AppHeader } from './cmps/app-header.jsx'
-import { AppFooter } from './cmps/app-footer'
-import { UserDetails } from './pages/user-details'
+import { UserDetails } from './pages/user-details.jsx'
 
 export function RootCmp() {
   return (

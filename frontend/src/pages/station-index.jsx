@@ -5,6 +5,7 @@ import { loadStations } from '../store/station.actions.js'
 // For local service
 import { StationList } from '../cmps/station-list.jsx'
 import { StationTalbe } from '../cmps/station-table.jsx'
+import { utilService } from '../services/util.service.js'
 
 export function StationIndex() {
   const stations = useSelector(
@@ -15,34 +16,20 @@ export function StationIndex() {
     loadStations()
   }, [])
 
-  function getGreetings() {
-    var myDate = new Date()
-    var hrs = myDate.getHours()
-    let greet
-
-    if (hrs < 12) {
-      greet = 'Good Morning'
-    } else if (hrs >= 12 && hrs <= 17) {
-      greet = 'Good Afternoon'
-    } else if (hrs >= 17 && hrs <= 24) {
-      greet = 'Good Evening'
-    }
-    return greet
-  }
 
   if (!stations) return <div>Loading...</div>
   return (
     <section className="main-layout home-page">
       <section className="station-table main-layout">
-        <h3>{getGreetings()}</h3>
+        <h3>{utilService.getGreetings()}</h3>
         <StationTalbe stations={stations} />
       </section>
 
-      <h3>Your top mixes</h3>
+      <span>Your top mixes</span>
       <StationList stations={stations} />
-      <h3>More like Mac miller</h3>
+      <span>More like Mac miller</span>
       <StationList stations={stations} />
-      <h3>Recently played</h3>
+      <span>Recently played</span>
       <StationList stations={stations} />
     </section>
   )

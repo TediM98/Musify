@@ -6,6 +6,7 @@ export const utilService = {
     randomPastTime,
     saveToStorage,
     loadFromStorage,
+    getGreetings,
 }
 
 function makeId(length = 6) {
@@ -60,4 +61,19 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
+}
+
+function getGreetings() {
+    var myDate = new Date()
+    var hrs = myDate.getHours()
+    let greet
+
+    if (hrs < 12) {
+        greet = 'Good Morning'
+    } else if (hrs >= 12 && hrs <= 17) {
+        greet = 'Good Afternoon'
+    } else if (hrs >= 17 && hrs <= 24) {
+        greet = 'Good Evening'
+    }
+    return greet
 }

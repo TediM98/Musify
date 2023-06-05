@@ -1,3 +1,15 @@
+:root {
+  --min-column-width: 270px;
+  --item-height: 80px;
+  --column-gap: 24px;
+  --row-gap: 16px;
+  --column-width: 204px;
+  --column-count: 4;
+  --grid-gap: 24px;
+  --min-container-width: 432px;
+  --content-spacing: 24px;
+}
+
 // Colors
 $bgclr1: #000000;
 $bgclr2: #121212;
@@ -14,6 +26,7 @@ $clr3-light: hsla(0, 0%, 100%, 0.7);
 $clr3-dark: hsla(0, 0%, 100%, 0.1); //Detail line:hover
 $clr4: #1ed760; // Play button
 $clr4-light: #1fdf64; //Play button hover
+$box-shadow: 0 1px 5px #000;
 
 // Breakpoints
 $mobile-breakpoint: 460px;
