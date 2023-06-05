@@ -1,5 +1,6 @@
 export const utilService = {
     makeId,
+    convertTime,
     makeLorem,
     getRandomIntInclusive,
     debounce,
@@ -7,6 +8,7 @@ export const utilService = {
     saveToStorage,
     loadFromStorage,
     getGreetings,
+    
 }
 
 function makeId(length = 6) {
@@ -19,6 +21,18 @@ function makeId(length = 6) {
 
     return txt
 }
+
+function convertTime(time){
+    // console.log('TIMEEE', time)
+    // console.log(typeof time)
+    if(typeof time !== 'number'){
+      return null
+    }
+    const minutes = Math.floor(time / 60)
+    const seconds = Math.floor(time % 60)
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+  }
+
 
 function makeLorem(size = 100) {
     var words = ['The sky', 'above', 'the port', 'was', 'the color of television', 'tuned', 'to', 'a dead channel', '.', 'All', 'this happened', 'more or less', '.', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', '.', 'It', 'was', 'a pleasure', 'to', 'burn']
