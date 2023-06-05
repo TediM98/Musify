@@ -9,19 +9,21 @@ export function StationTalbe() {
 
   async function getStation(stationId) {
     try {
-      console.log(stationId)
       navigate(`/station/${stationId}`)
     } catch (error) {
-      console.error("Error navigating to station:", error)
+      console.error('Error navigating to station:', error)
     }
   }
 
   return (
-    <section className='section-highlights'>
-      {stations.map(station => (
-        <div className='table-data flex' key={station._id}>
+    <section className="section-highlights">
+      {stations.map((station) => (
+        <div className="table-data flex" key={station._id}>
           <img src={station.createdBy.imgUrl} alt="" />
-          <div className='station-name-table' onClick={() => getStation(station._id)}>
+          <div
+            className="station-name-table"
+            onClick={() => getStation(station._id)}
+          >
             <h4>{station.name}</h4>
           </div>
         </div>

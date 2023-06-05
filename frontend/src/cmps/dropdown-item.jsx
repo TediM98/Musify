@@ -1,14 +1,24 @@
 import React from 'react'
 
-export function DropDownItem({ onRemoveStation, stationId }) {
-  console.log('onRemoveStation', onRemoveStation)
+export function DropDownItem({
+  onRemoveStation,
+  stationId,
+  onRemoveSong,
+  songId,
+}) {
   return (
     <React.Fragment>
       <li className="dropdown-item clean-list">
         <article>Add to queue</article>
       </li>
       <li className="dropdown-item clean-list">
-        <article onClick={() => onRemoveStation(stationId)}>Delete</article>
+        {stationId ? (
+          <article onClick={() => onRemoveStation(stationId)}>
+            Delete playlist
+          </article>
+        ) : (
+          <article onClick={() => onRemoveSong(songId)}>Delete song</article>
+        )}
       </li>
       <li className="dropdown-item clean-list">
         <article>Add to playlist</article>

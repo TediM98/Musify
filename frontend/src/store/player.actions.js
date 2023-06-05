@@ -15,4 +15,5 @@ export function setIsPlaying(isPlaying) {
 
 export function setSongPlaying(songPlaying) {
     store.dispatch({ type: SONG_PLAYING, songPlaying: songPlaying })
+
 }
