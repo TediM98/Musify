@@ -5,9 +5,9 @@ export function StationPreview({ station }) {
   return (
     <Link to={`/station/${station._id}`}>
       <section className="station-card">
-        <div className='img-conatiner'>
+        <div className="img-conatiner">
           <img src={station.createdBy.imgUrl} alt="" />
-          <button className='btn-play-playlist'>
+          <button className="btn-play-playlist">
             {svgService.palyerBtnPreview}
           </button>
         </div>

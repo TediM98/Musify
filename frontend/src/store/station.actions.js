@@ -1,6 +1,8 @@
 import { stationService } from "../services/station.service.local.js"
 import { store } from './store.js'
-import { ADD_STATION, REMOVE_STATION, SET_STATIONS, UPDATE_STATION } from "./station.reducer.js"
+import { ADD_STATION, REMOVE_SONG, REMOVE_STATION, SET_CURRENT_STATION, SET_STATIONS, UPDATE_STATION } from "./station.reducer.js"
+
+
 
 // Action Creators:
 export function getActionRemoveStation(stationId) {
@@ -22,6 +24,20 @@ export function getActionUpdateStation(station) {
     }
 }
 
+export function setCurrStation(currStation) {
+    store.dispatch({ type: SET_CURRENT_STATION, currStation });
+}
+
+export async function removeSong(songId, currStation) {
+    try {
+        stationService.removeSong(songId, currStation)
+        await store.dispatch({ type: REMOVE_SONG, currStation })
+    }
+    catch (err) {
+        console.log('Could not remove song')
+    }
+}
+
 export async function loadStations() {
     try {
         const stations = await stationService.query()
@@ -39,7 +55,6 @@ export async function loadStations() {
 }
 
 export async function removeStation(stationId) {
-    console.log('stationId', stationId)
     try {
         await stationService.remove(stationId)
         store.dispatch(getActionRemoveStation(stationId))
@@ -60,6 +75,7 @@ export async function addStation(station) {
         throw err
     }
 }
+
 
 // export function updateStation(station) {
 //     return stationService.save(station)

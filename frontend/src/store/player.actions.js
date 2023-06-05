@@ -19,10 +19,10 @@ export function setSongPlaying(songPlaying) {
     store.dispatch({ type: SONG_PLAYING, songPlaying: songPlaying })
 }
 
-export function setCurrentTime(currentTime){
+export function setCurrentTime(currentTime) {
     store.dispatch({ type: CURRENT_TIME, currentTime: currentTime })
 }
 
-export function setSongDuration(songDuration){
+export function setSongDuration(songDuration) {
     store.dispatch({ type: SONG_DURATION, songDuration: songDuration })
 }

@@ -23,7 +23,7 @@ function getVideos(term) {
     return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${term}&key=${apiKey}`)
         .then(res => res.data.items)
         .then(ytVideos => ytVideos.map(ytVideo => ({
-            id: ytVideo.id.videoId,
+            _id: ytVideo.id.videoId,
             title: ytVideo.snippet.title,
             img: {
                 url: ytVideo.snippet.thumbnails.default.url,

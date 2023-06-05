@@ -13,6 +13,7 @@ export const stationService = {
     save,
     remove,
     getEmptyStation,
+    removeSong
     // addStationMsg
 }
 window.cs = stationService
@@ -36,6 +37,16 @@ async function remove(stationId) {
     await storageService.remove(STORAGE_KEY, stationId)
 }
 
+async function removeSong(songId, currStation) {
+    try {
+        currStation.songs = currStation.songs.filter(song => song._id !== songId)
+        await storageService.put(STORAGE_KEY, currStation)
+    }
+    catch (err) {
+        console.log('Could not remove song', err)
+    }
+}
+
 async function save(station) {
     var savedStation
     if (station._id) {
@@ -54,7 +65,7 @@ async function addStationMsg(stationId, txt) {
     if (!station.msgs) station.msgs = []
 
     const msg = {
-        id: utilService.makeId(),
+        _id: utilService.makeId(),
         by: userService.getLoggedinUser(),
         txt
     }
@@ -96,7 +107,7 @@ const demoStation = [
         "likedByUsers": ['{minimal-user}', '{minimal-user}'],
         "songs": [
             {
-                "id": "mUkfiLjooxs",
+                "_id": "mUkfiLjooxs",
                 "title": "Cissy Strut - The Meters",
                 "url": "https://www.youtube.com/watch?v=mUkfiLjooxs",
                 "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
@@ -104,7 +115,7 @@ const demoStation = [
                 "addedAt": 162521765262,
             },
             {
-                "id": "mUkfiLjooxs",
+                "_id": "mUkfiLjooxs",
                 "title": "The JB's - Pass The Peas",
                 "url": "https://www.youtube.com/watch?v=mUkfiLjooxs",
                 "imgUrl": "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
@@ -113,7 +124,7 @@ const demoStation = [
         ],
         "msgs": [
             {
-                id: 'm101',
+                _id: 'm101',
                 from: '{mini-user}',
                 txt: 'Manish?'
             }
@@ -134,7 +145,7 @@ const demoStation = [
         "likedByUsers": ['{minimal-user}', '{minimal-user}', '{minimal-user}'],
         "songs": [
             {
-                "id": "l482T0yNkeo",
+                "_id": "l482T0yNkeo",
                 "title": "AC/DC - Highway to Hell",
                 "url": "https://www.youtube.com/watch?v=l482T0yNkeo",
                 "imgUrl": "https://i.ytimg.com/vi/l482T0yNkeo/mqdefault.jpg",
@@ -142,7 +153,7 @@ const demoStation = [
                 "addedAt": 162521765263
             },
             {
-                "id": "1w7OgIMMRc4",
+                "_id": "1w7OgIMMRc4",
                 "title": "Guns N' Roses - Sweet Child O' Mine",
                 "url": "https://www.youtube.com/watch?v=1w7OgIMMRc4",
                 "imgUrl": "https://i.ytimg.com/vi/1w7OgIMMRc4/mqdefault.jpg",
@@ -166,7 +177,7 @@ const demoStation = [
         "likedByUsers": [],
         "songs": [
             {
-                "id": "tO4dxvguQDk",
+                "_id": "tO4dxvguQDk",
                 "title": "Norah Jones - Don't Know Why",
                 "url": "https://www.youtube.com/watch?v=tO4dxvguQDk",
                 "imgUrl": "https://i.ytimg.com/vi/tO4dxvguQDk/mqdefault.jpg",
@@ -174,7 +185,7 @@ const demoStation = [
                 "addedAt": 162521765265
             },
             {
-                "id": "jfKfPfyJRdk",
+                "_id": "jfKfPfyJRdk",
                 "title": "Lofi girl",
                 "url": "https://www.youtube.com/watch?v=jfKfPfyJRdk",
                 "imgUrl": "https://i.ytimg.com/vi/5qap5aO4i9A/mqdefault.jpg",
