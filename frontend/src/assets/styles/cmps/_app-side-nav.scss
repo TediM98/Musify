@@ -19,27 +19,40 @@
     color: $clr2;
     text-decoration: none;
     fill: $clr1;
-    &:h {
-      color: $clr1;
-    }
   }
-  & .add-station-btn {
+  .add-station-btn {
     background-color: transparent;
     cursor: pointer;
     fill: $clr2;
     border: none;
-    margin-left: 3em;
+    margin-left: 2.5em;
+    margin-top: 0.7em;
+    border-radius: 50%;
+    height: 31px;
+    width: 31px;
+    transition: fill 0.3s, background-color 0.3s;
+    &:hover {
+      fill: $clr1;
+      background-color: #b3b3b31c;
+    }
   }
+
   &.library {
     margin-top: 0.6em;
     padding: 0.43em 0em 0 1.7em;
-    height: 78vh;
+    height: 76vh;
   }
 }
 
 .parmanent-nav {
   position: sticky;
   top: 8px;
+  li:hover {
+    svg,
+    span {
+      color: $clr1;
+    }
+  }
 }
 .main-nav {
   padding: 8px;

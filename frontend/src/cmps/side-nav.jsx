@@ -22,16 +22,16 @@ export function SideNav() {
       <nav className="parmanent-nav">
         <ul className='app-nav clean-list'>
           <li>
-            <a href="/" className='router-link-active 
-            router-link-exact-active'
+            <a href="/" className='router-link 
+            router-link-exact'
               aria-current="page">
               {svgService.homeIcon}
               <span>Home</span>
             </a>
           </li>
           <li>
-            <a href="/search" className='router-link-active
-             router-link-exact-active' aria-current="page">
+            <a href="/search" className='router-link
+             router-link-exact' aria-current="page">
               {svgService.searchHomePageIcon}
               <span>Search</span>
             </a>

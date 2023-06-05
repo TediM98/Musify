@@ -2,11 +2,12 @@
   z-index: 10;
   position: absolute;
   border-radius: 5px;
+  font-weight: 600;
   padding: 4px;
   left: 5px;
   top: 40px;
   width: 150px;
-  box-shadow: 0 16px 24px #0000004d, 0 6px 8px #0003;
+  // box-shadow: 0 16px 24px #0000004d, 0 6px 8px #0003;
   font-size: 0.875rem;
   font-family: CircularLight;
 }
@@ -28,7 +29,7 @@
 }
 
 .dropdown-menu li {
-  border-bottom: 1px solid #b3b3b32e;
+  // border-bottom: 1px solid #b3b3b32e;
 }
 
 .dropdown-menu.active {
@@ -41,7 +42,7 @@
 
 .dropdown-menu.inactive {
   opacity: 0;
-  transform: translateY(5000px);
+  transform: translateY(100px);
   transition: 0.5ms ease;
 }
 

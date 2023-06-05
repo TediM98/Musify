@@ -92,7 +92,7 @@ export function StationDetails() {
 
   if (!station) return <div>Loading...</div>
   return (
-    <section className="main-layout">
+    <section className="details-layout-container">
       <div
         onClick={() => {
           setOpen(!open)
@@ -158,9 +158,8 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${
-                    open === stationId ? 'active' : 'inactive'
-                  }`}
+                  className={`dropdown-menu ${open === stationId ? 'active' : 'inactive'
+                    }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -228,9 +227,8 @@ export function StationDetails() {
                         </button>
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${
-                              open === song.id ? 'active' : 'inactive'
-                            }`}
+                            className={`dropdown-menu ${open === song.id ? 'active' : 'inactive'
+                              }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem />

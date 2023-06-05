@@ -54,14 +54,9 @@ export function AppHeader() {
           <button className="btn-go-back">{svgService.btnGoBackHeader}</button>
           <button className="btn-go-next">{svgService.btnGoNextHeader}</button>
         </nav>
-
-
-
-        
-
         <section>
           <button className="btn-signup">
-            <span>Sign Up</span>
+            <span>Sign up</span>
           </button>
           <button className="btn-login">Log in</button>
         </section>

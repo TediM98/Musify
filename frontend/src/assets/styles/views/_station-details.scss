@@ -1,6 +1,6 @@
 .station-details-container {
   display: flex;
-  padding: 60px 30px 24px;
+  padding: 1.5em;
   gap: 25px;
   font-family: CircularBold;
 
@@ -16,8 +16,8 @@
   }
 
   & .station-img {
-    height: 235px;
-    width: 235px;
+    height: 232px;
+    width: 232px;
 
     & img {
       height: 100%;
@@ -28,8 +28,9 @@
 
   & h1 {
     font-size: 6rem;
-    margin: 0.58em 0px 0.12em;
+    margin: 0.58em 2px 0.12em;
     margin-top: 8px;
+
     font-weight: 900;
   }
 
@@ -148,6 +149,7 @@
 
 .song-list {
   margin-block-end: 40px;
+  height: calc(100vh - 600px);
 
   & .list-options {
     & .list-options-container {

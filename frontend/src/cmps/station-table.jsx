@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { svgService } from '../services/svg.service'
 
 export function StationTalbe() {
   const stations = useSelector(
@@ -23,6 +24,9 @@ export function StationTalbe() {
           <img src={station.createdBy.imgUrl} alt="" />
           <div className='station-name-table' onClick={() => getStation(station._id)}>
             <h4>{station.name}</h4>
+            <button className='btn-play-playlist'>
+              {svgService.palyerBtnPreview}
+            </button>
           </div>
         </div>
       ))}

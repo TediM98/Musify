@@ -19,18 +19,19 @@ export function StationIndex() {
 
   if (!stations) return <div>Loading...</div>
   return (
-    <section className="main-layout home-page">
+    <section className="main-layout home-page scrollable-container">
       <section className="station-table main-layout">
         <h3>{utilService.getGreetings()}</h3>
         <StationTalbe stations={stations} />
       </section>
-
-      <span>Your top mixes</span>
-      <StationList stations={stations} />
-      <span>More like Mac miller</span>
-      <StationList stations={stations} />
-      <span>Recently played</span>
-      <StationList stations={stations} />
-    </section>
+      <section className='station-list-container'>
+        <span>Your top mixes</span>
+        <StationList stations={stations} />
+        <span>More like Mac miller</span>
+        <StationList stations={stations} />
+        <span>Pop</span>
+        <StationList stations={stations} />
+      </section>
+    </section >
   )
 }

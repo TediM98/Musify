@@ -6,7 +6,6 @@
   flex-direction: row;
   margin-top: 2px;
   align-items: center;
-  padding: 0;
   background-color: $bgclr2;
   transition: 1s ease;
   border-top-left-radius: 10px;
@@ -17,6 +16,7 @@
     align-items: center;
     padding: 1.5em;
     width: calc(100vw - 325px);
+    height: 4em;
   }
 
   & nav {
@@ -25,19 +25,25 @@
     justify-content: space-between;
   }
 
-  & .btn-go-back,
+  .btn-go-back,
   .btn-go-next {
-    background-color: $bgclr1;
-    border-radius: 50%;
+    background-color: $app-header-nav-btn;
+    border: none;
     height: 32px;
     width: 32px;
     cursor: pointer;
-    & svg {
-      fill: $clr1;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
   }
 
-  & button {
+  .btn-go-back svg,
+  .btn-go-next svg {
+    fill: $bgclr1-light;
+  }
+
+  .btn-login {
     font-family: CircularBlack;
     background-color: $clr1;
     color: $bgclr1;
@@ -46,5 +52,28 @@
     width: 86px;
     margin: 0.11em;
     border-radius: 500px;
+    cursor: pointer;
+  }
+  .btn-signup {
+    font-family: CircularBlack;
+    background-color: transparent;
+    border: none;
+
+    color: $clr2;
+    font-weight: 400;
+    height: 39px;
+    width: 86px;
+    margin: 0.11em;
+    &:hover {
+      color: $clr1;
+      cursor: pointer;
+    }
+    span {
+      // padding: 1px;
+    }
+  }
+  .btn-login,
+  .btn-signup {
+    margin-top: 0.3em;
   }
 }

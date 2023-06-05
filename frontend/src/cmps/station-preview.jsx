@@ -16,7 +16,7 @@ export function StationPreview({ station }) {
           {station.songs.length > 0 ? (
             <>
               <div title={station.songs[0].title}>{station.songs[0].title.slice(0, 20)}</div>
-              <div title={station.songs[1].title}>{station.songs[1].title.slice(0, 20)}...</div>
+              {/* <div title={station.songs[1].title}>{station.songs[1].title.slice(0, 20)}...</div> */}
             </>
           ) : (
             <div></div>
