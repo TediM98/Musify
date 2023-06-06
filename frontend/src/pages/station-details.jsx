@@ -79,7 +79,7 @@ export function StationDetails() {
 
   function onChangePlayerStatus() {
     // handlePlay()
-    if (!songPlaying.length < 2) setSongPlaying(currStation.songs[0]._id)
+    if (!songPlaying?.length < 2) setSongPlaying(currStation.songs[0]._id)
     if (player) {
       if (!isPlaying) {
         player.playVideo()
@@ -242,7 +242,7 @@ export function StationDetails() {
                         <div className="dropdown-container">
                           <div
                             className={`dropdown-menu ${
-                              isOpen === song.id ? 'active' : 'inactive'
+                              isOpen === song._id ? 'active' : 'inactive'
                             }`}
                           >
                             <ul className=" clean-list">

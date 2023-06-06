@@ -8,7 +8,9 @@ import { svgService } from '../services/svg.service'
 
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
+  const [volumeValue, setVolumeValue] = useState(25)
   const [isProgressBarHovered, setIsProgressBarHovered] = useState(false);
+  const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false);
   const songDuration = useSelector((storeState) => storeState.playerModule.songDuration)
   const currentTime = useSelector((storeState) => storeState.playerModule.currentTime)
   const player = useSelector((storeState) => storeState.playerModule.player)
@@ -38,6 +40,9 @@ export function StationPlayer() {
       setIsPlaying(!isPlaying)
     }
   }
+
+  //PLAYER CONTROLS
+
   const handleForward = () => {
     if (player) {
       const newTime = currentTime + 10
@@ -52,22 +57,12 @@ export function StationPlayer() {
       setCurrentTime(newTime)
     }
   }
-  const handleVolumeChange = (event) => {
-    player.setVolume(event.target.value)
-
-  }
   const handleMute = () => {
     if (player.isMuted()) {
       player.unMute()
     } else {
       player.mute()
     }
-  }
-  const handleProgressChange = (event) => {
-    const targetTime = (event.target.value / 100) * songDuration
-    player.seekTo(targetTime, true)
-    setCurrentTime(targetTime)
-    setProgressValue(event.target.value)
   }
   const handlePlayerReady = (event) => {
     setPlayer(event.target)
@@ -80,6 +75,33 @@ export function StationPlayer() {
       controls: 0,
     },
   }
+//VOLUME BAR
+  const handleVolumeChange = (event) => {
+    player.setVolume(event.target.value)
+    setVolumeValue(event.target.value)
+  }
+
+  const handleVolumeBarMouseEnter = () => {
+    setIsVolumeBarHovered(true);
+  }
+  const handleVolumeBarMouseLeave = () => {
+    setIsVolumeBarHovered(false);
+  }
+  const volumeBarStyle = {
+    background: isVolumeBarHovered
+      ? `linear-gradient(to right, #1db954 0%, #1db954 ${volumeValue}%, #ffffff ${volumeValue}%, #ffffff 100%)`
+      : '#cccccc',
+  }
+
+//PROGRESS BAR
+
+  const handleProgressChange = (event) => {
+    const targetTime = (event.target.value / 100) * songDuration
+    player.seekTo(targetTime, true)
+    setCurrentTime(targetTime)
+    setProgressValue(event.target.value)
+  }
+
   const handleProgressBarMouseEnter = () => {
     setIsProgressBarHovered(true);
   }
@@ -113,6 +135,7 @@ export function StationPlayer() {
               <div className="time-stamp start">{utilService.convertTime(currentTime) || '-:--'}</div>
               <input
                 className="progress-bar-element"
+                name='progressControl'
                 type="range"
                 min="0"
                 max="100"
@@ -132,18 +155,19 @@ export function StationPlayer() {
             {svgService.playerMuteIcon}
           </button>
           <input
-            // className="progress-bar-element"
+            className="volume-bar-element"
             type="range"
             name="volumeControl"
             min="0"
             max="100"
-            onMouseEnter={handleProgressBarMouseEnter}
-            onMouseLeave={handleProgressBarMouseLeave}
+            value={volumeValue}
+            onMouseEnter={handleVolumeBarMouseEnter}
+            onMouseLeave={handleVolumeBarMouseLeave}
             onChange={handleVolumeChange}
-            style={progressBarStyle} />
+            style={volumeBarStyle} />
           right elements
         </div>
       </div>
     </div>
-  );
+  )
 }

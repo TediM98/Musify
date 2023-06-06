@@ -8,6 +8,7 @@ export const utilService = {
     saveToStorage,
     loadFromStorage,
     getGreetings,
+    handleChange
     
 }
 
@@ -91,3 +92,10 @@ function getGreetings() {
     }
     return greet
 }
+
+function handleChange({ target }) {
+    const field = target.name
+    const value = target.type === 'number' ? +target.value || '' : target.value
+    console.log('field,value', field, value)
+    // onSetFilter({ ...filterBy, [field]: value })
+  }
