@@ -1,15 +1,11 @@
 .app-header {
   display: grid;
   position: sticky;
-  top: 8px;
-  z-index: 30;
-  flex-direction: row;
-  margin-top: 2px;
+  top: 0;
+  z-index: 1;
   align-items: center;
-  background-color: $bgclr2;
+  background-color: rgb(48 1 48);
   transition: 1s ease;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 
   .search-song {
     flex-direction: row;
@@ -53,8 +49,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5em;
-    width: calc(100vw - 325px);
-    height: 4em;
+    // width: calc(100vw - 315px);
   }
 
   & nav {

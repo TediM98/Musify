@@ -6,6 +6,7 @@ import { loadStations } from '../store/station.actions.js'
 import { StationList } from '../cmps/station-list.jsx'
 import { StationTalbe } from '../cmps/station-table.jsx'
 import { utilService } from '../services/util.service.js'
+import { AppHeader } from '../cmps/app-header.jsx'
 
 export function StationIndex() {
   const stations = useSelector(
@@ -27,10 +28,10 @@ export function StationIndex() {
       <section className='station-list-container'>
         <span>Your top mixes</span>
         <StationList stations={stations} />
-        <span>More like Mac miller</span>
-        <StationList stations={stations} />
-        <span>Pop</span>
-        <StationList stations={stations} />
+        {/* <span>More like Mac miller</span> */}
+        {/* <StationList stations={stations} /> */}
+        {/* <span>Pop</span> */}
+        {/* <StationList stations={stations} /> */}
       </section>
     </section >
   )
