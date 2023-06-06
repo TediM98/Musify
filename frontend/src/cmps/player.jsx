@@ -2,18 +2,31 @@ import React, { useState, useEffect } from 'react'
 import YouTube from 'react-youtube'
 import { utilService } from '../services/util.service'
 import { trackService } from '../services/track.service'
-import { setCurrentTime, setIsPlaying, setPlayer, setSongDuration } from '../store/player.actions'
+import {
+  setCurrentTime,
+  setIsPlaying,
+  setPlayer,
+  setSongDuration,
+} from '../store/player.actions'
 import { useSelector } from 'react-redux'
 import { svgService } from '../services/svg.service'
 
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
-  const [isProgressBarHovered, setIsProgressBarHovered] = useState(false);
-  const songDuration = useSelector((storeState) => storeState.playerModule.songDuration)
-  const currentTime = useSelector((storeState) => storeState.playerModule.currentTime)
+  const [isProgressBarHovered, setIsProgressBarHovered] = useState(false)
+  const songDuration = useSelector(
+    (storeState) => storeState.playerModule.songDuration
+  )
+  const currentTime = useSelector(
+    (storeState) => storeState.playerModule.currentTime
+  )
   const player = useSelector((storeState) => storeState.playerModule.player)
-  const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
-  const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
+  const isPlaying = useSelector(
+    (storeState) => storeState.playerModule.isPlaying
+  )
+  const songPlaying = useSelector(
+    (storeState) => storeState.playerModule.songPlaying
+  )
 
   useEffect(() => {
     if (isPlaying) {
@@ -54,7 +67,6 @@ export function StationPlayer() {
   }
   const handleVolumeChange = (event) => {
     player.setVolume(event.target.value)
-
   }
   const handleMute = () => {
     if (player.isMuted()) {
@@ -70,6 +82,7 @@ export function StationPlayer() {
     setProgressValue(event.target.value)
   }
   const handlePlayerReady = (event) => {
+    console.log('event', event)
     setPlayer(event.target)
   }
   const opts = {
@@ -81,10 +94,10 @@ export function StationPlayer() {
     },
   }
   const handleProgressBarMouseEnter = () => {
-    setIsProgressBarHovered(true);
+    setIsProgressBarHovered(true)
   }
   const handleProgressBarMouseLeave = () => {
-    setIsProgressBarHovered(false);
+    setIsProgressBarHovered(false)
   }
   const progressBarStyle = {
     background: isProgressBarHovered
@@ -94,7 +107,11 @@ export function StationPlayer() {
   return (
     <div className="main-player-section full">
       <div className="player-container flex">
-        <YouTube videoId={songPlaying} opts={opts} onReady={handlePlayerReady} />
+        <YouTube
+          videoId={songPlaying}
+          opts={opts}
+          onReady={handlePlayerReady}
+        />
         <div className="left-controls">left elements</div>
         <div className="center-controls">
           <div className="top-center-controls">
@@ -102,7 +119,9 @@ export function StationPlayer() {
               {svgService.goBackIcon}
             </button>
             <button className="playBtn" onClick={handlePlay}>
-              {isPlaying ? svgService.playerPauseTrackIcon : svgService.playerPlayTrackIcon}
+              {isPlaying
+                ? svgService.playerPauseTrackIcon
+                : svgService.playerPlayTrackIcon}
             </button>
             <button className="fwdBtn" onClick={handleForward}>
               {svgService.playerFwdTrackIcon}
@@ -110,7 +129,9 @@ export function StationPlayer() {
           </div>
           <div className="bottom-center-controls flex">
             <div className="progress-bar flex">
-              <div className="time-stamp start">{utilService.convertTime(currentTime) || '-:--'}</div>
+              <div className="time-stamp start">
+                {utilService.convertTime(currentTime) || '-:--'}
+              </div>
               <input
                 className="progress-bar-element"
                 type="range"
@@ -123,12 +144,14 @@ export function StationPlayer() {
                 style={progressBarStyle}
               />
 
-              <div className="time-stamp end">{utilService.convertTime(songDuration) || '--:--'}</div>
+              <div className="time-stamp end">
+                {utilService.convertTime(songDuration) || '--:--'}
+              </div>
             </div>
           </div>
         </div>
         <div className="right-controls">
-          <button className='muteBtn' onClick={handleMute}>
+          <button className="muteBtn" onClick={handleMute}>
             {svgService.playerMuteIcon}
           </button>
           <input
@@ -140,10 +163,11 @@ export function StationPlayer() {
             onMouseEnter={handleProgressBarMouseEnter}
             onMouseLeave={handleProgressBarMouseLeave}
             onChange={handleVolumeChange}
-            style={progressBarStyle} />
+            style={progressBarStyle}
+          />
           right elements
         </div>
       </div>
     </div>
-  );
+  )
 }
