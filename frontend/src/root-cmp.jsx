@@ -9,9 +9,9 @@ import { UserDetails } from './pages/user-details.jsx'
 
 export function RootCmp() {
   return (
-    <section className='app-layout flex' >
+    <section className='app-layout ' >
       <SideNav />
-      <main>
+      <main className='layout-conatiner'>
         <AppHeader />
         <Routes>
           {routes.map((route) => (

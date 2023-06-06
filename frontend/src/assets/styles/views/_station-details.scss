@@ -3,6 +3,8 @@
   padding: 1.5em;
   gap: 25px;
   font-family: CircularBold;
+  background-color: rgb(223, 101, 223);
+  background-image: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%);
 
   & .station-content {
     flex: 1;
@@ -69,6 +71,7 @@
 
 .station-actions {
   padding-block: 24px;
+  grid-area: 2/2/4/3;
 
   & .icon-options {
     fill: #b3b3b3;
@@ -81,6 +84,7 @@
   & .action-container {
     align-items: center;
     justify-content: start;
+    z-index: 1;
 
     & .options-container {
       & .btn-options-close {
@@ -149,7 +153,9 @@
 
 .song-list {
   margin-block-end: 40px;
-  height: calc(100vh - 600px);
+  // height: calc(100vh - 588px);
+  grid-area: 4/2/5/3;
+  z-index: 1;
 
   & .list-options {
     & .list-options-container {

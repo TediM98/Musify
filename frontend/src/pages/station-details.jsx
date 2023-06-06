@@ -116,7 +116,7 @@ export function StationDetails() {
       <section className="details-container details-layout">
         <div
           className="station-details-container full"
-          style={{ backgroundColor: bgc }}
+        // style={{ backgroundColor: bgc }}
         >
           <div className="station-img">
             <img
@@ -174,9 +174,8 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${
-                    isOpen === stationId ? 'active' : 'inactive'
-                  }`}
+                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
+                    }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -241,9 +240,8 @@ export function StationDetails() {
                         </button>
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${
-                              isOpen === song.id ? 'active' : 'inactive'
-                            }`}
+                            className={`dropdown-menu ${isOpen === song._id ? 'active' : 'inactive'
+                              }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem
