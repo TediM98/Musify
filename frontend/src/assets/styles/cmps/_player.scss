@@ -68,6 +68,9 @@
     color: #a7a7a7;
   }
 }
+
+//RIGHT ELEMENTS
+
 .muteBtn {
   background: none;
   // border: 2px solid white;
@@ -79,34 +82,25 @@
     color: white;
   }
 }
-// .progress-bar-element {
-//   display: flex;
-//   -webkit-appearance: none;
-//   border-radius: 2px;
-//   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-//   transition: width 0.3s ease;
-//   width: 33vw;
-//   height: 4px;
-//   align-content: center;
-//   justify-content: center;
-// }
 
-// .progress-bar-element::-webkit-slider-thumb {
-//   -webkit-appearance: none;
-//   width: 5px;
-//   height: 5px;
-//   background-color: transparent;
-// }
+.volume-bar-element {
+  -webkit-appearance: none;
+  border-radius: 2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: width 0.3s ease;
+  width: 6.6vw;
+  height: 4px;
 
-// .progress-bar-element:hover::-webkit-slider-thumb{
-//   border-radius: 50%;
-//   transform: scale(3);
-//   background-color: #ffffff;
-// }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+  }
 
-// .progress-bar-element::-webkit-slider-runnable-track {
-//   background:  #1db954 ;
-
-//   height: 2px;
-
-// }
+  &:hover::-webkit-slider-thumb {
+    border-radius: 50%;
+    transform: scale(3);
+    background-color: #ffffff;
+  }
+}

@@ -79,7 +79,7 @@ export function StationDetails() {
 
   function onChangePlayerStatus() {
     // handlePlay()
-    if (!songPlaying.length < 2) setSongPlaying(currStation.songs[0]._id)
+    if (!songPlaying?.length < 2) setSongPlaying(currStation.songs[0]._id)
     if (player) {
       if (!isPlaying) {
         player.playVideo()
