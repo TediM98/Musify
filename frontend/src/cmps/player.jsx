@@ -75,7 +75,7 @@ export function StationPlayer() {
       controls: 0,
     },
   }
-//VOLUME BAR
+  //VOLUME BAR
   const handleVolumeChange = (event) => {
     player.setVolume(event.target.value)
     setVolumeValue(event.target.value)
@@ -92,8 +92,23 @@ export function StationPlayer() {
       ? `linear-gradient(to right, #1db954 0%, #1db954 ${volumeValue}%, #ffffff ${volumeValue}%, #ffffff 100%)`
       : '#cccccc',
   }
+  const getVolumeIcon = () => {
+    if (volumeValue <0.01) {
+      return svgService.volumeIcon0
+    }
+    else if (volumeValue <= 33) {
+      return svgService.volumeIcon33;
+    } else if (volumeValue <= 66) {
+      return svgService.volumeIcon66;
+    } else {
+      return svgService.volumeIcon100;
+    }
+  };
 
-//PROGRESS BAR
+
+
+
+  //PROGRESS BAR
 
   const handleProgressChange = (event) => {
     const targetTime = (event.target.value / 100) * songDuration
@@ -152,7 +167,8 @@ export function StationPlayer() {
         </div>
         <div className="right-controls">
           <button className='muteBtn' onClick={handleMute}>
-            {svgService.playerMuteIcon}
+            {getVolumeIcon()}
+            {/* <div className="volume-bar-icon" style={{ backgroundImage: getVolumeBarIcon() }}></div> */}
           </button>
           <input
             className="volume-bar-element"

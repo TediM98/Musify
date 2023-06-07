@@ -73,7 +73,6 @@
 
 .muteBtn {
   background: none;
-  // border: 2px solid white;
   border: none;
   margin: 16px;
   transition: color 0.3s;
@@ -88,7 +87,7 @@
   border-radius: 2px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   transition: width 0.3s ease;
-  width: 6.6vw;
+  width: 93px;
   height: 4px;
 
   &::-webkit-slider-thumb {
