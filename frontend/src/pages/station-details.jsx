@@ -72,11 +72,7 @@ export function StationDetails() {
 
   function onChangePlayerStatus() {
     // handlePlay()
-<<<<<<< HEAD
     if (!songPlaying) setSongPlaying(currStation.songs[0]._id)
-=======
-    if (!songPlaying?.length < 2) setSongPlaying(currStation.songs[0]._id)
->>>>>>> 998a2e4347f9846cb27bfd4759b43ac76ca468d3
     if (player) {
       if (!isPlaying) {
         player.playVideo()
@@ -101,6 +97,10 @@ export function StationDetails() {
     }
   }
 
+  function openEditEditModal() {
+    setOpenEditModal(true)
+  }
+
   if (!currStation) return <div>Loading...</div>
   return (
     <section className="details-layout-container">
@@ -113,7 +113,7 @@ export function StationDetails() {
       <section className="details-container details-layout">
         <div
           className="station-details-container full"
-        // style={{ backgroundColor: bgc }}
+          // style={{ backgroundColor: bgc }}
         >
           <div className="station-img">
             <img
@@ -171,8 +171,9 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
-                    }`}
+                  className={`dropdown-menu ${
+                    isOpen === stationId ? 'active' : 'inactive'
+                  }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -185,6 +186,7 @@ export function StationDetails() {
             </div>
           </div>
         </section>
+        <div className="back-screen">
         <section className="song-list">
           <div className="song-list-header flex">
             <div></div>
@@ -219,7 +221,9 @@ export function StationDetails() {
                       ></img>
                     </div>
                     <div className="song-title">
-                      <span className="song-name">{song.title}</span>
+                      <span className="song-name" onClick="openEditModal">
+                        {song.title}
+                      </span>
                     </div>
                     <div className="song-created-at">
                       {new Date(song.addedAt).toLocaleDateString()}
