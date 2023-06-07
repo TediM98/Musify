@@ -4,17 +4,11 @@ import { stationService } from '../services/station.service.local'
 import logo from '../assets/img/musify-logo.jpg'
 import play from '../assets/img/play-station.svg'
 import { bgcService } from '../services/bgc.service'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { DropDownItem } from '../cmps/dropdown-item'
 import { svgService } from '../services/svg.service'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions'
-import {
-  removeStation,
-  setCurrStation,
-  removeSong,
-  updateStation,
-} from '../store/station.actions'
-import { AppHeader } from '../cmps/app-header'
+import { removeStation, setCurrStation, removeSong, updateStation, } from '../store/station.actions'
 import { AddSong } from '../cmps/add-song'
 
 export function StationDetails() {
@@ -24,7 +18,6 @@ export function StationDetails() {
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
-
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -32,15 +25,21 @@ export function StationDetails() {
     (storeState) => storeState.playerModule.songPlaying
   )
   const player = useSelector((storeState) => storeState.playerModule.player)
-  const stations = useSelector(
-    (storeState) => storeState.stationModule.stations
-  )
+  const stations = useSelector((storeState) => storeState.stationModule.stations)
   const { stationId } = useParams()
   const navigate = useNavigate()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (stationId) loadStation().then(getBgc())
   }, [])
+
+  // useEffect(() => {
+  //   if (!songPlaying || songPlaying.length < 2) {
+  //     console.log('currStation.songs[0].id', )
+  //     console.log('songPlaying', songPlaying)
+  //   }
+  // }, [])
 
   function onRemoveSong(songId) {
     removeSong(songId, currStation)
@@ -61,6 +60,7 @@ export function StationDetails() {
         currStation.createdBy.imgUrl
       )
       changePrimaryClr('$primary-color', color);
+      console.log('color', color)
       setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
@@ -70,7 +70,6 @@ export function StationDetails() {
   async function loadStation() {
     try {
       const station = await stationService.getById(stationId)
-      // setCurrStation(station)
       setCurrStation(station)
       return currStation
     } catch (err) {
@@ -81,7 +80,7 @@ export function StationDetails() {
 
   function onChangePlayerStatus() {
     // handlePlay()
-    if (!songPlaying) setSongPlaying(currStation.songs[0]._id)
+    if (!songPlaying?.length < 2) setSongPlaying(currStation.songs[3]._id)
     if (player) {
       if (!isPlaying) {
         player.playVideo()
@@ -106,8 +105,10 @@ export function StationDetails() {
     }
   }
 
-  function openEditEditModal() {
-    setOpenEditModal(true)
+  function addToStation(track) {
+    const updatedStation = { ...currStation };
+    updatedStation.songs.push(track);
+    dispatch(updateStation(updatedStation));
   }
 
   if (!currStation) return <div>Loading...</div>
@@ -117,6 +118,7 @@ export function StationDetails() {
         onClick={() => {
           setIsOpen(!isOpen)
         }}
+
         className={`options-close ${isOpen ? 'active' : 'inactive'}`}
       ></div>
       <section className="details-container details-layout">
@@ -135,7 +137,7 @@ export function StationDetails() {
           <div className="station-content flex">
             <span>Playlist</span>
             <h1>{currStation.name}</h1>
-            {/* <span className="station-desc">desc........</span> */}
+            <span className="station-desc">desc........</span>
             <div className="song-details-container">
               <div className="app-icon flex">
                 <img src={logo} alt="icon"></img>
@@ -180,9 +182,8 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${
-                    isOpen === stationId ? 'active' : 'inactive'
-                  }`}
+                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
+                    }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -195,7 +196,6 @@ export function StationDetails() {
             </div>
           </div>
         </section>
-        <div className="back-screen">
         <section className="song-list">
           <div className="song-list-header flex">
             <div></div>
@@ -216,7 +216,7 @@ export function StationDetails() {
                     </div>
                     <div
                       className="handle-song-icon-container"
-                      onClick={() => onChangeSongPlaying(song._id)}
+                      onClick={() => onChangeSongPlaying(song._id, idx)}
                     >
                       {isPlaying
                         ? svgService.playerPauseTrackIcon
@@ -230,9 +230,7 @@ export function StationDetails() {
                       ></img>
                     </div>
                     <div className="song-title">
-                      <span className="song-name" onClick="openEditModal">
-                        {song.title}
-                      </span>
+                      <span className="song-name">{song.title}</span>
                     </div>
                     <div className="song-created-at">
                       {new Date(song.addedAt).toLocaleDateString()}
@@ -252,11 +250,10 @@ export function StationDetails() {
 
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${
-                              isOpen === song._id ? 'active' : 'inactive'
-                            }`}
+                            className={`dropdown-menu ${isOpen === song._id ? 'active' : 'inactive'
+                              }`}
                           >
-                            <ul className="clean-list">
+                            <ul className=" clean-list">
                               <DropDownItem
                                 onRemoveSong={onRemoveSong}
                                 songId={song._id}
@@ -271,13 +268,12 @@ export function StationDetails() {
               )
             })}
           </ul>
+          <AddSong
+            station={currStation}
+            onAddSong={addToStation}
+          />
         </section>
       </section>
-      {/*  */}
-      <AddSong
-        stationId={stationId}
-      />
-      {/*  */}
     </section>
   )
 }

@@ -14,8 +14,8 @@ import { svgService } from '../services/svg.service'
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
   const [volumeValue, setVolumeValue] = useState(25)
-  const [isProgressBarHovered, setIsProgressBarHovered] = useState(false);
-  const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false);
+  const [isProgressBarHovered, setIsProgressBarHovered] = useState(false)
+  const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false)
   const songDuration = useSelector((storeState) => storeState.playerModule.songDuration)
   const currentTime = useSelector((storeState) => storeState.playerModule.currentTime)
   const player = useSelector((storeState) => storeState.playerModule.player)
@@ -66,12 +66,6 @@ export function StationPlayer() {
       setCurrentTime(newTime)
     }
   }
-<<<<<<< HEAD
-  const handleVolumeChange = (event) => {
-    player.setVolume(event.target.value)
-  }
-=======
->>>>>>> 998a2e4347f9846cb27bfd4759b43ac76ca468d3
   const handleMute = () => {
     if (player.isMuted()) {
       player.unMute()
@@ -91,17 +85,17 @@ export function StationPlayer() {
       controls: 0,
     },
   }
-//VOLUME BAR
+  //VOLUME BAR
   const handleVolumeChange = (event) => {
     player.setVolume(event.target.value)
     setVolumeValue(event.target.value)
   }
 
   const handleVolumeBarMouseEnter = () => {
-    setIsVolumeBarHovered(true);
+    setIsVolumeBarHovered(true)
   }
   const handleVolumeBarMouseLeave = () => {
-    setIsVolumeBarHovered(false);
+    setIsVolumeBarHovered(false)
   }
   const volumeBarStyle = {
     background: isVolumeBarHovered
@@ -109,7 +103,7 @@ export function StationPlayer() {
       : '#cccccc',
   }
 
-//PROGRESS BAR
+  //PROGRESS BAR
 
   const handleProgressChange = (event) => {
     const targetTime = (event.target.value / 100) * songDuration
@@ -190,12 +184,7 @@ export function StationPlayer() {
             onMouseEnter={handleVolumeBarMouseEnter}
             onMouseLeave={handleVolumeBarMouseLeave}
             onChange={handleVolumeChange}
-<<<<<<< HEAD
-            style={progressBarStyle}
-          />
-=======
             style={volumeBarStyle} />
->>>>>>> 998a2e4347f9846cb27bfd4759b43ac76ca468d3
           right elements
         </div>
       </div>

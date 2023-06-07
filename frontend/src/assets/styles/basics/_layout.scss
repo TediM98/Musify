@@ -65,11 +65,10 @@
 
 .details-layout::after {
   content: '';
-  background-color: green;
   height: 232px;
   z-index: 0;
   grid-area: 2/1/5/-1;
-  background-color: rgb(200, 56, 181);
+  background-color: $primary-color;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), $bgclr2);
 }
 

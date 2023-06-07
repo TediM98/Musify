@@ -1,67 +1,86 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { trackService } from "../services/track.service"
+import { utilService } from '../services/util.service'
+import { updateStation } from '../store/station.actions'
+import { svgService } from '../services/svg.service'
 
-export function AddSong({ stationId }) {
-  const [songName, setSongName] = useState('')
-  const [songs, setSongs] = useState([
-    { name: 'Song 1', artist: 'Artist 1', image: 'https://via.placeholder.com/40x40.png?text=No+Image' },
-    { name: 'Song 2', artist: 'Artist 2', image: 'https://via.placeholder.com/40x40.png?text=No+Image' },
-    { name: 'Song 3', artist: 'Artist 3', image: 'https://via.placeholder.com/40x40.png?text=No+Image' },
-    { name: 'Song 4', artist: 'Artist 4', image: 'https://via.placeholder.com/40x40.png?text=No+Image' },
-    { name: 'Song 5', artist: 'Artist 5', image: 'https://via.placeholder.com/40x40.png?text=No+Image' },
-    { name: 'Song 6', artist: 'Artist 6', image: 'https://via.placeholder.com/40x40.png?text=No+Image' },
-    { name: 'Song 7', artist: 'Artist 7', image: 'https://via.placeholder.com/40x40.png?text=No+Image' },
-    { name: 'Song 8', artist: 'Artist 8', image: 'https://via.placeholder.com/40x40.png?text=No+Image' },
-    { name: 'Song 9', artist: 'Artist 9', image: 'https://via.placeholder.com/40x40.png?text=No+Image' },
-    { name: 'Song 10', artist: 'Artist 10', image: 'https://via.placeholder.com/40x40.png?text=No+Image' }
-  ]);
+// Mac miller,Beyonce,Shakira
+
+export function AddSong({ station, onAddSong }) {
+
+  const [searchTerm, setSearchTerm] = useState('')
+  const [tracks, setTracks] = useState([])
 
 
-  const handleSongNameChange = (event) => {
-    setSongName(event.target.value)
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      fetchData()
+    }, 450)
+    return () => {
+      clearTimeout(delayDebounceFn)
+    }
+  }, [searchTerm])
+
+  async function fetchData() {
+    if (!searchTerm) return
+    try {
+      const response = await trackService.getVideos(searchTerm, 10)
+      setTracks(response)
+    } catch (error) {
+      console.error('Error fetching tracks:', error)
+    }
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log(songName)
-    // setSongName('')
-    // setArtist('')
+  function addToStation(track) {
+    onAddSong(track);
   }
-  // trackService.getVideos('metallica',10)
 
-  return (
-    <section className="add-song-container">
-      <h3>Let's find something for your playlist</h3>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="songName">
-          </label>
-          <input
-            className='add-song-input'
-            type="text"
-            id="songName"
-            placeholder='Search for songs or episodes'
-            value={songName}
-            onChange={handleSongNameChange}
-          />
-        </div>
-      </form>
+  const handleInputChange = (event) => {
+    const newSearchTerm = event.target.value
+    setSearchTerm(newSearchTerm)
+  }
+
+  return <React.Fragment>
+    <section className={`station-song-search flex ${station.songs.length === 0 ? 'no-border' : ''}`}>
+      <div className='search-input'>
+        <h1>Let's find something for your playlist</h1>
+        {/* <label htmlFor="songName"></label> */}
+        <input
+          className='add-song-input'
+          type="search"
+          id="songName"
+          placeholder='Search for songs or episodes'
+          onChange={handleInputChange}
+          value={searchTerm}
+        />
+        {svgService.searchHomePageIcon}
+      </div>
+      <div className='flex align-center'>
+        <button>
+          {/* svg -x btn */}
+        </button>
+      </div>
+    </section>
+    <div className='station-search-list'>
       <ul className='clean-list'>
-        {songs.map((song, index) => (
-          <li key={index}>
-            <div>
-              <img src={song.image} alt={song.name} />
+        {tracks.map((track, index) => (
+          <li key={track._id || index} className='station-search-preview'>
+            <div className='song-img-conatiner'>
+              <div className='song-img'>
+                <img src={track.imgUrl} alt={track.title} />
+              </div>
+              <div className='btn-play-pause'>
+                {/* svg play pause */}
+              </div>
             </div>
-            <div>
-              <span>{song.name}</span>
-              <span>{song.artist}</span>
+            <div className='song-title'>
+              <span className='artist-name'>{track.title}</span>
             </div>
-            {/* <button onClick={() => addToPlaylist(index)}>Add to Playlist</button> */}
+            <button className="btn-add-song" onClick={() => addToStation(track)}>Add</button>
           </li>
         ))}
       </ul>
 
-
-    </section>
-  )
+    </div>
+  </React.Fragment>
 }

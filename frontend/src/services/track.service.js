@@ -25,11 +25,8 @@ function getVideos(term, amount = 5) {
         .then(ytVideos => ytVideos.map(ytVideo => ({
             _id: ytVideo.id.videoId,
             title: ytVideo.snippet.title,
-            img: {
-                url: ytVideo.snippet.thumbnails.default.url,
-                width: ytVideo.snippet.thumbnails.default.width,
-                height: ytVideo.snippet.thumbnails.default.height,
-            }
+            imgUrl: ytVideo.snippet.thumbnails.default.url,
+            addedAt: ytVideo.snippet.publishedAt,
         })))
         .then(videos => {
             termVideosMap[term] = videos
