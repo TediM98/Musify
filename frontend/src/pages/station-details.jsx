@@ -10,14 +10,17 @@ import { svgService } from '../services/svg.service'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions'
 import { removeStation, setCurrStation, removeSong, updateStation, } from '../store/station.actions'
 import { AddSong } from '../cmps/add-song'
+import { Modal } from '../cmps/edit-modal'; //////////////////////////////modal
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
+  const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
+
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -34,12 +37,10 @@ export function StationDetails() {
     if (stationId) loadStation().then(getBgc())
   }, [])
 
-  // useEffect(() => {
-  //   if (!songPlaying || songPlaying.length < 2) {
-  //     console.log('currStation.songs[0].id', )
-  //     console.log('songPlaying', songPlaying)
-  //   }
-  // }, [])
+
+  function toggleEditModal() {
+    setEditModalOpen(!isEditModalOpen);
+  }
 
   function onRemoveSong(songId) {
     removeSong(songId, currStation)
@@ -51,7 +52,7 @@ export function StationDetails() {
   }
 
   function changePrimaryClr(varName, newValue) {
-    document.documentElement.style.setProperty(varName, newValue);
+    document.documentElement.style.setProperty(varName, newValue)
   }
 
   async function getBgc() {
@@ -59,8 +60,7 @@ export function StationDetails() {
       const color = await bgcService.getColorFromUrl(
         currStation.createdBy.imgUrl
       )
-      changePrimaryClr('$primary-color', color);
-      console.log('color', color)
+      changePrimaryClr('$primary-color', color)
       setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
@@ -77,10 +77,16 @@ export function StationDetails() {
       navigate('/')
     }
   }
+  function addToStation(track) {
+    const updatedStation = { ...currStation };
+    updatedStation.songs.push(track);
+    dispatch(updateStation(updatedStation));
+  }
 
   function onChangePlayerStatus() {
     // handlePlay()
-    if (!songPlaying?.length < 2) setSongPlaying(currStation.songs[3]._id)
+    if (!songPlaying)
+      setSongPlaying(currStation.songs[0]._id, currStation.songs[0])
     if (player) {
       if (!isPlaying) {
         player.playVideo()
@@ -91,8 +97,9 @@ export function StationDetails() {
     }
   }
 
-  function onChangeSongPlaying(songId) {
-    setSongPlaying(songId)
+  function onChangeSongPlaying(songId, songIdx) {
+    // setSongPlaying(songId)
+    setSongPlaying({ songId: songId, songIdx: songIdx })
     onChangePlayerStatus()
   }
 
@@ -103,12 +110,6 @@ export function StationDetails() {
     } catch (err) {
       console.error('Could not remove station')
     }
-  }
-
-  function addToStation(track) {
-    const updatedStation = { ...currStation };
-    updatedStation.songs.push(track);
-    dispatch(updateStation(updatedStation));
   }
 
   if (!currStation) return <div>Loading...</div>
@@ -132,8 +133,14 @@ export function StationDetails() {
               className="img"
               src={currStation.createdBy.imgUrl}
               alt="station-img"
+              onClick={toggleEditModal}
             ></img>
           </div>
+
+          {isEditModalOpen && <Modal closeModal={toggleEditModal} />}
+
+
+
           <div className="station-content flex">
             <span>Playlist</span>
             <h1>{currStation.name}</h1>
@@ -170,6 +177,7 @@ export function StationDetails() {
                 </span>
               </button>
             </div>
+
             <button className="like-station-icon">
               {svgService.heartIcon}
             </button>
@@ -246,7 +254,6 @@ export function StationDetails() {
                         >
                           {svgService.optionsIcon}
                         </button>
-
 
                         <div className="dropdown-container">
                           <div

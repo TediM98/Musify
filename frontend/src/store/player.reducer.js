@@ -5,7 +5,7 @@ export const CURRENT_TIME = 'CURRENT_TIME'
 export const SONG_DURATION = 'SONG_DURATION'
 const initialState = {
     isPlaying: false,
-    songPlaying: null,
+    songPlaying: { songId: 'mUkfiLjooxs', songIdx: 1 },
     player: null,
     currentTime: '-:--',
     songDuration: '--:--'
