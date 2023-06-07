@@ -6,7 +6,6 @@ import { loadStations } from '../store/station.actions.js'
 import { StationList } from '../cmps/station-list.jsx'
 import { StationTalbe } from '../cmps/station-table.jsx'
 import { utilService } from '../services/util.service.js'
-import { AppHeader } from '../cmps/app-header.jsx'
 
 export function StationIndex() {
   const stations = useSelector(
@@ -17,6 +16,9 @@ export function StationIndex() {
     loadStations()
   }, [])
 
+  function renderStationsByTag(tag) {
+    return stations.filter(station => station.tags.includes(tag));
+  }
 
   if (!stations) return <div>Loading...</div>
   return (
@@ -27,11 +29,11 @@ export function StationIndex() {
       </section>
       <section className='station-list-container'>
         <span>Your top mixes</span>
-        <StationList stations={stations} />
-        {/* <span>More like Mac miller</span> */}
-        {/* <StationList stations={stations} /> */}
-        {/* <span>Pop</span> */}
-        {/* <StationList stations={stations} /> */}
+        <StationList stations={renderStationsByTag('Happy')} />
+        <span>More like Mac miller</span>
+        <StationList stations={renderStationsByTag('Rock')} />
+        <span>Relaxing</span>
+        <StationList stations={renderStationsByTag('Relaxing')} />
       </section>
     </section >
   )

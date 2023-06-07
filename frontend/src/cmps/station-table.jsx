@@ -18,7 +18,7 @@ export function StationTalbe() {
 
   return (
     <section className="section-highlights">
-      {stations.map((station) => (
+      {stations.slice(0, 6).map((station) => (
         <div className="table-data flex" key={station._id}>
           <img src={station.createdBy.imgUrl} alt="" />
           <div

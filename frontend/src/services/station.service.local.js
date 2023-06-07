@@ -6,6 +6,8 @@ import emptyStationImg from '../assets/img/empty-station-img.jpg';
 
 
 const STORAGE_KEY = 'station'
+let playlistNumber = 1;
+
 
 export const stationService = {
     query,
@@ -52,7 +54,6 @@ async function save(station) {
     if (station._id) {
         savedStation = await storageService.put(STORAGE_KEY, station)
     } else {
-        // Later, owner is set by the backend
         // station.owner = userService.getLoggedinUser() MAYBE NEEDED
         savedStation = await storageService.post(STORAGE_KEY, station)
     }
@@ -60,7 +61,6 @@ async function save(station) {
 }
 
 async function addStationMsg(stationId, txt) {
-    // Later, this is all done by the backend
     const station = await getById(stationId)
     if (!station.msgs) station.msgs = []
 
@@ -81,7 +81,7 @@ function getEmptyStation() {
         name: "My playlist #1 ",
         tags: [],
         createdBy: {
-            _id: "u555",
+            _id: utilService.makeId(),
             fullname: "",
             imgUrl: emptyStationImg
         },
