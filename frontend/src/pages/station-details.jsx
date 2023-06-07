@@ -81,7 +81,8 @@ export function StationDetails() {
 
   function onChangePlayerStatus() {
     // handlePlay()
-    if (!songPlaying) setSongPlaying(currStation.songs[0]._id)
+    if (!songPlaying)
+      setSongPlaying(currStation.songs[0]._id, currStation.songs[0])
     if (player) {
       if (!isPlaying) {
         player.playVideo()
@@ -93,8 +94,8 @@ export function StationDetails() {
   }
 
   function onChangeSongPlaying(songId, songIdx) {
-    setSongPlaying(songId)
-    // setSongPlaying({ songId: songId, songIdx: songIdx })
+    // setSongPlaying(songId)
+    setSongPlaying({ songId: songId, songIdx: songIdx })
     onChangePlayerStatus()
   }
 

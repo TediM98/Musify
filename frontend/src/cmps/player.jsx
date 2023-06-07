@@ -11,7 +11,7 @@ import {
 } from '../store/player.actions'
 import { useSelector } from 'react-redux'
 import { svgService } from '../services/svg.service'
-import { setCurrStation } from '../store/station.actions'
+import { loadStations, setCurrStation } from '../store/station.actions'
 
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
@@ -35,8 +35,13 @@ export function StationPlayer() {
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
+  const stations = useSelector(
+    (storeState) => storeState.stationModule.stations
+  )
 
   useEffect(() => {
+    console.log('songPlaying', songPlaying)
+    console.log('stations', stations)
     if (isPlaying) {
       const updatePlayerInfo = () => {
         setCurrentTime(player.getCurrentTime())
@@ -47,11 +52,12 @@ export function StationPlayer() {
         clearInterval(intervalId)
       }
     }
-  }, [isPlaying])
+  }, [isPlaying, songPlaying])
 
   useEffect(() => {
     setProgressValue((currentTime / songDuration) * 100)
   }, [currentTime, songDuration])
+
   const handlePlay = () => {
     if (player) {
       !isPlaying ? player.playVideo() : player.pauseVideo()
@@ -176,17 +182,20 @@ export function StationPlayer() {
     <div className="main-player-section full">
       <div className="player-container flex">
         <YouTube
-          videoId={songPlaying}
+          videoId={songPlaying.songId || stations[0].songs[0]._id}
           opts={opts}
           onReady={handlePlayerReady}
         />
-        <div className="left-controls">
-          {currStation && (
+        {currStation && (
+          <div className="left-controls">
             <div className="station-img">
               <img src={currStation.createdBy.imgUrl} alt="station-img" />
             </div>
-          )}
-        </div>
+            <div className="song-name">
+              <span></span>
+            </div>
+          </div>
+        )}
         <div className="center-controls">
           <div className="top-center-controls">
             <button className="backBtn" onClick={() => onChangeSong(1)}>
