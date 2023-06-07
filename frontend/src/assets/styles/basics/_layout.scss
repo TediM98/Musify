@@ -29,8 +29,10 @@
 }
 
 .station-table {
-  background-color: purple;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, #121212 100%);
+  background-color: $primary-color;
+  background-image: linear-gradient(rgba(0, 0, 2, 0) 0, #121212 100%);
+  grid-column: 1/-1;
+  padding: 14px;
 }
 
 .details-layout-container {
@@ -39,6 +41,7 @@
   background-color: $bgclr2;
   border-radius: 5px;
   padding-top: 0.1em;
+  background: #121212;
 
   > * {
     grid-column: 2;
@@ -69,23 +72,25 @@
   background-color: rgb(200, 56, 181);
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), $bgclr2);
 }
-// body::-webkit-scrollbar {
-//   width: 1em;
-// }
 
-// body::-webkit-scrollbar-track {
-//   background-color: #282828;
-// }
+.layout-conatiner::-webkit-scrollbar {
+  width: 1em;
+}
 
-// body::-webkit-scrollbar-thumb {
-//   background-color: #535353;
-//   border-radius: 1px;
-// }
+.layout-conatinery::-webkit-scrollbar-track {
+  background-color: #282828;
+}
 
-// body::-webkit-scrollbar-thumb:hover {
-//   background-color: #7b7b7b;
-// }
+.layout-conatiner::-webkit-scrollbar-thumb {
+  background-color: #535353;
+  border-radius: 1px;
+  transition: background-color 0.3s;
+}
 
-// body::-webkit-scrollbar-thumb:active {
-//   background-color: #999999;
-// }
+.layout-conatiner::-webkit-scrollbar-thumb:hover {
+  background-color: #7b7b7b;
+}
+
+.layout-conatiner::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}

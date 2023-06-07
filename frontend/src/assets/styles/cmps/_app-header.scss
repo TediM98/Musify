@@ -1,17 +1,59 @@
 .app-header {
   display: grid;
+  height: 64px;
   position: sticky;
+  border-bottom: 0;
   top: 0;
   z-index: 1;
   align-items: center;
-  background-color: rgb(48 1 48);
+  background: linear-gradient($primary-color, $primary-color);
   transition: 1s ease;
+
+  .search-song {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-self: start;
+    line-height: 25.6px;
+
+    & .input-container {
+      position: relative;
+      width: 365px;
+      margin-inline-start: 5px;
+    }
+
+    & input {
+      width: 100%;
+      color: #fff;
+      height: 48px;
+      background-color: #242424;
+      padding: 6px 36px;
+      border-radius: 500px;
+      border: 0;
+    }
+
+    & .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 15px;
+      bottom: 0;
+      fill: $clr3-light;
+      height: rem(16px);
+      width: rem(16px);
+
+      &:hover {
+        fill: $clr1;
+      }
+    }
+  }
 
   &.app-header > div {
     justify-content: space-between;
     align-items: center;
-    padding: 1.5em;
-    // width: calc(100vw - 315px);
+    margin-left: 1.3em;
+    .btn-login-sighnup-wrapper {
+      margin-right: 28px;
+    }
   }
 
   & nav {
@@ -49,6 +91,11 @@
     border-radius: 500px;
     cursor: pointer;
   }
+
+  .btn-container {
+    white-space: nowrap;
+  }
+
   .btn-signup {
     font-family: CircularBlack;
     background-color: transparent;
@@ -62,9 +109,6 @@
     &:hover {
       color: $clr1;
       cursor: pointer;
-    }
-    span {
-      // padding: 1px;
     }
   }
   .btn-login,

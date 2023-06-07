@@ -65,6 +65,7 @@ export async function removeStation(stationId) {
 }
 
 export async function addStation(station) {
+    // if(!station.songs.length) return ---> example  
     try {
         const savedStation = await stationService.save(station)
         console.log('Added Station', savedStation)
@@ -77,18 +78,18 @@ export async function addStation(station) {
 }
 
 
-// export function updateStation(station) {
-//     return stationService.save(station)
-//         .then(savedStation => {
-//             console.log('Updated Station:', savedStation)
-//             store.dispatch(getActionUpdateStation(savedStation))
-//             return savedStation
-//         })
-//         .catch(err => {
-//             console.log('Cannot save station', err)
-//             throw err
-//         })
-// }
+export function updateStation(station) {
+    return stationService.save(station)
+        .then(savedStation => {
+            console.log('Updated Station:', savedStation)
+            store.dispatch(getActionUpdateStation(savedStation))
+            return savedStation
+        })
+        .catch(err => {
+            console.log('Cannot save station', err)
+            throw err
+        })
+}
 
 
 // Demo for Optimistic Mutation

@@ -33,7 +33,7 @@
 }
 
 .dropdown-menu.active {
-  opacity: 1;
+  display: block;
   transform: translateY(0);
   transition: 0.5ms ease;
   background-color: #282828;
@@ -41,7 +41,8 @@
 }
 
 .dropdown-menu.inactive {
-  opacity: 0;
+  // opacity: 0;
+  display: none;
   transform: translateY(100px);
   transition: 0.5ms ease;
 }

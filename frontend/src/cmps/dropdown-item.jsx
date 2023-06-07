@@ -6,6 +6,7 @@ export function DropDownItem({
   onRemoveSong,
   songId,
 }) {
+  console.log('songId', songId)
   return (
     <React.Fragment>
       <li className="dropdown-item clean-list">

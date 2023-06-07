@@ -1,11 +1,25 @@
 import { svgService } from '../services/svg.service.js'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
-import { trackService } from "../services/track.service.js";
-
+import { trackService } from '../services/track.service.js'
 
 export function AppHeader() {
   // const user = useSelector((storeState) => storeState.userModule.user)
+  // const [newSearch, setNewSearch] = useState(null)
+
+  // useEffect(() => {
+  //   const debounce = setTimeout(() => {
+  //     console.log('debounce from search')
+  //   }, 1000)
+  //   return () => {
+  //     clearTimeout(debounce)
+  //   }
+  // }, [newSearch])
+
+  // function handleChange({ target }) {
+  //   const value = target.value || ''
+  //   setNewSearch((prevSearch) => ({ prevSearch, value }))
+  // }
 
   // async function onLogin(credentials) {
   //   try {
@@ -44,9 +58,6 @@ export function AppHeader() {
       )} */
   // )
 
-
-
-
   return (
     <header className="app-header content-layout ">
       <div className="flex ">
@@ -54,7 +65,20 @@ export function AppHeader() {
           <button className="btn-go-back">{svgService.btnGoBackHeader}</button>
           <button className="btn-go-next">{svgService.btnGoNextHeader}</button>
         </nav>
-        <section>
+        {/* <section className="search-song">
+          <div className="input-container">
+            {svgService.searchHomePageIcon}
+            <input
+              value=""
+              onChange="{handleChange}"
+              name="txt"
+              id="txt"
+              type="text"
+              placeholder="What do you want to listen to?"
+            />
+          </div>
+        </section> */}
+        <section className="btn-login-signup-wrapper">
           <button className="btn-signup">
             <span>Sign up</span>
           </button>
