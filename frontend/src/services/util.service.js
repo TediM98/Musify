@@ -9,7 +9,7 @@ export const utilService = {
     loadFromStorage,
     getGreetings,
     handleChange
-    
+
 }
 
 function makeId(length = 6) {
@@ -23,16 +23,16 @@ function makeId(length = 6) {
     return txt
 }
 
-function convertTime(time){
-    // console.log('TIMEEE', time)
-    // console.log(typeof time)
-    if(typeof time !== 'number'){
-      return null
+function convertTime(time) {
+    if (typeof time !== 'number') {
+        return null
     }
     const minutes = Math.floor(time / 60)
     const seconds = Math.floor(time % 60)
+    console.log('minutes', minutes)
+    console.log('seconds', seconds)
     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
-  }
+}
 
 
 function makeLorem(size = 100) {
@@ -98,4 +98,4 @@ function handleChange({ target }) {
     const value = target.type === 'number' ? +target.value || '' : target.value
     console.log('field,value', field, value)
     // onSetFilter({ ...filterBy, [field]: value })
-  }
+}

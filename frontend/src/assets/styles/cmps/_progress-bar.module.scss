@@ -1,14 +1,12 @@
-$progress-value: 0; // Define a CSS variable
+// $progress-value: 0; // Define a CSS variable
 
 .progress-bar-element {
-  
   -webkit-appearance: none;
   border-radius: 2px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   transition: width 0.3s ease;
   width: 33vw;
   height: 4px;
- 
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -22,6 +20,4 @@ $progress-value: 0; // Define a CSS variable
     transform: scale(3);
     background-color: #ffffff;
   }
-
- 
 }
