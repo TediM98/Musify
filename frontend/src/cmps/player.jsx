@@ -98,7 +98,6 @@ export function StationPlayer() {
       controls: 0,
     },
   }
-
   //VOLUME BAR
   const handleVolumeChange = (event) => {
     player.setVolume(event.target.value)
@@ -107,6 +106,17 @@ export function StationPlayer() {
 
   const handleVolumeBarMouseEnter = () => {
     setIsVolumeBarHovered(true)
+  }
+  const getVolumeIcon = () => {
+    if (volumeValue < 0.01) {
+      return svgService.volumeIcon0
+    } else if (volumeValue <= 33) {
+      return svgService.volumeIcon33
+    } else if (volumeValue <= 66) {
+      return svgService.volumeIcon66
+    } else {
+      return svgService.volumeIcon100
+    }
   }
 
   const handleVolumeBarMouseLeave = () => {
@@ -215,10 +225,12 @@ export function StationPlayer() {
             </div>
           </div>
         </div>
+
         <div className="right-controls flex">
           <div className="volume-container">
             <button className="btn-mute" onClick={handleMute}>
-              {!isMuted ? svgService.muteSoundIcon : svgService.mutedSoundIcon}
+              {getVolumeIcon()}
+              {/* <div className="volume-bar-icon" style={{ backgroundImage: getVolumeBarIcon() }}></div> */}
             </button>
             <input
               className="volume-bar-element"
