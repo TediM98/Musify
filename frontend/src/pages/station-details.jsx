@@ -52,7 +52,7 @@ export function StationDetails() {
   }
 
   function changePrimaryClr(varName, newValue) {
-    document.documentElement.style.setProperty(varName, newValue);
+    document.documentElement.style.setProperty(varName, newValue)
   }
 
   async function getBgc() {
@@ -60,7 +60,7 @@ export function StationDetails() {
       const color = await bgcService.getColorFromUrl(
         currStation.createdBy.imgUrl
       )
-      changePrimaryClr('$primary-color', color);
+      changePrimaryClr('$primary-color', color)
       setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
@@ -92,8 +92,9 @@ export function StationDetails() {
     }
   }
 
-  function onChangeSongPlaying(songId) {
+  function onChangeSongPlaying(songId, songIdx) {
     setSongPlaying(songId)
+    // setSongPlaying({ songId: songId, songIdx: songIdx })
     onChangePlayerStatus()
   }
 
@@ -104,10 +105,6 @@ export function StationDetails() {
     } catch (err) {
       console.error('Could not remove station')
     }
-  }
-
-  function openEditEditModal() {
-    setOpenEditModal(true)
   }
 
   if (!currStation) return <div>Loading...</div>
@@ -195,7 +192,6 @@ export function StationDetails() {
             </div>
           </div>
         </section>
-        <div className="back-screen">
         <section className="song-list">
           <div className="song-list-header flex">
             <div></div>
@@ -216,7 +212,7 @@ export function StationDetails() {
                     </div>
                     <div
                       className="handle-song-icon-container"
-                      onClick={() => onChangeSongPlaying(song._id)}
+                      onClick={() => onChangeSongPlaying(song._id, idx)}
                     >
                       {isPlaying
                         ? svgService.playerPauseTrackIcon
@@ -230,9 +226,7 @@ export function StationDetails() {
                       ></img>
                     </div>
                     <div className="song-title">
-                      <span className="song-name" onClick="openEditModal">
-                        {song.title}
-                      </span>
+                      <span className="song-name">{song.title}</span>
                     </div>
                     <div className="song-created-at">
                       {new Date(song.addedAt).toLocaleDateString()}
@@ -249,14 +243,13 @@ export function StationDetails() {
                           {svgService.optionsIcon}
                         </button>
 
-
                         <div className="dropdown-container">
                           <div
                             className={`dropdown-menu ${
                               isOpen === song._id ? 'active' : 'inactive'
                             }`}
                           >
-                            <ul className="clean-list">
+                            <ul className=" clean-list">
                               <DropDownItem
                                 onRemoveSong={onRemoveSong}
                                 songId={song._id}
@@ -273,11 +266,7 @@ export function StationDetails() {
           </ul>
         </section>
       </section>
-      {/*  */}
-      <AddSong
-        stationId={stationId}
-      />
-      {/*  */}
+      <AddSong stationId={stationId} />
     </section>
   )
 }

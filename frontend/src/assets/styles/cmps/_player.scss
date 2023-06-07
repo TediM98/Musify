@@ -10,8 +10,9 @@
   bottom: 0;
   // display: flex;
   // flex-wrap: wrap;
-  align-content: space-between;
+  align-items: center;
   justify-content: space-between;
+  height: 72px;
 }
 
 .top-center-controls {
@@ -19,13 +20,14 @@
   align-content: center;
   align-items: baseline;
   justify-content: center;
+  margin-bottom: 8px;
+  gap: 16px;
 
   .backBtn,
   .fwdBtn,
   .muteBtn {
     background: none;
     border: none;
-    margin: 16px;
     transition: color 0.3s;
 
     &:hover {
@@ -44,9 +46,9 @@
 
     height: 32px;
     width: 32px;
-    border: 1px solid white;
+    border: 1px solid #fff;
     border-radius: 50%;
-    background-color: white;
+    background-color: #fff;
   }
 }
 
@@ -55,11 +57,15 @@
   width: 40vw;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 58px;
 
   .progress-bar {
     width: 100%;
     height: 100%;
     gap: 0.35rem;
+    align-items: center;
+    white-space: nowrap;
   }
 
   .time-stamp {
@@ -69,17 +75,35 @@
   }
 }
 
-//RIGHT ELEMENTS
+.left-controls {
+  .station-img {
+    height: 56px;
+    width: 56px;
+    position: relative;
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
 
-.muteBtn {
-  background: none;
-  // border: 2px solid white;
-  border: none;
-  margin: 16px;
+//RIGHT ELEMENTS
+.volume-container {
+  display: flex;
+  align-items: center;
+}
+
+.btn-mute {
   transition: color 0.3s;
+  background-color: transparent;
+  border: 0;
+  fill: $clr2;
+  cursor: pointer;
 
   &:hover {
-    color: white;
+    fill: #fff;
   }
 }
 

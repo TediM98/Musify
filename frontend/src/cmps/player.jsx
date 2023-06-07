@@ -7,17 +7,24 @@ import {
   setIsPlaying,
   setPlayer,
   setSongDuration,
+  setSongPlaying,
 } from '../store/player.actions'
 import { useSelector } from 'react-redux'
 import { svgService } from '../services/svg.service'
+import { setCurrStation } from '../store/station.actions'
 
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
   const [volumeValue, setVolumeValue] = useState(25)
-  const [isProgressBarHovered, setIsProgressBarHovered] = useState(false);
-  const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false);
-  const songDuration = useSelector((storeState) => storeState.playerModule.songDuration)
-  const currentTime = useSelector((storeState) => storeState.playerModule.currentTime)
+  const [isMuted, setIsMuted] = useState(false)
+  const [isProgressBarHovered, setIsProgressBarHovered] = useState(false)
+  const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false)
+  const songDuration = useSelector(
+    (storeState) => storeState.playerModule.songDuration
+  )
+  const currentTime = useSelector(
+    (storeState) => storeState.playerModule.currentTime
+  )
   const player = useSelector((storeState) => storeState.playerModule.player)
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
@@ -25,14 +32,15 @@ export function StationPlayer() {
   const songPlaying = useSelector(
     (storeState) => storeState.playerModule.songPlaying
   )
+  const currStation = useSelector(
+    (storeState) => storeState.stationModule.currStation
+  )
 
   useEffect(() => {
     if (isPlaying) {
       const updatePlayerInfo = () => {
         setCurrentTime(player.getCurrentTime())
         setSongDuration(player.getDuration())
-        console.log('current time RAW', player.getCurrentTime())
-        console.log('DURATION time RAW', player.getDuration())
       }
       const intervalId = setInterval(updatePlayerInfo, 1000)
       return () => {
@@ -40,6 +48,7 @@ export function StationPlayer() {
       }
     }
   }, [isPlaying])
+
   useEffect(() => {
     setProgressValue((currentTime / songDuration) * 100)
   }, [currentTime, songDuration])
@@ -54,35 +63,33 @@ export function StationPlayer() {
 
   const handleForward = () => {
     if (player) {
-      const newTime = currentTime + 10
+      const newTime = currentTime + 15
       player.seekTo(newTime, true)
       setCurrentTime(newTime)
     }
   }
+
   const handleBackward = () => {
     if (player) {
-      const newTime = currentTime - 10
+      const newTime = currentTime - 15
       player.seekTo(newTime, true)
       setCurrentTime(newTime)
     }
   }
-<<<<<<< HEAD
-  const handleVolumeChange = (event) => {
-    player.setVolume(event.target.value)
-  }
-=======
->>>>>>> 998a2e4347f9846cb27bfd4759b43ac76ca468d3
+
   const handleMute = () => {
     if (player.isMuted()) {
       player.unMute()
     } else {
       player.mute()
     }
+    setIsMuted(!isMuted)
   }
+
   const handlePlayerReady = (event) => {
-    console.log('event', event)
     setPlayer(event.target)
   }
+
   const opts = {
     height: '0',
     width: '0',
@@ -91,25 +98,28 @@ export function StationPlayer() {
       controls: 0,
     },
   }
-//VOLUME BAR
+
+  //VOLUME BAR
   const handleVolumeChange = (event) => {
     player.setVolume(event.target.value)
     setVolumeValue(event.target.value)
   }
 
   const handleVolumeBarMouseEnter = () => {
-    setIsVolumeBarHovered(true);
-  }
-  const handleVolumeBarMouseLeave = () => {
-    setIsVolumeBarHovered(false);
-  }
-  const volumeBarStyle = {
-    background: isVolumeBarHovered
-      ? `linear-gradient(to right, #1db954 0%, #1db954 ${volumeValue}%, #ffffff ${volumeValue}%, #ffffff 100%)`
-      : '#cccccc',
+    setIsVolumeBarHovered(true)
   }
 
-//PROGRESS BAR
+  const handleVolumeBarMouseLeave = () => {
+    setIsVolumeBarHovered(false)
+  }
+
+  let volumeBarStyle = {
+    background: isVolumeBarHovered
+      ? `linear-gradient(to right, #1db954 0%, #1db954 ${volumeValue}%, hsla(0,0%,100%,.3) ${volumeValue}%, hsla(0,0%,100%,.3) 100%)`
+      : `linear-gradient(to right, #fff 0%, #fff ${volumeValue}%, hsla(0,0%,100%,.3) ${volumeValue}%, hsla(0,0%,100%,.3) 100%)`,
+  }
+
+  //PROGRESS BAR
 
   const handleProgressChange = (event) => {
     const targetTime = (event.target.value / 100) * songDuration
@@ -121,14 +131,37 @@ export function StationPlayer() {
   const handleProgressBarMouseEnter = () => {
     setIsProgressBarHovered(true)
   }
+
   const handleProgressBarMouseLeave = () => {
     setIsProgressBarHovered(false)
   }
+
   const progressBarStyle = {
     background: isProgressBarHovered
-      ? `linear-gradient(to right, #1db954 0%, #1db954 ${progressValue}%, #ffffff ${progressValue}%, #ffffff 100%)`
-      : '#cccccc',
+      ? `linear-gradient(to right, #1db954 0%, #1db954 ${progressValue}%, hsla(0,0%,100%,.3) ${progressValue}%, hsla(0,0%,100%,.3) 100%)`
+      : `linear-gradient(to right, #fff 0%, #fff ${progressValue}%, hsla(0,0%,100%,.3) ${progressValue}%, hsla(0,0%,100%,.3) 100%)`,
   }
+
+  // if (!songIdx) return
+  // const nextSong = currStation.songs[songIdx + 1]
+  // const prevSong = currStation.songs[songIdx - 1]
+
+  // const songsToPlay = {
+  //   prevSong: prevSong || currStation.songs[0]._id,
+  //   currSong: songId,
+  //   nextSong: nextSong || currStation.songs[0]._id,
+  // }
+
+  function onChangeSong(reqSong) {
+    console.log('currStation', currStation)
+    setSongPlaying({
+      songId: reqSong
+        ? currStation.songs[songPlaying.songIdx + 1]._id
+        : currStation.songs[songPlaying.songIdx - 1]._id,
+      songIdx: songPlaying.songIdx,
+    })
+  }
+  // {songId: setCurrStation.songs[songPlaying.songIdx + 1]._id , songIdx: songPlaying.songIdx + 1 }
   return (
     <div className="main-player-section full">
       <div className="player-container flex">
@@ -137,10 +170,16 @@ export function StationPlayer() {
           opts={opts}
           onReady={handlePlayerReady}
         />
-        <div className="left-controls">left elements</div>
+        <div className="left-controls">
+          {currStation && (
+            <div className="station-img">
+              <img src={currStation.createdBy.imgUrl} alt="station-img" />
+            </div>
+          )}
+        </div>
         <div className="center-controls">
           <div className="top-center-controls">
-            <button className="backBtn" onClick={handleBackward}>
+            <button className="backBtn" onClick={() => onChangeSong(1)}>
               {svgService.goBackIcon}
             </button>
             <button className="playBtn" onClick={handlePlay}>
@@ -148,7 +187,7 @@ export function StationPlayer() {
                 ? svgService.playerPauseTrackIcon
                 : svgService.playerPlayTrackIcon}
             </button>
-            <button className="fwdBtn" onClick={handleForward}>
+            <button className="fwdBtn" onClick={() => onChangeSong(-1)}>
               {svgService.playerFwdTrackIcon}
             </button>
           </div>
@@ -159,7 +198,7 @@ export function StationPlayer() {
               </div>
               <input
                 className="progress-bar-element"
-                name='progressControl'
+                name="progressControl"
                 type="range"
                 min="0"
                 max="100"
@@ -176,27 +215,24 @@ export function StationPlayer() {
             </div>
           </div>
         </div>
-        <div className="right-controls">
-          <button className="muteBtn" onClick={handleMute}>
-            {svgService.playerMuteIcon}
-          </button>
-          <input
-            className="volume-bar-element"
-            type="range"
-            name="volumeControl"
-            min="0"
-            max="100"
-            value={volumeValue}
-            onMouseEnter={handleVolumeBarMouseEnter}
-            onMouseLeave={handleVolumeBarMouseLeave}
-            onChange={handleVolumeChange}
-<<<<<<< HEAD
-            style={progressBarStyle}
-          />
-=======
-            style={volumeBarStyle} />
->>>>>>> 998a2e4347f9846cb27bfd4759b43ac76ca468d3
-          right elements
+        <div className="right-controls flex">
+          <div className="volume-container">
+            <button className="btn-mute" onClick={handleMute}>
+              {!isMuted ? svgService.muteSoundIcon : svgService.mutedSoundIcon}
+            </button>
+            <input
+              className="volume-bar-element"
+              type="range"
+              name="volumeControl"
+              min="0"
+              max="100"
+              value={volumeValue}
+              onMouseEnter={handleVolumeBarMouseEnter}
+              onMouseLeave={handleVolumeBarMouseLeave}
+              onChange={handleVolumeChange}
+              style={volumeBarStyle}
+            />
+          </div>
         </div>
       </div>
     </div>
