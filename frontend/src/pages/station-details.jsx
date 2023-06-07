@@ -16,9 +16,11 @@ import {
 } from '../store/station.actions'
 import { AppHeader } from '../cmps/app-header'
 import { AddSong } from '../cmps/add-song'
+import { Modal } from '../cmps/edit-modal'; //////////////////////////////modal
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
+  const [isEditModalOpen, setEditModalOpen]= useState(false)
   const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
   const currStation = useSelector(
@@ -41,6 +43,11 @@ export function StationDetails() {
   useEffect(() => {
     if (stationId) loadStation().then(getBgc())
   }, [])
+
+
+  function toggleEditModal() {                    /////////////////////new modal
+    setEditModalOpen(!isEditModalOpen);
+  }
 
   function onRemoveSong(songId) {
     removeSong(songId, currStation)
@@ -106,10 +113,6 @@ export function StationDetails() {
     }
   }
 
-  function openEditEditModal() {
-    setOpenEditModal(true)
-  }
-
   if (!currStation) return <div>Loading...</div>
   return (
     <section className="details-layout-container">
@@ -130,8 +133,14 @@ export function StationDetails() {
               className="img"
               src={currStation.createdBy.imgUrl}
               alt="station-img"
+              onClick={toggleEditModal}
             ></img>
           </div>
+
+          {isEditModalOpen && <Modal closeModal={toggleEditModal} />}  
+
+
+
           <div className="station-content flex">
             <span>Playlist</span>
             <h1>{currStation.name}</h1>
@@ -168,6 +177,7 @@ export function StationDetails() {
                 </span>
               </button>
             </div>
+            
             <button className="like-station-icon">
               {svgService.heartIcon}
             </button>
@@ -195,7 +205,7 @@ export function StationDetails() {
             </div>
           </div>
         </section>
-        <div className="back-screen">
+        <div className="back-screen"></div>
         <section className="song-list">
           <div className="song-list-header flex">
             <div></div>
