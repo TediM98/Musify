@@ -11,16 +11,16 @@ const KEY = 'videosDB'
 const apiKey = 'AIzaSyB7HGhEzWj5biXGaa4zaAeKyGvcjzoiH3g'
 
 
-const debouncedGetVideos = utilService.debounce(getVideos)
+// const debouncedGetVideos = utilService.debounce(getVideos)
 // console.log(debouncedGetVideos('roxy music')) ////debounced getvideos
 //console.log(getVideos('roxy music'))
 
-function getVideos(term) {
+function getVideos(term, amount = 5) {
     const termVideosMap = utilService.loadFromStorage(KEY) || {}
     if (termVideosMap[term]) return Promise.resolve(termVideosMap[term])
 
     console.log('Getting from Network')
-    return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${term}&key=${apiKey}`)
+    return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amount}&q=${term}&key=${apiKey}`)
         .then(res => res.data.items)
         .then(ytVideos => ytVideos.map(ytVideo => ({
             _id: ytVideo.id.videoId,

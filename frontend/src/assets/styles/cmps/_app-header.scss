@@ -1,10 +1,12 @@
 .app-header {
   display: grid;
+  height: 64px;
   position: sticky;
+  border-bottom: 0;
   top: 0;
   z-index: 1;
   align-items: center;
-  background-color: rgb(48 1 48);
+  background: linear-gradient($primary-color, $primary-color);
   transition: 1s ease;
 
   .search-song {
@@ -48,8 +50,10 @@
   &.app-header > div {
     justify-content: space-between;
     align-items: center;
-    padding: 1.5em;
-    // width: calc(100vw - 315px);
+    margin-left: 1.3em;
+    .btn-login-sighnup-wrapper {
+      margin-right: 28px;
+    }
   }
 
   & nav {
