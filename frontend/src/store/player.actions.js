@@ -8,21 +8,21 @@ import {
     SONG_DURATION
 } from './player.reducer.js'
 export function setPlayer(player) {
-    store.dispatch({ type: SET_PLAYER, player: player });
+    store.dispatch({ type: SET_PLAYER, player });
 }
 
 export function setIsPlaying(isPlaying) {
-    store.dispatch({ type: SET_IS_PLAYING, isPlaying: isPlaying });
+    store.dispatch({ type: SET_IS_PLAYING, isPlaying });
 }
 
 export function setSongPlaying(songPlaying) {
-    store.dispatch({ type: SONG_PLAYING, songPlaying: songPlaying })
+    store.dispatch({ type: SONG_PLAYING, songPlaying })
 }
 
 export function setCurrentTime(currentTime) {
-    store.dispatch({ type: CURRENT_TIME, currentTime: currentTime })
+    store.dispatch({ type: CURRENT_TIME, currentTime })
 }
 
 export function setSongDuration(songDuration) {
-    store.dispatch({ type: SONG_DURATION, songDuration: songDuration })
+    store.dispatch({ type: SONG_DURATION, songDuration })
 }

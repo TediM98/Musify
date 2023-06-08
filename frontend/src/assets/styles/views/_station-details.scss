@@ -3,7 +3,7 @@
   padding: 1.5em;
   gap: 25px;
   font-family: CircularBold;
-  background-color: $secondery-color;
+  background-color: var(--primary-color);
   background-image: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%);
 
   & .station-content {
@@ -351,15 +351,15 @@
   display: grid;
   grid-template: 32px 132px 32px auto / 180px 1fr;
   grid-template-areas:
-    "album-image title"
-    "album-image description"
-    ". save-button"
-    "disclaimer disclaimer";
+    'album-image title'
+    'album-image description'
+    '. save-button'
+    'disclaimer disclaimer';
   padding: 0 24px 24px;
 }
 
 .edit-modal-picture {
-  grid-area: album-image title,album-image description;  /* Update the grid area name to "save-button" */
+  grid-area: album-image title, album-image description; /* Update the grid area name to "save-button" */
   height: 180px;
   width: 180px;
   background-color: #323232;
@@ -369,21 +369,21 @@
     
 }
 
-.playlist-name{
-  background: hsla(0,0%,100%,.1);
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: #fff;
-    font-family: inherit;
-    font-size: 14px;
-    height: 40px;
-    padding: 0 12px;
-    width: 100%;
+.playlist-name {
+  background: hsla(0, 0%, 100%, 0.1);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  height: 40px;
+  padding: 0 12px;
+  width: 100%;
 }
 
-.playlist-description{
-  grid-area:description;
-  background: hsla(0,0%,100%,.1);
+.playlist-description {
+  grid-area: description;
+  background: hsla(0, 0%, 100%, 0.1);
   border: 1px solid transparent;
   border-radius: 4px;
   color: #ffffff;

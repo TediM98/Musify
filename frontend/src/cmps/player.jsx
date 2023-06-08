@@ -11,7 +11,7 @@ import {
 } from '../store/player.actions'
 import { useSelector } from 'react-redux'
 import { svgService } from '../services/svg.service'
-import { setCurrStation } from '../store/station.actions'
+import { loadStations, setCurrStation } from '../store/station.actions'
 
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
@@ -35,23 +35,29 @@ export function StationPlayer() {
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
-
+  const stations = useSelector(
+    (storeState) => storeState.stationModule.stations
+  )
   useEffect(() => {
-    if (isPlaying) {
-      const updatePlayerInfo = () => {
-        setCurrentTime(player.getCurrentTime())
-        setSongDuration(player.getDuration())
-      }
-      const intervalId = setInterval(updatePlayerInfo, 1000)
-      return () => {
-        clearInterval(intervalId)
-      }
+    if (!isPlaying) return
+    const updatePlayerInfo = () => {
+      setCurrentTime(player?.getCurrentTime())
+      setSongDuration(player?.getDuration())
+    }
+    const intervalId = setInterval(updatePlayerInfo, 1000)
+    return () => {
+      clearInterval(intervalId)
     }
   }, [isPlaying])
+
+  // useEffect(() => {
+  //   console.log('hello from useEffect player')
+  // }, [songPlaying])
 
   useEffect(() => {
     setProgressValue((currentTime / songDuration) * 100)
   }, [currentTime, songDuration])
+
   const handlePlay = () => {
     if (player) {
       !isPlaying ? player.playVideo() : player.pauseVideo()
@@ -76,7 +82,6 @@ export function StationPlayer() {
       setCurrentTime(newTime)
     }
   }
-
   const handleMute = () => {
     if (player.isMuted()) {
       player.unMute()
@@ -98,6 +103,7 @@ export function StationPlayer() {
       controls: 0,
     },
   }
+
   //VOLUME BAR
   const handleVolumeChange = (event) => {
     player.setVolume(event.target.value)
@@ -107,6 +113,7 @@ export function StationPlayer() {
   const handleVolumeBarMouseEnter = () => {
     setIsVolumeBarHovered(true)
   }
+
   const getVolumeIcon = () => {
     if (volumeValue < 0.01) {
       return svgService.volumeIcon0
@@ -161,9 +168,17 @@ export function StationPlayer() {
   //   currSong: songId,
   //   nextSong: nextSong || currStation.songs[0]._id,
   // }
+  function onChangePlayerStatus({ data }) {
+    // 3
+    console.log('data', data)
+    if (!player) return
+    if (!isPlaying) return
+    if (data === 5) {
+      player.playVideo()
+    }
+  }
 
   function onChangeSong(reqSong) {
-    console.log('currStation', currStation)
     setSongPlaying({
       songId: reqSong
         ? currStation.songs[songPlaying.songIdx + 1]._id
@@ -171,22 +186,32 @@ export function StationPlayer() {
       songIdx: songPlaying.songIdx,
     })
   }
+  console.log('songPlaying from player', songPlaying)
   // {songId: setCurrStation.songs[songPlaying.songIdx + 1]._id , songIdx: songPlaying.songIdx + 1 }
   return (
     <div className="main-player-section full">
       <div className="player-container flex">
         <YouTube
-          videoId={songPlaying}
+          videoId={
+            songPlaying?.songId
+            // ||
+            // currStation?.songs[0]._id || put onclick in details
+            // stations[0]?.songs[0]._id
+          }
           opts={opts}
           onReady={handlePlayerReady}
+          onStateChange={onChangePlayerStatus}
         />
-        <div className="left-controls">
-          {currStation && (
+        {currStation && (
+          <div className="left-controls">
             <div className="station-img">
               <img src={currStation.createdBy.imgUrl} alt="station-img" />
             </div>
-          )}
-        </div>
+            <div className="song-name">
+              <span></span>
+            </div>
+          </div>
+        )}
         <div className="center-controls">
           <div className="top-center-controls">
             <button className="backBtn" onClick={() => onChangeSong(1)}>
@@ -247,6 +272,6 @@ export function StationPlayer() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }

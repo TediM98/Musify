@@ -4,28 +4,23 @@ import { stationService } from '../services/station.service.local'
 import logo from '../assets/img/musify-logo.jpg'
 import play from '../assets/img/play-station.svg'
 import { bgcService } from '../services/bgc.service'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { DropDownItem } from '../cmps/dropdown-item'
 import { svgService } from '../services/svg.service'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions'
-import {
-  removeStation,
-  setCurrStation,
-  removeSong,
-  updateStation,
-} from '../store/station.actions'
-import { AppHeader } from '../cmps/app-header'
+import { removeStation, setCurrStation, removeSong, updateStation, } from '../store/station.actions'
 import { AddSong } from '../cmps/add-song'
-import { Modal } from '../cmps/edit-modal'; //////////////////////////////modal
+import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
-  const [isEditModalOpen, setEditModalOpen]= useState(false)
+  const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
+
 
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
@@ -34,19 +29,19 @@ export function StationDetails() {
     (storeState) => storeState.playerModule.songPlaying
   )
   const player = useSelector((storeState) => storeState.playerModule.player)
-  const stations = useSelector(
-    (storeState) => storeState.stationModule.stations
-  )
+  const stations = useSelector((storeState) => storeState.stationModule.stations)
   const { stationId } = useParams()
   const navigate = useNavigate()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (stationId) loadStation().then(getBgc())
+    if (stationId) loadStation()
+      .then(getBgc())
   }, [])
 
-
-  function toggleEditModal() {                    /////////////////////new modal
-    setEditModalOpen(!isEditModalOpen);
+  function toggleEditModal() {
+    /////////////////////new modal
+    setEditModalOpen(!isEditModalOpen)
   }
 
   function onRemoveSong(songId) {
@@ -57,17 +52,18 @@ export function StationDetails() {
   function toggleModal(buttonName) {
     setIsOpen(buttonName === isOpen ? null : buttonName)
   }
+  let r = document.querySelector(':root')
 
-  function changePrimaryClr(varName, newValue) {
-    document.documentElement.style.setProperty(varName, newValue)
+  function changePrimaryClr(color = 'gray') {
+    r.style.setProperty('--primary-color', color);
   }
 
+  console.log(currStation)
   async function getBgc() {
     try {
       const color = await bgcService.getColorFromUrl(
-        currStation.createdBy.imgUrl
       )
-      changePrimaryClr('$primary-color', color)
+      changePrimaryClr(color)
       setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
@@ -77,7 +73,6 @@ export function StationDetails() {
   async function loadStation() {
     try {
       const station = await stationService.getById(stationId)
-      // setCurrStation(station)
       setCurrStation(station)
       return currStation
     } catch (err) {
@@ -85,24 +80,43 @@ export function StationDetails() {
       navigate('/')
     }
   }
+  function addToStation(track) {
+    const updatedStation = { ...currStation };
+    updatedStation.songs.push(track);
+    dispatch(updateStation(updatedStation));
+  }
 
   function onChangePlayerStatus() {
-    // handlePlay()
-    if (!songPlaying) setSongPlaying(currStation.songs[0]._id)
-    if (player) {
-      if (!isPlaying) {
-        player.playVideo()
-      } else {
-        player.pauseVideo()
-      }
-      setIsPlaying(!isPlaying)
+    // 3
+    // if (!player) return
+    // if (!isPlaying) {
+    //   player.playVideo()
+    // } else {
+    //   player.pauseVideo()
+    // }
+    // setIsPlaying(!isPlaying)
+    if (!songPlaying) onChangeSongPlaying(currStation.songs[0]._id, 0)
+    if (!isPlaying) {
+      player.playVideo()
+      setIsPlaying(true)
+    } else {
+      player.pauseVideo()
+      setIsPlaying(false)
     }
   }
 
-  function onChangeSongPlaying(songId, songIdx) {
-    setSongPlaying(songId)
-    // setSongPlaying({ songId: songId, songIdx: songIdx })
-    onChangePlayerStatus()
+  function onChangeSongPlaying(songId = '', songIdx) {
+    if (songPlaying && songId === songPlaying.songId) {
+      if (isPlaying) {
+        player.pauseVideo()
+      } else {
+        player.playVideo()
+      }
+      setIsPlaying(!isPlaying)
+    } else {
+      setSongPlaying({ songId, songIdx })
+      setIsPlaying(true)
+    }
   }
 
   async function onRemoveStation(stationId) {
@@ -121,12 +135,12 @@ export function StationDetails() {
         onClick={() => {
           setIsOpen(!isOpen)
         }}
+
         className={`options-close ${isOpen ? 'active' : 'inactive'}`}
       ></div>
       <section className="details-container details-layout">
         <div
           className="station-details-container full"
-          style={{ backgroundColor: bgc }}
         >
           <div className="station-img">
             <img
@@ -138,14 +152,12 @@ export function StationDetails() {
             ></img>
           </div>
 
-          {isEditModalOpen && <Modal closeModal={toggleEditModal} />}  
-
-
+          {isEditModalOpen && <Modal closeModal={toggleEditModal} />}
 
           <div className="station-content flex">
             <span>Playlist</span>
             <h1>{currStation.name}</h1>
-            {/* <span className="station-desc">desc........</span> */}
+            <span className="station-desc">desc........</span>
             <div className="song-details-container">
               <div className="app-icon flex">
                 <img src={logo} alt="icon"></img>
@@ -178,7 +190,7 @@ export function StationDetails() {
                 </span>
               </button>
             </div>
-            
+
             <button className="like-station-icon">
               {svgService.heartIcon}
             </button>
@@ -191,9 +203,8 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${
-                    isOpen === stationId ? 'active' : 'inactive'
-                  }`}
+                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
+                    }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -259,9 +270,8 @@ export function StationDetails() {
 
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${
-                              isOpen === song._id ? 'active' : 'inactive'
-                            }`}
+                            className={`dropdown-menu ${isOpen === song._id ? 'active' : 'inactive'
+                              }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem
@@ -278,9 +288,12 @@ export function StationDetails() {
               )
             })}
           </ul>
+          <AddSong
+            station={currStation}
+            onAddSong={addToStation}
+          />
         </section>
       </section>
-      <AddSong stationId={stationId} />
     </section>
   )
 }
