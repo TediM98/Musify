@@ -4,6 +4,7 @@ import { svgService } from '../services/svg.service'
 import { trackService } from "../services/track.service";
 import { setIsPlaying, setSongPlaying } from '../store/player.actions';
 import { useSelector } from 'react-redux';
+import { setCurrStation } from '../store/station.actions';
 
 export function StationSearch() {
   const [newSearch, setNewSearch] = useState('')
@@ -19,8 +20,12 @@ export function StationSearch() {
   const player = useSelector(
     (storeState) => storeState.playerModule.player)
 
+  const currStation = useSelector(
+    (storeState) => storeState.stationModule.currStation
+  )
   useEffect(() => {
-    console.log(searchRes);
+    console.log(searchRes)
+    console.log('currStation',currStation)
   }, [searchRes]);
 
   async function handleChange({ target }) {
@@ -29,14 +34,15 @@ export function StationSearch() {
 
     try {
       const songs = await trackService.getVideos(value)
+      // setCurrStation(songs)
       setSearchRes(songs)
     } catch (error) {
       console.error(error)
     }
   }
 
-  function onPlaySong(songId,songIdx){
-    console.log('songIDDDDDDDDD',songId)
+  function onPlaySong(songId, songIdx) {
+    console.log('songIDDDDDDDDD', songId)
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo()
@@ -49,7 +55,7 @@ export function StationSearch() {
       setIsPlaying(true)
       player.playVideo()
     }
-    console.log('songPlaying',songPlaying)
+    console.log('songPlaying', songPlaying)
   }
 
   //ONCLICK ----> send to store player IS PLAYING
@@ -72,12 +78,12 @@ export function StationSearch() {
       </div>
       <div>
         <ul>
-          {searchRes.map((song,idx) => (
+          {searchRes.map((song, idx) => (
             <div className='search-result-song' key={song._id}>
               <div className='song-index'>
-                {idx+1}
-                </div>
-              <div className='song-img-container' onClick={()=>onPlaySong(song._id,idx)}>
+                {idx + 1}
+              </div>
+              <div className='song-img-container' onClick={() => onPlaySong(song._id, idx)}>
                 <img src={song.img.url} alt="" />
               </div>
               <div className='song-title'>
