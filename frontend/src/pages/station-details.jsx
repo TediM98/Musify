@@ -16,11 +16,11 @@ import {
 } from '../store/station.actions'
 import { AppHeader } from '../cmps/app-header'
 import { AddSong } from '../cmps/add-song'
-import { Modal } from '../cmps/edit-modal'; //////////////////////////////modal
+import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
-  const [isEditModalOpen, setEditModalOpen]= useState(false)
+  const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
   const currStation = useSelector(
@@ -44,9 +44,9 @@ export function StationDetails() {
     if (stationId) loadStation().then(getBgc())
   }, [])
 
-
-  function toggleEditModal() {                    /////////////////////new modal
-    setEditModalOpen(!isEditModalOpen);
+  function toggleEditModal() {
+    /////////////////////new modal
+    setEditModalOpen(!isEditModalOpen)
   }
 
   function onRemoveSong(songId) {
@@ -87,23 +87,36 @@ export function StationDetails() {
   }
 
   function onChangePlayerStatus() {
-    // handlePlay()
-    if (!songPlaying)
-      setSongPlaying(currStation.songs[0]._id, currStation.songs[0])
-    if (player) {
-      if (!isPlaying) {
-        player.playVideo()
-      } else {
-        player.pauseVideo()
-      }
-      setIsPlaying(!isPlaying)
+    // 3
+    // if (!player) return
+    // if (!isPlaying) {
+    //   player.playVideo()
+    // } else {
+    //   player.pauseVideo()
+    // }
+    // setIsPlaying(!isPlaying)
+    if (!songPlaying) onChangeSongPlaying(currStation.songs[0]._id, 0)
+    if (!isPlaying) {
+      player.playVideo()
+      setIsPlaying(true)
+    } else {
+      player.pauseVideo()
+      setIsPlaying(false)
     }
   }
 
-  function onChangeSongPlaying(songId, songIdx) {
-    // setSongPlaying(songId)
-    setSongPlaying({ songId: songId, songIdx: songIdx })
-    onChangePlayerStatus()
+  function onChangeSongPlaying(songId = '', songIdx) {
+    if (songPlaying && songId === songPlaying.songId) {
+      if (isPlaying) {
+        player.pauseVideo()
+      } else {
+        player.playVideo()
+      }
+      setIsPlaying(!isPlaying)
+    } else {
+      setSongPlaying({ songId, songIdx })
+      setIsPlaying(true)
+    }
   }
 
   async function onRemoveStation(stationId) {
@@ -139,9 +152,7 @@ export function StationDetails() {
             ></img>
           </div>
 
-          {isEditModalOpen && <Modal closeModal={toggleEditModal} />}  
-
-
+          {isEditModalOpen && <Modal closeModal={toggleEditModal} />}
 
           <div className="station-content flex">
             <span>Playlist</span>
@@ -179,7 +190,7 @@ export function StationDetails() {
                 </span>
               </button>
             </div>
-            
+
             <button className="like-station-icon">
               {svgService.heartIcon}
             </button>
