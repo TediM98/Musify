@@ -1,0 +1,33 @@
+
+
+.station-search-input{
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    margin-block: 0px;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+   
+    background-color: #242424;
+    color: #fff!important;
+    height: 48px;
+    padding: 6px 36px;
+
+    border: 0;
+    border-radius: 500px;
+    color: #000;
+    height: 40px;
+    padding: 6px 48px;
+    text-overflow: ellipsis;
+    width: 100%;
+
+}
+
+.search-result-song{
+    display: flex;
+    margin-block: 0px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: circularSP;
+    
+}

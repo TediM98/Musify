@@ -168,5 +168,45 @@ export const svgService = {
         className="Svg-sc-ytk21e-0 ldgdZj">
         <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88z " />
         <path d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z" />
-    </svg>)))
+    </svg>))),
+
+    editModalCloseIcon: (<svg xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        fill="#b3b3b3"
+        height="16"
+        width="16"
+        aria-hidden="true"
+        aria-label="Close"
+        viewBox="0 0 16 16"
+        data-encore-id="icon"
+        className="Svg-sc-ytk21e-0 haNxPq">
+        <path d="M1.47 1.47a.75.75 0 0 1 1.06 0L8 6.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L9.06 8l5.47 5.47a.75.75 0 1 1-1.06 1.06L8 9.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L6.94 8 1.47 2.53a.75.75 0 0 1 0-1.06z" />
+    </svg>),
+
+    editModalplaylistIcon: (<svg xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        fill="#b3b3b3"
+        height="48"
+        width="48"
+        aria-hidden="true"
+        data-testid="track"
+        viewBox="0 0 24 24"
+        data-encore-id="icon"
+        className="Svg-sc-ytk21e-0 haNxPq">
+        <path d="M6 3h15v15.167a3.5 3.5 0 1 1-3.5-3.5H19V5H8v13.167a3.5 3.5 0 1 1-3.5-3.5H6V3zm0 13.667H4.5a1.5 1.5 0 1 0 1.5 1.5v-1.5zm13 0h-1.5a1.5 1.5 0 1 0 1.5 1.5v-1.5z" />
+    </svg>),
+
+
+searchMagGlassIcon : (<svg xmlns="http://www.w3.org/2000/svg"
+ role="img" 
+ fill="#b3b3b3"
+ height="16"
+  width="16" 
+  aria-hidden="true" 
+  className="Svg-sc-ytk21e-0 haNxPq CIVozJ8XNPJ60uMN23Yg" 
+  viewBox="0 0 16 16"
+   data-encore-id="icon">
+    <path d="M7 1.75a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5zM.25 7a6.75 6.75 0 1 1 12.096 4.12l3.184 3.185a.75.75 0 1 1-1.06 1.06L11.304 12.2A6.75 6.75 0 0 1 .25 7z"/></svg>)
+
+
 }
