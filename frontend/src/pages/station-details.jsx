@@ -10,7 +10,7 @@ import { svgService } from '../services/svg.service'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions'
 import { removeStation, setCurrStation, removeSong, updateStation, } from '../store/station.actions'
 import { AddSong } from '../cmps/add-song'
-import { Modal } from '../cmps/edit-modal'; //////////////////////////////modal
+import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
@@ -39,9 +39,9 @@ export function StationDetails() {
       .then(getBgc())
   }, [])
 
-
   function toggleEditModal() {
-    setEditModalOpen(!isEditModalOpen);
+    /////////////////////new modal
+    setEditModalOpen(!isEditModalOpen)
   }
 
   function onRemoveSong(songId) {
@@ -87,23 +87,36 @@ export function StationDetails() {
   }
 
   function onChangePlayerStatus() {
-    // handlePlay()
-    if (!songPlaying)
-      setSongPlaying(currStation.songs[0]._id, currStation.songs[0])
-    if (player) {
-      if (!isPlaying) {
-        player.playVideo()
-      } else {
-        player.pauseVideo()
-      }
-      setIsPlaying(!isPlaying)
+    // 3
+    // if (!player) return
+    // if (!isPlaying) {
+    //   player.playVideo()
+    // } else {
+    //   player.pauseVideo()
+    // }
+    // setIsPlaying(!isPlaying)
+    if (!songPlaying) onChangeSongPlaying(currStation.songs[0]._id, 0)
+    if (!isPlaying) {
+      player.playVideo()
+      setIsPlaying(true)
+    } else {
+      player.pauseVideo()
+      setIsPlaying(false)
     }
   }
 
-  function onChangeSongPlaying(songId, songIdx) {
-    // setSongPlaying(songId)
-    setSongPlaying({ songId: songId, songIdx: songIdx })
-    onChangePlayerStatus()
+  function onChangeSongPlaying(songId = '', songIdx) {
+    if (songPlaying && songId === songPlaying.songId) {
+      if (isPlaying) {
+        player.pauseVideo()
+      } else {
+        player.playVideo()
+      }
+      setIsPlaying(!isPlaying)
+    } else {
+      setSongPlaying({ songId, songIdx })
+      setIsPlaying(true)
+    }
   }
 
   async function onRemoveStation(stationId) {
@@ -140,8 +153,6 @@ export function StationDetails() {
           </div>
 
           {isEditModalOpen && <Modal closeModal={toggleEditModal} />}
-
-
 
           <div className="station-content flex">
             <span>Playlist</span>
