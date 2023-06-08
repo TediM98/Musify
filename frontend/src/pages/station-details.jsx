@@ -21,6 +21,7 @@ export function StationDetails() {
     (storeState) => storeState.stationModule.currStation
   )
 
+
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -34,7 +35,8 @@ export function StationDetails() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (stationId) loadStation().then(getBgc())
+    if (stationId) loadStation()
+      .then(getBgc())
   }, [])
 
 
@@ -50,17 +52,18 @@ export function StationDetails() {
   function toggleModal(buttonName) {
     setIsOpen(buttonName === isOpen ? null : buttonName)
   }
+  let r = document.querySelector(':root')
 
-  function changePrimaryClr(varName, newValue) {
-    document.documentElement.style.setProperty(varName, newValue)
+  function changePrimaryClr(color = 'gray') {
+    r.style.setProperty('--primary-color', color);
   }
 
+  console.log(currStation)
   async function getBgc() {
     try {
       const color = await bgcService.getColorFromUrl(
-        currStation.createdBy.imgUrl
       )
-      changePrimaryClr('$primary-color', color)
+      changePrimaryClr(color)
       setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
@@ -125,7 +128,6 @@ export function StationDetails() {
       <section className="details-container details-layout">
         <div
           className="station-details-container full"
-          style={{ backgroundColor: bgc }}
         >
           <div className="station-img">
             <img

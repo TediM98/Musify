@@ -150,7 +150,7 @@ export const svgService = {
         data-encore-id="icon"
         className="Svg-sc-ytk21e-0 ldgdZj">
         <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 6.087a4.502 4.502 0 0 0 0-8.474v1.65a2.999 2.999 0 0 1 0 5.175v1.649z" />
-    </svg>),
+    </svg>), exitIcon: (<svg xmlns="http://www.w3.org/2000/svg" role="img" height="24" width="24" aria-hidden="true" aria-label="Close" viewBox="0 0 24 24" data-encore-id="icon" className="exit-songs-list"><path d="M3.293 3.293a1 1 0 0 1 1.414 0L12 10.586l7.293-7.293a1 1 0 1 1 1.414 1.414L13.414 12l7.293 7.293a1 1 0 0 1-1.414 1.414L12 13.414l-7.293 7.293a1 1 0 0 1-1.414-1.414L10.586 12 3.293 4.707a1 1 0 0 1 0-1.414z" /></svg>),
 
 
 

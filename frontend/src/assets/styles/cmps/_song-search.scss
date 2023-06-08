@@ -27,6 +27,16 @@
     left: 0;
     margin-inline-start: 10px;
   }
+  .close-songs-list {
+    border: none;
+    background-color: transparent;
+    .exit-songs-list {
+      height: 24px;
+      width: 24px;
+      position: inherit;
+      fill: #b9b9b9;
+    }
+  }
   h1 {
     margin-bottom: 1.875rem;
     font-size: 1.5rem;
@@ -40,6 +50,7 @@
   font-family: CircularBlack;
   font-size: 16px;
   grid-column: 2;
+
   .station-search-preview {
     border-radius: 5px;
     height: 56px;

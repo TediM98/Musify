@@ -38,7 +38,6 @@ export function StationPlayer() {
   const stations = useSelector(
     (storeState) => storeState.stationModule.stations
   )
-
   useEffect(() => {
     console.log('songPlaying', songPlaying)
     console.log('stations', stations)

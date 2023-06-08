@@ -56,15 +56,15 @@ export function AddSong({ station, onAddSong }) {
         {svgService.searchHomePageIcon}
       </div>
       <div className='flex align-center'>
-        <button>
-          {/* svg -x btn */}
+        <button className='close-songs-list'>
+          {svgService.exitIcon}
         </button>
       </div>
     </section>
     <div className='station-search-list'>
       <ul className='clean-list'>
         {tracks.map((track, index) => (
-          <li key={track._id || index} className='station-search-preview'>
+          <li key={track._id} className='station-search-preview'>
             <div className='song-img-conatiner'>
               <div className='song-img'>
                 <img src={track.imgUrl} alt={track.title} />
