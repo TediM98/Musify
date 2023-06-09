@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppHeader } from '../cmps/app-header'
 import { svgService } from '../services/svg.service'
 import { trackService } from "../services/track.service";
@@ -9,7 +9,7 @@ import { setCurrStation } from '../store/station.actions';
 export function StationSearch() {
   const [newSearch, setNewSearch] = useState('')
   const [searchRes, setSearchRes] = useState([])
-
+  const [isOpen, setIsOpen] = useState(false)
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -24,6 +24,7 @@ export function StationSearch() {
     (storeState) => storeState.stationModule.currStation
   )
   useEffect(() => {
+    console.log(searchRes)
     console.log('currStation', currStation)
   }, [searchRes]);
 
@@ -41,6 +42,7 @@ export function StationSearch() {
   }
 
   function onPlaySong(songId, songIdx) {
+    // console.log('songIDDDDDDDDD', songId)
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo()
@@ -57,6 +59,11 @@ export function StationSearch() {
   }
 
   //ONCLICK ----> send to store player IS PLAYING
+  function toggleOptions(buttonName) {
+    console.log('modal check', buttonName)
+    setIsOpen(buttonName === isOpen ? null : buttonName)
+  }
+
   //onclick -----> add to playlist
 
 
@@ -75,27 +82,72 @@ export function StationSearch() {
         />
       </div>
       <div>
-        <ul>
+        {(!searchRes.length) && <div>Loading...</div>}
+
+
+        {searchRes && <ul>
           {searchRes.map((song, idx) => (
-            <div className='search-result-song' key={song._id}>
+
+
+            (<div className='search-result-song' key={song._id}>
               <div className='song-index'>
                 {idx + 1}
               </div>
               <div className='song-img-container' onClick={() => onPlaySong(song._id, idx)}>
-                <img src={song.img.url} alt="" />
+                <img src={song.imgUrl} alt="" />
               </div>
               <div className='song-title'>
                 {song.title}
               </div>
-              <div className='song-preview-actions'>
-                {song._id}
+              {/* <div className='song-preview-actions'>
+                  {song._id}
+                </div> */}
+              <div className='options-container'>
+                <button
+                  onClick={toggleOptions}
+                  className="btn-options-close"
+                >
+                  {svgService.optionsIcon}
+                </button>
+                <div className='search-song-options' onClick={() => toggleOptions(song._id)}>
+
+                </div>
+                <div className="dropdown-container">
+                  <div
+                    className={`dropdown-menu ${isOpen ? 'active' : 'inactive'}`} >
+                    <ul className=" clean-list">
+                      <React.Fragment>
+                        <li className="dropdown-item clean-list">
+                          <article>Add to queue</article>
+                        </li>
+                        <li className="dropdown-item clean-list">
+                          {!song.title ? (
+                            <article >
+                              Delete playlist
+                            </article>
+                          ) : (
+                            <article >Delete song</article>
+                          )}
+                        </li>
+                        <li className="dropdown-item clean-list">
+                          <article>Add to playlist</article>
+                        </li>
+                      </React.Fragment>
+                    </ul>
+                  </div>
+                </div>
+                <button onClick={() => onPlaySong(song._id, idx)}>Play song</button>
+                <button>add to playlist</button>
               </div>
 
 
 
-            </div>
+            </div>)
+
+
+
           ))}
-        </ul>
+        </ul>}
       </div>
     </section>
   )
