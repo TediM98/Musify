@@ -24,8 +24,7 @@ export function StationSearch() {
     (storeState) => storeState.stationModule.currStation
   )
   useEffect(() => {
-    console.log(searchRes)
-    console.log('currStation',currStation)
+    console.log('currStation', currStation)
   }, [searchRes]);
 
   async function handleChange({ target }) {
@@ -42,7 +41,6 @@ export function StationSearch() {
   }
 
   function onPlaySong(songId, songIdx) {
-    console.log('songIDDDDDDDDD', songId)
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo()
@@ -55,7 +53,7 @@ export function StationSearch() {
       setIsPlaying(true)
       player.playVideo()
     }
-    console.log('songPlaying', songPlaying)
+    // console.log('songPlaying', songPlaying)
   }
 
   //ONCLICK ----> send to store player IS PLAYING

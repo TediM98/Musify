@@ -2,8 +2,10 @@ import { svgService } from '../services/svg.service.js'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 import { trackService } from '../services/track.service.js'
+import { useNavigate } from 'react-router-dom'
 
 export function AppHeader() {
+  const navigate = useNavigate()
   // const user = useSelector((storeState) => storeState.userModule.user)
   // const [newSearch, setNewSearch] = useState(null)
 
@@ -15,6 +17,14 @@ export function AppHeader() {
   //     clearTimeout(debounce)
   //   }
   // }, [newSearch])
+
+  function goToPreviousPage() {
+    navigate(-1)
+  }
+
+  function goToNextPage() {
+    navigate(1)
+  }
 
   // function handleChange({ target }) {
   //   const value = target.value || ''
@@ -58,26 +68,15 @@ export function AppHeader() {
       )} */
   // )
 
+
+
   return (
     <header className="app-header content-layout ">
       <div className="flex ">
         <nav className="flex ">
-          <button className="btn-go-back">{svgService.btnGoBackHeader}</button>
-          <button className="btn-go-next">{svgService.btnGoNextHeader}</button>
+          <button onClick={goToPreviousPage} className="btn-go-back">{svgService.btnGoBackHeader}</button>
+          <button onClick={goToNextPage} className="btn-go-next">{svgService.btnGoNextHeader}</button>
         </nav>
-        {/* <section className="search-song">
-          <div className="input-container">
-            {svgService.searchHomePageIcon}
-            <input
-              value=""
-              onChange="{handleChange}"
-              name="txt"
-              id="txt"
-              type="text"
-              placeholder="What do you want to listen to?"
-            />
-          </div>
-        </section> */}
         <section className="btn-login-signup-wrapper">
           <button className="btn-signup">
             <span>Sign up</span>

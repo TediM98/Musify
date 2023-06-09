@@ -4,7 +4,7 @@ import { loadStations, setCurrStation } from '../store/station.actions.js'
 
 // For local service
 import { StationList } from '../cmps/station-list.jsx'
-import { StationTalbe } from '../cmps/station-table.jsx'
+import { HighLightsTable } from '../cmps/station-table.jsx'
 import { utilService } from '../services/util.service.js'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions.js'
 import { stationService } from '../services/station.service.local.js'
@@ -27,25 +27,36 @@ export function StationIndex() {
   }, [])
 
   function renderStationsByTag(tag) {
-    return stations.filter(station => station.tags.includes(tag));
+    return stations.filter(station => station.tags.includes(tag))
   }
+
+  function playSong(reqStation) {
+    if (songPlaying && currStation._id !== reqStation._id) {
+      setSongPlaying({ songId: reqStation.songs[0]._id, songIdx: 0 })
+    } else if (!songPlaying) {
+      setSongPlaying({ songId: reqStation.songs[0]._id, songIdx: 0 })
+    }
+
+    if (!isPlaying) {
+      player.playVideo()
+      setIsPlaying(true)
+    } else {
+      player.pauseVideo()
+      setIsPlaying(false)
+    }
+  }
+
 
   async function onPlayStation(currStationId) {
     try {
-      const reqSong = await stationService.getById(currStationId)
-      console.log(reqSong)
-      setCurrStation(currStationId)
-      if (!isPlaying) {
-        player.playVideo()
-        setIsPlaying(true)
-      } else {
-        player.pauseVideo()
-        setIsPlaying(false)
-      }
+      const reqStation = await stationService.getById(currStationId)
+      setCurrStation(reqStation)
+      playSong(reqStation)
     }
     catch (err) {
-      console.err('cannot find currstation', err)
+      console.log('cannot find currstation', err)
     }
+
   }
 
   if (!stations) return <div>Loading...</div>
@@ -53,7 +64,7 @@ export function StationIndex() {
     <section className="main-layout home-page scrollable-container">
       <section className="station-table main-layout">
         <h3>{utilService.getGreetings()}</h3>
-        <StationTalbe stations={stations} onPlayStation={onPlayStation} />
+        <HighLightsTable stations={stations} onPlayStation={onPlayStation} />
         {/* stationHighLights */}
       </section>
       <section className='station-list-container'>
