@@ -17,6 +17,7 @@ export function StationDetails() {
   const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
+  
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
@@ -37,7 +38,25 @@ export function StationDetails() {
   useEffect(() => {
     if (stationId) loadStation()
       .then(getBgc())
-  }, [])
+  }, [isEditModalOpen])
+
+  async function saveModalData(inputValue) {
+
+    toggleEditModal()
+
+    try {
+        console.log('AAAAAAAAAAAAAAAAAAAAAA',currStation)
+        const updatedStation =  { ...currStation, name: inputValue };
+        console.log('ffffffffffff',updatedStation)
+        dispatch(updateStation(updatedStation))
+    }
+    catch (err) {
+        console.log('Error could not edit playlist name')
+    }
+}
+
+
+
 
   function toggleEditModal() {
     /////////////////////new modal
@@ -51,19 +70,19 @@ export function StationDetails() {
 
   function toggleModal(buttonName) {
     setIsOpen(buttonName === isOpen ? null : buttonName)
+    console.log('modal check', buttonName)
   }
-  let r = document.querySelector(':root')
+  // let r = document.querySelector(':root')
 
-  function changePrimaryClr(color = 'gray') {
-    r.style.setProperty('--primary-color', color);
-  }
+  // function changePrimaryClr(color = 'gray') {
+  //   r.style.setProperty('--primary-color', color);
+  // }
 
-  console.log(currStation)
   async function getBgc() {
     try {
       const color = await bgcService.getColorFromUrl(
       )
-      changePrimaryClr(color)
+      // changePrimaryClr(color)
       setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
@@ -81,9 +100,9 @@ export function StationDetails() {
     }
   }
   function addToStation(track) {
-    const updatedStation = { ...currStation };
-    updatedStation.songs.push(track);
-    dispatch(updateStation(updatedStation));
+    const updatedStation = { ...currStation }
+    updatedStation.songs.push(track)
+    dispatch(updateStation(updatedStation))
   }
 
   function onChangePlayerStatus() {
@@ -152,7 +171,7 @@ export function StationDetails() {
             ></img>
           </div>
 
-          {isEditModalOpen && <Modal closeModal={toggleEditModal} />}
+          {isEditModalOpen && <Modal currStation={currStation} saveModalData={saveModalData} closeModal={toggleEditModal} />}
 
           <div className="station-content flex">
             <span>Playlist</span>
