@@ -17,7 +17,7 @@ export function StationIndex() {
   }, [])
 
   function renderStationsByTag(tag) {
-    return stations.filter(station => station.tags.includes(tag));
+    return stations.filter((station) => station.tags.includes(tag))
   }
 
   if (!stations) return <div>Loading...</div>
@@ -27,7 +27,7 @@ export function StationIndex() {
         <h3>{utilService.getGreetings()}</h3>
         <StationTalbe stations={stations} />
       </section>
-      <section className='station-list-container'>
+      <section className="station-list-container">
         <span>Your top mixes</span>
         <StationList stations={renderStationsByTag('Happy')} />
         <span>More like Mac miller</span>
@@ -35,6 +35,6 @@ export function StationIndex() {
         <span>Relaxing</span>
         <StationList stations={renderStationsByTag('Relaxing')} />
       </section>
-    </section >
+    </section>
   )
 }

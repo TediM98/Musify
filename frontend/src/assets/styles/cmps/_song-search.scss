@@ -5,16 +5,19 @@
   justify-content: space-between;
   margin-block-end: 20px;
   grid-column: 1/-1;
+
   &.no-border {
     border-top: none;
   }
   input {
+    line-height: 22.5px;
     background-color: #2b2b2c;
     color: silver;
     font-family: CircularBlack;
     border: 0;
     border-radius: 4px;
-    padding: 0.5rem 2rem;
+    padding: rem(11px) 2rem 0.5rem;
+
     width: 100%;
     height: 40px;
   }

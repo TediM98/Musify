@@ -16,6 +16,7 @@ import { loadStations, setCurrStation } from '../store/station.actions'
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
   const [volumeValue, setVolumeValue] = useState(25)
+  const [isLiked, setIsLiked] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [isRepeat, setIsRepeat] = useState(false)
   const [isShuffle, setIsShuffle] = useState(false)
@@ -40,8 +41,11 @@ export function StationPlayer() {
   const stations = useSelector(
     (storeState) => storeState.stationModule.stations
   )
+
   useEffect(() => {
     if (!isPlaying) return
+    console.log('songPlaying', songPlaying)
+    console.log('currStation', currStation)
     const updatePlayerInfo = () => {
       setCurrentTime(player?.getCurrentTime())
       setSongDuration(player?.getDuration())
@@ -179,9 +183,8 @@ export function StationPlayer() {
       }
       if (isShuffle) {
         const randSongIdx = utilService.getRandomSongIndex(currStation.songs)
-        console.log('randSongIdx', randSongIdx)
         const shuffledSongId = currStation.songs[randSongIdx]._id
-        console.log('shuffledSongId', shuffledSongId)
+        const songName = currStation.songs[randSongIdx].title
         setSongPlaying({ songId: shuffledSongId, songIdx: randSongIdx })
         player.playVideo()
         return
@@ -228,6 +231,13 @@ export function StationPlayer() {
     setIsShuffle(!isShuffle)
   }
 
+  function onLikeSong() {
+    setIsLiked(!isLiked)
+  }
+
+  // function getSongPlaying(songId) {
+  //   return currStation.songs.filter((song) => song._id === songId)
+  // }
   // {songId: setCurrStation.songs[songPlaying.songIdx + 1]._id , songIdx: songPlaying.songIdx + 1 }
   return (
     <div className="main-player-section full">
@@ -248,9 +258,14 @@ export function StationPlayer() {
             <div className="station-img">
               <img src={currStation.createdBy.imgUrl} alt="station-img" />
             </div>
-            <div className="song-name">
-              <span></span>
+            <div className="artist-details">
+              <span className="song-name">
+                {currStation?.songs[songPlaying?.songIdx || 0].title}
+              </span>
             </div>
+            <button onClick={onLikeSong} className="btn-like-song flex">
+              {isLiked ? svgService.heartIcon : svgService.likedSongIcon}
+            </button>
           </div>
         )}
         <div className="center-controls">
@@ -358,6 +373,6 @@ export function StationPlayer() {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }

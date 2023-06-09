@@ -172,7 +172,7 @@
     position: sticky;
     top: 0;
     display: grid;
-    grid-template-columns: 0 40px 40px 2fr 1.5fr 1.72fr;
+    grid-template-columns: 0 40px 40px 2fr 1fr 120px;
     border-bottom: 1px solid $clr3-dark;
     border-radius: 0;
     margin-bottom: 15px;
@@ -194,16 +194,21 @@
 
   & .list-song-date {
     white-space: nowrap;
-    width: 30px;
+    text-align: start;
   }
 
-  & .duration-icon {
-    fill: currentColor;
+  .song-duration {
+    text-align: start;
+
+    & .duration-icon {
+      fill: currentColor;
+    }
   }
 
   & .song-wrapper {
     display: grid;
-    grid-template-columns: 0 40px 40px 2fr 1.5fr 1.72fr;
+    grid-template-columns: 0 40px 40px 2fr 1fr 120px;
+
     font-size: 0.875rem;
     height: 56px;
     align-items: center;
@@ -322,8 +327,7 @@
   z-index: 999;
 }
 
-
-.edit-modal-content{
+.edit-modal-content {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -336,7 +340,7 @@
   height: 389px;
   z-index: 9999;
 }
-.edit-modal-header{
+.edit-modal-header {
   display: flex;
   height: 86px;
   align-content: center;
@@ -363,10 +367,9 @@
   height: 180px;
   width: 180px;
   background-color: #323232;
-    // border: 2px solid white;   //// for debugging purposes
-    color: #fff;
-    border: none;
-    
+  // border: 2px solid white;   //// for debugging purposes
+  color: #fff;
+  border: none;
 }
 
 .playlist-name {
@@ -394,16 +397,15 @@
   resize: none;
   width: 100%;
 }
-.edit-modal-saveBtn-container{
+.edit-modal-saveBtn-container {
   display: flex;
   grid-area: save-button;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  flex-wrap: wrap
-  
+  flex-wrap: wrap;
 }
-.edit-modal-saveBtn{
+.edit-modal-saveBtn {
   display: flex;
   width: 100px;
   height: 48px;
@@ -421,8 +423,7 @@
   align-content: center;
   flex-wrap: wrap;
 
-
-  &:hover{
+  &:hover {
     transform: scale(1.05);
     font-weight: 800;
   }
@@ -444,15 +445,13 @@
 }
 
 .edit-modal-closeBtn:hover {
-
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.edit-modal-disclaimer{
-  
+.edit-modal-disclaimer {
   box-sizing: border-box;
   grid-area: disclaimer;
   margin-block: 0px;
-    font-size: 0.6875rem;
-    font-weight: 700;
+  font-size: 0.6875rem;
+  font-weight: 700;
 }

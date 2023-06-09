@@ -8,19 +8,22 @@ import { useDispatch, useSelector } from 'react-redux'
 import { DropDownItem } from '../cmps/dropdown-item'
 import { svgService } from '../services/svg.service'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions'
-import { removeStation, setCurrStation, removeSong, updateStation, } from '../store/station.actions'
+import {
+  removeStation,
+  setCurrStation,
+  removeSong,
+  updateStation,
+} from '../store/station.actions'
 import { AddSong } from '../cmps/add-song'
 import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
   const [isEditModalOpen, setEditModalOpen] = useState(false)
-  const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
-
 
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
@@ -29,14 +32,16 @@ export function StationDetails() {
     (storeState) => storeState.playerModule.songPlaying
   )
   const player = useSelector((storeState) => storeState.playerModule.player)
-  const stations = useSelector((storeState) => storeState.stationModule.stations)
+  const stations = useSelector(
+    (storeState) => storeState.stationModule.stations
+  )
+  const [isLiked, setIsLiked] = useState(false)
   const { stationId } = useParams()
   const navigate = useNavigate()
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    if (stationId) loadStation()
-      .then(getBgc())
+    if (stationId) loadStation().then(getBgc())
   }, [])
 
   function toggleEditModal() {
@@ -55,16 +60,13 @@ export function StationDetails() {
   let r = document.querySelector(':root')
 
   function changePrimaryClr(color = 'gray') {
-    r.style.setProperty('--primary-color', color);
+    r.style.setProperty('--primary-color', color)
   }
 
-  console.log(currStation)
   async function getBgc() {
     try {
-      const color = await bgcService.getColorFromUrl(
-      )
+      const color = await bgcService.getColorFromUrl()
       changePrimaryClr(color)
-      setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
     }
@@ -81,9 +83,9 @@ export function StationDetails() {
     }
   }
   function addToStation(track) {
-    const updatedStation = { ...currStation };
-    updatedStation.songs.push(track);
-    dispatch(updateStation(updatedStation));
+    const updatedStation = { ...currStation }
+    updatedStation.songs.push(track)
+    dispatch(updateStation(updatedStation))
   }
 
   function onChangePlayerStatus() {
@@ -104,7 +106,6 @@ export function StationDetails() {
       setIsPlaying(false)
     }
   }
-
   function onChangeSongPlaying(songId = '', songIdx) {
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
@@ -135,13 +136,10 @@ export function StationDetails() {
         onClick={() => {
           setIsOpen(!isOpen)
         }}
-
         className={`options-close ${isOpen ? 'active' : 'inactive'}`}
       ></div>
       <section className="details-container details-layout">
-        <div
-          className="station-details-container full"
-        >
+        <div className="station-details-container full">
           <div className="station-img">
             <img
               // crossOrigin="anonymous"
@@ -203,8 +201,9 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
-                    }`}
+                  className={`dropdown-menu ${
+                    isOpen === stationId ? 'active' : 'inactive'
+                  }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -224,7 +223,7 @@ export function StationDetails() {
             <div className="list-song-title">Title</div>
             <div></div>
             <div className="list-song-date">Date Added</div>
-            <small>{svgService.durationIcon}</small>
+            <small className="song-duration">{svgService.durationIcon}</small>
           </div>
           <ul className="clean-list">
             {currStation.songs.map((song, idx) => {
@@ -270,8 +269,9 @@ export function StationDetails() {
 
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${isOpen === song._id ? 'active' : 'inactive'
-                              }`}
+                            className={`dropdown-menu ${
+                              isOpen === song._id ? 'active' : 'inactive'
+                            }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem
@@ -288,10 +288,7 @@ export function StationDetails() {
               )
             })}
           </ul>
-          <AddSong
-            station={currStation}
-            onAddSong={addToStation}
-          />
+          <AddSong station={currStation} onAddSong={addToStation} />
         </section>
       </section>
     </section>

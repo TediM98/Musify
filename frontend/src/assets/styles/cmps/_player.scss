@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: space-between;
   height: 72px;
+  padding: 0 rem(16px);
 }
 
 .top-center-controls {
@@ -60,7 +61,7 @@
 
 .center-controls {
   display: flex;
-  width: 40vw;
+  flex-basis: 40%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -121,21 +122,83 @@
   }
 }
 
+.right-controls {
+  flex-basis: 20%;
+  justify-content: end;
+}
+
 .left-controls {
+  display: flex;
+  align-items: center;
+  flex-basis: 20%;
+  margin-left: -11.8em;
+
   .station-img {
     height: 56px;
     width: 56px;
     position: relative;
+
     img {
       position: absolute;
-      height: 100%;
-      width: 100%;
+      height: 56px;
+      width: 56px;
       object-fit: cover;
+      border-radius: 5px;
+    }
+  }
+
+  .btn-like-song {
+    background: transparent;
+    border: 0;
+    height: 32px;
+    width: 32px;
+    justify-content: center;
+    align-items: center;
+
+    .liked-song-icon {
+      fill: $clr4;
+    }
+
+    .heart-icon {
+      fill: $clr2;
+      height: 16px;
+      width: 16px;
+
+      &:hover {
+        fill: $clr1;
+      }
+    }
+  }
+
+  .artist-details {
+    max-height: 90%;
+    overflow-y: auto;
+    display: flex;
+    max-height: 68px;
+    line-height: 22.5px;
+    margin-inline-end: 10px;
+
+    .song-name {
+      width: 100%;
+      color: $clr1;
+      font-size: 14px;
+      font-family: CircularBook;
+      margin-inline-start: 16px;
+      font-weight: 400;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
   }
 }
 
 //RIGHT ELEMENTS
+.right-container {
+  justify-content: space-between;
+  align-items: center;
+}
 .volume-container {
   display: flex;
   align-items: center;
@@ -158,7 +221,7 @@
   border-radius: 2px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   transition: width 0.3s ease;
-  width: 93px;
+  width: 97%;
   height: 4px;
 
   &::-webkit-slider-thumb {
