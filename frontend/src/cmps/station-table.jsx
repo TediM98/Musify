@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { svgService } from '../services/svg.service'
 
-export function StationTalbe() {
+export function StationTalbe({ onPlayStation }) {
   const stations = useSelector(
     (storeState) => storeState.stationModule.stations
   )
@@ -10,7 +10,7 @@ export function StationTalbe() {
 
   async function getStation(stationId) {
     try {
-      navigate(`/station/${stationId}`)
+      // navigate(`/station/${stationId}`)
     } catch (error) {
       console.error('Error navigating to station:', error)
     }
@@ -26,10 +26,10 @@ export function StationTalbe() {
             onClick={() => getStation(station._id)}
           >
             <h4>{station.name}</h4>
-            <button className='btn-play-playlist'>
-              {svgService.palyerBtnPreview}
-            </button>
           </div>
+          <button onClick={() => onPlayStation(station._id)} className='btn-play-playlist'>
+            {svgService.palyerBtnPreview}
+          </button>
         </div>
       ))}
     </section>

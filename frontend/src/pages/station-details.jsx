@@ -20,8 +20,6 @@ export function StationDetails() {
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
-
-
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -32,11 +30,14 @@ export function StationDetails() {
   const stations = useSelector((storeState) => storeState.stationModule.stations)
   const { stationId } = useParams()
   const navigate = useNavigate()
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  let r = document.querySelector(':root')
+  getBgc()
 
   useEffect(() => {
-    if (stationId) loadStation()
-      .then(getBgc())
+    if (stationId) {
+      loadStation().then(() => getBgc())
+    }
   }, [])
 
   function toggleEditModal() {
@@ -52,19 +53,18 @@ export function StationDetails() {
   function toggleModal(buttonName) {
     setIsOpen(buttonName === isOpen ? null : buttonName)
   }
-  let r = document.querySelector(':root')
 
-  function changePrimaryClr(color = 'gray') {
-    r.style.setProperty('--primary-color', color);
+  function changePrimaryClr(color = 'white') {
+    r.style.setProperty('--primary-color', color)
   }
 
-  console.log(currStation)
   async function getBgc() {
     try {
-      const color = await bgcService.getColorFromUrl(
-      )
+      // const imageUrl = currStation.createdBy.imgUrl
+      const imageUrl = null
+      const color = await bgcService.getColorFromUrl(currStation.createdBy.imgUrl)
       changePrimaryClr(color)
-      setBgc(color)
+      // setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
     }
@@ -80,14 +80,15 @@ export function StationDetails() {
       navigate('/')
     }
   }
+
   function addToStation(track) {
-    const updatedStation = { ...currStation };
-    updatedStation.songs.push(track);
-    dispatch(updateStation(updatedStation));
+    const updatedStation = { ...currStation }
+    updatedStation.songs.push(track)
+    dispatch(updateStation(updatedStation))
   }
 
   function onChangePlayerStatus() {
-    // 3
+    // 
     // if (!player) return
     // if (!isPlaying) {
     //   player.playVideo()
@@ -157,7 +158,7 @@ export function StationDetails() {
           <div className="station-content flex">
             <span>Playlist</span>
             <h1>{currStation.name}</h1>
-            <span className="station-desc">desc........</span>
+            {/* <span className="station-desc">desc........</span> */}
             <div className="song-details-container">
               <div className="app-icon flex">
                 <img src={logo} alt="icon"></img>

@@ -2,7 +2,8 @@
   height: 70vh;
   background-color: #181818;
   padding-top: 6em;
-  font-style: circularBlack;
+  font-family: circularBlack;
+  overflow: auto;
 
   .user-station-preview {
     display: flex;
