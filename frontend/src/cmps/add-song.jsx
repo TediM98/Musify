@@ -32,7 +32,7 @@ export function AddSong({ station, onAddSong }) {
   }
 
   function addToStation(track) {
-    onAddSong(track);
+    onAddSong(track)
   }
 
   const handleInputChange = (event) => {

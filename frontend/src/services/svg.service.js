@@ -54,7 +54,7 @@ export const svgService = {
     >
         <path
             d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z"
-            fill="#b3b3b3"
+
         />
     </svg>),
 
@@ -92,11 +92,10 @@ export const svgService = {
         aria-hidden="true"
         viewBox="0 0 16 16"
         data-encore-id="icon"
-        className="Svg-sc-ytk21e-0 ldgdZj"
+        className="go-fwd-icon ldgdZj"
     >
         <path
             d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z"
-            fill="#b3b3b3"
         />
     </svg>), palyerBtnPreview:
         (<svg xmlns="http://www.w3.org/2000/svg"
@@ -152,9 +151,6 @@ export const svgService = {
         <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 6.087a4.502 4.502 0 0 0 0-8.474v1.65a2.999 2.999 0 0 1 0 5.175v1.649z" />
     </svg>), exitIcon: (<svg xmlns="http://www.w3.org/2000/svg" role="img" height="24" width="24" aria-hidden="true" aria-label="Close" viewBox="0 0 24 24" data-encore-id="icon" className="exit-songs-list"><path d="M3.293 3.293a1 1 0 0 1 1.414 0L12 10.586l7.293-7.293a1 1 0 1 1 1.414 1.414L13.414 12l7.293 7.293a1 1 0 0 1-1.414 1.414L12 13.414l-7.293 7.293a1 1 0 0 1-1.414-1.414L10.586 12 3.293 4.707a1 1 0 0 1 0-1.414z" /></svg>),
 
-
-
-
     volumeIcon100: (((<svg xmlns="http://www.w3.org/2000/svg"
         role="presentation"
         height="16"
@@ -170,43 +166,8 @@ export const svgService = {
         <path d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z" />
     </svg>))),
 
-    editModalCloseIcon: (<svg xmlns="http://www.w3.org/2000/svg"
-        role="img"
-        fill="#b3b3b3"
-        height="16"
-        width="16"
-        aria-hidden="true"
-        aria-label="Close"
-        viewBox="0 0 16 16"
-        data-encore-id="icon"
-        className="Svg-sc-ytk21e-0 haNxPq">
-        <path d="M1.47 1.47a.75.75 0 0 1 1.06 0L8 6.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L9.06 8l5.47 5.47a.75.75 0 1 1-1.06 1.06L8 9.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L6.94 8 1.47 2.53a.75.75 0 0 1 0-1.06z" />
-    </svg>),
-
-    editModalplaylistIcon: (<svg xmlns="http://www.w3.org/2000/svg"
-        role="img"
-        fill="#b3b3b3"
-        height="48"
-        width="48"
-        aria-hidden="true"
-        data-testid="track"
-        viewBox="0 0 24 24"
-        data-encore-id="icon"
-        className="Svg-sc-ytk21e-0 haNxPq">
-        <path d="M6 3h15v15.167a3.5 3.5 0 1 1-3.5-3.5H19V5H8v13.167a3.5 3.5 0 1 1-3.5-3.5H6V3zm0 13.667H4.5a1.5 1.5 0 1 0 1.5 1.5v-1.5zm13 0h-1.5a1.5 1.5 0 1 0 1.5 1.5v-1.5z" />
-    </svg>),
-
-
-searchMagGlassIcon : (<svg xmlns="http://www.w3.org/2000/svg"
- role="img" 
- fill="#b3b3b3"
- height="16"
-  width="16" 
-  aria-hidden="true" 
-  className="Svg-sc-ytk21e-0 haNxPq CIVozJ8XNPJ60uMN23Yg" 
-  viewBox="0 0 16 16"
-   data-encore-id="icon">
-    <path d="M7 1.75a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5zM.25 7a6.75 6.75 0 1 1 12.096 4.12l3.184 3.185a.75.75 0 1 1-1.06 1.06L11.304 12.2A6.75 6.75 0 0 1 .25 7z"/></svg>)
-
-
+    mutedIcon: (<svg xmlns="http://www.w3.org/2000/svg" role="presentation" height="16" width="16" aria-hidden="true" fill="white" aria-label="Volume off" id="volume-icon" viewBox="0 0 16 16" data-encore-id="icon" className="muted-icon haNxPq"><path d="M13.86 5.47a.75.75 0 0 0-1.061 0l-1.47 1.47-1.47-1.47A.75.75 0 0 0 8.8 6.53L10.269 8l-1.47 1.47a.75.75 0 1 0 1.06 1.06l1.47-1.47 1.47 1.47a.75.75 0 0 0 1.06-1.06L12.39 8l1.47-1.47a.75.75 0 0 0 0-1.06z" /><path d="M10.116 1.5A.75.75 0 0 0 8.991.85l-6.925 4a3.642 3.642 0 0 0-1.33 4.967 3.639 3.639 0 0 0 1.33 1.332l6.925 4a.75.75 0 0 0 1.125-.649v-1.906a4.73 4.73 0 0 1-1.5-.694v1.3L2.817 9.852a2.141 2.141 0 0 1-.781-2.92c.187-.324.456-.594.78-.782l5.8-3.35v1.3c.45-.313.956-.55 1.5-.694V1.5z" /></svg>),
+    repeatOnIcon: (<svg xmlns="http://www.w3.org/2000/svg" role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" className={`repeat-on-icon ${`isRepeat` ? 'active' : 'inatctive'} uPxdw loop-song`}><path d="M0 4.75A3.75 3.75 0 013.75 1h.75v1.5h-.75A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5zM12.25 2.5h-.75V1h.75A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25z" /><path d="M9.12 8V1H7.787c-.128.72-.76 1.293-1.787 1.313V3.36h1.57V8h1.55z" /></svg>),
+    repeatOffIcon: (<svg xmlns="http://www.w3.org/2000/svg" role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" className="repeat-off-icon uPxdw loop-song"><path d="M0 4.75A3.75 3.75 0 013.75 1h8.5A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25h-8.5A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5z" /></svg>),
+    shuffleSongIcon: (<svg xmlns="http://www.w3.org/2000/svg" role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16" className="shuffle-song uPxdw"><path d="M13.151.922a.75.75 0 10-1.06 1.06L13.109 3H11.16a3.75 3.75 0 00-2.873 1.34l-6.173 7.356A2.25 2.25 0 01.39 12.5H0V14h.391a3.75 3.75 0 002.873-1.34l6.173-7.356a2.25 2.25 0 011.724-.804h1.947l-1.017 1.018a.75.75 0 001.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 00.39 3.5z" /><path d="M7.5 10.723l.98-1.167.957 1.14a2.25 2.25 0 001.724.804h1.947l-1.017-1.018a.75.75 0 111.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 11-1.06-1.06L13.109 13H11.16a3.75 3.75 0 01-2.873-1.34l-.787-.938z" /></svg>)
 }

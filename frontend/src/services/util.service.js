@@ -8,7 +8,8 @@ export const utilService = {
     saveToStorage,
     loadFromStorage,
     getGreetings,
-    handleChange
+    handleChange,
+    getRandomSongIndex
 
 }
 
@@ -96,4 +97,10 @@ function handleChange({ target }) {
     const value = target.type === 'number' ? +target.value || '' : target.value
     console.log('field,value', field, value)
     // onSetFilter({ ...filterBy, [field]: value })
+}
+
+function getRandomSongIndex(songArray) {
+    const minIndex = 0;
+    const maxIndex = songArray.length - 1;
+    return Math.floor(Math.random() * (maxIndex - minIndex + 1)) + minIndex;
 }

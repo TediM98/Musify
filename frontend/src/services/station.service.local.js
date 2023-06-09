@@ -4,10 +4,8 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import emptyStationImg from '../assets/img/empty-station-img.jpg';
 
-
 const STORAGE_KEY = 'station'
 let playlistNumber = 1;
-
 
 export const stationService = {
     query,
@@ -15,11 +13,10 @@ export const stationService = {
     save,
     remove,
     getEmptyStation,
-    removeSong
+    removeSong,
     // addStationMsg
 }
 window.cs = stationService
-
 
 async function query(filterBy = { txt: '', }) {
     var stations = await storageService.query(STORAGE_KEY)

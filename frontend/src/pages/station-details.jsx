@@ -21,8 +21,6 @@ export function StationDetails() {
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
-
-
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -33,12 +31,15 @@ export function StationDetails() {
   const stations = useSelector((storeState) => storeState.stationModule.stations)
   const { stationId } = useParams()
   const navigate = useNavigate()
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  let r = document.querySelector(':root')
+  getBgc()
 
   useEffect(() => {
-    if (stationId) loadStation()
-      .then(getBgc())
-  }, [isEditModalOpen])
+    if (stationId) {
+      loadStation().then(() => getBgc())
+    }
+  }, [])
 
   async function saveModalData(inputValue) {
 
@@ -99,14 +100,18 @@ export function StationDetails() {
       navigate('/')
     }
   }
+
   function addToStation(track) {
+    const updatedStation = { ...currStation }
+    updatedStation.songs.push(track)
+    dispatch(updateStation(updatedStation))
     const updatedStation = { ...currStation }
     updatedStation.songs.push(track)
     dispatch(updateStation(updatedStation))
   }
 
   function onChangePlayerStatus() {
-    // 3
+    // 
     // if (!player) return
     // if (!isPlaying) {
     //   player.playVideo()
@@ -176,7 +181,7 @@ export function StationDetails() {
           <div className="station-content flex">
             <span>Playlist</span>
             <h1>{currStation.name}</h1>
-            <span className="station-desc">desc........</span>
+            {/* <span className="station-desc">desc........</span> */}
             <div className="song-details-container">
               <div className="app-icon flex">
                 <img src={logo} alt="icon"></img>
