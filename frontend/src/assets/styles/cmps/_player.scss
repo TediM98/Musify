@@ -30,9 +30,15 @@
     border: none;
     transition: color 0.3s;
 
-    &:hover {
-      color: white;
-    }
+    // .go-fwd-icon,
+    // .go-back-icon,
+    // .repeat-off-icon {
+    //   fill: $clr2;
+
+    //   &:hover {
+    //     fill: $clr-1;
+    //   }
+    // }
   }
 
   .playBtn {
@@ -59,6 +65,46 @@
   align-items: center;
   justify-content: center;
   height: 58px;
+
+  button {
+    border: 0;
+    background-color: transparent;
+
+    .repeat-on-icon {
+      fill: $clr2;
+    }
+
+    .repeat-off-icon,
+    .shuffle-song,
+    .go-fwd-icon,
+    .go-back-icon,
+    .repeat-off-icon {
+      fill: $clr2;
+
+      &:hover {
+        fill: $clr-1;
+      }
+    }
+
+    // .repeat-on-icon:hover,
+    // .repeat-off-icon:hover,
+    // .go-fwd-icon:hover,
+    // .go-back-icon:hover,
+    // .repeat-off-icon:hover,
+    // .shuffle-song:hover {
+
+    .repeat-on-icon.active,
+    .shuffle-song.active,
+    .repeat-off-icon.active {
+      fill: #1db954;
+    }
+
+    .repeat-on-icon.active:hover,
+    .shuffle-song.active:hover,
+    .repeat-off-icon.active:hover {
+      fill: #1ed760;
+    }
+  }
 
   .progress-bar {
     width: 100%;
@@ -102,7 +148,7 @@
   fill: $clr2;
   cursor: pointer;
 
-  &:hover {
+  & :hover {
     fill: #fff;
   }
 }

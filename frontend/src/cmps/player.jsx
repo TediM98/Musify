@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, cloneElement } from 'react'
 import YouTube from 'react-youtube'
 import { utilService } from '../services/util.service'
 import { trackService } from '../services/track.service'
@@ -17,6 +17,8 @@ export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
   const [volumeValue, setVolumeValue] = useState(25)
   const [isMuted, setIsMuted] = useState(false)
+  const [isRepeat, setIsRepeat] = useState(false)
+  const [isShuffle, setIsShuffle] = useState(false)
   const [isProgressBarHovered, setIsProgressBarHovered] = useState(false)
   const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false)
   const songDuration = useSelector(
@@ -49,10 +51,6 @@ export function StationPlayer() {
       clearInterval(intervalId)
     }
   }, [isPlaying])
-
-  // useEffect(() => {
-  //   console.log('hello from useEffect player')
-  // }, [songPlaying])
 
   useEffect(() => {
     setProgressValue((currentTime / songDuration) * 100)
@@ -159,34 +157,77 @@ export function StationPlayer() {
       : `linear-gradient(to right, #fff 0%, #fff ${progressValue}%, hsla(0,0%,100%,.3) ${progressValue}%, hsla(0,0%,100%,.3) 100%)`,
   }
 
-  // if (!songIdx) return
-  // const nextSong = currStation.songs[songIdx + 1]
-  // const prevSong = currStation.songs[songIdx - 1]
+  function onRepeatClick() {
+    console.log('isRepeat before', isRepeat)
+    setIsRepeat(!isRepeat)
+    console.log('isRepeat after', isRepeat)
+  }
 
-  // const songsToPlay = {
-  //   prevSong: prevSong || currStation.songs[0]._id,
-  //   currSong: songId,
-  //   nextSong: nextSong || currStation.songs[0]._id,
-  // }
   function onChangePlayerStatus({ data }) {
     // 3
-    console.log('data', data)
+    // console.log('isRepeat from stATUS', isRepeat)
+    // console.log('data', data)
     if (!player) return
     if (!isPlaying) return
     if (data === 5) {
       player.playVideo()
     }
+    if (data === 0) {
+      if (isRepeat) {
+        player.playVideo()
+        return
+      }
+      if (isShuffle) {
+        const randSongIdx = utilService.getRandomSongIndex(currStation.songs)
+        console.log('randSongIdx', randSongIdx)
+        const shuffledSongId = currStation.songs[randSongIdx]._id
+        console.log('shuffledSongId', shuffledSongId)
+        setSongPlaying({ songId: shuffledSongId, songIdx: randSongIdx })
+        player.playVideo()
+        return
+      }
+      const nextSong =
+        songPlaying.songIdx + 1 <= currStation.songs.length
+          ? {
+              songId: currStation.songs[songPlaying.songIdx + 1]?._id,
+              songIdx: songPlaying.songIdx + 1,
+            }
+          : null
+      setSongPlaying(nextSong)
+      player.playVideo()
+    }
   }
 
-  function onChangeSong(reqSong) {
-    setSongPlaying({
-      songId: reqSong
-        ? currStation.songs[songPlaying.songIdx + 1]._id
-        : currStation.songs[songPlaying.songIdx - 1]._id,
-      songIdx: songPlaying.songIdx,
-    })
+  function onChangeSong(isNext) {
+    if (isNext) {
+      const nextSong =
+        songPlaying.songIdx + 1 < currStation.songs.length
+          ? {
+              songId: currStation.songs[songPlaying.songIdx + 1]?._id,
+              songIdx: songPlaying.songIdx + 1,
+            }
+          : {
+              songId: currStation.songs[0]?._id,
+              songIdx: 0,
+            }
+      setSongPlaying(nextSong)
+      player.playVideo()
+    } else {
+      if (songPlaying.songIdx - 1 < 0) return
+      const prevSong = {
+        songId: currStation.songs[songPlaying.songIdx - 1]?._id,
+        songIdx: songPlaying.songIdx - 1,
+      }
+      setSongPlaying(prevSong)
+      console.log('songPlaying from else', songPlaying)
+      player.playVideo()
+    }
   }
-  console.log('songPlaying from player', songPlaying)
+
+  function onShuffle() {
+    setIsShuffle(!isShuffle)
+  }
+
   // {songId: setCurrStation.songs[songPlaying.songIdx + 1]._id , songIdx: songPlaying.songIdx + 1 }
   return (
     <div className="main-player-section full">
@@ -214,7 +255,21 @@ export function StationPlayer() {
         )}
         <div className="center-controls">
           <div className="top-center-controls">
-            <button className="backBtn" onClick={() => onChangeSong(1)}>
+            <button onClick={onShuffle} className="shuffle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                height="16"
+                width="16"
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                className={`shuffle-song ${isShuffle ? 'active' : 'inactive'}`}
+              >
+                <path d="M13.151.922a.75.75 0 10-1.06 1.06L13.109 3H11.16a3.75 3.75 0 00-2.873 1.34l-6.173 7.356A2.25 2.25 0 01.39 12.5H0V14h.391a3.75 3.75 0 002.873-1.34l6.173-7.356a2.25 2.25 0 011.724-.804h1.947l-1.017 1.018a.75.75 0 001.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 00.39 3.5z" />
+                <path d="M7.5 10.723l.98-1.167.957 1.14a2.25 2.25 0 001.724.804h1.947l-1.017-1.018a.75.75 0 111.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 11-1.06-1.06L13.109 13H11.16a3.75 3.75 0 01-2.873-1.34l-.787-.938z" />
+              </svg>
+            </button>
+            <button className="backBtn" onClick={() => onChangeSong(false)}>
               {svgService.goBackIcon}
             </button>
             <button className="playBtn" onClick={handlePlay}>
@@ -222,8 +277,38 @@ export function StationPlayer() {
                 ? svgService.playerPauseTrackIcon
                 : svgService.playerPlayTrackIcon}
             </button>
-            <button className="fwdBtn" onClick={() => onChangeSong(-1)}>
+            <button className="fwdBtn" onClick={() => onChangeSong(true)}>
               {svgService.playerFwdTrackIcon}
+            </button>
+            <button onClick={onRepeatClick}>
+              {isRepeat ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  height="16"
+                  width="16"
+                  aria-hidden="true"
+                  viewBox="0 0 16 16"
+                  className={`repeat-on-icon ${
+                    isRepeat ? 'active' : 'inatctive'
+                  } uPxdw loop-song`}
+                >
+                  <path d="M0 4.75A3.75 3.75 0 013.75 1h.75v1.5h-.75A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5zM12.25 2.5h-.75V1h.75A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25z" />
+                  <path d="M9.12 8V1H7.787c-.128.72-.76 1.293-1.787 1.313V3.36h1.57V8h1.55z" />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  height="16"
+                  width="16"
+                  aria-hidden="true"
+                  viewBox="0 0 16 16"
+                  className="repeat-off-icon uPxdw loop-song"
+                >
+                  <path d="M0 4.75A3.75 3.75 0 013.75 1h8.5A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25h-8.5A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5z" />
+                </svg>
+              )}
             </button>
           </div>
           <div className="bottom-center-controls flex">
@@ -254,9 +339,10 @@ export function StationPlayer() {
         <div className="right-controls flex">
           <div className="volume-container">
             <button className="btn-mute" onClick={handleMute}>
-              {getVolumeIcon()}
-              {/* <div className="volume-bar-icon" style={{ backgroundImage: getVolumeBarIcon() }}></div> */}
+              {!isMuted ? getVolumeIcon() : svgService.mutedIcon}
             </button>
+
+            {/* <div className="volume-bar-icon" style={{ backgroundImage: getVolumeBarIcon() }}></div> */}
             <input
               className="volume-bar-element"
               type="range"

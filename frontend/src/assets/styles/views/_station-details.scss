@@ -322,24 +322,28 @@
   z-index: 999;
 }
 
-.edit-modal-content {
+
+.edit-modal-content{
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
-  border-radius: 10px;
+  border-radius: 8px;
   transform: translate(-50%, -50%);
   background-color: #282828;
-  padding: 20px;
   width: 524px;
   height: 389px;
   z-index: 9999;
 }
-.edit-modal-header {
+.edit-modal-header{
   display: flex;
-  align-content: center;
-  flex-wrap: wrap;
-  font-size: 1.5rem;
   height: 86px;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 24px;
 }
 
 .edit-modal-body {
@@ -358,6 +362,11 @@
   grid-area: album-image title, album-image description; /* Update the grid area name to "save-button" */
   height: 180px;
   width: 180px;
+  background-color: #323232;
+    // border: 2px solid white;   //// for debugging purposes
+    color: #fff;
+    border: none;
+    
 }
 
 .playlist-name {
@@ -377,11 +386,73 @@
   background: hsla(0, 0%, 100%, 0.1);
   border: 1px solid transparent;
   border-radius: 4px;
-  color: #fff;
+  color: #ffffff;
   font-family: inherit;
   font-size: 14px;
   height: 100%;
   padding: 8px 8px 28px;
   resize: none;
   width: 100%;
+}
+.edit-modal-saveBtn-container{
+  display: flex;
+  grid-area: save-button;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap
+  
+}
+.edit-modal-saveBtn{
+  display: flex;
+  width: 100px;
+  height: 48px;
+  background-color: #b7b7b7;
+  border-radius: 32px;
+  vertical-align: baseline;
+  margin-top: -8px;
+  margin-inline-end: -8px;
+  font-weight: 700;
+  text-align: center;
+  font-family: CircularBlack;
+  cursor: pointer;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+
+
+  &:hover{
+    transform: scale(1.05);
+    font-weight: 800;
+  }
+}
+
+.edit-modal-closeBtn {
+  display: flex;
+  justify-items: center;
+  background: none;
+  border: none;
+  transition: color 0.3s;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.edit-modal-closeBtn:hover {
+
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.edit-modal-disclaimer{
+  
+  box-sizing: border-box;
+  grid-area: disclaimer;
+  margin-block: 0px;
+    font-size: 0.6875rem;
+    font-weight: 700;
 }
