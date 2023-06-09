@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom"
 import { svgService } from "../services/svg.service"
+import { useSelector } from "react-redux"
 
 export function SideNavLibrary({ onAddStation }) {
+
 
   return (
     <section className="app-nav library">
@@ -13,7 +15,6 @@ export function SideNavLibrary({ onAddStation }) {
         <button title="Add station" onClick={onAddStation} className="add-station-btn">
           {svgService.addSationBtn}
         </button>
-
       </li>
     </section >
   )

@@ -40,7 +40,6 @@ export function StationPlayer() {
   const stations = useSelector(
     (storeState) => storeState.stationModule.stations
   )
-
   useEffect(() => {
     if (!isPlaying) return
     const updatePlayerInfo = () => {
@@ -81,7 +80,6 @@ export function StationPlayer() {
       setCurrentTime(newTime)
     }
   }
-
   const handleMute = () => {
     if (player.isMuted()) {
       player.unMute()
@@ -360,6 +358,6 @@ export function StationPlayer() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }

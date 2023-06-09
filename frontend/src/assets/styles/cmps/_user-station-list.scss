@@ -1,0 +1,47 @@
+.user-station {
+  height: 70vh;
+  background-color: #181818;
+  padding-top: 6em;
+  font-style: circularBlack;
+
+  .user-station-preview {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 5px 10px 12px 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .user-station-preview:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .user-station-preview img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .user-station-preview .station-info {
+    flex-grow: 1;
+    margin-left: 12px;
+    font-style: circularBlack;
+  }
+
+  .user-station-preview .station-info h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .user-station-preview .station-info span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .user-station-preview .playlist-actions {
+    /* Add styles for playlist actions here */
+  }
+}
