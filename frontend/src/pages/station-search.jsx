@@ -102,40 +102,40 @@ export function StationSearch() {
               {/* <div className='song-preview-actions'>
                   {song._id}
                 </div> */}
-                <div className='options-container'>
+              <div className='options-container'>
                 <button
-                onClick={toggleOptions}
-                className="btn-options-close"
-              >
-                {svgService.optionsIcon}
-              </button>
-              <div className='search-song-options' onClick={() =>toggleOptions(song._id)}>
+                  onClick={toggleOptions}
+                  className="btn-options-close"
+                >
+                  {svgService.optionsIcon}
+                </button>
+                <div className='search-song-options' onClick={() => toggleOptions(song._id)}>
 
                 </div>
-              <div className="dropdown-container">
-                <div
-                  className={`dropdown-menu ${isOpen  ? 'active' : 'inactive' }`} >
-                  <ul className=" clean-list">
-                  <React.Fragment>
-                  <li className="dropdown-item clean-list">
-                    <article>Add to queue</article>
-                  </li>
-                  <li className="dropdown-item clean-list">
-                    {!song.title ? (
-                      <article >
-                        Delete playlist
-                      </article>
-                    ) : (
-                      <article >Delete song</article>
-                    )}
-                  </li>
-                  <li className="dropdown-item clean-list">
-                    <article>Add to playlist</article>
-                  </li>
-                </React.Fragment>
-                  </ul>
+                <div className="dropdown-container">
+                  <div
+                    className={`dropdown-menu ${isOpen ? 'active' : 'inactive'}`} >
+                    <ul className=" clean-list">
+                      <React.Fragment>
+                        <li className="dropdown-item clean-list">
+                          <article>Add to queue</article>
+                        </li>
+                        <li className="dropdown-item clean-list">
+                          {!song.title ? (
+                            <article >
+                              Delete playlist
+                            </article>
+                          ) : (
+                            <article >Delete song</article>
+                          )}
+                        </li>
+                        <li className="dropdown-item clean-list">
+                          <article>Add to playlist</article>
+                        </li>
+                      </React.Fragment>
+                    </ul>
+                  </div>
                 </div>
-              </div>
                 <button onClick={() => onPlaySong(song._id, idx)}>Play song</button>
                 <button>add to playlist</button>
               </div>

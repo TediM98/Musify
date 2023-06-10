@@ -73,10 +73,17 @@ export function StationDetails() {
     console.log('modal check', buttonName)
   }
 
+  function changePrimaryClr(color = 'gray') {
+    let r = document.querySelector(':root')
+    r.style.setProperty('--primary-color', color)
+  }
+
   async function getBgc() {
     try {
-      const color = await bgcService.getColorFromUrl()
-      // changePrimaryClr(color)
+      const color = await bgcService.getColorFromUrl(
+        currStation.createdBy.imgUrl
+      )
+      changePrimaryClr(color)
       setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
