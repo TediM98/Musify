@@ -57,20 +57,7 @@ async function save(station) {
     return savedStation
 }
 
-async function addStationMsg(stationId, txt) {
-    const station = await getById(stationId)
-    if (!station.msgs) station.msgs = []
 
-    const msg = {
-        _id: utilService.makeId(),
-        by: userService.getLoggedinUser(),
-        txt
-    }
-    station.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, station)
-
-    return msg
-}
 
 function getEmptyStation() {
     return {
