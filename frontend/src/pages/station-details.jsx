@@ -105,9 +105,7 @@ export function StationDetails() {
     const updatedStation = { ...currStation }
     updatedStation.songs.push(track)
     dispatch(updateStation(updatedStation))
-    const updatedStation = { ...currStation }
-    updatedStation.songs.push(track)
-    dispatch(updateStation(updatedStation))
+   
   }
 
   function onChangePlayerStatus() {
