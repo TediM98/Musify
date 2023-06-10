@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { stationService } from '../services/station.service.local'
+import { stationService } from '../services/station.service'
 import logo from '../assets/img/musify-logo.jpg'
 import play from '../assets/img/play-station.svg'
 import { bgcService } from '../services/bgc.service'
@@ -48,10 +48,11 @@ export function StationDetails() {
     }
   }, [])
 
-  async function saveModalData(inputValue) {
+  async function saveModalData(inputValue, descValue) {
     toggleEditModal()
     try {
-      const updatedStation = { ...currStation, name: inputValue }
+      const updatedStation = { ...currStation, name: inputValue, description : descValue }
+     
       dispatch(updateStation(updatedStation))
     } catch (err) {
       console.log('Error could not edit playlist name')
@@ -181,7 +182,7 @@ export function StationDetails() {
           <div className="station-content flex">
             <span>Playlist</span>
             <h1>{currStation.name}</h1>
-            {/* <span className="station-desc">desc........</span> */}
+            <span className="station-desc">{currStation.description}</span>
             <div className="song-details-container">
               <div className="app-icon flex">
                 <img src={logo} alt="icon"></img>
@@ -281,6 +282,7 @@ export function StationDetails() {
                     <div className="song-created-at">
                       {new Date(song.addedAt).toLocaleDateString()}
                     </div>
+                    <div>{song.duration}</div>
                     <div className="list-options flex">
                       <button className="btn-like-song">
                         {svgService.heartIcon}

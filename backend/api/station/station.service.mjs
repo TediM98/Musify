@@ -4,14 +4,13 @@ import { utilService } from '../../services/util.service.mjs'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
-async function query(filterBy = { txt: '' }) {
+async function query(filterBy = {}) {
     try {
-        const criteria = {
-            title: { $regex: filterBy.txt, $options: 'i' }
-        }
+        const criteria = {}
+        if (filterBy.txt) criteria.title = { $regex: filterBy.txt, $options: 'i' }
         const collection = await dbService.getCollection('station')
-        var stationCursor = await collection.find(criteria)
-        const stations = stationCursor.toArray()
+        var stations = await collection.find(criteria).toArray()
+        console.log('stations', stations)
         return stations
     } catch (err) {
         logger.error('cannot find stations', err)
@@ -55,13 +54,17 @@ async function add(station) {
 async function update(station) {
     try {
         const stationToSave = {
-            title: station.title,
+            name: station.name,
+            tags: station.tags,
+            createdBy: station.createdBy,
+            likedByUsers: station.likedByUsers,
+            songs: station.songs
         }
         const collection = await dbService.getCollection('station')
         await collection.updateOne({ _id: ObjectId(station._id) }, { $set: stationToSave })
         return station
     } catch (err) {
-        logger.error(`cannot update station ${stationId}`, err)
+        logger.error(`cannot update station ${station._id}`, err)
         throw err
     }
 }

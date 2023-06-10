@@ -32,10 +32,9 @@ import { stationRoutes } from './api/station/station.routes.mjs'
 import { setupSocketAPI } from './services/socket.service.mjs'
 
 // routes
-import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
-app.all('*', setupAsyncLocalStorage)
+// import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
+// app.all('*', setupAsyncLocalStorage)
 
-app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/station', stationRoutes)
 setupSocketAPI(server)
