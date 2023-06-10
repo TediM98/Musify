@@ -256,11 +256,18 @@ export function StationPlayer() {
         {currStation && (
           <div className="left-controls">
             <div className="station-img">
-              <img src={currStation.createdBy.imgUrl} alt="station-img" />
+              <img
+                src={
+                  songPlaying
+                    ? currStation?.songs[songPlaying?.songIdx].imgUrl
+                    : currStation?.createdBy?.imgUrl
+                }
+                alt="station-img"
+              />
             </div>
             <div className="artist-details">
               <span className="song-name">
-                {currStation?.songs[songPlaying?.songIdx || 0].title}
+                {currStation?.songs[songPlaying?.songIdx || 0]?.title}
               </span>
             </div>
             <button onClick={onLikeSong} className="btn-like-song flex">
