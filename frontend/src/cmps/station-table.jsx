@@ -21,7 +21,7 @@ export function HighLightsTable({ onPlayStation }) {
 
   return (
     <section className="section-highlights">
-      {stations.slice(0, 6).map((station) => (
+      {stations.slice(1, 7).map((station) => (
         <div className="table-data flex" key={station._id}>
           <img src={station.createdBy.imgUrl} alt="" />
           <div

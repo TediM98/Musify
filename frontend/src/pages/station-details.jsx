@@ -17,7 +17,7 @@ export function StationDetails() {
   const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
-  
+
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
@@ -42,22 +42,15 @@ export function StationDetails() {
   }, [])
 
   async function saveModalData(inputValue) {
-
     toggleEditModal()
-
     try {
-        console.log('AAAAAAAAAAAAAAAAAAAAAA',currStation)
-        const updatedStation =  { ...currStation, name: inputValue };
-        console.log('ffffffffffff',updatedStation)
-        dispatch(updateStation(updatedStation))
+      const updatedStation = { ...currStation, name: inputValue };
+      dispatch(updateStation(updatedStation))
     }
     catch (err) {
-        console.log('Error could not edit playlist name')
+      console.log('Error could not edit playlist name')
     }
-}
-
-
-
+  }
 
   function toggleEditModal() {
     /////////////////////new modal
@@ -73,17 +66,18 @@ export function StationDetails() {
     setIsOpen(buttonName === isOpen ? null : buttonName)
     console.log('modal check', buttonName)
   }
-  // let r = document.querySelector(':root')
 
-  // function changePrimaryClr(color = 'gray') {
-  //   r.style.setProperty('--primary-color', color);
-  // }
+  function changePrimaryClr(color = 'gray') {
+    let r = document.querySelector(':root')
+    r.style.setProperty('--primary-color', color);
+  }
 
   async function getBgc() {
     try {
       const color = await bgcService.getColorFromUrl(
+        currStation.createdBy.imgUrl
       )
-      // changePrimaryClr(color)
+      changePrimaryClr(color)
       setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
@@ -102,9 +96,6 @@ export function StationDetails() {
   }
 
   function addToStation(track) {
-    const updatedStation = { ...currStation }
-    updatedStation.songs.push(track)
-    dispatch(updateStation(updatedStation))
     const updatedStation = { ...currStation }
     updatedStation.songs.push(track)
     dispatch(updateStation(updatedStation))

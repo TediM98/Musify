@@ -69,11 +69,11 @@ export function StationIndex() {
       </section>
       <section className='station-list-container'>
         <span>Your top mixes</span>
-        <StationList onPlayStation={onPlayStation} stations={renderStationsByTag('Happy')} />
+        <StationList onPlayStation={onPlayStation} stations={renderStationsByTag('happy')} />
         <span>More like Mac miller</span>
-        <StationList onPlayStation={onPlayStation} stations={renderStationsByTag('Rock')} />
+        <StationList onPlayStation={onPlayStation} stations={renderStationsByTag('rock')} />
         <span>Relaxing</span>
-        <StationList onPlayStation={onPlayStation} stations={renderStationsByTag('Relaxing')} />
+        <StationList onPlayStation={onPlayStation} stations={renderStationsByTag('relaxing')} />
       </section>
     </section >
   )
