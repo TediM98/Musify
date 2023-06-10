@@ -172,7 +172,7 @@
     position: sticky;
     top: 0;
     display: grid;
-    grid-template-columns: 0 40px 40px 2fr 1.5fr 1.72fr;
+    grid-template-columns: 0 40px 40px 2fr 1fr 120px;
     border-bottom: 1px solid $clr3-dark;
     border-radius: 0;
     margin-bottom: 15px;
@@ -184,6 +184,14 @@
     font-weight: 560;
     letter-spacing: 1px;
     color: #b3b3b3;
+
+    .duration-icon {
+      fill: $clr2;
+    }
+
+    .song-duration {
+      text-align: start;
+    }
   }
 
   & .list-song-idx {
@@ -194,16 +202,13 @@
 
   & .list-song-date {
     white-space: nowrap;
-    width: 30px;
-  }
-
-  & .duration-icon {
-    fill: currentColor;
+    text-align: start;
   }
 
   & .song-wrapper {
     display: grid;
-    grid-template-columns: 0 40px 40px 2fr 1.5fr 1.72fr;
+    grid-template-columns: 0 40px 40px 2fr 1fr 120px;
+
     font-size: 0.875rem;
     height: 56px;
     align-items: center;
@@ -323,8 +328,7 @@
   z-index: 999;
 }
 
-
-.edit-modal-content{
+.edit-modal-content {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -337,7 +341,7 @@
   height: 389px;
   z-index: 9999;
 }
-.edit-modal-header{
+.edit-modal-header {
   display: flex;
   height: 86px;
   align-content: center;
@@ -384,16 +388,15 @@
   resize: none;
   width: 100%;
 }
-.edit-modal-saveBtn-container{
+.edit-modal-saveBtn-container {
   display: flex;
   grid-area: save-button;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  flex-wrap: wrap
-  
+  flex-wrap: wrap;
 }
-.edit-modal-saveBtn{
+.edit-modal-saveBtn {
   display: flex;
   width: 100px;
   height: 48px;
@@ -411,8 +414,7 @@
   align-content: center;
   flex-wrap: wrap;
 
-
-  &:hover{
+  &:hover {
     transform: scale(1.05);
     font-weight: 800;
   }
@@ -434,12 +436,10 @@
 }
 
 .edit-modal-closeBtn:hover {
-
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.edit-modal-picture-change{
-
+.edit-modal-picture-change {
   height: 180px;
   width: 100%;
 }
@@ -448,20 +448,18 @@
   grid-area: album-image title, album-image description; /* Update the grid area name to "save-button" */
 
   background-color: #323232;
-    // border: 2px solid white;   //// for debugging purposes
-    color: #fff;
-    border: none;
+  // border: 2px solid white;   //// for debugging purposes
+  color: #fff;
+  border: none;
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
-
-.edit-modal-disclaimer{
-  
+.edit-modal-disclaimer {
   box-sizing: border-box;
   grid-area: disclaimer;
   margin-block: 0px;
-    font-size: 0.6875rem;
-    font-weight: 700;
+  font-size: 0.6875rem;
+  font-weight: 700;
 }
