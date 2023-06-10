@@ -5,6 +5,7 @@ import { userService } from './user.service.js'
 import emptyStationImg from '../assets/img/empty-station-img.jpg';
 
 const STORAGE_KEY = 'station'
+
 let playlistNumber = 1;
 
 export const stationService = {
