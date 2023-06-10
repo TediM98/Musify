@@ -2,24 +2,40 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateStation } from '../store/station.actions';
 import { svgService } from '../services/svg.service';
-
+import {uploadService} from '../services/upload.service'
 
 export function Modal({ closeModal, saveModalData }) {
     const currStation = useSelector((storeState) => storeState.stationModule.currStation);
     const [inputValue, setInputValue] = useState(currStation.name);
-    const dispatch = useDispatch()
+    const [descValue, setDescValue] = useState(currStation.description)
+    const [uploadedImageUrl, setUploadedImageUrl] = useState(currStation.createdBy.imgUrl);
+
  
 
-    const handleChange = (e) => {
-        setInputValue(e.target.value);
+    function handleChange(ev){
+        setInputValue(ev.target.value);
     }
 
-    function closeOnSave(ev) {
-        ev.preventDefault(ev)
-        saveModalData(inputValue)
+
+    function handleChangeDesc(ev){
+        setDescValue(ev.target.value);
         
     }
 
+    function closeOnSave(ev){
+        ev.preventDefault(ev)
+        saveModalData(inputValue,descValue)
+        
+    }
+    async function onUploadImgClick(ev){
+        try {
+          const imgUrl = await uploadService.uploadImg(ev);
+          console.log('imgurl in the onclick',imgUrl)
+          setUploadedImageUrl(imgUrl);
+        } catch (err) {
+          console.error('Failed to upload image', err);
+        }
+      };
 
  
 
@@ -31,14 +47,21 @@ export function Modal({ closeModal, saveModalData }) {
                     <div className='edit-modal-header'>
                         <div>Edit details</div>
                         <div className='edit-modal-closeBtn-container'>
-                            <button className='edit-modal-closeBtn' onClick={closeModal}>{svgService.editModalCloseIcon}</button>
+                            <button className='edit-modal-closeBtn' onClick={closeModal}>{svgService.exitIcon}</button>
                         </div>
                     </div>
                     <form onSubmit={closeOnSave}>
                         <div className='edit-modal-body'>
-                            <button className='edit-modal-picture'>{svgService.editModalplaylistIcon}</button>
+                            <div className='edit-modal-picture'>
+                              
+                                
+                                <input onClick={onUploadImgClick} type="file" name="" id="" />
+                                <img className='edit-modal-picture-img' src={uploadedImageUrl} alt="" />
+
+                               
+                               </div>
                             <input className='playlist-name' type="text" onChange={handleChange} value={inputValue} name="text" id="" />
-                            <textarea className="playlist-description" placeholder='Add an optional description'></textarea>
+                            <textarea className="playlist-description" onChange={handleChangeDesc} value={descValue} placeholder='Add an optional description'></textarea>
                             <div className='edit-modal-disclaimer'>
                                 By proceeding, you agree to give Musify access to the image you choose to upload. Please make sure you have the right to upload the image.
                             </div>

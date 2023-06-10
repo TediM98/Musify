@@ -64,6 +64,7 @@ function getEmptyStation() {
     return {
         _id: "",
         name: "My playlist #1 ",
+        description:'',
         tags: [],
         createdBy: {
             _id: utilService.makeId(),
@@ -95,6 +96,7 @@ const demoStation =
         {
             "_id": "5cksxjas89xjsa8xjsa8jxs09",
             "name": "Relaxing Reading",
+            "description":"funky music",
             "tags": [
                 "Funk",
                 "Happy"
@@ -113,13 +115,15 @@ const demoStation =
                     "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
                     "addedAt": 162521765262,
+                    "duration" : "03:01"
                 },
                 {
                     "_id": "mUkfiLjooxs",
                     "title": "The JB's - Pass The Peas",
                     "url": "https://www.youtube.com/watch?v=mUkfiLjooxs",
                     "imgUrl": "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
-                    "addedBy": {}
+                    "addedBy": {},
+                    "duration" : "03:01"
                 },
             ],
             "msgs": [
@@ -150,7 +154,8 @@ const demoStation =
                     "url": "https://www.youtube.com/watch?v=l482T0yNkeo",
                     "imgUrl": "https://i.ytimg.com/vi/l482T0yNkeo/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
-                    "addedAt": 162521765263
+                    "addedAt": 162521765263,
+                    "duration" : "03:28"
                 },
                 {
                     "_id": "1w7OgIMMRc4",
@@ -158,7 +163,8 @@ const demoStation =
                     "url": "https://www.youtube.com/watch?v=1w7OgIMMRc4",
                     "imgUrl": "https://i.ytimg.com/vi/1w7OgIMMRc4/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
-                    "addedAt": 162521765264
+                    "addedAt": 162521765264,
+                    "duration" : "05:03"
                 }
             ]
         },
@@ -182,7 +188,8 @@ const demoStation =
                     "url": "https://www.youtube.com/watch?v=tO4dxvguQDk",
                     "imgUrl": "https://i.ytimg.com/vi/tO4dxvguQDk/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
-                    "addedAt": 162521765265
+                    "addedAt": 162521765265,
+                    "duration" : "03:07"
                 },
                 {
                     "_id": "jfKfPfyJRdk",
@@ -190,7 +197,8 @@ const demoStation =
                     "url": "https://www.youtube.com/watch?v=jfKfPfyJRdk",
                     "imgUrl": "https://i.ytimg.com/vi/5qap5aO4i9A/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
-                    "addedAt": 162521765266
+                    "addedAt": 162521765266,
+                    "duration" : "53:07"
                 }
             ]
         },

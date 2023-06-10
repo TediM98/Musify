@@ -1,7 +1,7 @@
 
 
 .station-search-input{
-    position:fixed;
+    position:absolute;
     top:20px;
     z-index: 5;
     left:32.5em;
@@ -30,7 +30,13 @@
 }
 
 
-
+.no-search-results{
+    position:absolute;
+    left:50%;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+}
 
 
 

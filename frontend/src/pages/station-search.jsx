@@ -77,7 +77,6 @@ export function StationSearch() {
         />
       </div>
       <div>
-        {!searchRes.length && <div>Loading...</div>}
         <div className="song-list-header flex">
             <div></div>
             <span className="list-song-idx">#</span>
@@ -89,6 +88,8 @@ export function StationSearch() {
         {searchRes && (
           
           <ul>
+                    {!searchRes.length && <div className='no-search-results'>Enter search terms to show results</div>}
+
             {searchRes.map((song, idx) => (
               <li className='search-result-song' key={song._id}>
                 <div className='song-index'>{idx + 1}</div>
@@ -104,7 +105,7 @@ export function StationSearch() {
                   <img src={song.imgUrl} alt="" />
                 </div>
                 <div className='song-title'>{song.title}</div>
-                <div>DURA</div>
+                <div>{song.duration}</div>
                 <div className='options-container'>
                   <button onClick={() => toggleOptions(song._id, idx)} className="btn-options-close">
                     {svgService.optionsIcon}
