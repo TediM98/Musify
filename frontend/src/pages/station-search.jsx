@@ -33,6 +33,7 @@ export function StationSearch() {
   }
 
   function onPlaySong(songId, songIdx) {
+    console.log('in the playsong function', songId, songIdx)
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo();
@@ -52,7 +53,7 @@ export function StationSearch() {
       setIsOpen(null); // Close the dropdown if it's already open
     } else {
       setIsOpen(songId); // Open the dropdown for the clicked song
-      onPlaySong(songId, songIdx); // Call onPlaySong to play the clicked song
+
     }
   }
 
@@ -62,7 +63,7 @@ export function StationSearch() {
         onClick={() => {
           setIsOpen(!isOpen)
         }}
-        className={`options-close ${isOpen ? 'active' : 'inactive'}`}
+        className={`options-close-search ${isOpen ? 'active' : 'inactive'}`}
       ></div>
       <div>
         {svgService.searchMagGlassIcon}
@@ -77,16 +78,33 @@ export function StationSearch() {
       </div>
       <div>
         {!searchRes.length && <div>Loading...</div>}
-
+        <div className="song-list-header flex">
+            <div></div>
+            <span className="list-song-idx">#</span>
+            <div className="list-song-title">Title</div>
+            <div></div>
+            
+            <small className='duration-icon'>{svgService.durationIcon}</small>
+          </div>
         {searchRes && (
+          
           <ul>
             {searchRes.map((song, idx) => (
-              <div className='search-result-song' key={song._id}>
+              <li className='search-result-song' key={song._id}>
                 <div className='song-index'>{idx + 1}</div>
+                <div
+                      className="handle-song-icon-container"
+                      onClick={() => onPlaySong(song._id, idx)}
+                    >
+                      {isPlaying
+                        ? svgService.playerPauseTrackIcon
+                        : svgService.playerPlayTrackIcon}
+                    </div>
                 <div className='song-img-container' onClick={() => onPlaySong(song._id, idx)}>
                   <img src={song.imgUrl} alt="" />
                 </div>
                 <div className='song-title'>{song.title}</div>
+                <div>DURA</div>
                 <div className='options-container'>
                   <button onClick={() => toggleOptions(song._id, idx)} className="btn-options-close">
                     {svgService.optionsIcon}
@@ -97,7 +115,7 @@ export function StationSearch() {
                         <div className={`dropdown-menu ${isOpen ? 'active' : 'inactive'}`}>
                           <ul className="clean-list">
                             <li>
-                              <article className="dropdown-item" onClick={() => onPlaySong(song._id, idx)}>Play song</article>
+                              <article className="dropdown-item play-song" onClick={() => onPlaySong(song._id, 0)}>Play song</article>
                             </li>
                             <li className="dropdown-item">
                               <article>Add to queue</article>
@@ -118,7 +136,7 @@ export function StationSearch() {
                     )}
                   </div>
                 </div>
-              </div>
+              </li>
             ))}
           </ul>
         )}
