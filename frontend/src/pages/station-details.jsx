@@ -20,11 +20,12 @@ import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
 export function StationDetails() {
   // const [station, setStation] = useState(null)
   const [isEditModalOpen, setEditModalOpen] = useState(false)
+  const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
+
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
-
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -35,14 +36,27 @@ export function StationDetails() {
   const stations = useSelector(
     (storeState) => storeState.stationModule.stations
   )
-  const [isLiked, setIsLiked] = useState(false)
   const { stationId } = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  let r = document.querySelector(':root')
+  getBgc()
 
   useEffect(() => {
-    if (stationId) loadStation().then(getBgc())
+    if (stationId) {
+      loadStation().then(() => getBgc())
+    }
   }, [])
+
+  async function saveModalData(inputValue) {
+    toggleEditModal()
+    try {
+      const updatedStation = { ...currStation, name: inputValue }
+      dispatch(updateStation(updatedStation))
+    } catch (err) {
+      console.log('Error could not edit playlist name')
+    }
+  }
 
   function toggleEditModal() {
     /////////////////////new modal
@@ -56,17 +70,14 @@ export function StationDetails() {
 
   function toggleModal(buttonName) {
     setIsOpen(buttonName === isOpen ? null : buttonName)
-  }
-  let r = document.querySelector(':root')
-
-  function changePrimaryClr(color = 'gray') {
-    r.style.setProperty('--primary-color', color)
+    console.log('modal check', buttonName)
   }
 
   async function getBgc() {
     try {
       const color = await bgcService.getColorFromUrl()
-      changePrimaryClr(color)
+      // changePrimaryClr(color)
+      setBgc(color)
     } catch (err) {
       console.log('Could not load color', err)
     }
@@ -82,6 +93,7 @@ export function StationDetails() {
       navigate('/')
     }
   }
+
   function addToStation(track) {
     const updatedStation = { ...currStation }
     updatedStation.songs.push(track)
@@ -89,7 +101,7 @@ export function StationDetails() {
   }
 
   function onChangePlayerStatus() {
-    // 3
+    //
     // if (!player) return
     // if (!isPlaying) {
     //   player.playVideo()
@@ -106,6 +118,7 @@ export function StationDetails() {
       setIsPlaying(false)
     }
   }
+
   function onChangeSongPlaying(songId = '', songIdx) {
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
@@ -150,12 +163,18 @@ export function StationDetails() {
             ></img>
           </div>
 
-          {isEditModalOpen && <Modal closeModal={toggleEditModal} />}
+          {isEditModalOpen && (
+            <Modal
+              currStation={currStation}
+              saveModalData={saveModalData}
+              closeModal={toggleEditModal}
+            />
+          )}
 
           <div className="station-content flex">
             <span>Playlist</span>
             <h1>{currStation.name}</h1>
-            <span className="station-desc">desc........</span>
+            {/* <span className="station-desc">desc........</span> */}
             <div className="song-details-container">
               <div className="app-icon flex">
                 <img src={logo} alt="icon"></img>
@@ -223,7 +242,7 @@ export function StationDetails() {
             <div className="list-song-title">Title</div>
             <div></div>
             <div className="list-song-date">Date Added</div>
-            <small className="song-duration">{svgService.durationIcon}</small>
+            <small>{svgService.durationIcon}</small>
           </div>
           <ul className="clean-list">
             {currStation.songs.map((song, idx) => {

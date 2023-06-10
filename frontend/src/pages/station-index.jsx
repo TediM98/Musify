@@ -1,15 +1,25 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadStations } from '../store/station.actions.js'
+import { loadStations, setCurrStation } from '../store/station.actions.js'
 
 // For local service
 import { StationList } from '../cmps/station-list.jsx'
 import { StationTalbe } from '../cmps/station-table.jsx'
 import { utilService } from '../services/util.service.js'
+import { setIsPlaying, setSongPlaying } from '../store/player.actions.js'
+import { stationService } from '../services/station.service.local.js'
 
 export function StationIndex() {
   const stations = useSelector(
-    (storeState) => storeState.stationModule.stations
+    (storeState) => storeState.stationModule.stations)
+  const isPlaying = useSelector(
+    (storeState) => storeState.playerModule.isPlaying)
+  const player = useSelector((storeState) => storeState.playerModule.player)
+  const songPlaying = useSelector(
+    (storeState) => storeState.playerModule.songPlaying
+  )
+  const currStation = useSelector(
+    (storeState) => storeState.stationModule.currStation
   )
 
   useEffect(() => {
@@ -20,20 +30,39 @@ export function StationIndex() {
     return stations.filter((station) => station.tags.includes(tag))
   }
 
+  async function onPlayStation(currStationId) {
+    try {
+      const reqSong = await stationService.getById(currStationId)
+      console.log(reqSong)
+      setCurrStation(currStationId)
+      if (!isPlaying) {
+        player.playVideo()
+        setIsPlaying(true)
+      } else {
+        player.pauseVideo()
+        setIsPlaying(false)
+      }
+    }
+    catch (err) {
+      console.err('cannot find currstation', err)
+    }
+  }
+
   if (!stations) return <div>Loading...</div>
   return (
     <section className="main-layout home-page scrollable-container">
       <section className="station-table main-layout">
         <h3>{utilService.getGreetings()}</h3>
-        <StationTalbe stations={stations} />
+        <StationTalbe stations={stations} onPlayStation={onPlayStation} />
+        {/* stationHighLights */}
       </section>
       <section className="station-list-container">
         <span>Your top mixes</span>
-        <StationList stations={renderStationsByTag('Happy')} />
+        <StationList onPlayStation={onPlayStation} stations={renderStationsByTag('Happy')} />
         <span>More like Mac miller</span>
-        <StationList stations={renderStationsByTag('Rock')} />
+        <StationList onPlayStation={onPlayStation} stations={renderStationsByTag('Rock')} />
         <span>Relaxing</span>
-        <StationList stations={renderStationsByTag('Relaxing')} />
+        <StationList onPlayStation={onPlayStation} stations={renderStationsByTag('Relaxing')} />
       </section>
     </section>
   )

@@ -184,6 +184,14 @@
     font-weight: 560;
     letter-spacing: 1px;
     color: #b3b3b3;
+
+    .duration-icon {
+      fill: $clr2;
+    }
+
+    .song-duration {
+      text-align: start;
+    }
   }
 
   & .list-song-idx {
@@ -195,14 +203,6 @@
   & .list-song-date {
     white-space: nowrap;
     text-align: start;
-  }
-
-  .song-duration {
-    text-align: start;
-
-    & .duration-icon {
-      fill: currentColor;
-    }
   }
 
   & .song-wrapper {
@@ -362,16 +362,6 @@
   padding: 0 24px 24px;
 }
 
-.edit-modal-picture {
-  grid-area: album-image title, album-image description; /* Update the grid area name to "save-button" */
-  height: 180px;
-  width: 180px;
-  background-color: #323232;
-  // border: 2px solid white;   //// for debugging purposes
-  color: #fff;
-  border: none;
-}
-
 .playlist-name {
   background: hsla(0, 0%, 100%, 0.1);
   border: 1px solid transparent;
@@ -446,6 +436,23 @@
 
 .edit-modal-closeBtn:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.edit-modal-picture-change {
+  height: 180px;
+  width: 100%;
+}
+
+.edit-modal-picture {
+  grid-area: album-image title, album-image description; /* Update the grid area name to "save-button" */
+
+  background-color: #323232;
+  // border: 2px solid white;   //// for debugging purposes
+  color: #fff;
+  border: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .edit-modal-disclaimer {
