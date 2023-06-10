@@ -451,7 +451,7 @@
 }
 
 .edit-modal-picture {
-  grid-area: album-image title, album-image description;
+  grid-area: album-image;
   /* Update the grid area name to "save-button" */
 
   background-color: #323232;
@@ -462,7 +462,9 @@
   height: 100%;
   object-fit: cover;
 }
-
+.edit-modal-picture-img{
+  height:inherit;
+}
 .edit-modal-disclaimer {
   box-sizing: border-box;
   grid-area: disclaimer;
