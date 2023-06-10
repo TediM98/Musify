@@ -64,7 +64,6 @@ export function StationIndex() {
       <section className="station-table main-layout">
         <h3>{utilService.getGreetings()}</h3>
         <HighLightsTable stations={stations} onPlayStation={onPlayStation} />
-        {/* stationHighLights */}
       </section>
       <section className="station-list-container">
         <span>Your top mixes</span>
