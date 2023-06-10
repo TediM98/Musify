@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { stationService } from '../services/station.service.local'
+import { stationService } from '../services/station.service'
 import logo from '../assets/img/musify-logo.jpg'
 import play from '../assets/img/play-station.svg'
 import { bgcService } from '../services/bgc.service'
@@ -105,7 +105,6 @@ export function StationDetails() {
     const updatedStation = { ...currStation }
     updatedStation.songs.push(track)
     dispatch(updateStation(updatedStation))
-   
   }
 
   function onChangePlayerStatus() {

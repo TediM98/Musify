@@ -2,19 +2,20 @@ import { useNavigate } from 'react-router-dom'
 import { SideNavLibrary } from './side-nav-library'
 import { svgService } from '../services/svg.service'
 import { addStation, removeStation } from '../store/station.actions'
-import { stationService } from '../services/station.service.local'
-import { UserStationPreview } from "./user-station-preview"
+import { stationService } from '../services/station.service'
+import { UserStationPreview } from './user-station-preview'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
 export function SideNav() {
   const navigate = useNavigate()
-  const [activeIcon, setActiveIcon] = useState('home');
+  const [activeIcon, setActiveIcon] = useState('home')
   const stations = useSelector(
     (storeState) => storeState.stationModule.stations
   )
   async function onAddStation() {
     const station = stationService.getEmptyStation()
+    console.log('station', station)
     try {
       const addedStation = await addStation(station)
       navigate(`/station/${addedStation._id}`)
@@ -24,7 +25,7 @@ export function SideNav() {
   }
 
   function changeIcon(icon) {
-    setActiveIcon(icon);
+    setActiveIcon(icon)
   }
 
   return (
@@ -44,7 +45,9 @@ export function SideNav() {
           <li>
             <a
               href="/search"
-              className={`router-link ${activeIcon === 'search' ? 'active' : ''}`}
+              className={`router-link ${
+                activeIcon === 'search' ? 'active' : ''
+              }`}
               aria-current="page"
             >
               {svgService.searchHomePageIcon}
@@ -70,10 +73,9 @@ export function SideNav() {
           {svgService.searchHomePageIcon}
           with input
           */}
-          {
-            stations.map(station =>
-              <UserStationPreview station={station} key={station._id} />)}
-
+          {stations.map((station) => (
+            <UserStationPreview station={station} key={station._id} />
+          ))}
         </section>
       </nav>
     </header>

@@ -1,6 +1,7 @@
 
 import { httpService } from './http.service.js'
-
+import emptyStationImg from '../assets/img/empty-station-img.jpg';
+import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'station'
 const BASE_URL = 'station/'
@@ -15,7 +16,7 @@ export const stationService = {
 window.cs = stationService // FOR DEBUGGING ONLY
 
 
-async function query(filterBy = { txt: '', }) {
+async function query(filterBy = {}) {
     try {
         return await httpService.get(BASE_URL, filterBy)
     }
@@ -63,12 +64,18 @@ async function save(station) {
 
 function getEmptyStation() {
     return {
-        name: '',
-        artist: '',
+        name: "My playlist #1 ",
+        tags: [],
+        createdBy: {
+            _id: utilService.makeId(),
+            fullname: "",
+            imgUrl: emptyStationImg
+        },
+        likedByUsers: [],
+        songs: [],
+        msgs: [],
     }
 }
-
-
 
 
 

@@ -7,7 +7,7 @@ import { StationList } from '../cmps/station-list.jsx'
 import { HighLightsTable } from '../cmps/station-table.jsx'
 import { utilService } from '../services/util.service.js'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions.js'
-import { stationService } from '../services/station.service.local.js'
+import { stationService } from '../services/station.service.js'
 
 export function StationIndex() {
   const stations = useSelector(
