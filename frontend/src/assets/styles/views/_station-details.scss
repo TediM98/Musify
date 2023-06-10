@@ -163,6 +163,7 @@
 
       & .btn-list-options {
         background: transparent;
+
         border: 0;
       }
     }
@@ -238,6 +239,7 @@
       & .btn-list-options {
         opacity: 1;
       }
+
       .song-idx-container {
         display: none;
       }
@@ -318,6 +320,7 @@
     height: 0;
   }
 }
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -341,6 +344,7 @@
   height: 389px;
   z-index: 9999;
 }
+
 .edit-modal-header {
   display: flex;
   height: 86px;
@@ -388,6 +392,7 @@
   resize: none;
   width: 100%;
 }
+
 .edit-modal-saveBtn-container {
   display: flex;
   grid-area: save-button;
@@ -396,6 +401,7 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
 .edit-modal-saveBtn {
   display: flex;
   width: 100px;
@@ -445,7 +451,8 @@
 }
 
 .edit-modal-picture {
-  grid-area: album-image title, album-image description; /* Update the grid area name to "save-button" */
+  grid-area: album-image title, album-image description;
+  /* Update the grid area name to "save-button" */
 
   background-color: #323232;
   // border: 2px solid white;   //// for debugging purposes
