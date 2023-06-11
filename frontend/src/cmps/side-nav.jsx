@@ -27,7 +27,6 @@ export function SideNav() {
   function changeIcon(icon) {
     setActiveIcon(icon)
   }
-
   return (
     <header className="main-nav">
       <nav className="parmanent-nav">
@@ -35,7 +34,7 @@ export function SideNav() {
           <li>
             <a
               href="/"
-              className={`router-link ${activeIcon === 'home' ? 'active' : ''}`}
+              className={`home ${activeIcon === 'home' ? 'active' : ''}`}
               aria-current="page"
             >
               {svgService.homeIcon}
@@ -45,9 +44,8 @@ export function SideNav() {
           <li>
             <a
               href="/search"
-              className={`router-link ${
-                activeIcon === 'search' ? 'active' : ''
-              }`}
+              className={`router-link ${activeIcon === 'search' ? 'active' : ''
+                }`}
               aria-current="page"
             >
               {svgService.searchHomePageIcon}
@@ -73,9 +71,12 @@ export function SideNav() {
           {svgService.searchHomePageIcon}
           with input
           */}
-          {stations.map((station) => (
-            <UserStationPreview station={station} key={station._id} />
-          ))}
+          {stations
+            .filter(station => station.createdBy.owner === 'tedi')
+            .map(station => <UserStationPreview station={station} key=
+              {station._id} />)
+          }
+
         </section>
       </nav>
     </header>
