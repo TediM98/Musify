@@ -35,12 +35,7 @@ async function save(station) {
     return savedStation
 }
 
-function getEmptyStation() {
-    return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-    }
-}
+
 
 
 
