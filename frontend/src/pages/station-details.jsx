@@ -51,6 +51,7 @@ export function StationDetails() {
   async function saveModalData(inputValue, descValue) {
     toggleEditModal()
     try {
+      console.log(currStation, ' from details check')
       const updatedStation = { ...currStation, name: inputValue, description : descValue }
      
       dispatch(updateStation(updatedStation))

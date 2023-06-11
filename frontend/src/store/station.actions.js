@@ -76,17 +76,17 @@ export async function addStation(station) {
 }
 
 
-export function updateStation(station) {
-    return stationService.save(station)
-        .then(savedStation => {
-            console.log('Updated Station:', savedStation)
-            store.dispatch(getActionUpdateStation(savedStation))
-            return savedStation
-        })
-        .catch(err => {
+export async function updateStation(station) {
+    console.log(station , 'from actions');
+    try{
+        const savedStation = await stationService.save(station)
+                store.dispatch(getActionUpdateStation(savedStation))
+                return savedStation
+    }
+        catch(err) {
             console.log('Cannot save station', err)
             throw err
-        })
+        }
 }
 
 
