@@ -29,18 +29,42 @@ export function Modal({ closeModal, saveModalData }) {
         saveModalData(inputValue,descValue)
         
     }
-    async function onUploadImgClick(ev){
+    // async function onUploadImgClick(ev){
+    //     const stationToUpdate = Array.from(currStation)
+    //     console.log('station to upd',stationToUpdate)
+    //     try {
+    //       const imgUrl = await uploadService.uploadImg(ev);
+    //       stationToUpdate.createdBy.imgUrl = imgUrl.url
+    //       console.log('station to upd 2',stationToUpdate)
+    //       console.log('imgurl log',imgUrl.url)
+          
+    //     //   console.log( ...currStation, '...currStatio');
+    //       const updatedStation = await updateStation(stationToUpdate)
+    //       console.log('updatedStation',updatedStation)
+    //     } catch (err) {
+    //       console.error('Failed ', err);
+    //     }
+    //   };
+
+    async function onUploadImgClick(ev) {
         try {
           const imgUrl = await uploadService.uploadImg(ev);
-          console.log('imgurl in the onclick',imgUrl)
-          const updatedValues = { ...currStation.createdBy, imgUrl: imgUrl.url  }
-          console.log(updatedValues, 'updatedValues');
-          const updatedStation = await updateStation(updatedValues)
-          console.log('updatedStation',updatedStation)
+          
+          const updatedValues = {
+            ...currStation,
+            createdBy: {
+              ...currStation.createdBy,
+              imgUrl: imgUrl.url,
+            },
+          };
+          
+          const updatedStation = await updateStation(updatedValues);
+          console.log(currStation)
+          
         } catch (err) {
           console.error('Failed to upload image', err);
         }
-      };
+      }
 
  
 

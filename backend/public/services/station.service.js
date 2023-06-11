@@ -9,7 +9,8 @@ export const stationService = {
     getById,
     save,
     remove,
-    getEmptyStation,
+    getEmptyStation
+    
 }
 window.cs = stationService
 
@@ -37,10 +38,18 @@ async function save(station) {
 
 function getEmptyStation() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        name: "My playlist #1 ",
+        tags: [],
+        createdBy: {
+            owner:'tedi',
+            imgUrl: emptyStationImg
+        },
+        likedByUsers: [],
+        songs: [],
+        msgs: [],
     }
 }
+
 
 
 

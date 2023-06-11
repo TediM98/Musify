@@ -11,13 +11,15 @@ async function uploadImg(ev) {
     const formData = new FormData()
     formData.append('upload_preset', UPLOAD_PRESET)
     formData.append('file', ev.target.files[0])
-    console.log('hello from upload img',formData)
+    
+   
 
     const res = await fetch(UPLOAD_URL, {
       method: 'POST',
       body: formData
     })
     const imgUrl = await res.json()
+  
     return imgUrl
   } catch (err) {
     console.error('Failed to upload', err)
