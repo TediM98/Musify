@@ -9,6 +9,10 @@
   background: linear-gradient(var(--primary-color), var(--primary-color));
   transition: 1s ease;
 
+  .btn-login-signup-wrapper {
+    margin-right: 1em;
+  }
+
   &.app-header > div {
     justify-content: space-between;
     align-items: center;

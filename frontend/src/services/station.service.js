@@ -66,6 +66,7 @@ async function save(station) {
 function getEmptyStation() {
     return {
         name: "My playlist #1 ",
+        description: '',
         tags: [],
         createdBy: {
             owner: "tedi",
@@ -73,7 +74,6 @@ function getEmptyStation() {
         },
         likedByUsers: [],
         songs: [],
-        msgs: [],
     }
 }
 
