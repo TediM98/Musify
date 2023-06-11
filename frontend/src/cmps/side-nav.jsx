@@ -44,8 +44,9 @@ export function SideNav() {
           <li>
             <a
               href="/search"
-              className={`router-link ${activeIcon === 'search' ? 'active' : ''
-                }`}
+              className={`router-link ${
+                activeIcon === 'search' ? 'active' : ''
+              }`}
               aria-current="page"
             >
               {svgService.searchHomePageIcon}
@@ -72,11 +73,10 @@ export function SideNav() {
           with input
           */}
           {stations
-            .filter(station => station.createdBy.owner === 'tedi')
-            .map(station => <UserStationPreview station={station} key=
-              {station._id} />)
-          }
-
+            .filter((station) => station.createdBy?.owner === 'tedi')
+            .map((station) => (
+              <UserStationPreview station={station} key={station._id} />
+            ))}
         </section>
       </nav>
     </header>

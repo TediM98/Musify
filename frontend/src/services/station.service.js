@@ -66,15 +66,14 @@ async function save(station) {
 function getEmptyStation() {
     return {
         name: "My playlist #1 ",
+        description: '',
         tags: [],
         createdBy: {
-            _id: utilService.makeId(),
-            fullname: "",
+            owner: "tedi",
             imgUrl: emptyStationImg
         },
         likedByUsers: [],
         songs: [],
-        msgs: [],
     }
 }
 
