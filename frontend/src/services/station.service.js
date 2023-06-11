@@ -46,6 +46,7 @@ async function remove(stationId) {
 }
 
 async function save(station) {
+    console.log(station, 'from save in service');
     var savedStation
     try {
         if (station._id) {
