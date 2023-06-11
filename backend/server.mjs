@@ -3,6 +3,8 @@ import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
+// import * as dotenv from 'dotenv'
+
 
 const app = express()
 const server = http.createServer(app)
@@ -14,6 +16,8 @@ app.use(express.json())
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve('public')))
+    // dotenv.config()
+
 } else {
     const corsOptions = {
         origin: ['http://127.0.0.1:3000',
@@ -24,6 +28,7 @@ if (process.env.NODE_ENV === 'production') {
         credentials: true
     }
     app.use(cors(corsOptions))
+    // dotenv.config()
 }
 
 import { authRoutes } from './api/auth/auth.routes.mjs'
