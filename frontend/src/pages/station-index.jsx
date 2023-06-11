@@ -7,7 +7,7 @@ import { StationList } from '../cmps/station-list.jsx'
 import { HighLightsTable } from '../cmps/station-table.jsx'
 import { utilService } from '../services/util.service.js'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions.js'
-import { stationService } from '../services/station.service.local.js'
+import { stationService } from '../services/station.service.js'
 
 export function StationIndex() {
   const stations = useSelector(
@@ -64,7 +64,6 @@ export function StationIndex() {
       <section className="station-table main-layout">
         <h3>{utilService.getGreetings()}</h3>
         <HighLightsTable stations={stations} onPlayStation={onPlayStation} />
-        {/* stationHighLights */}
       </section>
       <section className="station-list-container">
         <span>Your top mixes</span>
