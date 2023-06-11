@@ -1,48 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateStation } from '../store/station.actions';
-import { svgService } from '../services/svg.service';
-import {uploadService} from '../services/upload.service'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateStation } from '../store/station.actions'
+import { svgService } from '../services/svg.service'
+import { uploadService } from '../services/upload.service'
 
 export function Modal({ closeModal, saveModalData }) {
-    const currStation = useSelector((storeState) => storeState.stationModule.currStation);
-    const [inputValue, setInputValue] = useState(currStation.name);
+    const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+    const [inputValue, setInputValue] = useState(currStation.name)
     const [descValue, setDescValue] = useState(currStation.description)
-   
     const dispatch = useDispatch()
-    
-     
-    
 
-    function handleChange(ev){
-        setInputValue(ev.target.value);
+    function handleChange(ev) {
+        setInputValue(ev.target.value)
     }
 
 
-    function handleChangeDesc(ev){
-        setDescValue(ev.target.value);
-        
+    function handleChangeDesc(ev) {
+        setDescValue(ev.target.value)
+
     }
 
-    function closeOnSave(ev){
+    function closeOnSave(ev) {
         ev.preventDefault(ev)
-        saveModalData(inputValue,descValue)
-        
-    }
-    async function onUploadImgClick(ev){
-        try {
-          const imgUrl = await uploadService.uploadImg(ev);
-          console.log('imgurl in the onclick',imgUrl)
-          const updatedValues = { ...currStation.createdBy, imgUrl: imgUrl.url  }
-          console.log(updatedValues, 'updatedValues');
-          const updatedStation = await updateStation(updatedValues)
-          console.log('updatedStation',updatedStation)
-        } catch (err) {
-          console.error('Failed to upload image', err);
-        }
-      };
+        saveModalData(inputValue, descValue)
 
- 
+    }
+    async function onUploadImgClick(ev) {
+        try {
+            const imgUrl = await uploadService.uploadImg(ev)
+            console.log('imgurl in the onclick', imgUrl)
+            const updatedValues = { ...currStation.createdBy, imgUrl: imgUrl.url }
+            console.log(updatedValues, 'updatedValues')
+            const updatedStation = await updateStation(updatedValues)
+            console.log('updatedStation', updatedStation)
+        } catch (err) {
+            console.error('Failed to upload image', err)
+        }
+    }
+
+
 
     return (
         <div>
@@ -58,13 +54,13 @@ export function Modal({ closeModal, saveModalData }) {
                     <form onSubmit={closeOnSave}>
                         <div className='edit-modal-body'>
                             <div className='edit-modal-picture'>
-                              
-                                
+
+
                                 <input onChange={onUploadImgClick} type="file" name="" id="" />
                                 <img className='edit-modal-picture-img' src={currStation.createdBy.imgUrl} alt="" />
 
-                               
-                               </div>
+
+                            </div>
                             <input className='playlist-name' type="text" onChange={handleChange} value={inputValue} name="text" id="" />
                             <textarea className="playlist-description" onChange={handleChangeDesc} value={descValue} placeholder='Add an optional description'></textarea>
                             <div className='edit-modal-disclaimer'>
@@ -78,5 +74,5 @@ export function Modal({ closeModal, saveModalData }) {
                 </div>
             </div>
         </div>
-    );
+    )
 }

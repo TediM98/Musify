@@ -64,7 +64,7 @@ function getEmptyStation() {
     return {
         _id: "",
         name: "My playlist #1 ",
-        description:'',
+        description: '',
         tags: [],
         createdBy: {
             _id: utilService.makeId(),
@@ -92,7 +92,7 @@ const demoStation =
         },
         {
             "name": "Relaxing Reading",
-            "description":"funky music",
+            "description": "funky music",
             "tags": [
                 "Funk",
                 "Happy"
@@ -110,7 +110,7 @@ const demoStation =
                     "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
                     "addedAt": 162521765262,
-                    "duration" : "03:01"
+                    "duration": "03:01"
                 },
                 {
                     "_id": "mUkfiLjooxs",
@@ -118,7 +118,7 @@ const demoStation =
                     "url": "https://www.youtube.com/watch?v=mUkfiLjooxs",
                     "imgUrl": "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
                     "addedBy": {},
-                    "duration" : "03:01"
+                    "duration": "03:01"
                 },
             ],
         },
@@ -142,7 +142,7 @@ const demoStation =
                     "imgUrl": "https://i.ytimg.com/vi/l482T0yNkeo/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
                     "addedAt": 162521765263,
-                    "duration" : "03:28"
+                    "duration": "03:28"
                 },
                 {
                     "_id": "1w7OgIMMRc4",
@@ -151,7 +151,7 @@ const demoStation =
                     "imgUrl": "https://i.ytimg.com/vi/1w7OgIMMRc4/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
                     "addedAt": 162521765264,
-                    "duration" : "05:03"
+                    "duration": "05:03"
                 }
             ]
         },
@@ -174,7 +174,7 @@ const demoStation =
                     "imgUrl": "https://i.ytimg.com/vi/tO4dxvguQDk/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
                     "addedAt": 162521765265,
-                    "duration" : "03:07"
+                    "duration": "03:07"
                 },
                 {
                     "_id": "jfKfPfyJRdk",
@@ -183,7 +183,7 @@ const demoStation =
                     "imgUrl": "https://i.ytimg.com/vi/5qap5aO4i9A/mqdefault.jpg",
                     "addedBy": '{minimal-user}',
                     "addedAt": 162521765266,
-                    "duration" : "53:07"
+                    "duration": "53:07"
                 }
             ]
         },

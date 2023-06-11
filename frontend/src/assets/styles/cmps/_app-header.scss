@@ -36,7 +36,9 @@
     align-items: center;
     border-radius: 50%;
   }
-
+  .btn-login-signup-wrapper {
+    margin-right: 1em;
+  }
   .btn-go-back svg,
   .btn-go-next svg {
     fill: $bgclr1-light;

@@ -30,7 +30,7 @@
 
   & h1 {
     font-size: 6rem;
-    margin: 0.58em 2px 0.12em;
+    margin: 0.58em -2px 0.12em;
     margin-top: 8px;
 
     font-weight: 900;
@@ -462,8 +462,8 @@
   height: 100%;
   object-fit: cover;
 }
-.edit-modal-picture-img{
-  height:inherit;
+.edit-modal-picture-img {
+  height: inherit;
 }
 .edit-modal-disclaimer {
   box-sizing: border-box;

@@ -57,7 +57,7 @@ export function AddSong({ station, onAddSong }) {
       </div>
       <div className='flex align-center'>
         <button className='close-songs-list'>
-          {svgService.exitIcon}
+          {/* {svgService.exitIcon} */}
         </button>
       </div>
     </section>

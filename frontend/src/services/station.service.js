@@ -68,8 +68,7 @@ function getEmptyStation() {
         name: "My playlist #1 ",
         tags: [],
         createdBy: {
-            _id: utilService.makeId(),
-            fullname: "",
+            owner: "tedi",
             imgUrl: emptyStationImg
         },
         likedByUsers: [],
