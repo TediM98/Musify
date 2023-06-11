@@ -52,8 +52,8 @@ export function StationDetails() {
     toggleEditModal()
     try {
       console.log(currStation, ' from details check')
-      const updatedStation = { ...currStation, name: inputValue, description : descValue }
-     
+      const updatedStation = { ...currStation, name: inputValue, description: descValue }
+
       dispatch(updateStation(updatedStation))
     } catch (err) {
       console.log('Error could not edit playlist name')
@@ -61,7 +61,6 @@ export function StationDetails() {
   }
 
   function toggleEditModal() {
-    /////////////////////new modal
     setEditModalOpen(!isEditModalOpen)
   }
 
@@ -229,9 +228,8 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${
-                    isOpen === stationId ? 'active' : 'inactive'
-                  }`}
+                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
+                    }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -298,9 +296,8 @@ export function StationDetails() {
 
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${
-                              isOpen === song._id ? 'active' : 'inactive'
-                            }`}
+                            className={`dropdown-menu ${isOpen === song._id ? 'active' : 'inactive'
+                              }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem

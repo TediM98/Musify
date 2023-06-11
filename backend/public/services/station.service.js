@@ -38,15 +38,8 @@ async function save(station) {
 
 function getEmptyStation() {
     return {
-        name: "My playlist #1 ",
-        tags: [],
-        createdBy: {
-            owner:'tedi',
-            imgUrl: emptyStationImg
-        },
-        likedByUsers: [],
-        songs: [],
-        msgs: [],
+        vendor: 'Susita-' + (Date.now() % 1000),
+        price: utilService.getRandomIntInclusive(1000, 9000),
     }
 }
 

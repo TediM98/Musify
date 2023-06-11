@@ -16,6 +16,7 @@ export function getActionAddStation(station) {
     }
 }
 export function getActionUpdateStation(station) {
+
     return {
         type: UPDATE_STATION,
         station
@@ -23,7 +24,7 @@ export function getActionUpdateStation(station) {
 }
 
 export function setCurrStation(currStation) {
-    store.dispatch({ type: SET_CURRENT_STATION, currStation });
+    store.dispatch({ type: SET_CURRENT_STATION, currStation })
 }
 
 export async function removeSong(songId, currStation) {
@@ -77,16 +78,16 @@ export async function addStation(station) {
 
 
 export async function updateStation(station) {
-    console.log(station , 'from actions');
-    try{
+
+    try {
         const savedStation = await stationService.save(station)
                (setCurrStation(getActionUpdateStation(savedStation)))
                 return savedStation
     }
-        catch(err) {
-            console.log('Cannot save station', err)
-            throw err
-        }
+    catch (err) {
+        console.log('Cannot save station', err)
+        throw err
+    }
 }
 
 
@@ -101,7 +102,7 @@ export async function updateStation(station) {
 
 //     stationService.remove(stationId)
 //         .then(() => {
-//             console.log('Server Reported - Deleted Succesfully');
+//             console.log('Server Reported - Deleted Succesfully')
 //         })
 //         .catch(err => {
 //             showErrorMsg('Cannot remove station')
