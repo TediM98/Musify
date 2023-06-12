@@ -27,11 +27,6 @@ export function StationDetails() {
     (storeState) => storeState.stationModule.currStation
   )
 
-<<<<<<< HEAD
-  console.log('currStation!!!', currStation)
-=======
-  console.log('baba1', currStation);
->>>>>>> 3ad6f47b783d373d897c4d9545ccb0163480cd25
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -48,7 +43,7 @@ export function StationDetails() {
   getBgc()
 
   useEffect(() => {
-    console.log('hi from useeffect details');
+    console.log('hi from useeffect details')
     if (stationId) {
       loadStation()
     }
@@ -90,7 +85,6 @@ export function StationDetails() {
   }
 
   async function getBgc() {
-    console.log(currStation);
     try {
       const color = await bgcService.getColorFromUrl(
         currStation.createdBy.imgUrl

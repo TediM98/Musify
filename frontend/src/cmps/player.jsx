@@ -12,7 +12,7 @@ import {
 import { useSelector } from 'react-redux'
 import { svgService } from '../services/svg.service'
 import { loadStations, setCurrStation } from '../store/station.actions'
-
+import emptyStation from '../assets/img/empty-station-img.jpg'
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
   const [volumeValue, setVolumeValue] = useState(25)
@@ -45,16 +45,16 @@ export function StationPlayer() {
   )
 
   useEffect(() => {
-    if (!isPlaying) return
+    if (!isPlaying || !player) return
     const updatePlayerInfo = () => {
-      setCurrentTime(player?.getCurrentTime())
-      setSongDuration(player?.getDuration())
+      setCurrentTime(player.getCurrentTime())
+      setSongDuration(player.getDuration())
     }
     const intervalId = setInterval(updatePlayerInfo, 1000)
     return () => {
       clearInterval(intervalId)
     }
-  }, [isPlaying])
+  }, [isPlaying, player])
 
   useEffect(() => {
     setProgressValue((currentTime / songDuration) * 100)
@@ -68,8 +68,7 @@ export function StationPlayer() {
   }
 
   //PLAYER CONTROLS
-  async function getTime() { }
-
+  // async function getTime() { }
   const handleForward = () => {
     if (player) {
       const newTime = currentTime + 15
@@ -238,40 +237,38 @@ export function StationPlayer() {
 
   return (
     <div className="main-player-section full">
-      <div className="player-container flex">
-        <YouTube
-          videoId={
-            songPlaying?.songId
-            // ||
-            // currStation?.songs[0]._id || put onclick in details
-            // stations[0]?.songs[0]._id
-          }
-          opts={opts}
-          onReady={handlePlayerReady}
-          onStateChange={onChangePlayerStatus}
-        />
-        {currStation && (
-          <div className="left-controls">
-            <div className="station-img">
-              <img
-                src={
-                  songPlaying
-                    ? currStation?.songs[songPlaying?.songIdx]?.imgUrl
-                    : currStation?.createdBy?.imgUrl
-                }
-                alt="station-img"
-              />
-            </div>
-            <div className="artist-details">
-              <span className="song-name">
-                {currStation?.songs[songPlaying?.songIdx || 0]?.title}
-              </span>
-            </div>
-            <button onClick={onLikeSong} className="btn-like-song flex">
-              {isLiked ? svgService.heartIcon : svgService.likedSongIcon}
-            </button>
+      <div className="left-controls">
+        <div className="player-container flex">
+          <YouTube
+            videoId={
+              songPlaying?.songId
+            }
+            opts={opts}
+            onReady={handlePlayerReady}
+            onStateChange={onChangePlayerStatus}
+          />
+
+          <div className="station-img">
+            <img
+              src={
+                songPlaying
+                  ? currStation?.songs[songPlaying?.songIdx]?.imgUrl
+                  : emptyStation
+              }
+              alt="station-img"
+            />
           </div>
-        )}
+          <div className="artist-details">
+            <span className="song-name">
+              {currStation?.songs[songPlaying?.songIdx || 0]?.title}
+            </span>
+          </div>
+          {currStation && (
+            <button onClick={onLikeSong} className="btn-like-song flex">
+              {isLiked ? svgService.likedSongIcon : svgService.heartIcon}
+            </button>
+          )}
+        </div>
         <div className="center-controls">
           <div className="top-center-controls">
             <button onClick={onShuffle} className="shuffle">
@@ -373,6 +370,6 @@ export function StationPlayer() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }

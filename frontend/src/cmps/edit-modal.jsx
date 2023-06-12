@@ -8,12 +8,8 @@ export function Modal({ closeModal, saveModalData }) {
     const currStation = useSelector((storeState) => storeState.stationModule.currStation)
     const [inputValue, setInputValue] = useState(currStation.name)
     const [descValue, setDescValue] = useState(currStation.description)
-<<<<<<< HEAD
 
-=======
-    
     console.log('currstation prnt', currStation)
->>>>>>> 3ad6f47b783d373d897c4d9545ccb0163480cd25
 
     function handleChange(ev) {
         setInputValue(ev.target.value)
@@ -33,21 +29,13 @@ export function Modal({ closeModal, saveModalData }) {
 
     async function onUploadImgClick(ev) {
         try {
-<<<<<<< HEAD
-            const imgUrl = await uploadService.uploadImg(ev)
-            const updatedValues = { ...currStation, imgUrl: imgUrl.url }
-            console.log(updatedValues, 'updatedValues')
-            const updatedStation = await updateStation(updatedValues)
-            console.log('updatedStation', updatedStation)
-=======
             const imgUrl = await uploadService.uploadImg(ev);
             console.log('imgurl in the onclick', imgUrl)
             const updatedValues = { ...currStation.createdBy, imgUrl: imgUrl.url }
             console.log(updatedValues, 'updatedValues');
-            const updatedStation ={...currStation, createdBy: updatedValues}
-         await updateStation(updatedStation)
-          
->>>>>>> 3ad6f47b783d373d897c4d9545ccb0163480cd25
+            const updatedStation = { ...currStation, createdBy: updatedValues }
+            await updateStation(updatedStation)
+
         } catch (err) {
             console.error('Failed to upload image', err)
         }
