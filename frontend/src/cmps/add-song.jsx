@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { trackService } from "../services/track.service"
+import { trackService } from '../services/track.service'
 import { svgService } from '../services/svg.service'
 
 export function AddSong({ station, onAddSong }) {
@@ -34,51 +34,55 @@ export function AddSong({ station, onAddSong }) {
     setSearchTerm(newSearchTerm)
   }
 
-  return <React.Fragment>
-    <section className={`station-song-search flex ${station.songs.length === 0 ? 'no-border' : ''}`}>
-      <div className='search-input'>
-        <h1>Let's find something for your playlist</h1>
-        {/* <label htmlFor="songName"></label> */}
-        <input
-          className='add-song-input'
-          type="search"
-          id="songName"
-          placeholder='Search for songs'
-          onChange={handleInputChange}
-          value={searchTerm}
-        />
-        {svgService.searchHomePageIcon}
-      </div>
-      <div className='flex align-center'>
-        <button className='close-songs-list'>
-          {/* {svgService.exitIcon} */}
-        </button>
-      </div>
-    </section>
-    <div className='station-search-list'>
-      <ul className='clean-list'>
-        {tracks.map((track, index) => (
-          <li key={track._id} className='station-search-preview'>
-            <div className='song-img-conatiner'>
-              <div className='song-img'>
-                <img src={track.imgUrl} alt={track.title} />
+  return (
+    <React.Fragment>
+      <section
+        className={`station-song-search flex ${
+          station.songs?.length === 0 ? 'no-border' : ''
+        }`}
+      >
+        <div className="search-input">
+          <h1>Let's find something for your playlist</h1>
+          {/* <label htmlFor="songName"></label> */}
+          <input
+            className="add-song-input"
+            type="search"
+            id="songName"
+            placeholder="Search for songs"
+            onChange={handleInputChange}
+            value={searchTerm}
+          />
+          {svgService.searchHomePageIcon}
+        </div>
+        <div className="flex align-center">
+          <button className="close-songs-list">
+            {/* {svgService.exitIcon} */}
+          </button>
+        </div>
+      </section>
+      <div className="station-search-list">
+        <ul className="clean-list">
+          {tracks.map((track, index) => (
+            <li key={track._id} className="station-search-preview">
+              <div className="song-img-conatiner">
+                <div className="song-img">
+                  <img src={track.imgUrl} alt={track.title} />
+                </div>
+                <div className="btn-play-pause">{/* svg play pause */}</div>
               </div>
-              <div className='btn-play-pause'>
-                {/* svg play pause */}
+              <div className="song-title">
+                <span className="artist-name">{track.title}</span>
               </div>
-            </div>
-            <div className='song-title'>
-              <span className='artist-name'>{track.title}</span>
-            </div>
-            <button className="btn-add-song" onClick={() => addToStation(track)}>
-              <span>
-                Add
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
-
-    </div>
-  </React.Fragment>
+              <button
+                className="btn-add-song"
+                onClick={() => addToStation(track)}
+              >
+                <span>Add</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </React.Fragment>
+  )
 }
