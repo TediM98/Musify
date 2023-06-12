@@ -8,7 +8,7 @@
   width: 12.8em;
   height: 17.8em;
   border-radius: 5px;
-  font-family: CircularBlack;
+  font-family: CircularBlack, Rubik-Light;
   transition: opacity 0.5s;
   position: relative;
   .btn-play-playlist {
@@ -17,6 +17,7 @@
     background-color: $clr4;
     padding: 10px;
     border-radius: 50%;
+
     border: none;
     position: absolute;
     top: 41%;
@@ -55,6 +56,7 @@
     & .btn-play-playlist {
       border: none;
       background-color: #1ed760;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       opacity: 1;
       transform: translateY(0);
       cursor: pointer;

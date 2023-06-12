@@ -20,7 +20,7 @@ export const UserStationPreview = ({ station }) => {
       <img src={station.createdBy.imgUrl} alt={station.name} />
       <div className="station-info">
         <h3>{station.name}</h3>
-        <span>playlist · User</span>
+        <span>{station.songs.length} songs</span>
       </div>
       <div className="playlist-actions"></div>
     </li>

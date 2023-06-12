@@ -7,7 +7,6 @@ export function StationPreview({ station, onPlayStation }) {
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
-  console.log('station', station)
 
   return (
     <section>

@@ -6,8 +6,9 @@
   grid-template: auto/repeat(auto-fill, minmax(max(var(--min-column-width), 25%), 1fr));
 
   & :hover {
+    background-color: #f7f7f729;
     h4 {
-      text-decoration: underline;
+      background-color: transparent;
     }
   }
 
@@ -34,7 +35,7 @@
     background-color: $clr4;
     padding: 10px;
     border-radius: 50%;
-    margin-top: 1em;
+    margin-top: 1.2em;
     transform: translateY(5%);
     position: absolute;
     right: 3%;
@@ -75,12 +76,13 @@
 h4 {
   -webkit-box-orient: vertical;
   font-size: 16px;
-  font-family: CircularSp;
+  font-family: CircularSp, Rubik-Light;
   -webkit-box-direction: normal;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin: 0 3px;
+  align-self: center;
   -ms-flex-direction: row;
   flex-direction: row;
 }

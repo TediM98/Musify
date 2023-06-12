@@ -1,9 +1,9 @@
 .station-song-search {
-  font-family: CircularBlack;
-  padding-top: 30px;
+  font-family: CircularBlack, Rubik-Light;
+  padding-top: 2em;
   border-top: 1px solid #323232;
   justify-content: space-between;
-  margin-block-end: 20px;
+  margin-bottom: 2em;
   grid-column: 1/-1;
 
   &.no-border {
@@ -13,10 +13,9 @@
     line-height: 22.5px;
     background-color: #2b2b2c;
     color: silver;
-    font-family: CircularBlack;
     border: 0;
     border-radius: 4px;
-    padding: rem(11px) 2rem 0.5rem;
+    padding: 0.6em 2rem 0.5rem;
 
     width: 100%;
     height: 40px;
@@ -26,7 +25,7 @@
     position: absolute;
     height: 16px;
     width: 16px;
-    top: 70px;
+    top: 56px;
     left: 0;
     margin-inline-start: 10px;
   }
@@ -41,7 +40,7 @@
     }
   }
   h1 {
-    margin-bottom: 1.875rem;
+    margin-bottom: 1rem;
     font-size: 1.5rem;
   }
   .search-input {
@@ -50,7 +49,7 @@
 }
 
 .station-search-list {
-  font-family: CircularBlack;
+  font-family: CircularBlack, Rubik-Light;
   font-size: 16px;
   grid-column: 2;
 
@@ -94,17 +93,24 @@
     align-items: center;
     font-size: 1rem;
     border: 1px solid #717171;
-    padding: 5px 15px;
+    padding: 0.4em 1em;
     background-color: #121212;
     color: #f5f5f5;
-    padding: 5px 10px;
     margin: 5px;
     border-radius: 500px;
     cursor: pointer;
+    span {
+      align-items: center;
+    }
   }
 }
 
-.btn-options-close{
+.add-song-input:focus {
+  outline: none;
+  border-color: black;
+}
+
+.btn-options-close {
   background: transparent;
-        border: 0;
+  border: 0;
 }
