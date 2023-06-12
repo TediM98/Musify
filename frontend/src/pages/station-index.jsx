@@ -66,20 +66,83 @@ export function StationIndex() {
         <HighLightsTable stations={stations} onPlayStation={onPlayStation} />
       </section>
       <section className="station-list-container">
-        <span>Your top mixes</span>
-        <StationList
-          onPlayStation={onPlayStation}
-          stations={renderStationsByTag('happy')}
-        />
-        <span>More like Mac miller</span>
+        <span>Rock</span>
         <StationList
           onPlayStation={onPlayStation}
           stations={renderStationsByTag('rock')}
+        />
+        <span>Pop</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('pop')}
         />
         <span>Relaxing</span>
         <StationList
           onPlayStation={onPlayStation}
           stations={renderStationsByTag('relaxing')}
+        />
+        <span>Hip-Hop</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('Hip-Hop')}
+        />
+        <span>Country</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('country')}
+        />
+        <span>Jazz</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('jazz')}
+        />
+        <span>Classical</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('classical')}
+        />
+        <span>Electronic</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('electronic')}
+        />
+        <span>R&B</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('R&B')}
+        />
+        <span>Reggae</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('reggae')}
+        />
+        <span>Metal</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('metal')}
+        />
+        <span>Alternative</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('alternative')}
+        />
+
+        <span>Dance</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('dance')}
+        />
+
+        <span>Indie</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('indie')}
+        />
+
+        <span>Blues</span>
+        <StationList
+          onPlayStation={onPlayStation}
+          stations={renderStationsByTag('blues')}
         />
       </section>
     </section>

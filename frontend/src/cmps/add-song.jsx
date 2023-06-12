@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { trackService } from "../services/track.service"
-import { utilService } from '../services/util.service'
-import { updateStation } from '../store/station.actions'
 import { svgService } from '../services/svg.service'
 
-// Mac miller,Beyonce,Shakira
-
 export function AddSong({ station, onAddSong }) {
-
   const [searchTerm, setSearchTerm] = useState('')
   const [tracks, setTracks] = useState([])
-
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -49,7 +43,7 @@ export function AddSong({ station, onAddSong }) {
           className='add-song-input'
           type="search"
           id="songName"
-          placeholder='Search for songs or episodes'
+          placeholder='Search for songs'
           onChange={handleInputChange}
           value={searchTerm}
         />
@@ -76,7 +70,11 @@ export function AddSong({ station, onAddSong }) {
             <div className='song-title'>
               <span className='artist-name'>{track.title}</span>
             </div>
-            <button className="btn-add-song" onClick={() => addToStation(track)}>Add</button>
+            <button className="btn-add-song" onClick={() => addToStation(track)}>
+              <span>
+                Add
+              </span>
+            </button>
           </li>
         ))}
       </ul>

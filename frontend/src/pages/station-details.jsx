@@ -39,12 +39,11 @@ export function StationDetails() {
   const { stationId } = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  let r = document.querySelector(':root')
   getBgc()
 
   useEffect(() => {
     if (stationId) {
-      loadStation().then(() => getBgc())
+      loadStation()
     }
   }, [])
 
