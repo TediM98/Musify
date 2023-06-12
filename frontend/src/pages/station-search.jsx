@@ -6,6 +6,7 @@ import { setIsPlaying, setSongPlaying } from '../store/player.actions';
 import { useSelector } from 'react-redux';
 import { setCurrStation } from '../store/station.actions';
 import { utilService } from "../services/util.service"
+import { GenresCards } from '../cmps/genres';
 
 export function StationSearch() {
   const [newSearch, setNewSearch] = useState('');
@@ -62,7 +63,7 @@ export function StationSearch() {
       setIsOpen(songId); // Open the dropdown for the clicked song
     }
   }
-
+  console.log(searchRes)
   return (
     <section>
       <div
@@ -95,9 +96,19 @@ export function StationSearch() {
           <div></div>
           <small className='duration-icon'>{svgService.durationIcon}</small>
         </div>
+        {/* <div className='.search-card-category'>
+
+</div> */}
+{/* <div><GenresCards /></div> */}
+       
+{!searchRes.length && <div ><GenresCards /></div>}
         {searchRes && (
           <ul>
-            {!searchRes.length && <div className='no-search-results'>Enter search terms to show results</div>}
+        
+
+
+
+            {/* {!searchRes.length && <div className='no-search-results'>Enter search terms to show results</div>} */}
             {searchRes.map((song, idx) => (
               <li className='search-result-song' key={song._id}>
                 <div className='song-index'>{idx + 1}</div>
