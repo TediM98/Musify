@@ -22,7 +22,7 @@ export function StationDetails() {
   const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
-
+  const [songPlayingOnList, setSongPlayingOnList] = useState(null)
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
@@ -52,7 +52,11 @@ export function StationDetails() {
     toggleEditModal()
     try {
       console.log(currStation, ' from details check')
-      const updatedStation = { ...currStation, name: inputValue, description: descValue }
+      const updatedStation = {
+        ...currStation,
+        name: inputValue,
+        description: descValue,
+      }
 
       dispatch(updateStation(updatedStation))
     } catch (err) {
@@ -109,14 +113,6 @@ export function StationDetails() {
   }
 
   function onChangePlayerStatus() {
-    //
-    // if (!player) return
-    // if (!isPlaying) {
-    //   player.playVideo()
-    // } else {
-    //   player.pauseVideo()
-    // }
-    // setIsPlaying(!isPlaying)
     if (!songPlaying) onChangeSongPlaying(currStation.songs[0]._id, 0)
     if (!isPlaying) {
       player.playVideo()
@@ -128,6 +124,7 @@ export function StationDetails() {
   }
 
   function onChangeSongPlaying(songId = '', songIdx) {
+    setSongPlayingOnList(songId)
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo()
@@ -228,8 +225,9 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
-                    }`}
+                  className={`dropdown-menu ${
+                    isOpen === stationId ? 'active' : 'inactive'
+                  }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -256,7 +254,7 @@ export function StationDetails() {
               return (
                 <div className="song-list-container" key={song._id}>
                   <li className="song-wrapper">
-                    <span></span>
+                    <div></div>
                     <div className="song-idx-container flex">
                       <span className="song-idx">{idx + 1}</span>
                     </div>
@@ -264,28 +262,39 @@ export function StationDetails() {
                       className="handle-song-icon-container"
                       onClick={() => onChangeSongPlaying(song._id, idx)}
                     >
-                      {isPlaying
+                      {songPlayingOnList === song._id && isPlaying
                         ? svgService.playerPauseTrackIcon
                         : svgService.playerPlayTrackIcon}
                     </div>
-                    <div className="song-img-container">
-                      <img
-                        src={song.imgUrl}
-                        alt="song-img"
-                        className="song-img"
-                      ></img>
-                    </div>
-                    <div className="song-title">
-                      <span className="song-name">{song.title}</span>
+                    <div className="artist-details flex">
+                      <div className="song-img-container">
+                        <img
+                          src={song.imgUrl}
+                          alt="song-img"
+                          className="song-img"
+                        ></img>
+                      </div>
+                      <div className="song-title">
+                        <span
+                          className={`song-name ${
+                            songPlayingOnList === song._id && isPlaying
+                              ? 'active'
+                              : 'inactive'
+                          }`}
+                        >
+                          {song.title}
+                        </span>
+                      </div>
                     </div>
                     <div className="song-created-at">
                       {new Date(song.addedAt).toLocaleDateString()}
                     </div>
-                    <div>{song.duration}</div>
                     <div className="list-options flex">
                       <button className="btn-like-song">
                         {svgService.heartIcon}
                       </button>
+                      <div className="song-duration">{song.duration}</div>
+
                       <div className="list-options-container">
                         <button
                           onClick={() => toggleModal(song._id)}
@@ -296,8 +305,11 @@ export function StationDetails() {
 
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${isOpen === song._id ? 'active' : 'inactive'
-                              }`}
+                            className={`dropdown-menu ${
+                              isOpen === song._id
+                                ? 'active ' + 'list-options'
+                                : 'inactive'
+                            }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem
