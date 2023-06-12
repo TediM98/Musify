@@ -6,7 +6,7 @@ import { setIsPlaying, setSongPlaying } from '../store/player.actions'
 import { useSelector } from 'react-redux'
 import { setCurrStation } from '../store/station.actions'
 import { utilService } from '../services/util.service'
-import { GenresCards } from './genres'
+import { GenreList } from '../cmps/genre-list'
 
 export function StationSearch() {
   const [newSearch, setNewSearch] = useState('')
@@ -105,7 +105,7 @@ export function StationSearch() {
 
         {!searchRes?.length ? (
           <div>
-            <GenresCards />
+            <GenreList />
           </div>
         ) : (
           <ul>
