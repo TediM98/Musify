@@ -73,8 +73,11 @@ export function StationSearch() {
       >
         
       </div>
-      <div className='search-bar-searchComp-container'>
-        {svgService.searchMagGlassIcon}
+      <div className='search-bar-searchComp-container'> 
+      <div className='search-icon-magGlass'>
+      {svgService.searchMagGlassIcon} 
+      </div>
+        
         <input
           className='station-search-input'
           onChange={handleChange}
