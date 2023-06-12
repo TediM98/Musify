@@ -5,6 +5,7 @@ import { trackService } from "../services/track.service";
 import { setIsPlaying, setSongPlaying } from '../store/player.actions';
 import { useSelector } from 'react-redux';
 import { setCurrStation } from '../store/station.actions';
+import { utilService } from "../services/util.service"
 
 export function StationSearch() {
   const [newSearch, setNewSearch] = useState('');
@@ -16,24 +17,30 @@ export function StationSearch() {
   const currStation = useSelector((storeState) => storeState.stationModule.currStation);
 
   useEffect(() => {
-    console.log(searchRes);
-    console.log('currStation', currStation);
-  }, [searchRes]);
+    const delayedSearch = utilService.debounce(async () => {
+      const { value } = newSearch;
+      try {
+        const songs = await trackService.getVideos(value);
+        setSearchRes(songs);
+      } catch (error) {
+        console.error(error);
+      }
+    }, 7500);
 
-  async function handleChange({ target }) {
+    delayedSearch();
+
+    return () => {
+      clearTimeout(delayedSearch);
+    };
+  }, [newSearch]);
+
+  function handleChange({ target }) {
     const value = target.value || '';
-    setNewSearch((prevSearch) => ({ prevSearch, value }));
-
-    try {
-      const songs = await trackService.getVideos(value);
-      setSearchRes(songs);
-    } catch (error) {
-      console.error(error);
-    }
+    setNewSearch((prevSearch) => ({ ...prevSearch, value }));
   }
 
   function onPlaySong(songId, songIdx) {
-    console.log('in the playsong function', songId, songIdx)
+    console.log('in the playsong function', songId, songIdx);
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo();
@@ -53,7 +60,6 @@ export function StationSearch() {
       setIsOpen(null); // Close the dropdown if it's already open
     } else {
       setIsOpen(songId); // Open the dropdown for the clicked song
-
     }
   }
 
@@ -64,8 +70,10 @@ export function StationSearch() {
           setIsOpen(!isOpen)
         }}
         className={`options-close-search ${isOpen ? 'active' : 'inactive'}`}
-      ></div>
-      <div>
+      >
+        
+      </div>
+      <div className='search-bar-searchComp-container'>
         {svgService.searchMagGlassIcon}
         <input
           className='station-search-input'
@@ -78,29 +86,24 @@ export function StationSearch() {
       </div>
       <div>
         <div className="song-list-header flex">
-            <div></div>
-            <span className="list-song-idx">#</span>
-            <div className="list-song-title">Title</div>
-            <div></div>
-            
-            <small className='duration-icon'>{svgService.durationIcon}</small>
-          </div>
+          <div></div>
+          <span className="list-song-idx">#</span>
+          <div className="list-song-title">Title</div>
+          <div></div>
+          <small className='duration-icon'>{svgService.durationIcon}</small>
+        </div>
         {searchRes && (
-          
           <ul>
-                    {!searchRes.length && <div className='no-search-results'>Enter search terms to show results</div>}
-
+            {!searchRes.length && <div className='no-search-results'>Enter search terms to show results</div>}
             {searchRes.map((song, idx) => (
               <li className='search-result-song' key={song._id}>
                 <div className='song-index'>{idx + 1}</div>
                 <div
-                      className="handle-song-icon-container"
-                      onClick={() => onPlaySong(song._id, idx)}
-                    >
-                      {isPlaying
-                        ? svgService.playerPauseTrackIcon
-                        : svgService.playerPlayTrackIcon}
-                    </div>
+                  className="handle-song-icon-container"
+                  onClick={() => onPlaySong(song._id, idx)}
+                >
+                  {isPlaying ? svgService.playerPauseTrackIcon : svgService.playerPlayTrackIcon}
+                </div>
                 <div className='song-img-container' onClick={() => onPlaySong(song._id, idx)}>
                   <img src={song.imgUrl} alt="" />
                 </div>
