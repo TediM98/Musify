@@ -7,7 +7,7 @@
   z-index: 5;
   align-items: center;
   background: linear-gradient(var(--primary-color), var(--primary-color));
-  transition: 1s ease;
+  transition: background-color 0.3s ease;
 
   .btn-login-signup-wrapper {
     margin-right: 1em;

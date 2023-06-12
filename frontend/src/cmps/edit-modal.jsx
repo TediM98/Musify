@@ -8,7 +8,7 @@ export function Modal({ closeModal, saveModalData }) {
     const currStation = useSelector((storeState) => storeState.stationModule.currStation)
     const [inputValue, setInputValue] = useState(currStation.name)
     const [descValue, setDescValue] = useState(currStation.description)
-    
+
 
     function handleChange(ev) {
         setInputValue(ev.target.value)
@@ -27,16 +27,15 @@ export function Modal({ closeModal, saveModalData }) {
 
     async function onUploadImgClick(ev) {
         try {
-            const imgUrl = await uploadService.uploadImg(ev);
-            console.log('imgurl in the onclick', imgUrl)
-            const updatedValues = { ...currStation.createdBy, imgUrl: imgUrl.url }
-            console.log(updatedValues, 'updatedValues');
+            const imgUrl = await uploadService.uploadImg(ev)
+            const updatedValues = { ...currStation, imgUrl: imgUrl.url }
+            console.log(updatedValues, 'updatedValues')
             const updatedStation = await updateStation(updatedValues)
             console.log('updatedStation', updatedStation)
         } catch (err) {
             console.error('Failed to upload image', err)
         }
-    };
+    }
 
 
 
@@ -65,12 +64,12 @@ export function Modal({ closeModal, saveModalData }) {
                             <input className='playlist-name' type="text" onChange={handleChange} value={inputValue} name="text" id="" />
                             <textarea className="playlist-description" onChange={handleChangeDesc} value={descValue} placeholder='Add an optional description'></textarea>
                             <div className='edit-modal-genres-container'>
-                            <div className='edit-modal-genres'>
-                               <select className='genre-select' name="" id="">
-                               <option value="happy">happy</option>
-                               <option value="relaxing">relaxing</option>
-                               </select>
-                            </div>
+                                <div className='edit-modal-genres'>
+                                    <select className='genre-select' name="" id="">
+                                        <option value="happy">happy</option>
+                                        <option value="relaxing">relaxing</option>
+                                    </select>
+                                </div>
                             </div>
                             <div className='edit-modal-saveBtn-container'>
                                 <button className='edit-modal-saveBtn' type='submit'>Save</button>

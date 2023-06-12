@@ -1,19 +1,14 @@
 .main-player-section {
-  // background-color: rgb(0, 0, 0, 0.6);
-  // z-index: 9000;
-  // padding: 16px;
   grid-area: 2/1/2/3;
-  // grid-area: player;
 }
 
 .player-container {
   bottom: 0;
-  // display: flex;
-  // flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
-  padding: 0 rem(16px);
+  height: 6em;
+  // padding: 0 rem(16px);
+  margin: 0 1em 0 2.7em;
 }
 
 .top-center-controls {
