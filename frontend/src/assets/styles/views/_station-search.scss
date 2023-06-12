@@ -1,33 +1,56 @@
 
+///SVG  CSS SETTINGS
+
+/*
+    position: absolute;
+    top: 10px;
+    z-index: 7;
+    left: 20px;
+}
+*/
+
+
+
+
+
 
 .station-search-input{
-    position:absolute;
+    // position:absolute;
     top:20px;
     z-index: 5;
     left:32.5em;
-
+   
 
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     margin-block: -4px;
     font-size: 0.8125rem;
     font-weight: 400;
-    font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
    
     background-color: #242424;
-    color: #fff!important;
+    color: #fff;
     height: 48px;
     padding: 6px 36px;
 
     border: 0;
     border-radius: 500px;
-    color: #000;
+   
     height: 48px;
     padding: 6px 48px;
     text-overflow: ellipsis;
     width: 25vw;
+    border: 2px solid rgba(255, 255, 255, 0);
+    &:focus{
+      
+      border: 2px solid white;
+    }
 
 }
+
+/*
+ outline: none;
+    border: 2px solid white;
+    */
 
 
 
@@ -39,8 +62,12 @@
     font-weight: 400;
     font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
 }
-
-
+.search-bar-searchComp-container{
+  position: absolute;
+  top: 20px;
+  z-index: 5;
+  left: 27.5em;
+}
 
 .options-close-search {
    

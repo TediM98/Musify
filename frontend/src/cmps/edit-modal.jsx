@@ -9,6 +9,7 @@ export function Modal({ closeModal, saveModalData }) {
     const [inputValue, setInputValue] = useState(currStation.name)
     const [descValue, setDescValue] = useState(currStation.description)
     
+    console.log('currstation prnt', currStation)
 
     function handleChange(ev) {
         setInputValue(ev.target.value)
@@ -21,6 +22,7 @@ export function Modal({ closeModal, saveModalData }) {
 
     function closeOnSave(ev) {
         ev.preventDefault(ev)
+        //set curr station?
         saveModalData(inputValue, descValue)
     }
 
@@ -31,8 +33,9 @@ export function Modal({ closeModal, saveModalData }) {
             console.log('imgurl in the onclick', imgUrl)
             const updatedValues = { ...currStation.createdBy, imgUrl: imgUrl.url }
             console.log(updatedValues, 'updatedValues');
-            const updatedStation = await updateStation(updatedValues)
-            console.log('updatedStation', updatedStation)
+            const updatedStation ={...currStation, createdBy: updatedValues}
+         await updateStation(updatedStation)
+          
         } catch (err) {
             console.error('Failed to upload image', err)
         }

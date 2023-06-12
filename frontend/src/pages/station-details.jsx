@@ -26,6 +26,8 @@ export function StationDetails() {
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
+
+  console.log('baba1', currStation);
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -80,6 +82,7 @@ export function StationDetails() {
   }
 
   async function getBgc() {
+    console.log(currStation);
     try {
       const color = await bgcService.getColorFromUrl(
         currStation.createdBy.imgUrl
