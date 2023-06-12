@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStations, setCurrStation } from '../store/station.actions.js'
-
-// For local service
 import { StationList } from '../cmps/station-list.jsx'
 import { HighLightsTable } from '../cmps/station-table.jsx'
 import { utilService } from '../services/util.service.js'
@@ -111,38 +109,10 @@ export function StationIndex() {
           onPlayStation={onPlayStation}
           stations={renderStationsByTag('R&B')}
         />
-        <span>Reggae</span>
-        <StationList
-          onPlayStation={onPlayStation}
-          stations={renderStationsByTag('reggae')}
-        />
         <span>Metal</span>
         <StationList
           onPlayStation={onPlayStation}
           stations={renderStationsByTag('metal')}
-        />
-        <span>Alternative</span>
-        <StationList
-          onPlayStation={onPlayStation}
-          stations={renderStationsByTag('alternative')}
-        />
-
-        <span>Dance</span>
-        <StationList
-          onPlayStation={onPlayStation}
-          stations={renderStationsByTag('dance')}
-        />
-
-        <span>Indie</span>
-        <StationList
-          onPlayStation={onPlayStation}
-          stations={renderStationsByTag('indie')}
-        />
-
-        <span>Blues</span>
-        <StationList
-          onPlayStation={onPlayStation}
-          stations={renderStationsByTag('blues')}
         />
       </section>
     </section>

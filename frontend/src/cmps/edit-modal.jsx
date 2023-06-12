@@ -11,8 +11,32 @@ export function Modal({ closeModal, saveModalData }) {
   const [inputValue, setInputValue] = useState(currStation.name)
   const [descValue, setDescValue] = useState(currStation.description)
 
+  console.log('currstation prnt', currStation)
+
   function handleChange(ev) {
     setInputValue(ev.target.value)
+  }
+
+  function handleChangeDesc(ev) {
+    setDescValue(ev.target.value)
+  }
+
+  function closeOnSave(ev) {
+    ev.preventDefault(ev)
+    saveModalData(inputValue, descValue)
+  }
+
+  async function onUploadImgClick(ev) {
+    try {
+      const imgUrl = await uploadService.uploadImg(ev)
+      console.log('imgurl in the onclick', imgUrl)
+      const updatedValues = { ...currStation.createdBy, imgUrl: imgUrl.url }
+      console.log(updatedValues, 'updatedValues')
+      const updatedStation = { ...currStation, createdBy: updatedValues }
+      await updateStation(updatedStation)
+    } catch (err) {
+      console.error('Failed to upload image', err)
+    }
   }
 
   function handleChangeDesc(ev) {

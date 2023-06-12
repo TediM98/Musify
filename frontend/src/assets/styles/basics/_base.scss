@@ -33,3 +33,9 @@ a {
 a:hover {
   // text-decoration: underline;
 }
+
+input{
+  outline: none;
+  font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+}
+
