@@ -26,9 +26,9 @@ export function StationSearch() {
       } catch (error) {
         console.error(error)
       }
-    }, 7500)
+    }, 3500)
 
-    delayedSearch()
+    // delayedSearch()
 
     return () => {
       clearTimeout(delayedSearch)
@@ -101,7 +101,7 @@ export function StationSearch() {
 </div> */}
 {/* <div><GenresCards /></div> */}
        
-{!searchRes.length && <div ><GenresCards /></div>}
+{!searchRes.length  && <div ><GenresCards /></div>}
         {searchRes && (
           <ul>
         
