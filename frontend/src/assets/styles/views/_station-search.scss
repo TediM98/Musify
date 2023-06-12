@@ -9,7 +9,7 @@
 
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
-    margin-block: 0px;
+    margin-block: -4px;
     font-size: 0.8125rem;
     font-weight: 400;
     font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
@@ -22,12 +22,14 @@
     border: 0;
     border-radius: 500px;
     color: #000;
-    height: 40px;
+    height: 48px;
     padding: 6px 48px;
     text-overflow: ellipsis;
     width: 25vw;
 
 }
+
+
 
 
 .no-search-results{
