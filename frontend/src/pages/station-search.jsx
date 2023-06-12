@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { AppHeader } from '../cmps/app-header'
 import { svgService } from '../services/svg.service'
-import { trackService } from "../services/track.service"
+import { trackService } from '../services/track.service'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions'
 import { useSelector } from 'react-redux'
 import { setCurrStation } from '../store/station.actions'
-import { utilService } from "../services/util.service"
-import { GenresCards } from '../cmps/genres';
+import { utilService } from '../services/util.service'
+import { GenresCards } from './genres'
 
 export function StationSearch() {
   const [newSearch, setNewSearch] = useState('')
-  const [searchRes, setSearchRes] = useState([])
+  const [searchRes, setSearchRes] = useState(null)
   const [isOpen, setIsOpen] = useState(null)
-  const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
-  const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
+  const isPlaying = useSelector(
+    (storeState) => storeState.playerModule.isPlaying
+  )
+  const songPlaying = useSelector(
+    (storeState) => storeState.playerModule.songPlaying
+  )
   const player = useSelector((storeState) => storeState.playerModule.player)
-  const currStation = useSelector((storeState) => storeState.stationModule.currStation)
+  const currStation = useSelector(
+    (storeState) => storeState.stationModule.currStation
+  )
 
   useEffect(() => {
     const delayedSearch = utilService.debounce(async () => {
@@ -26,10 +32,8 @@ export function StationSearch() {
       } catch (error) {
         console.error(error)
       }
-    }, 7500)
-
-    delayedSearch()
-
+    }, 3000)
+    // delayedSearch()
     return () => {
       clearTimeout(delayedSearch)
     }
@@ -71,16 +75,14 @@ export function StationSearch() {
           setIsOpen(!isOpen)
         }}
         className={`options-close-search ${isOpen ? 'active' : 'inactive'}`}
-      >
-
-      </div>
-      <div className='search-bar-searchComp-container'>
-        <div className='search-icon-magGlass'>
+      ></div>
+      <div className="search-bar-searchComp-container">
+        <div className="search-icon-magGlass">
           {svgService.searchMagGlassIcon}
         </div>
 
         <input
-          className='station-search-input'
+          className="station-search-input"
           onChange={handleChange}
           name="txt"
           id="txt"
@@ -94,46 +96,62 @@ export function StationSearch() {
           <span className="list-song-idx">#</span>
           <div className="list-song-title">Title</div>
           <div></div>
-          <small className='duration-icon'>{svgService.durationIcon}</small>
+          <small className="duration-icon">{svgService.durationIcon}</small>
         </div>
         {/* <div className='.search-card-category'>
 
 </div> */}
-{/* <div><GenresCards /></div> */}
-       
-{!searchRes.length && <div ><GenresCards /></div>}
-        {searchRes && (
+        {/* <div><GenresCards /></div> */}
+
+        {!searchRes?.length ? (
+          <div>
+            <GenresCards />
+          </div>
+        ) : (
           <ul>
-        
-
-
-
             {/* {!searchRes.length && <div className='no-search-results'>Enter search terms to show results</div>} */}
             {searchRes.map((song, idx) => (
-              <li className='search-result-song' key={song._id}>
-                <div className='song-index'>{idx + 1}</div>
+              <li className="search-result-song" key={song._id}>
+                <div className="song-index">{idx + 1}</div>
                 <div
                   className="handle-song-icon-container"
                   onClick={() => onPlaySong(song._id, idx)}
                 >
-                  {isPlaying ? svgService.playerPauseTrackIcon : svgService.playerPlayTrackIcon}
+                  {isPlaying
+                    ? svgService.playerPauseTrackIcon
+                    : svgService.playerPlayTrackIcon}
                 </div>
-                <div className='song-img-container' onClick={() => onPlaySong(song._id, idx)}>
+                <div
+                  className="song-img-container"
+                  onClick={() => onPlaySong(song._id, idx)}
+                >
                   <img src={song.imgUrl} alt="" />
                 </div>
-                <div className='song-title'>{song.title}</div>
+                <div className="song-title">{song.title}</div>
                 <div>{song.duration}</div>
-                <div className='options-container'>
-                  <button onClick={() => toggleOptions(song._id, idx)} className="btn-options-close">
+                <div className="options-container">
+                  <button
+                    onClick={() => toggleOptions(song._id, idx)}
+                    className="btn-options-close"
+                  >
                     {svgService.optionsIcon}
                   </button>
-                  <div className='search-song-options'>
+                  <div className="search-song-options">
                     {isOpen === song._id && (
                       <div className="dropdown-container">
-                        <div className={`dropdown-menu ${isOpen ? 'active' : 'inactive'}`}>
+                        <div
+                          className={`dropdown-menu ${
+                            isOpen ? 'active' : 'inactive'
+                          }`}
+                        >
                           <ul className="clean-list">
                             <li>
-                              <article className="dropdown-item play-song" onClick={() => onPlaySong(song._id, 0)}>Play song</article>
+                              <article
+                                className="dropdown-item play-song"
+                                onClick={() => onPlaySong(song._id, 0)}
+                              >
+                                Play song
+                              </article>
                             </li>
                             <li className="dropdown-item">
                               <article>Add to queue</article>
