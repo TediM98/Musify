@@ -1,60 +1,45 @@
 
 ///SVG  CSS SETTINGS
 
-/*
-    position: absolute;
-    top: 10px;
-    z-index: 7;
-    left: 20px;
+
+
+.search-icon-magGlass{
+  position: absolute;
+  top: 9px;
+  z-index: 7;
+  left: 20px;
 }
-*/
-
-
-
 
 
 
 .station-search-input{
-    // position:absolute;
-    top:20px;
-    z-index: 5;
-    left:32.5em;
-   
+  top:20px;
+  z-index: 5;
+  left:32.5em;
+ 
 
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-    margin-block: -4px;
-    font-size: 0.8125rem;
-    font-weight: 400;
-   
-    background-color: #242424;
-    color: #fff;
-    height: 48px;
-    padding: 6px 36px;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  margin-block: -4px;
+  font-size: 0.8125rem;
+  font-weight: 400;
+ 
+  background-color: #242424;
+  color: #fff;
+  height: 48px;
+  padding: 6px 36px;
 
-    border: 0;
-    border-radius: 500px;
-   
-    height: 48px;
-    padding: 6px 48px;
-    text-overflow: ellipsis;
-    width: 25vw;
-    border: 2px solid rgba(255, 255, 255, 0);
-    &:focus{
-      
-      border: 2px solid white;
-    }
   border: 0;
   border-radius: 500px;
-  color: #000;
-  height: 40px;
+ 
+  height: 48px;
   padding: 6px 48px;
   text-overflow: ellipsis;
   width: 25vw;
-
-  &:focus {
-    outline: none;
-    border-color: black;
+  border: 2px solid rgba(255, 255, 255, 0);
+  &:focus{
+    
+    border: 2px solid white;
   }
 }
 
