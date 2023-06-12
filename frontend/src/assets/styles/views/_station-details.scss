@@ -13,7 +13,8 @@
     font-size: rem(14px);
 
     & .station-desc {
-      color: $clr1-faded;
+      color: $clr3-light;
+      font-family: CircularLight;
     }
   }
 
@@ -219,7 +220,7 @@
     display: grid;
     // grid-template-columns: 0 40px 40px 2fr 1fr 120px;
     grid-template-columns: 16px 6fr 4fr 3fr minmax(120px, 1fr);
-    margin-left: 15px;
+    padding-left: 15px;
     font-size: 0.875rem;
     height: 56px;
     align-items: center;

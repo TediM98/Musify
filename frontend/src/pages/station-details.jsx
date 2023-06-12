@@ -158,13 +158,15 @@ export function StationDetails() {
       <section className="details-container details-layout">
         <div className="station-details-container full">
           <div className="station-img">
-            <img
-              // crossOrigin="anonymous"
-              className="img"
-              src={currStation.createdBy.imgUrl}
-              alt="station-img"
-              onClick={toggleEditModal}
-            ></img>
+            {currStation && (
+              <img
+                // crossOrigin="anonymous"
+                className="img"
+                src={currStation?.createdBy?.imgUrl}
+                alt="station-img"
+                onClick={toggleEditModal}
+              ></img>
+            )}
           </div>
 
           {isEditModalOpen && (
@@ -185,10 +187,10 @@ export function StationDetails() {
               </div>
               <span>Musify</span>
               <span className="song-detail">
-                {currStation.likedByUsers.length} likes
+                {currStation && currStation?.likedByUsers?.length} likes
               </span>
               <span className="song-detail">
-                {currStation.songs.length} songs
+                {currStation && currStation.songs?.length} songs
               </span>
             </div>
           </div>
@@ -249,81 +251,82 @@ export function StationDetails() {
             <small>{svgService.durationIcon}</small>
           </div>
           <ul className="clean-list">
-            {currStation.songs.map((song, idx) => {
-              return (
-                <div className="song-list-container" key={song._id}>
-                  <li className="song-wrapper">
-                    <div></div>
-                    <div className="song-idx-container flex">
-                      <span className="song-idx">{idx + 1}</span>
-                    </div>
-                    <div
-                      className="handle-song-icon-container"
-                      onClick={() => onChangeSongPlaying(song._id, idx)}
-                    >
-                      {songPlayingOnList === song._id && isPlaying
-                        ? svgService.playerPauseTrackIcon
-                        : svgService.playerPlayTrackIcon}
-                    </div>
-                    <div className="artist-details flex">
-                      <div className="song-img-container">
-                        <img
-                          src={song.imgUrl}
-                          alt="song-img"
-                          className="song-img"
-                        ></img>
+            {currStation &&
+              currStation.songs?.map((song, idx) => {
+                return (
+                  <div className="song-list-container" key={song._id}>
+                    <li className="song-wrapper">
+                      <div></div>
+                      <div className="song-idx-container flex">
+                        <span className="song-idx">{idx + 1}</span>
                       </div>
-                      <div className="song-title">
-                        <span
-                          className={`song-name ${
-                            songPlayingOnList === song._id && isPlaying
-                              ? 'active'
-                              : 'inactive'
-                          }`}
-                        >
-                          {song.title}
-                        </span>
+                      <div
+                        className="handle-song-icon-container"
+                        onClick={() => onChangeSongPlaying(song._id, idx)}
+                      >
+                        {songPlayingOnList === song._id && isPlaying
+                          ? svgService.playerPauseTrackIcon
+                          : svgService.playerPlayTrackIcon}
                       </div>
-                    </div>
-                    <div className="song-created-at">
-                      {new Date(song.addedAt).toLocaleDateString()}
-                    </div>
-                    <div className="list-options flex">
-                      <button className="btn-like-song">
-                        {svgService.heartIcon}
-                      </button>
-                      <div className="song-duration">{song.duration}</div>
-
-                      <div className="list-options-container">
-                        <button
-                          onClick={() => toggleModal(song._id)}
-                          className="btn-list-options"
-                        >
-                          {svgService.optionsIcon}
-                        </button>
-
-                        <div className="dropdown-container">
-                          <div
-                            className={`dropdown-menu ${
-                              isOpen === song._id
-                                ? 'active ' + 'list-options'
+                      <div className="artist-details flex">
+                        <div className="song-img-container">
+                          <img
+                            src={song.imgUrl}
+                            alt="song-img"
+                            className="song-img"
+                          ></img>
+                        </div>
+                        <div className="song-title">
+                          <span
+                            className={`song-name ${
+                              songPlayingOnList === song._id && isPlaying
+                                ? 'active'
                                 : 'inactive'
                             }`}
                           >
-                            <ul className=" clean-list">
-                              <DropDownItem
-                                onRemoveSong={onRemoveSong}
-                                songId={song._id}
-                              />
-                            </ul>
+                            {song.title}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="song-created-at">
+                        {new Date(song.addedAt).toLocaleDateString()}
+                      </div>
+                      <div className="list-options flex">
+                        <button className="btn-like-song">
+                          {svgService.heartIcon}
+                        </button>
+                        <div className="song-duration">{song.duration}</div>
+
+                        <div className="list-options-container">
+                          <button
+                            onClick={() => toggleModal(song._id)}
+                            className="btn-list-options"
+                          >
+                            {svgService.optionsIcon}
+                          </button>
+
+                          <div className="dropdown-container">
+                            <div
+                              className={`dropdown-menu ${
+                                isOpen === song._id
+                                  ? 'active ' + 'list-options'
+                                  : 'inactive'
+                              }`}
+                            >
+                              <ul className=" clean-list">
+                                <DropDownItem
+                                  onRemoveSong={onRemoveSong}
+                                  songId={song._id}
+                                />
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </li>
-                </div>
-              )
-            })}
+                    </li>
+                  </div>
+                )
+              })}
           </ul>
           <AddSong station={currStation} onAddSong={addToStation} />
         </section>
