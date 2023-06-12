@@ -101,7 +101,6 @@ export function StationSearch() {
         {/* <div className='.search-card-category'>
 
 </div> */}
-<<<<<<< HEAD
         {/* <div><GenresCards /></div> */}
 
         {!searchRes?.length ? (
@@ -109,12 +108,6 @@ export function StationSearch() {
             <GenresCards />
           </div>
         ) : (
-=======
-{/* <div><GenresCards /></div> */}
-       
-{!searchRes.length  && <div ><GenresCards /></div>}
-        {searchRes && (
->>>>>>> 3833b89aede7c850a6c7db8900f4e46b9205a05b
           <ul>
             {/* {!searchRes.length && <div className='no-search-results'>Enter search terms to show results</div>} */}
             {searchRes.map((song, idx) => (
