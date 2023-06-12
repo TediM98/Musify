@@ -67,8 +67,8 @@ export async function addStation(station) {
     // if(!station.songs.length) return ---> example  
     try {
         const savedStation = await stationService.save(station)
-        console.log('Added Station', savedStation)
-        store.dispatch(setCurrStation(getActionAddStation(savedStation)))
+        // console.log(savedStation, 'baba!')
+        setCurrStation(savedStation)
         return savedStation
     } catch (err) {
         console.log('Cannot add station', err)
@@ -81,7 +81,7 @@ export async function updateStation(station) {
 
     try {
         const savedStation = await stationService.save(station)
-        store.dispatch(getActionUpdateStation(savedStation))
+        setCurrStation(savedStation)
         return savedStation
     }
     catch (err) {

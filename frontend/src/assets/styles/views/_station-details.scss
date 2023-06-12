@@ -338,7 +338,7 @@
 }
 
 .options-close {
-  z-index: 100;
+  // z-index: 100;
   background: transparent;
   width: 0;
   height: 0;
@@ -346,8 +346,8 @@
 
   &.active {
     position: absolute;
-    width: calc(100% - 330px);
-    height: calc(100% - 100px);
+    // width: calc(100% - 330px);
+    // height: calc(100% - 100px);
   }
 
   &.inactive {

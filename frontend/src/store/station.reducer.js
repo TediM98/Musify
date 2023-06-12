@@ -13,13 +13,15 @@ const initialState = {
 export function stationReducer(state = initialState, action) {
     var newState = state
     var stations
-    var currStation = state.currStation
-    var updatedSongs
+    // var currStation = state.currStation
+    // var updatedSongs
+
     switch (action.type) {
         case SET_STATIONS:
             newState = { ...state, stations: action.stations }
             break
         case SET_CURRENT_STATION:
+            // console.log(action.currStation)
             newState = { ...state, currStation: action.currStation }
             break
         case REMOVE_STATION:
@@ -40,7 +42,6 @@ export function stationReducer(state = initialState, action) {
             stations = state.stations.map(station => (station._id ===
                 action.station._id) ? action.station : station)
             newState = { ...state, stations, currStation: action.station }
-
             break
         default:
     }

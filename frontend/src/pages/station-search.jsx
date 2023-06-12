@@ -1,66 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import { AppHeader } from '../cmps/app-header';
-import { svgService } from '../services/svg.service';
-import { trackService } from "../services/track.service";
-import { setIsPlaying, setSongPlaying } from '../store/player.actions';
-import { useSelector } from 'react-redux';
-import { setCurrStation } from '../store/station.actions';
+import React, { useState, useEffect } from 'react'
+import { AppHeader } from '../cmps/app-header'
+import { svgService } from '../services/svg.service'
+import { trackService } from "../services/track.service"
+import { setIsPlaying, setSongPlaying } from '../store/player.actions'
+import { useSelector } from 'react-redux'
+import { setCurrStation } from '../store/station.actions'
 import { utilService } from "../services/util.service"
 import { GenresCards } from '../cmps/genres';
 
 export function StationSearch() {
-  const [newSearch, setNewSearch] = useState('');
-  const [searchRes, setSearchRes] = useState([]);
-  const [isOpen, setIsOpen] = useState(null);
-  const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying);
-  const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying);
-  const player = useSelector((storeState) => storeState.playerModule.player);
-  const currStation = useSelector((storeState) => storeState.stationModule.currStation);
+  const [newSearch, setNewSearch] = useState('')
+  const [searchRes, setSearchRes] = useState([])
+  const [isOpen, setIsOpen] = useState(null)
+  const isPlaying = useSelector((storeState) => storeState.playerModule.isPlaying)
+  const songPlaying = useSelector((storeState) => storeState.playerModule.songPlaying)
+  const player = useSelector((storeState) => storeState.playerModule.player)
+  const currStation = useSelector((storeState) => storeState.stationModule.currStation)
 
   useEffect(() => {
     const delayedSearch = utilService.debounce(async () => {
-      const { value } = newSearch;
+      const { value } = newSearch
       try {
-        const songs = await trackService.getVideos(value);
-        setSearchRes(songs);
+        const songs = await trackService.getVideos(value)
+        setSearchRes(songs)
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
-    }, 7500);
+    }, 7500)
 
-    delayedSearch();
+    delayedSearch()
 
     return () => {
-      clearTimeout(delayedSearch);
-    };
-  }, [newSearch]);
+      clearTimeout(delayedSearch)
+    }
+  }, [newSearch])
 
   function handleChange({ target }) {
-    const value = target.value || '';
-    setNewSearch((prevSearch) => ({ ...prevSearch, value }));
+    const value = target.value || ''
+    setNewSearch((prevSearch) => ({ ...prevSearch, value }))
   }
 
   function onPlaySong(songId, songIdx) {
-    console.log('in the playsong function', songId, songIdx);
+    console.log('in the playsong function', songId, songIdx)
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
-        player.pauseVideo();
+        player.pauseVideo()
       } else {
-        player.playVideo();
+        player.playVideo()
       }
-      setIsPlaying(!isPlaying);
+      setIsPlaying(!isPlaying)
     } else {
-      setSongPlaying({ songId, songIdx });
-      setIsPlaying(true);
-      player.playVideo();
+      setSongPlaying({ songId, songIdx })
+      setIsPlaying(true)
+      player.playVideo()
     }
   }
 
   function toggleOptions(songId, songIdx) {
     if (isOpen === songId) {
-      setIsOpen(null); // Close the dropdown if it's already open
+      setIsOpen(null) // Close the dropdown if it's already open
     } else {
-      setIsOpen(songId); // Open the dropdown for the clicked song
+      setIsOpen(songId) // Open the dropdown for the clicked song
     }
   }
   console.log(searchRes)
@@ -72,13 +72,13 @@ export function StationSearch() {
         }}
         className={`options-close-search ${isOpen ? 'active' : 'inactive'}`}
       >
-        
+
       </div>
-      <div className='search-bar-searchComp-container'> 
-      <div className='search-icon-magGlass'>
-      {svgService.searchMagGlassIcon} 
-      </div>
-        
+      <div className='search-bar-searchComp-container'>
+        <div className='search-icon-magGlass'>
+          {svgService.searchMagGlassIcon}
+        </div>
+
         <input
           className='station-search-input'
           onChange={handleChange}
@@ -160,5 +160,5 @@ export function StationSearch() {
         )}
       </div>
     </section>
-  );
+  )
 }

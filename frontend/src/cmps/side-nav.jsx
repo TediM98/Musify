@@ -15,7 +15,7 @@ export function SideNav() {
 
   useEffect(() => {
     setActivePage(getActivePage(location.pathname))
-  }, [location])
+  }, [location, stations])
 
   function getActivePage(pathname) {
     if (pathname === '/') {
@@ -30,11 +30,11 @@ export function SideNav() {
 
   async function onAddStation() {
     const station = stationService.getEmptyStation()
-    console.log('station', station)
     try {
       const addedStation = await addStation(station)
       navigate(`/station/${addedStation._id}`)
-    } catch (err) {
+    }
+    catch (err) {
       console.error('Cannot add station')
     }
   }

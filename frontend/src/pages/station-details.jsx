@@ -27,7 +27,6 @@ export function StationDetails() {
     (storeState) => storeState.stationModule.currStation
   )
 
-  console.log('baba1', currStation);
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -44,6 +43,7 @@ export function StationDetails() {
   getBgc()
 
   useEffect(() => {
+    console.log('hi from useeffect details')
     if (stationId) {
       loadStation()
     }
@@ -85,7 +85,6 @@ export function StationDetails() {
   }
 
   async function getBgc() {
-    console.log(currStation);
     try {
       const color = await bgcService.getColorFromUrl(
         currStation.createdBy.imgUrl
@@ -111,7 +110,7 @@ export function StationDetails() {
   function addToStation(track) {
     const updatedStation = { ...currStation }
     updatedStation.songs.push(track)
-    dispatch(updateStation(updatedStation))
+    updateStation(updatedStation)
   }
 
   function onChangePlayerStatus() {
@@ -164,7 +163,7 @@ export function StationDetails() {
             <img
               // crossOrigin="anonymous"
               className="img"
-              src={currStation.createdBy.imgUrl}
+              src={currStation?.createdBy?.imgUrl}
               alt="station-img"
               onClick={toggleEditModal}
             ></img>
@@ -188,7 +187,7 @@ export function StationDetails() {
               </div>
               <span>Musify</span>
               <span className="song-detail">
-                {currStation.likedByUsers.length} likes
+                {currStation.likedByUsers?.length} likes
               </span>
               <span className="song-detail">
                 {currStation.songs.length} songs
@@ -227,9 +226,8 @@ export function StationDetails() {
               </button>
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${
-                    isOpen === stationId ? 'active' : 'inactive'
-                  }`}
+                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
+                    }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -278,11 +276,10 @@ export function StationDetails() {
                       </div>
                       <div className="song-title">
                         <span
-                          className={`song-name ${
-                            songPlayingOnList === song._id && isPlaying
-                              ? 'active'
-                              : 'inactive'
-                          }`}
+                          className={`song-name ${songPlayingOnList === song._id && isPlaying
+                            ? 'active'
+                            : 'inactive'
+                            }`}
                         >
                           {song.title}
                         </span>
@@ -307,11 +304,10 @@ export function StationDetails() {
 
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${
-                              isOpen === song._id
-                                ? 'active ' + 'list-options'
-                                : 'inactive'
-                            }`}
+                            className={`dropdown-menu ${isOpen === song._id
+                              ? 'active ' + 'list-options'
+                              : 'inactive'
+                              }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem
