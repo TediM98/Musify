@@ -68,7 +68,7 @@ export async function addStation(station) {
     try {
         const savedStation = await stationService.save(station)
         console.log('Added Station', savedStation)
-       setCurrStation(getActionAddStation(savedStation))
+        setCurrStation(getActionAddStation(savedStation))
         return savedStation
     } catch (err) {
         console.log('Cannot add station', err)
@@ -81,8 +81,8 @@ export async function updateStation(station) {
 
     try {
         const savedStation = await stationService.save(station)
-               (setCurrStation(getActionUpdateStation(savedStation)))
-                return savedStation
+        setCurrStation(getActionUpdateStation(savedStation))
+        return savedStation
     }
     catch (err) {
         console.log('Cannot save station', err)

@@ -2,7 +2,7 @@
   display: flex;
   padding: 1.5em;
   gap: 25px;
-  font-family: CircularBold;
+  font-family: CircularBold, Rubik-Light;
   background-color: var(--primary-color);
   background-image: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5) 100%);
 
@@ -135,6 +135,7 @@
       &:hover {
         background-color: $clr4-light;
         border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       }
     }
 
@@ -182,7 +183,7 @@
     height: 35px;
     align-items: center;
     gap: 10px;
-    font-family: CircularLight;
+    font-family: CircularLight, Rubik-Light;
     font-size: 0.875rem;
     font-weight: 560;
     letter-spacing: 1px;
@@ -217,7 +218,7 @@
     align-items: center;
     gap: 10px;
     color: $clr2;
-    font-family: CircularMedium;
+    font-family: CircularMedium, Rubik-Light;
 
     & .song-idx-container {
       width: 100%;

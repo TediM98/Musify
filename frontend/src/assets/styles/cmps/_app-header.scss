@@ -30,7 +30,7 @@
 
   .btn-go-back,
   .btn-go-next {
-    background-color: $app-header-nav-btn;
+    background-color: rgba(0, 0, 0, 0.427);
     border: none;
     height: 32px;
     width: 32px;
@@ -45,7 +45,7 @@
   }
   .btn-go-back svg,
   .btn-go-next svg {
-    fill: $bgclr1-light;
+    fill: #ffffff;
   }
 
   .btn-login {
@@ -57,6 +57,7 @@
     width: 86px;
     margin: 0.11em;
     border-radius: 500px;
+    border: none;
     cursor: pointer;
   }
   .btn-signup {

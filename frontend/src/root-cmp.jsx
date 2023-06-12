@@ -13,6 +13,7 @@ export function RootCmp() {
     <section className='app-layout ' >
       <SideNav />
       <main className='layout-conatiner'>
+        <div className='gradiant'></div>
         <AppHeader />
         <Routes>
           {routes.map((route) => (
