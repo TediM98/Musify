@@ -91,13 +91,15 @@ export function StationSearch() {
         />
       </div>
       <div>
-        <div className="song-list-header flex">
-          <div></div>
-          <span className="list-song-idx">#</span>
-          <div className="list-song-title">Title</div>
-          <div></div>
-          <small className="duration-icon">{svgService.durationIcon}</small>
-        </div>
+        {searchRes && (
+          <div className="song-list-header flex">
+            <div></div>
+            <span className="list-song-idx">#</span>
+            <div className="list-song-title">Title</div>
+            <div></div>
+            <small className="duration-icon">{svgService.durationIcon}</small>
+          </div>
+        )}
         {/* <div className='.search-card-category'>
 
 </div> */}
@@ -140,8 +142,9 @@ export function StationSearch() {
                     {isOpen === song._id && (
                       <div className="dropdown-container">
                         <div
-                          className={`dropdown-menu ${isOpen ? 'active' : 'inactive'
-                            }`}
+                          className={`dropdown-menu ${
+                            isOpen ? 'active' : 'inactive'
+                          }`}
                         >
                           <ul className="clean-list">
                             <li>

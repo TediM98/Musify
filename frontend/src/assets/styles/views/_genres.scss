@@ -1,3 +1,21 @@
+.genres-page {
+  width: 83vw;
+  height: calc(100vh);
+  background-color: $bgclr2;
+  .browse-all {
+    padding-top: rem(30px);
+    font-size: 2rem;
+    padding-left: rem(23px);
+  }
+
+  .search-card-headline {
+    font-size: rem(24px);
+  }
+  .genres-cards-container {
+    padding-top: 0;
+  }
+}
+
 .genre-stations-list {
   display: grid;
   gap: 46px;

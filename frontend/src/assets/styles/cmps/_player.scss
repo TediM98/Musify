@@ -169,7 +169,7 @@
 
   .artist-details {
     max-height: 90%;
-    overflow-y: auto;
+    overflow-y: clip;
     display: flex;
     max-height: 68px;
     line-height: 22.5px;

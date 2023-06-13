@@ -455,12 +455,13 @@
 .edit-modal-picture-change {
   height: 180px;
   width: 100%;
+  box-shadow: 0 8px 24px #00000080;
 }
 
 .edit-modal-picture {
   grid-area: album-image;
   /* Update the grid area name to "save-button" */
-
+  box-shadow: 0 8px 24px #00000080;
   background-color: #323232;
   // border: 2px solid white;   //// for debugging purposes
   color: #fff;
@@ -490,19 +491,20 @@
   width: 100px;
   height: 48px;
   border: none;
-  background-color: #b7b7b7;
+  background-color: $clr1;
   border-radius: 32px;
   vertical-align: baseline;
   margin-top: -8px;
   margin-inline-end: -8px;
   font-weight: 700;
   text-align: center;
-  font-family: CircularBlack;
+  font-family: CircularBook;
   cursor: pointer;
   justify-content: center;
   flex-direction: column;
   align-content: center;
   flex-wrap: wrap;
+  font-size: 1rem;
 
   &:hover {
     transform: scale(1.05);
@@ -516,14 +518,13 @@
   height: 48px;
   box-sizing: border-box;
   grid-area: disclaimer save-button;
-  margin-block: 0px;
   font-size: 1rem;
   font-weight: 700;
   flex-direction: row;
   justify-content: center;
   align-content: space-between;
   font-weight: 700;
-
+  margin-top: -8px;
   font-family: CircularBlack;
   background-color: #b7b7b7;
   border-radius: 32px;
@@ -555,7 +556,7 @@
   flex-wrap: wrap;
   align-content: center;
 
-  margin-top: -8px;
+  margin-top: 8px;
   margin-inline-end: -8px;
 }
 

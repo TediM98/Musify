@@ -18,6 +18,7 @@ export function AddSong({ station, onAddSong }) {
   async function fetchData() {
     if (!searchTerm) return
     try {
+      console.log('searchTerm', searchTerm)
       const response = await trackService.getVideos(searchTerm, 10)
       setTracks(response)
     } catch (error) {
