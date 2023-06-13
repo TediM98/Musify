@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { SideNavLibrary } from './side-nav-library'
 import { svgService } from '../services/svg.service'
-import { addStation } from '../store/station.actions'
+import { addStation, loadStations } from '../store/station.actions'
 import { stationService } from '../services/station.service'
 import { UserStationPreview } from './user-station-preview'
 import { useSelector } from 'react-redux'
@@ -15,7 +15,8 @@ export function SideNav() {
 
   useEffect(() => {
     setActivePage(getActivePage(location.pathname))
-  }, [location, stations])
+    loadStations()
+  }, [location])
 
   function getActivePage(pathname) {
     if (pathname === '/') {

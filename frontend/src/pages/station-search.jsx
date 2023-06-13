@@ -67,7 +67,7 @@ export function StationSearch() {
       setIsOpen(songId) // Open the dropdown for the clicked song
     }
   }
-  console.log(searchRes)
+
   return (
     <section>
       <div
@@ -140,9 +140,8 @@ export function StationSearch() {
                     {isOpen === song._id && (
                       <div className="dropdown-container">
                         <div
-                          className={`dropdown-menu ${
-                            isOpen ? 'active' : 'inactive'
-                          }`}
+                          className={`dropdown-menu ${isOpen ? 'active' : 'inactive'
+                            }`}
                         >
                           <ul className="clean-list">
                             <li>

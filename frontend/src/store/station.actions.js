@@ -45,7 +45,6 @@ export async function loadStations() {
             type: SET_STATIONS,
             stations
         })
-
     } catch (err) {
         console.log('Cannot load stations', err)
         throw err
@@ -64,10 +63,8 @@ export async function removeStation(stationId) {
 }
 
 export async function addStation(station) {
-    // if(!station.songs.length) return ---> example  
     try {
         const savedStation = await stationService.save(station)
-        // console.log(savedStation, 'baba!')
         setCurrStation(savedStation)
         return savedStation
     } catch (err) {

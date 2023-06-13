@@ -2,7 +2,6 @@ import { FastAverageColor } from 'fast-average-color'
 
 export const bgcService = {
   getColorFromUrl
-
 }
 
 export async function getColorFromUrl(url) {

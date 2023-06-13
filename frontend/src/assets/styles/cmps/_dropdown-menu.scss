@@ -36,12 +36,14 @@
 .dropdown-menu.active {
   display: block;
   transform: translateY(0);
-  margin-right: 100px;
+  // margin-right: 100px;
 
   transition: 0.5ms ease;
   background-color: #282828;
   width: 220px;
-  z-index: 200;
+  // z-index: 200;
+  // top: 30em;
+  // left: 37em;
 
   &.list-options {
     left: -200px;
