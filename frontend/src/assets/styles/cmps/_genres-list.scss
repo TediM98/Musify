@@ -18,16 +18,17 @@
     position: relative;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #fff;
+
 
     //Font
     font-family: inherit;
     font-size: 1.25rem;
     font-weight: 700;
 
-    .search-card-headline{
-
+    .search-card-headline {
+        color: #fff;
         margin-left: 20px;
         margin-top: 20px;
     }
+
 }

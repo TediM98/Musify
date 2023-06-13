@@ -16,6 +16,7 @@
 @import 'views/station-index';
 @import 'views/station-search';
 @import 'views/station-details';
+@import 'views/genres';
 
 // Components
 @import 'cmps/app-side-nav';
@@ -31,4 +32,4 @@
 @import 'cmps/player';
 @import 'cmps/table-stations';
 @import 'cmps/progress-bar.module';
-@import 'cmps/genres';
+@import 'cmps/genres-list';
