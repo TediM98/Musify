@@ -33,7 +33,7 @@ export function StationSearch() {
         console.error(error)
       }
     }, 3000)
-    // delayedSearch()
+    delayedSearch()
     return () => {
       clearTimeout(delayedSearch)
     }

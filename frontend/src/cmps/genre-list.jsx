@@ -60,6 +60,7 @@ export function GenreList() {
             <img className="search-card-img" src={img4} alt="" />
           </div>
         </Link>
+        <Link className="genre-link" to={`electronic`}>
         <div
           style={{ backgroundColor: '#d84000' }}
           className="search-card-category"
@@ -67,6 +68,8 @@ export function GenreList() {
           <h1 className="search-card-headline">Electronic</h1>
           <img className="search-card-img" src={img5} alt="" />
         </div>
+        </Link>
+        <Link className="genre-link" to={`jazz`}>
         <div
           style={{ backgroundColor: '#1e3264' }}
           className="search-card-category"
@@ -74,6 +77,8 @@ export function GenreList() {
           <h1 className="search-card-headline">Jazz</h1>
           <img className="search-card-img" src={img6} alt="" />
         </div>
+        </Link>
+        <Link className="genre-link" to={`R&B`}>
         <div
           style={{ backgroundColor: '#5179a1' }}
           className="search-card-category"
@@ -81,6 +86,7 @@ export function GenreList() {
           <h1 className="search-card-headline">R&B</h1>
           <img className="search-card-img" src={img7} alt="" />
         </div>
+        </Link>
         <div
           style={{ backgroundColor: '#e61e32' }}
           className="search-card-category"
