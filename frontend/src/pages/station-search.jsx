@@ -99,12 +99,12 @@ export function StationSearch() {
         {/* <div className='.search-card-category'>
 
 </div> */}
-{/* <div><GenresCards /></div> */}
-       
-{!searchRes.length && <div ><GenresCards /></div>}
+        {/* <div><GenresCards /></div> */}
+
+        {!searchRes.length && <div ><GenresCards /></div>}
         {searchRes && (
           <ul>
-        
+
 
 
 

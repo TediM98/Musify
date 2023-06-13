@@ -64,10 +64,8 @@ export async function removeStation(stationId) {
 }
 
 export async function addStation(station) {
-    // if(!station.songs.length) return ---> example  
     try {
         const savedStation = await stationService.save(station)
-        // console.log(savedStation, 'baba!')
         setCurrStation(savedStation)
         return savedStation
     } catch (err) {

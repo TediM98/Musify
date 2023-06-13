@@ -68,7 +68,6 @@ export function StationPlayer() {
   }
 
   //PLAYER CONTROLS
-  // async function getTime() { }
   const handleForward = () => {
     if (player) {
       const newTime = currentTime + 15

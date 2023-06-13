@@ -39,7 +39,8 @@ async function remove(stationId) {
 
 async function removeSong(songId, currStation) {
     try {
-        currStation.songs = currStation.songs.filter(song => song._id !== songId)
+        currStation.songs = currStation.songs.filter(song => song._id !==
+            songId)
         await storageService.put(STORAGE_KEY, currStation)
     }
     catch (err) {

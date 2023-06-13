@@ -1,7 +1,7 @@
 
 import { httpService } from './http.service.js'
-import emptyStationImg from '../assets/img/empty-station-img.jpg';
 import { utilService } from './util.service.js'
+import emptyStationImg from '../assets/img/empty-station-img.jpg'
 
 const STORAGE_KEY = 'station'
 const BASE_URL = 'station/'
@@ -11,6 +11,7 @@ export const stationService = {
     getById,
     save,
     remove,
+    removeSong,
     getEmptyStation,
 }
 window.cs = stationService // FOR DEBUGGING ONLY
@@ -35,6 +36,11 @@ async function getById(stationId) {
         throw err
     }
 }
+function removeSong(songId, station) {
+    const updatedSongs = station.songs.filter(song => song._id !== songId)
+    station.songs = updatedSongs
+    return save(station)
+}
 
 async function remove(stationId) {
     try {
@@ -47,7 +53,7 @@ async function remove(stationId) {
 }
 
 async function save(station) {
-    console.log(station, 'from save in service');
+    console.log(station, 'from save in service')
     var savedStation
     try {
         if (station._id) {
@@ -69,7 +75,7 @@ function getEmptyStation() {
         description: '',
         tags: [],
         createdBy: {
-            owner:'tedi',
+            owner: 'tedi',
             imgUrl: emptyStationImg
         },
         likedByUsers: [],

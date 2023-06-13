@@ -73,6 +73,7 @@
 .station-actions {
   padding-block: 24px;
   grid-area: 2/2/4/3;
+  z-index: 5;
 
   & .icon-options {
     fill: #b3b3b3;
@@ -163,6 +164,8 @@
     grid-column: 5;
     grid-row: 1;
     align-items: center;
+    // justify-content: center;
+    // gap: 10px;
     & .list-options-container {
       position: relative;
 
@@ -190,7 +193,6 @@
     font-weight: 560;
     letter-spacing: 1px;
     color: #b3b3b3;
-
     small {
       text-align: center;
       .duration-icon {
@@ -218,8 +220,8 @@
 
   & .song-wrapper {
     display: grid;
-    // grid-template-columns: 0 40px 40px 2fr 1fr 120px;
     grid-template-columns: 16px 6fr 4fr 3fr minmax(120px, 1fr);
+    // grid-template-columns: 16px 6fr 4fr 3fr 1fr;
     padding-left: 15px;
     font-size: 0.875rem;
     height: 56px;
@@ -288,6 +290,7 @@
       opacity: 0;
       border: 0;
       background: transparent;
+      margin-right: 1rem;
 
       & .heart-icon {
         fill: $clr2;
