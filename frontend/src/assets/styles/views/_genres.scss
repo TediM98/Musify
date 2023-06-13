@@ -4,10 +4,26 @@
   grid-template-columns: repeat(auto-fill, minmax(170px, 175px));
   grid-auto-flow: row;
   padding: 10px 15px 30px;
+  background-color: $bgclr2;
   margin: 0;
   h3 {
     color: $clr1;
     font-size: 26px;
+  }
+}
+.genre-stations {
+  background-color: $bgclr2;
+  height: 90vh;
+  h1 {
+    padding-top: rem(30px);
+    font-size: 2rem;
+    padding-left: rem(23px);
+    transition: background-color 0s ease;
+    background-color: var(--primary-color);
+    background-image: linear-gradient(rgba(0, 0, 2, 0) 0, #121212 100%);
+    grid-column: 1/-1;
+    padding: 1em 1em 2em 1em;
+    height: 7vh;
   }
 }
 .search-card-img {
