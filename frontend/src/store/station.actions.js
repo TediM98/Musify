@@ -45,7 +45,6 @@ export async function loadStations() {
             type: SET_STATIONS,
             stations
         })
-
     } catch (err) {
         console.log('Cannot load stations', err)
         throw err

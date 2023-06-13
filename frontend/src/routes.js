@@ -1,4 +1,5 @@
 import { AboutUs } from './pages/about-us.jsx'
+import { Genres } from './pages/genres.jsx'
 import { Login } from './pages/login.jsx'
 import { StationDetails } from './pages/station-details.jsx'
 import { StationIndex } from './pages/station-index.jsx'
@@ -22,6 +23,12 @@ const routes = [
         component: <StationDetails />,
         label: 'Station'
     },
+    {
+        path: 'search/:stationGenre',
+        component: <Genres />,
+        label: 'Genre'
+    },
+
     // {
     //     path: 'login',
     //     component: <Login />,

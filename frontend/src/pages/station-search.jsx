@@ -67,7 +67,7 @@ export function StationSearch() {
       setIsOpen(songId) // Open the dropdown for the clicked song
     }
   }
-  console.log(searchRes)
+
   return (
     <section>
       <div

@@ -1,21 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export function GenreList() {
   return (
     <div>
       <h1>Browse all</h1>
       <div className="genres-cards-container">
-        
-        <div
-          style={{ backgroundColor: '#e61e32' }}
-          className="search-card-category">
-
-        <Link to={`search/rock`}/> 
-
-
-          <h1 className="search-card-headline">Rock</h1>
-          <img className="search-card-img" src="" alt="" />
-        </div>
+        <Link to={`rock`}>
+          <div
+            style={{ backgroundColor: '#e61e32' }}
+            className="search-card-category"
+          >
+            <h1 className="search-card-headline">Rock</h1>
+            <img className="search-card-img" src="" alt="" />
+          </div>
+        </Link>
         <div
           style={{ backgroundColor: '#148a08' }}
           className="search-card-category"

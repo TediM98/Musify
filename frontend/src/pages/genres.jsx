@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { loadStations } from '../store/station.actions'
 
-export function GenresCards({}) {
+export function Genres() {
   const stations = useSelector(
     (storeState) => storeState.stationModule.stations
   )
@@ -12,12 +12,15 @@ export function GenresCards({}) {
   const { stationGenre } = useParams()
 
   useEffect(() => {
+    loadStations()
+  }, [])
+
+  useEffect(() => {
     loadGenreStations()
-  }, [stationGenre])
+  }, [stations])
 
   async function loadGenreStations() {
     try {
-      const stations = await loadStations()
       const genreStations = stations.filter((station) =>
         station.tags.includes(stationGenre)
       )
@@ -27,11 +30,14 @@ export function GenresCards({}) {
     }
   }
 
-  function onCardClick() {}
-
   return (
     <section className="genre-stations">
-      <div className=""></div>
+      <div className="">
+        {currGenreStations &&
+          currGenreStations.map((station) => (
+            <StationPreview station={station} />
+          ))}
+      </div>
     </section>
   )
 }
