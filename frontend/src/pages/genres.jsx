@@ -31,7 +31,7 @@ export function GenresCards({}) {
 
   return (
     <section className="genre-stations">
-      <div className="">hello</div>
+      <div className=""></div>
     </section>
   )
 }
