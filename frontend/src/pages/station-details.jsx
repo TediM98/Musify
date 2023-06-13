@@ -41,7 +41,6 @@ export function StationDetails() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   getBgc()
-
   useEffect(() => {
     if (stationId) {
       loadStation()
@@ -226,8 +225,9 @@ export function StationDetails() {
 
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
-                    }`}
+                  className={`dropdown-menu ${
+                    isOpen === stationId ? 'active' : 'inactive'
+                  }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -276,10 +276,11 @@ export function StationDetails() {
                       </div>
                       <div className="song-title">
                         <span
-                          className={`song-name ${songPlayingOnList === song._id && isPlaying
-                            ? 'active'
-                            : 'inactive'
-                            }`}
+                          className={`song-name ${
+                            songPlayingOnList === song._id && isPlaying
+                              ? 'active'
+                              : 'inactive'
+                          }`}
                         >
                           {song.title}
                         </span>
@@ -304,10 +305,11 @@ export function StationDetails() {
 
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${isOpen === song._id
-                              ? 'active ' + 'list-options'
-                              : 'inactive'
-                              }`}
+                            className={`dropdown-menu ${
+                              isOpen === song._id
+                                ? 'active ' + 'list-options'
+                                : 'inactive'
+                            }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem
