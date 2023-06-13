@@ -14,27 +14,33 @@ export function GenreList() {
             <img className="search-card-img" src="" alt="" />
           </div>
         </Link>
-        <div
-          style={{ backgroundColor: '#148a08' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">Pop</h1>
-          <img className="search-card-img" src="" alt="" />
-        </div>
-        <div
-          style={{ backgroundColor: '#1e3264' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">Relaxing</h1>
-          <img className="search-card-img" src="" alt="" />
-        </div>
-        <div
-          style={{ backgroundColor: '#148a08' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">Hip-Hop</h1>
-          <img className="search-card-img" src="" alt="" />
-        </div>
+        <Link to={`pop`}>
+          <div
+            style={{ backgroundColor: '#148a08' }}
+            className="search-card-category"
+          >
+            <h1 className="search-card-headline">Pop</h1>
+            <img className="search-card-img" src="" alt="" />
+          </div>
+        </Link>
+        <Link to={`relaxing`}>
+          <div
+            style={{ backgroundColor: '#1e3264' }}
+            className="search-card-category"
+          >
+            <h1 className="search-card-headline">Relaxing</h1>
+            <img className="search-card-img" src="" alt="" />
+          </div>
+        </Link>
+        <Link className="genre-link" to={`hiphop`}>
+          <div
+            style={{ backgroundColor: '#148a08' }}
+            className="search-card-category"
+          >
+            <h1 className="search-card-headline">Hip-Hop</h1>
+            <img className="search-card-img" src="" alt="" />
+          </div>
+        </Link>
         <div
           style={{ backgroundColor: '#d84000' }}
           className="search-card-category"
