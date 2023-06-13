@@ -8,6 +8,18 @@
     'header main'
     'player player ';
   font-family: CircularMedium, Rubik-Light;
+
+  @media (max-width:$mobile-breakpoint) {
+    height: 100vh;
+    display:flex;
+   flex-wrap: wrap;
+   
+    
+  }
+
+
+
+
 }
 
 .layout-conatiner {
@@ -25,6 +37,12 @@
   font-family: CircularMedium, Rubik-Light;
 
   > * {
+    @media (max-width:$mobile-breakpoint) {
+      width: 100%;
+    max-width: 100%;
+    padding-bottom: 170px;
+    }
+
     grid-column: 2;
     &.full {
       grid-column: 1 /-1;
@@ -39,6 +57,14 @@
   background-image: linear-gradient(rgba(0, 0, 2, 0) 0, #121212 100%);
   grid-column: 1/-1;
   padding: 14px;
+
+  @media (max-width:$mobile-breakpoint) {
+   
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  gap: 14px;
+  }
+
 }
 
 .details-layout-container {
@@ -103,3 +129,4 @@
 .user-station::-webkit-scrollbar-thumb:active {
   background-color: #999999;
 }
+

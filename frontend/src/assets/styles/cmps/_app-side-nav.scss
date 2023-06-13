@@ -45,6 +45,12 @@
     margin-top: 0.6em;
     padding: 0.43em 0em 0 1.7em;
   }
+
+  @media (max-width:$mobile-breakpoint) {
+ flex-direction: row;
+ position: sticky;
+ padding: 0;
+   }
 }
 
 .parmanent-nav {
@@ -56,8 +62,19 @@
       color: $clr1;
     }
   }
+
+
+  
 }
 .main-nav {
   padding: 8px;
   grid-area: header;
+
+  @media (max-width:$mobile-breakpoint) {
+   position:fixed;
+   display: flex;
+  //  padding: 0;
+   bottom: 0;
+   left: 0%;
+  }
 }

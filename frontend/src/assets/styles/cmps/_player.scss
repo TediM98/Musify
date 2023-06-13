@@ -1,5 +1,11 @@
 .main-player-section {
   grid-area: 2/1/2/3;
+  @media (max-width:$mobile-breakpoint) {
+    position: sticky;
+    bottom: -1px;
+    width: 100vw;
+    background-color: black;
+   }
 }
 
 .player-container {
@@ -9,6 +15,14 @@
   height: 6em;
   margin: 0 1em 0 1em;
   width: 14em;
+  @media (max-width:$mobile-breakpoint) {
+    width:1em;
+  
+   .station-img{
+    display: none;
+   }
+   }
+  
 }
 
 .top-center-controls {
@@ -187,6 +201,9 @@
   display: flex;
   align-items: center;
   margin: auto 1em;
+  @media (max-width:$mobile-breakpoint) {
+    margin: 0;
+  }
 }
 
 .btn-mute {

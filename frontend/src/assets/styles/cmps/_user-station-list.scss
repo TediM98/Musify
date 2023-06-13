@@ -6,6 +6,12 @@
   margin-top: 10px;
   border-radius: 10px;
 
+  
+    @media (max-width:$mobile-breakpoint) {
+      display: none;
+     
+    }
+
   .user-station-preview {
     display: flex;
     justify-content: center;

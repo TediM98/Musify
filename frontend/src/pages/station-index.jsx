@@ -60,7 +60,7 @@ export function StationIndex() {
   return (
     <section className="main-layout home-page scrollable-container">
       <section className="station-table main-layout">
-        <h3>{utilService.getGreetings()}</h3>
+        <h3 className='greeting'>{utilService.getGreetings()}</h3>
         <HighLightsTable stations={stations} onPlayStation={onPlayStation} />
       </section>
       <section className="station-list-container">
