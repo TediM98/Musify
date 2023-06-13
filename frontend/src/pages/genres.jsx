@@ -29,10 +29,11 @@ export function Genres() {
       console.log('Could not load Genres', err)
     }
   }
-
+  console.log(stationGenre)
   return (
     <section className="genre-stations">
-      <div className="">
+      <h1>{stationGenre}</h1>
+      <div className="genre-stations-list">
         {currGenreStations &&
           currGenreStations.map((station) => (
             <StationPreview station={station} />
