@@ -6,7 +6,6 @@
   bottom: 0;
   align-items: center;
   justify-content: space-between;
-  height: 6em;
   margin: 0 1em 0 1em;
   width: 14em;
 }
@@ -116,7 +115,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-basis: 20%;
+  margin-top: 0.5em;
 
   .station-img {
     height: 56px;

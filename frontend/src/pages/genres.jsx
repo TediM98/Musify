@@ -29,10 +29,14 @@ export function Genres() {
       console.log('Could not load Genres', err)
     }
   }
-  console.log(stationGenre)
+
+
+  const capitalizedGenre = stationGenre.charAt(0).toUpperCase() +
+    stationGenre.slice(1);
+
   return (
     <section className="genre-stations">
-      <h1>{stationGenre}</h1>
+      <h1>{capitalizedGenre}</h1>
       <div className="genre-stations-list">
         {currGenreStations &&
           currGenreStations.map((station) => (

@@ -62,9 +62,9 @@ export function StationSearch() {
 
   function toggleOptions(songId, songIdx) {
     if (isOpen === songId) {
-      setIsOpen(null) // Close the dropdown if it's already open
+      setIsOpen(null)
     } else {
-      setIsOpen(songId) // Open the dropdown for the clicked song
+      setIsOpen(songId)
     }
   }
 
