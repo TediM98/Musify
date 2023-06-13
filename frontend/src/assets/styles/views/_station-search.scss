@@ -1,44 +1,37 @@
-
 ///SVG  CSS SETTINGS
 
-
-
-.search-icon-magGlass{
+.search-icon-magGlass {
   position: absolute;
-  top: 9px;
+  top: rem(16px);
   z-index: 7;
-  left: 20px;
+  left: rem(12px);
+
+  svg {
+    fill: $clr2;
+  }
 }
 
-
-
-.station-search-input{
-  top:20px;
+.station-search-input {
+  top: 20px;
   z-index: 5;
-  left:32.5em;
- 
-
+  left: 32.5em;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
-  margin-block: -4px;
   font-size: 0.8125rem;
   font-weight: 400;
- 
   background-color: #242424;
   color: #fff;
   height: 48px;
   padding: 6px 36px;
-
   border: 0;
   border-radius: 500px;
- 
-  height: 48px;
-  padding: 6px 48px;
   text-overflow: ellipsis;
   width: 25vw;
   border: 2px solid rgba(255, 255, 255, 0);
-  &:focus{
-    
+  padding-top: rem(10px);
+  font-family: CircularLight;
+
+  &:focus {
     border: 2px solid white;
   }
 }
@@ -48,17 +41,23 @@
     border: 2px solid white;
     */
 
-
-
-
-.no-search-results{
-    position:absolute;
-    left:50%;
-    font-size: 0.8125rem;
-    font-weight: 400;
-    font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+.no-search-results {
+  position: absolute;
+  left: 50%;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  font-family: var(
+    --font-family,
+    CircularSp,
+    CircularSp-Arab,
+    CircularSp-Hebr,
+    CircularSp-Cyrl,
+    CircularSp-Grek,
+    CircularSp-Deva,
+    var(--fallback-fonts, sans-serif)
+  );
 }
-.search-bar-searchComp-container{
+.search-bar-searchComp-container {
   position: absolute;
   top: 20px;
   z-index: 5;
@@ -137,9 +136,7 @@
     fill: $clr2;
     margin-left: 8px;
   }
-  .list-song-title {
-    margin-left: 25px;
-  }
+
   .song-duration {
     text-align: start;
   }
@@ -185,5 +182,3 @@
   & .song-title {
   }
 }
-
-

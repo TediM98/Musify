@@ -18,11 +18,10 @@ import img16 from '../assets/img/song-images-search-companent/16.jpeg'
 import img17 from '../assets/img/song-images-search-companent/17.jpeg'
 import img18 from '../assets/img/song-images-search-companent/18.jpeg'
 
-
 export function GenreList() {
   return (
-    <div>
-      <h1>Browse all</h1>
+    <section className="genres-page">
+      <h1 className="browse-all">Browse all</h1>
       <div className="genres-cards-container">
         <Link to={`rock`}>
           <div
@@ -61,31 +60,31 @@ export function GenreList() {
           </div>
         </Link>
         <Link className="genre-link" to={`electronic`}>
-        <div
-          style={{ backgroundColor: '#d84000' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">Electronic</h1>
-          <img className="search-card-img" src={img5} alt="" />
-        </div>
+          <div
+            style={{ backgroundColor: '#d84000' }}
+            className="search-card-category"
+          >
+            <h1 className="search-card-headline">Electronic</h1>
+            <img className="search-card-img" src={img5} alt="" />
+          </div>
         </Link>
         <Link className="genre-link" to={`jazz`}>
-        <div
-          style={{ backgroundColor: '#1e3264' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">Jazz</h1>
-          <img className="search-card-img" src={img6} alt="" />
-        </div>
+          <div
+            style={{ backgroundColor: '#1e3264' }}
+            className="search-card-category"
+          >
+            <h1 className="search-card-headline">Jazz</h1>
+            <img className="search-card-img" src={img6} alt="" />
+          </div>
         </Link>
         <Link className="genre-link" to={`R&B`}>
-        <div
-          style={{ backgroundColor: '#5179a1' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">R&B</h1>
-          <img className="search-card-img" src={img7} alt="" />
-        </div>
+          <div
+            style={{ backgroundColor: '#5179a1' }}
+            className="search-card-category"
+          >
+            <h1 className="search-card-headline">R&B</h1>
+            <img className="search-card-img" src={img7} alt="" />
+          </div>
         </Link>
         <div
           style={{ backgroundColor: '#e61e32' }}
@@ -165,6 +164,6 @@ export function GenreList() {
           <img className="search-card-img" src={img18} alt="" />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
