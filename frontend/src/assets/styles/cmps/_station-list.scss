@@ -8,11 +8,9 @@
   .station-card {
     flex: 0 0 auto;
 
-    @media (max-width:$mobile-breakpoint) {
+    @media (max-width: $mobile-breakpoint) {
       height: 14.8rem;
-      
     }
-
   }
 }
 @media (max-width: 768px) {

@@ -156,7 +156,6 @@
 
 .song-list {
   margin-block-end: 40px;
-  // height: calc(100vh - 588px);
   grid-area: 4/2/5/3;
   z-index: 1;
 
@@ -164,8 +163,6 @@
     grid-column: 5;
     grid-row: 1;
     align-items: center;
-    // justify-content: center;
-    // gap: 10px;
     & .list-options-container {
       position: relative;
 
@@ -180,7 +177,6 @@
     position: sticky;
     top: 0;
     display: grid;
-    // grid-template-columns: 0 40px 40px 2fr 1fr 120px;
     grid-template-columns: 16px 6fr 4fr 3fr minmax(120px, 1fr);
     border-bottom: 1px solid $clr3-dark;
     border-radius: 0;
@@ -562,4 +558,56 @@
 
 #file-upload {
   display: none;
+}
+
+@media (max-width: 460px) {
+  .layout-conatiner {
+    margin-top: 0px;
+  }
+
+  .layout-conatiner::-webkit-scrollbar,
+  .user-station::-webkit-scrollbar {
+    display: none;
+  }
+
+  .station-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .station-details-container {
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    height: 50vh;
+    padding: 2em 0 1em 2em;
+    .station-img {
+      height: 150px;
+      width: 150px;
+      margin-left: 4em;
+      box-shadow: 0 8px 24px #00000080;
+    }
+    h1 {
+      font-size: 34px;
+    }
+  }
+  .song-list {
+    grid-area: 4/1/5/3;
+    font-size: 10px;
+  }
+  .song-list .song-wrapper {
+    grid-template-columns: 20px 22em 1em;
+  }
+  .song-list-header {
+    .list-song-date,
+    small {
+      display: none;
+    }
+  }
+  .station-song-search h1 {
+    padding: 1em 0em 1em 1em;
+  }
+
+  .station-song-search input {
+    margin-left: 1em;
+  }
 }

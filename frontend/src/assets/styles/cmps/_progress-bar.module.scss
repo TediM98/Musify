@@ -21,3 +21,9 @@
     background-color: #ffffff;
   }
 }
+
+@media (max-width: 460px) {
+  .progress-bar-element {
+    width: 90vw;
+  }
+}

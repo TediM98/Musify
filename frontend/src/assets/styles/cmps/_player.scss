@@ -245,3 +245,31 @@
     background-color: #ffffff;
   }
 }
+
+@media (max-width: 460px) {
+  .volume-container {
+    display: none;
+  }
+  .shuffle {
+    display: none;
+  }
+  .repeat-off-icon {
+    display: none;
+  }
+  .btn-like-song {
+    margin: 0 0 0 23em;
+  }
+  .time-stamp {
+    display: none;
+  }
+  .left-controls .artist-details {
+    display: flex;
+    position: absolute;
+    white-space: nowrap;
+    margin: 0em 0em 5em 3em;
+    margin-inline-start: 1.5em;
+  }
+  .center-controls {
+    margin-left: -2em;
+  }
+}
