@@ -19,7 +19,6 @@ export async function getStationById(req, res) {
   try {
     const stationId = req.params.id
     const station = await stationService.getById(stationId)
-    console.log("🚀 ~ file: station.controller.mjs:23 ~ getStationById ~ station:", station)
     res.json(station)
   } catch (err) {
     logger.error('Failed to get station', err)

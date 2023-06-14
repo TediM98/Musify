@@ -3,10 +3,20 @@ import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
-
+// import { Server } from 'socket.io'
 
 const app = express()
 const server = http.createServer(app)
+// const io = new Server(server)
+
+/////////NEW
+// io.on('connection', (socket) => {
+//     console.log('a user connected')
+
+//     socket.on('disconnect', () => {
+//         console.log('user disconnected')
+//     })
+// })
 
 // Express App Config
 app.use(cookieParser())
@@ -26,6 +36,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(cors(corsOptions))
 }
 
+import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
 import { authRoutes } from './api/auth/auth.routes.mjs'
 import { userRoutes } from './api/user/user.routes.mjs'
 import { stationRoutes } from './api/station/station.routes.mjs'
@@ -33,7 +44,7 @@ import { setupSocketAPI } from './services/socket.service.mjs'
 
 // routes
 // import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
-// app.all('*', setupAsyncLocalStorage)
+app.all('*', setupAsyncLocalStorage)
 
 app.use('/api/user', userRoutes)
 app.use('/api/station', stationRoutes)
@@ -53,6 +64,6 @@ const port = process.env.PORT || 3030;
 //     res.sendFile(path.join('public', 'index.html'));
 // })
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`App listening on port ${port}!`)
-});
+})

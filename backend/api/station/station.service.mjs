@@ -10,7 +10,6 @@ async function query(filterBy = {}) {
         if (filterBy.txt) criteria.title = { $regex: filterBy.txt, $options: 'i' }
         const collection = await dbService.getCollection('station')
         var stations = await collection.find(criteria).toArray()
-        console.log('stations', stations)
         return stations
     } catch (err) {
         logger.error('cannot find stations', err)

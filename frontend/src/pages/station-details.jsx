@@ -16,7 +16,10 @@ import {
 } from '../store/station.actions'
 import { AddSong } from '../cmps/add-song'
 import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
-import { loaderService } from '../services/loader-service'
+import {
+  SOCKET_EVENT_UPDATE_STATION,
+  socketService,
+} from '../services/socket.service'
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
@@ -45,6 +48,19 @@ export function StationDetails() {
   useEffect(() => {
     if (stationId) {
       loadStation()
+    }
+  }, [])
+
+  useEffect(() => {
+    socketService.on(SOCKET_EVENT_UPDATE_STATION, (station) => {
+      console.log('station', station)
+      setCurrStation(station)
+    })
+    return () => {
+      socketService.off(SOCKET_EVENT_UPDATE_STATION, (station) => {
+        console.log('station', station)
+      })
+      // botTimeoutRef.current && clearTimeout(botTimeoutRef.current)
     }
   }, [])
 
@@ -147,7 +163,7 @@ export function StationDetails() {
     }
   }
 
-  if (!currStation) return (loaderService.threeDots)
+  if (!currStation) return loaderService.threeDots
   return (
     <section className="details-layout-container">
       <div
@@ -226,8 +242,9 @@ export function StationDetails() {
 
               <div className="dropdown-container">
                 <div
-                  className={`dropdown-menu ${isOpen === stationId ? 'active' : 'inactive'
-                    }`}
+                  className={`dropdown-menu ${
+                    isOpen === stationId ? 'active' : 'inactive'
+                  }`}
                 >
                   <ul className=" clean-list">
                     <DropDownItem
@@ -276,10 +293,11 @@ export function StationDetails() {
                       </div>
                       <div className="song-title">
                         <span
-                          className={`song-name ${songPlayingOnList === song._id && isPlaying
-                            ? 'active'
-                            : 'inactive'
-                            }`}
+                          className={`song-name ${
+                            songPlayingOnList === song._id && isPlaying
+                              ? 'active'
+                              : 'inactive'
+                          }`}
                         >
                           {song.title}
                         </span>
@@ -304,10 +322,11 @@ export function StationDetails() {
 
                         <div className="dropdown-container">
                           <div
-                            className={`dropdown-menu ${isOpen === song._id
-                              ? 'active ' + 'list-options'
-                              : 'inactive'
-                              }`}
+                            className={`dropdown-menu ${
+                              isOpen === song._id
+                                ? 'active ' + 'list-options'
+                                : 'inactive'
+                            }`}
                           >
                             <ul className=" clean-list">
                               <DropDownItem

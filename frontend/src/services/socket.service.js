@@ -1,6 +1,8 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
 
+export const SOCKET_EMIT_UPDATE_STATION = 'station-update'
+export const SOCKET_EVENT_UPDATE_STATION = 'station-updated'
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
 export const SOCKET_EMIT_SET_TOPIC = 'chat-set-topic'
@@ -15,7 +17,7 @@ const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
 // export const socketService = createSocketService()
-export const socketService = createDummySocketService()
+export const socketService = createSocketService()
 
 // for debugging from console
 window.socketService = socketService
@@ -28,8 +30,9 @@ function createSocketService() {
   const socketService = {
     setup() {
       socket = io(baseUrl)
-      const user = userService.getLoggedinUser()
-      if (user) this.login(user._id)
+      console.log('socket', socket)
+      // const user = userService.getLoggedinUser()
+      // if (user) this.login(user._id)
     },
     on(eventName, cb) {
       socket.on(eventName, cb)
@@ -85,7 +88,6 @@ function createDummySocketService() {
       if (eventName === SOCKET_EMIT_SEND_MSG) {
         listeners = listenersMap[SOCKET_EVENT_ADD_MSG]
       }
-
       if (!listeners) return
 
       listeners.forEach(listener => {
