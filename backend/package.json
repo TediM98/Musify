@@ -4,7 +4,7 @@
   "description": "production ready server",
   "main": "server.mjs",
   "scripts": {
-    "start": "node server.mjs",
+    "start": "nodemon server.mjs",
     "dev": "nodemon --ignore \"./data\" server.mjs",
     "server:prod": "set NODE_ENV=production&&node server.mjs",
     "server:prod:mac": "export NODE_ENV=production&&node server.mjs"
