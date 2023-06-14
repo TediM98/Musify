@@ -6,7 +6,8 @@
     color: $clr1;
   }
   .station-list-container {
-    background-color: $bgclr2;
+    // background-color: $bgclr2;
+    background-color: red;
     padding: 2em 1em 0em 1em;
   }
   span {
@@ -14,13 +15,8 @@
   }
 }
 
-
-.greeting{
-
-  @media (max-width:$mobile-breakpoint) {
-   display: none;
-    
+.greeting {
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
   }
-
-
 }
