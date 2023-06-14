@@ -7,13 +7,19 @@
 
   & :hover {
     background-color: #f7f7f729;
+
     h4 {
       background-color: transparent;
     }
   }
 
   @media (max-width:$mobile-breakpoint) {
-    justify-items: center;
+    // display: none
+    display: flex;
+    padding-top: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+
   }
 
 
@@ -34,7 +40,12 @@
     width: 80px;
     height: 80px;
     object-fit: cover;
+
+ 
+
+
   }
+
   .btn-play-playlist {
     height: 48px;
     width: 48px;
@@ -53,16 +64,19 @@
     justify-content: center;
     align-items: center;
   }
+
   & .table-data:hover {
     .btn-play-playlist {
       opacity: 1;
       transform: translateY(0);
     }
+
     & .btn-play-playlist:hover {
       transform: scale(1.1);
     }
   }
 }
+
 .station-name-table {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -79,6 +93,7 @@
   justify-content: space-between;
   padding: 0 16px;
 }
+
 h4 {
   -webkit-box-orient: vertical;
   font-size: 16px;
@@ -92,6 +107,7 @@ h4 {
   -ms-flex-direction: row;
   flex-direction: row;
 }
+
 .table-data {
   cursor: pointer;
   background-color: $clr3-dark;
@@ -104,6 +120,11 @@ h4 {
 
 
   @media (max-width:$mobile-breakpoint) {
-    width:320px;
+    width: 144px;
+    height: auto;
+
+    img {
+     
+    }
   }
 }

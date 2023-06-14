@@ -163,7 +163,7 @@ export function StationDetails() {
     }
   }
 
-  if (!currStation) return <div>Loading...</div>
+  if (!currStation) return loaderService.threeDots
   return (
     <section className="details-layout-container">
       <div

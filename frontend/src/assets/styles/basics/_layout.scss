@@ -27,15 +27,10 @@
 }
 
 .main-layout {
-  // padding-top: 0.1em;
   font-family: CircularMedium, Rubik-Light;
 
   > * {
-    @media (max-width: $mobile-breakpoint) {
-      width: 100%;
-      max-width: 100%;
-      padding-bottom: 170px;
-    }
+ 
 
     grid-column: 2;
     &.full {
@@ -60,7 +55,6 @@
   border-radius: 5px;
   background: #121212;
   font-family: Rubik-Light;
-  // height: calc(100vh - 100px);
   > * {
     grid-column: 2;
     &.full {
@@ -95,6 +89,7 @@
   width: 0.7em;
   height: 14px;
 }
+
 .station-list::-webkit-scrollbar {
   display: none;
 }
