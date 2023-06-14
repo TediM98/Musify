@@ -37,6 +37,9 @@
     background: none;
     border: none;
     transition: color 0.3s;
+    @media (max-width: $mobile-breakpoint) {
+      display: none;
+    }
   }
 
   .playBtn {
@@ -78,7 +81,9 @@
     .go-back-icon,
     .repeat-off-icon {
       fill: $clr2;
-
+      @media (max-width: $mobile-breakpoint) {
+        display: none;
+      }
       &:hover {
         fill: $clr-1;
       }
@@ -122,6 +127,9 @@
 .right-controls {
   flex-basis: 20%;
   justify-content: end;
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
+  }
 }
 
 .left-controls {

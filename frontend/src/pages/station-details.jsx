@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { DropDownItem } from '../cmps/dropdown-item'
 import { svgService } from '../services/svg.service'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions'
+import { loaderService } from '../services/loader-service'
 import {
   removeStation,
   setCurrStation,

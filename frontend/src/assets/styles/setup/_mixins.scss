@@ -3,6 +3,10 @@
 @mixin for-mobile-layout {
   @media (max-width: calc($mobile-breakpoint + 40px)) {
     @content;
+
+    .left-controls {
+      display: none;
+    }
     // .layout-conatiner::-webkit-scrollbar,
     // .user-station::-webkit-scrollbar {
     //   display: none;
