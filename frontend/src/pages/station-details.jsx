@@ -21,7 +21,6 @@ import {
   SOCKET_EVENT_UPDATE_STATION,
   socketService,
 } from '../services/socket.service'
-import { loaderService } from '../services/loader-service'
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)

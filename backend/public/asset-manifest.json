@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b2f9c162.css",
-    "main.js": "/static/js/main.3b12d90b.js",
+    "main.css": "/static/css/main.1d9bf53c.css",
+    "main.js": "/static/js/main.b6aaf53c.js",
     "static/media/3.jpeg": "/static/media/3.e891cfd68a52b5065f92.jpeg",
     "static/media/Rubik-SemiBold.ttf": "/static/media/Rubik-SemiBold.ed27f03ae2fc929c3f03.ttf",
     "static/media/Rubik-Regular.ttf": "/static/media/Rubik-Regular.42535d1e2d489e27b525.ttf",
@@ -14,6 +14,7 @@
     "static/media/CircularSpotifyText-Light.otf": "/static/media/CircularSpotifyText-Light.5e12df08ca91cc19e9e7.otf",
     "static/media/CircularSpotifyText-Book.otf": "/static/media/CircularSpotifyText-Book.27bc05ead5cc509ef2ba.otf",
     "service-worker.js": "/service-worker.js",
+    "static/media/user-image.jpg": "/static/media/user-image.6bc9f5d79e6e72182223.jpg",
     "static/media/18.jpeg": "/static/media/18.70165b0de804c6dd4b74.jpeg",
     "static/media/17.jpeg": "/static/media/17.fdabe23d9374f26e670d.jpeg",
     "static/media/11.jpeg": "/static/media/11.9151954358e6df9861be.jpeg",
@@ -31,11 +32,11 @@
     "static/media/9.jpeg": "/static/media/9.65abd7c875b1d4623aba.jpeg",
     "static/media/play-station.svg": "/static/media/play-station.6d4209c6bd1ba97f3f84a7e22186074b.svg",
     "index.html": "/index.html",
-    "main.b2f9c162.css.map": "/static/css/main.b2f9c162.css.map",
-    "main.3b12d90b.js.map": "/static/js/main.3b12d90b.js.map"
+    "main.1d9bf53c.css.map": "/static/css/main.1d9bf53c.css.map",
+    "main.b6aaf53c.js.map": "/static/js/main.b6aaf53c.js.map"
   },
   "entrypoints": [
-    "static/css/main.b2f9c162.css",
-    "static/js/main.3b12d90b.js"
+    "static/css/main.1d9bf53c.css",
+    "static/js/main.b6aaf53c.js"
   ]
 }
