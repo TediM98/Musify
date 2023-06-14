@@ -14,7 +14,7 @@ app.use(express.json())
 
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname, 'public')))
+    app.use(express.static(path.resolve('public')))
 } else {
     const corsOptions = {
         origin: [
@@ -49,9 +49,9 @@ app.get('/**', (req, res) => {
 
 const port = process.env.PORT || 3030;
 
-app.get('/**', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-})
+// app.get('/**', (req, res) => {
+//     res.sendFile(path.join('public', 'index.html'));
+// })
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}!`)
