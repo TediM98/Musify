@@ -6,6 +6,7 @@ import { HighLightsTable } from '../cmps/station-table.jsx'
 import { utilService } from '../services/util.service.js'
 import { setIsPlaying, setSongPlaying } from '../store/player.actions.js'
 import { stationService } from '../services/station.service.js'
+import { loaderService } from '../services/loader-service.js'
 
 export function StationIndex() {
   const stations = useSelector(
@@ -56,7 +57,7 @@ export function StationIndex() {
     }
   }
 
-  if (!stations) return <div>Loading...</div>
+  if (!stations) return (loaderService.threeDots)
   return (
     <section className="main-layout home-page scrollable-container">
       <section className="station-table main-layout">
