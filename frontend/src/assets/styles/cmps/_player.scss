@@ -1,11 +1,11 @@
 .main-player-section {
   grid-area: 2/1/2/3;
-  @media (max-width:$mobile-breakpoint) {
+  @media (max-width: $mobile-breakpoint) {
     position: sticky;
     bottom: -1px;
     width: 100vw;
     background-color: black;
-   }
+  }
 }
 
 .player-container {
@@ -14,14 +14,13 @@
   justify-content: space-between;
   margin: 0 1em 0 1em;
   width: 14em;
-  @media (max-width:$mobile-breakpoint) {
-    width:1em;
-  
-   .station-img{
-    display: none;
-   }
-   }
-  
+  @media (max-width: $mobile-breakpoint) {
+    width: 1em;
+
+    .station-img {
+      display: none;
+    }
+  }
 }
 
 .top-center-controls {
@@ -38,6 +37,9 @@
     background: none;
     border: none;
     transition: color 0.3s;
+    @media (max-width: $mobile-breakpoint) {
+      display: none;
+    }
   }
 
   .playBtn {
@@ -79,7 +81,9 @@
     .go-back-icon,
     .repeat-off-icon {
       fill: $clr2;
-
+      @media (max-width: $mobile-breakpoint) {
+        display: none;
+      }
       &:hover {
         fill: $clr-1;
       }
@@ -123,6 +127,9 @@
 .right-controls {
   flex-basis: 20%;
   justify-content: end;
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
+  }
 }
 
 .left-controls {
@@ -200,7 +207,7 @@
   display: flex;
   align-items: center;
   margin: auto 1em;
-  @media (max-width:$mobile-breakpoint) {
+  @media (max-width: $mobile-breakpoint) {
     margin: 0;
   }
 }
