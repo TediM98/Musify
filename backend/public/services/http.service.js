@@ -1,6 +1,6 @@
 // import Axios from 'axios'
 
-const BASE_URL =  '/api/'
+const BASE_URL = '/api/'
 
 export const httpService = {
     get(endpoint, data) {

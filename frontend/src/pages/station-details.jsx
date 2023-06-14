@@ -16,6 +16,10 @@ import {
 } from '../store/station.actions'
 import { AddSong } from '../cmps/add-song'
 import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
+import {
+  SOCKET_EVENT_UPDATE_STATION,
+  socketService,
+} from '../services/socket.service'
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
@@ -44,6 +48,19 @@ export function StationDetails() {
   useEffect(() => {
     if (stationId) {
       loadStation()
+    }
+  }, [])
+
+  useEffect(() => {
+    socketService.on(SOCKET_EVENT_UPDATE_STATION, (station) => {
+      console.log('station', station)
+      setCurrStation(station)
+    })
+    return () => {
+      socketService.off(SOCKET_EVENT_UPDATE_STATION, (station) => {
+        console.log('station', station)
+      })
+      // botTimeoutRef.current && clearTimeout(botTimeoutRef.current)
     }
   }, [])
 

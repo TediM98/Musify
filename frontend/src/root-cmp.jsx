@@ -6,14 +6,14 @@ import routes from './routes.js'
 import { SideNav } from './cmps/side-nav.jsx'
 import { AppHeader } from './cmps/app-header.jsx'
 import { UserDetails } from './pages/user-details.jsx'
+import { socketService } from './services/socket.service.js'
 
 export function RootCmp() {
-
   return (
-    <section className='app-layout ' >
+    <section className="app-layout ">
       <SideNav />
-      <main className='layout-conatiner'>
-        <div className='gradiant'></div>
+      <main className="layout-conatiner">
+        <div className="gradiant"></div>
         <AppHeader />
         <Routes>
           {routes.map((route) => (
