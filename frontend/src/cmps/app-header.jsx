@@ -3,6 +3,7 @@ import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 import { trackService } from '../services/track.service.js'
 import { useNavigate } from 'react-router-dom'
+import userImage from '../assets/img/user-image.jpg'
 
 export function AppHeader() {
   const navigate = useNavigate()
@@ -78,10 +79,14 @@ export function AppHeader() {
           <button onClick={goToNextPage} className="btn-go-next">{svgService.btnGoNextHeader}</button>
         </nav>
         <section className="btn-login-signup-wrapper">
-          <button className="btn-signup">
+          {/* <button className="btn-signup">
             <span>Sign up</span>
           </button>
-          <button className="btn-login">Log in</button>
+          <button className="btn-login">Log in</button> */}
+          <div className='user-image-container'>
+            <img src={userImage} title="user-image" />
+          </div>
+
         </section>
       </div>
     </header>
