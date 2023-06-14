@@ -91,11 +91,11 @@
 }
 
 .layout-conatiner::-webkit-scrollbar,
-.station-list::-webkit-scrollbar {
+.user-station::-webkit-scrollbar {
   width: 0.7em;
   height: 14px;
 }
-.user-station::-webkit-scrollbar {
+.station-list::-webkit-scrollbar {
   display: none;
 }
 
