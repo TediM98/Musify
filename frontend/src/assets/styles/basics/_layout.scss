@@ -8,17 +8,11 @@
     'player player ';
   font-family: CircularMedium, Rubik-Light;
 
-  @media (max-width:$mobile-breakpoint) {
+  @media (max-width: $mobile-breakpoint) {
     height: 100vh;
-    display:flex;
-   flex-wrap: wrap;
-   
-    
+    display: flex;
+    flex-wrap: wrap;
   }
-
-
-
-
 }
 
 .layout-conatiner {
@@ -37,10 +31,10 @@
   font-family: CircularMedium, Rubik-Light;
 
   > * {
-    @media (max-width:$mobile-breakpoint) {
+    @media (max-width: $mobile-breakpoint) {
       width: 100%;
-    max-width: 100%;
-    padding-bottom: 170px;
+      max-width: 100%;
+      padding-bottom: 170px;
     }
 
     grid-column: 2;
@@ -97,10 +91,12 @@
 }
 
 .layout-conatiner::-webkit-scrollbar,
-.station-list::-webkit-scrollbar,
-.user-station::-webkit-scrollbar {
+.station-list::-webkit-scrollbar {
   width: 0.7em;
   height: 14px;
+}
+.user-station::-webkit-scrollbar {
+  display: none;
 }
 
 .layout-conatinery::-webkit-scrollbar-track,
@@ -127,4 +123,3 @@
 .station-list::-webkit-scrollbar-thumb:active {
   background-color: #999999;
 }
-
