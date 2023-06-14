@@ -30,11 +30,7 @@
   font-family: CircularMedium, Rubik-Light;
 
   > * {
-    @media (max-width: $mobile-breakpoint) {
-      width: 100%;
-      max-width: 100%;
-      padding-bottom: 170px;
-    }
+ 
 
     grid-column: 2;
     &.full {
