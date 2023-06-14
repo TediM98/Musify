@@ -9,8 +9,8 @@
   background: linear-gradient(var(--primary-color), var(--primary-color));
   transition: background-color 0.3s ease;
 
-  @media (max-width:$mobile-breakpoint) {
-   display: none;
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
   }
   .btn-login-signup-wrapper {
     margin-right: 1em;
@@ -84,5 +84,22 @@
   .btn-login,
   .btn-signup {
     margin-top: 0.3em;
+  }
+  .user-image-container {
+    background-color: rgba(0, 0, 0, 0.427);
+    border: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-top: 1px;
+    cursor: pointer;
+
+    img {
+      margin: 3px 0 0px 3px;
+      border-radius: 50%;
+      position: relative;
+      height: 24px;
+      width: 24px;
+    }
   }
 }
