@@ -270,6 +270,23 @@
     margin-inline-start: 1.5em;
   }
   .center-controls {
-    margin-left: -2em;
+    position: absolute;
+    margin: 1em;
+  }
+  .song-list .song-list-header {
+    position: unset;
+  }
+  .station-song-search {
+    margin-left: 1em;
+  }
+  .station-song-search input {
+    width: 105%;
+  }
+  .left-controls .artist-details .song-name {
+    width: max-content;
+    margin-inline-start: 0;
+    text-align: center;
+    align-items: center;
+    justify-self: center;
   }
 }

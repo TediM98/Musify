@@ -8,7 +8,7 @@ export const trackService = {
   getVideos
 }
 const KEY = 'videosDB'
-const apiKey = 'AIzaSyBXoADElJGhZqCARcEFd--MD-fZCaCZZLg'
+const apiKey = 'AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0'
 
 function getVideos(term, amount = 5) {
   const termVideosMap = utilService.loadFromStorage(KEY) || {}
