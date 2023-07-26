@@ -1,4 +1,4 @@
-import { ThreeDots } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner'
 
 export const loaderService = {
   threeDots: (
@@ -15,4 +15,4 @@ export const loaderService = {
       </div>
     </div>
   ),
-};
+}

@@ -245,3 +245,48 @@
     background-color: #ffffff;
   }
 }
+
+@media (max-width: 460px) {
+  .volume-container {
+    display: none;
+  }
+  .shuffle {
+    display: none;
+  }
+  .repeat-off-icon {
+    display: none;
+  }
+  .btn-like-song {
+    margin: 0 0 0 23em;
+  }
+  .time-stamp {
+    display: none;
+  }
+  .left-controls .artist-details {
+    display: flex;
+    position: absolute;
+    white-space: nowrap;
+    margin: 0em 0em 5em 3em;
+    margin-inline-start: 1.5em;
+  }
+  .center-controls {
+    position: absolute;
+    margin: 1em;
+  }
+  .song-list .song-list-header {
+    position: unset;
+  }
+  .station-song-search {
+    margin-left: 1em;
+  }
+  .station-song-search input {
+    width: 105%;
+  }
+  .left-controls .artist-details .song-name {
+    width: max-content;
+    margin-inline-start: 0;
+    text-align: center;
+    align-items: center;
+    justify-self: center;
+  }
+}
