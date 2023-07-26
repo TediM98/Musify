@@ -45,6 +45,8 @@ function removeSong(songId, station) {
 
 async function remove(stationId) {
     try {
+        const songToDelete = await getById(stationId)
+        if (songToDelete.name === 'Liked Songs') return
         return httpService.delete(BASE_URL + stationId)
     }
     catch (err) {
