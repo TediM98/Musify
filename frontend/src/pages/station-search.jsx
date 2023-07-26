@@ -156,9 +156,6 @@ export function StationSearch() {
                               </article>
                             </li>
                             <li className="dropdown-item">
-                              <article>Add to queue</article>
-                            </li>
-                            <li className="dropdown-item">
                               {!song.title ? (
                                 <article>Delete playlist</article>
                               ) : (
