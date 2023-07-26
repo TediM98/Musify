@@ -1,34 +1,30 @@
 .genres-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 24px;
-    padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+  padding: 24px;
 }
 
 ///////CARDS
-/// 
 
 .search-card-category {
+  //GENERAL STRUCTURE
+  //display: flex;
+  height: 12rem;
+  width: 12rem;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
 
-    //GENERAL STRUCTURE
-    //display: flex;
-    height: 12rem;
-    width: 12rem;
-    overflow: hidden;
-    position: relative;
-    border-radius: 8px;
-    cursor: pointer;
+  //Font
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
 
-
-    //Font
-    font-family: inherit;
-    font-size: 1.25rem;
-    font-weight: 700;
-
-    .search-card-headline {
-        color: #fff;
-        margin-left: 20px;
-        margin-top: 20px;
-    }
-
+  .search-card-headline {
+    color: #fff;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
 }
