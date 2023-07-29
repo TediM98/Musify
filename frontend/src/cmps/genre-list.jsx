@@ -1,22 +1,19 @@
 import { Link } from 'react-router-dom'
-import img1 from '../assets/img/song-images-search-companent/1.jpeg'
-import img2 from '../assets/img/song-images-search-companent/2.jpeg'
-import img3 from '../assets/img/song-images-search-companent/3.jpeg'
-import img4 from '../assets/img/song-images-search-companent/4.jpeg'
-import img5 from '../assets/img/song-images-search-companent/5.jpeg'
-import img6 from '../assets/img/song-images-search-companent/6.jpeg'
-import img7 from '../assets/img/song-images-search-companent/7.jpeg'
-import img8 from '../assets/img/song-images-search-companent/8.jpeg'
-import img9 from '../assets/img/song-images-search-companent/9.jpeg'
-import img10 from '../assets/img/song-images-search-companent/10.jpeg'
-import img11 from '../assets/img/song-images-search-companent/11.jpeg'
-import img12 from '../assets/img/song-images-search-companent/12.jpeg'
-import img13 from '../assets/img/song-images-search-companent/13.jpeg'
-import img14 from '../assets/img/song-images-search-companent/14.jpeg'
-import img15 from '../assets/img/song-images-search-companent/15.jpeg'
-import img16 from '../assets/img/song-images-search-companent/16.jpeg'
-import img17 from '../assets/img/song-images-search-companent/17.jpeg'
-import img18 from '../assets/img/song-images-search-companent/18.jpeg'
+import POP from '../assets/img/song-images-search-companent/3.jpeg'
+import HIPHOP from '../assets/img/song-images-search-companent/6.jpeg'
+import ROCK from '../assets/img/song-images-search-companent/7.jpeg'
+import Global from '../assets/img/song-images-search-companent/9.jpeg'
+import LiveEvents from '../assets/img/song-images-search-companent/10.jpeg'
+import MOOD from '../assets/img/song-images-search-companent/12.jpeg'
+import Electronic from '../assets/img/song-images-search-companent/14.jpeg'
+import Country from '../assets/img/song-images-search-companent/16.jpeg'
+import RandB from '../assets/img/song-images-search-companent/17.jpeg'
+import CHILL from '../assets/img/song-images-search-companent/chill.jpeg'
+import JAZZ from '../assets/img/song-images-search-companent/JAZZ.jpg'
+import ALT from '../assets/img/song-images-search-companent/ALT.jpeg'
+import CLASSIC from '../assets/img/song-images-search-companent/CLASSIC.jpeg'
+import SLEEP from '../assets/img/song-images-search-companent/SLEEP.jpeg'
+import METAL from '../assets/img/song-images-search-companent/METAL.jpeg'
 
 export function GenreList() {
   return (
@@ -29,7 +26,7 @@ export function GenreList() {
             className="search-card-category"
           >
             <h1 className="search-card-headline">Rock</h1>
-            <img className="search-card-img" src={img1} alt="" />
+            <img className="search-card-img" src={ROCK} alt="" />
           </div>
         </Link>
         <Link to={`pop`}>
@@ -38,16 +35,16 @@ export function GenreList() {
             className="search-card-category"
           >
             <h1 className="search-card-headline">Pop</h1>
-            <img className="search-card-img" src={img2} alt="" />
+            <img className="search-card-img" src={POP} alt="" />
           </div>
         </Link>
-        <Link to={`relaxing`}>
+        <Link to={`Chill`}>
           <div
             style={{ backgroundColor: '#1e3264' }}
             className="search-card-category"
           >
-            <h1 className="search-card-headline">Relaxing</h1>
-            <img className="search-card-img" src={img3} alt="" />
+            <h1 className="search-card-headline">Chill</h1>
+            <img className="search-card-img" src={CHILL} alt="" />
           </div>
         </Link>
         <Link className="genre-link" to={`hiphop`}>
@@ -56,7 +53,7 @@ export function GenreList() {
             className="search-card-category"
           >
             <h1 className="search-card-headline">Hip-Hop</h1>
-            <img className="search-card-img" src={img4} alt="" />
+            <img className="search-card-img" src={HIPHOP} alt="" />
           </div>
         </Link>
         <Link className="genre-link" to={`electronic`}>
@@ -65,7 +62,7 @@ export function GenreList() {
             className="search-card-category"
           >
             <h1 className="search-card-headline">Electronic</h1>
-            <img className="search-card-img" src={img5} alt="" />
+            <img className="search-card-img" src={Electronic} alt="" />
           </div>
         </Link>
         <Link className="genre-link" to={`jazz`}>
@@ -74,7 +71,7 @@ export function GenreList() {
             className="search-card-category"
           >
             <h1 className="search-card-headline">Jazz</h1>
-            <img className="search-card-img" src={img6} alt="" />
+            <img className="search-card-img" src={JAZZ} alt="" />
           </div>
         </Link>
         <Link className="genre-link" to={`R&B`}>
@@ -83,7 +80,7 @@ export function GenreList() {
             className="search-card-category"
           >
             <h1 className="search-card-headline">R&B</h1>
-            <img className="search-card-img" src={img7} alt="" />
+            <img className="search-card-img" src={RandB} alt="" />
           </div>
         </Link>
         <div
@@ -91,77 +88,56 @@ export function GenreList() {
           className="search-card-category"
         >
           <h1 className="search-card-headline">Alternative</h1>
-          <img className="search-card-img" src={img8} alt="" />
+          <img className="search-card-img" src={ALT} alt="" />
         </div>
         <div
           style={{ backgroundColor: '#d84000 ' }}
           className="search-card-category"
         >
-          <h1 className="search-card-headline">Dance</h1>
-          <img className="search-card-img" src={img9} alt="" />
+          <h1 className="search-card-headline">Global Songs</h1>
+          <img className="search-card-img" src={Global} alt="" />
         </div>
         <div
           style={{ backgroundColor: '#bc5900' }}
           className="search-card-category"
         >
-          <h1 className="search-card-headline">Oriental</h1>
-          <img className="search-card-img" src={img10} alt="" />
+          <h1 className="search-card-headline">Live Events</h1>
+          <img className="search-card-img" src={LiveEvents} alt="" />
         </div>
         <div
           style={{ backgroundColor: '#148a08' }}
           className="search-card-category"
         >
           <h1 className="search-card-headline">Classical</h1>
-          <img className="search-card-img" src={img11} alt="" />
-        </div>
-        <div
-          style={{ backgroundColor: '#e1118c' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">Latin</h1>
-          <img className="search-card-img" src={img12} alt="" />
-        </div>
-        <div
-          style={{ backgroundColor: '#bc9900' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">Country</h1>
-          <img className="search-card-img" src={img13} alt="" />
-        </div>
-        <div
-          style={{ backgroundColor: '#ec5502' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">Chill</h1>
-          <img className="search-card-img" src={img14} alt="" />
+          <img className="search-card-img" src={CLASSIC} alt="" />
         </div>
         <div
           style={{ backgroundColor: '#e1118c' }}
           className="search-card-category"
         >
           <h1 className="search-card-headline">Mood</h1>
-          <img className="search-card-img" src={img15} alt="" />
+          <img className="search-card-img" src={MOOD} alt="" />
+        </div>
+        <div
+          style={{ backgroundColor: '#bc9900' }}
+          className="search-card-category"
+        >
+          <h1 className="search-card-headline">Country</h1>
+          <img className="search-card-img" src={Country} alt="" />
         </div>
         <div
           style={{ backgroundColor: '#1e3264' }}
           className="search-card-category"
         >
           <h1 className="search-card-headline">Sleep</h1>
-          <img className="search-card-img" src={img16} alt="" />
+          <img className="search-card-img" src={SLEEP} alt="" />
         </div>
         <div
           style={{ backgroundColor: '#e61e32' }}
           className="search-card-category"
         >
           <h1 className="search-card-headline">Metal</h1>
-          <img className="search-card-img" src={img17} alt="" />
-        </div>
-        <div
-          style={{ backgroundColor: '#bc5900' }}
-          className="search-card-category"
-        >
-          <h1 className="search-card-headline">Jazz</h1>
-          <img className="search-card-img" src={img18} alt="" />
+          <img className="search-card-img" src={METAL} alt="" />
         </div>
       </div>
     </section>
