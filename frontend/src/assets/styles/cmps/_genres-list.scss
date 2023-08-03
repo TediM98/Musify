@@ -28,3 +28,10 @@
     margin-top: 20px;
   }
 }
+
+@media (max-width:$mobile-breakpoint) {
+  .genres-cards-container{
+    padding:0;
+    gap: 10px;
+  }
+}

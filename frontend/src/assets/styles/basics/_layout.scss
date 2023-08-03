@@ -13,6 +13,11 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  // .app-nav{
+  //   background-color: none;
+  //   flex-direction: none;
+  // }
 }
 
 .layout-conatiner {
@@ -116,3 +121,5 @@
 .station-list::-webkit-scrollbar-thumb:active {
   background-color: #999999;
 }
+
+

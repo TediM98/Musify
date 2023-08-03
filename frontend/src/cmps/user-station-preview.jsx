@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import { svgService } from '../services/svg.service'
 
 export const UserStationPreview = ({ station }) => {
   const navigate = useNavigate()

@@ -11,8 +11,6 @@ export function Modal({ closeModal, saveModalData }) {
   const [inputValue, setInputValue] = useState(currStation.name)
   const [descValue, setDescValue] = useState(currStation.description)
 
-  console.log('currstation prnt', currStation)
-
   function handleChange(ev) {
     setInputValue(ev.target.value)
   }
@@ -106,14 +104,6 @@ export function Modal({ closeModal, saveModalData }) {
                 value={descValue}
                 placeholder="Add an optional description"
               ></textarea>
-              <div className="edit-modal-genres-container">
-                <div className="edit-modal-genres">
-                  <select className="genre-select" name="" id="">
-                    <option value="happy">happy</option>
-                    <option value="relaxing">relaxing</option>
-                  </select>
-                </div>
-              </div>
               <div className="edit-modal-saveBtn-container">
                 <button className="edit-modal-saveBtn" type="submit">
                   Save

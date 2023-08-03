@@ -3,14 +3,17 @@
   height: 64px;
   position: sticky;
   border-bottom: 0;
-  top: 0;
+  // top: 0;
   z-index: 5;
   align-items: center;
   background: linear-gradient(var(--primary-color), var(--primary-color));
   transition: background-color 0.3s ease;
 
   @media (max-width: $mobile-breakpoint) {
-    display: none;
+    // display: none;
+    position:relative;
+    z-index: 0;
+    border-bottom: none;
   }
   .btn-login-signup-wrapper {
     margin-right: 1em;
