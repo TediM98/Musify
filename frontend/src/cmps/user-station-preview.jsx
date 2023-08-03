@@ -1,6 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import { svgService } from '../services/svg.service'
-import { useEffect, useState } from 'react'
 
 export const UserStationPreview = ({ station }) => {
   console.log(

@@ -569,13 +569,11 @@
   .station-details-container {
     display: flex;
     flex-direction: column;
-    height: 40vh;
-    height: 50vh;
-    padding: 2em 0 1em 2em;
+    gap: 2em;
     .station-img {
       height: 150px;
       width: 150px;
-      margin-left: 4em;
+      align-self: center;
       box-shadow: 0 8px 24px #00000080;
     }
     h1 {
@@ -599,4 +597,13 @@
   .station-song-search h1 {
     padding: 1em 0em 1em 0.3em;
   }
+  
+  .edit-modal-content{
+    width: auto;
+  }
+  .song-created-at,
+  .song-duration{
+    display: none;
+  }
+ 
 }
