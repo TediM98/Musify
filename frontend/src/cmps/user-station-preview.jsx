@@ -1,16 +1,12 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const UserStationPreview = ({ station }) => {
-  console.log(
-    '🚀 ~ file: user-station-preview.jsx:6 ~ UserStationPreview ~ station:',
-    station
-  )
   const navigate = useNavigate()
   const [songsLength, setSongsLength] = useState(station.songs.length)
 
   useEffect(() => {
     setSongsLength(station.songs.length)
-    console.log('songLength', songsLength)
   }, [station.songs.length])
 
   async function navToStation(stationId) {

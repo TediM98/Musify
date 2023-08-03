@@ -175,25 +175,28 @@ export function StationDetails() {
       (station) => station.name === 'Liked Songs'
     )
     if (!likedSong.isLiked) {
-      await addToLikedSongsStation(likedSong, likedSongsStation)
+      await stationService.addToLikedSongsStation(likedSong, likedSongsStation)
     } else {
-      await removeFromLikedSongsStation(likedSong, likedSongsStation)
+      await stationService.removeFromLikedSongsStation(
+        likedSong,
+        likedSongsStation
+      )
     }
     loadStations()
   }
 
-  function removeFromLikedSongsStation(likedSong, likedSongsStation) {
-    const updatedSongs = likedSongsStation.songs.filter(
-      (song) => song._id !== likedSong._id
-    )
-    const updatedStation = { ...likedSongsStation, songs: updatedSongs }
-    return updateStation(updatedStation)
-  }
+  // function removeFromLikedSongsStation(likedSong, likedSongsStation) {
+  //   const updatedSongs = likedSongsStation.songs.filter(
+  //     (song) => song._id !== likedSong._id
+  //   )
+  //   const updatedStation = { ...likedSongsStation, songs: updatedSongs }
+  //   return updateStation(updatedStation)
+  // }
 
-  function addToLikedSongsStation(likedSong, likedSongsStation) {
-    likedSongsStation.songs.push(likedSong)
-    return updateStation(likedSongsStation)
-  }
+  // function addToLikedSongsStation(likedSong, likedSongsStation) {
+  //   likedSongsStation.songs.push(likedSong)
+  //   return updateStation(likedSongsStation)
+  // }
 
   if (!currStation) return loaderService.threeDots
   return (

@@ -2,6 +2,7 @@ import React, { useState, useEffect, cloneElement } from 'react'
 import YouTube from 'react-youtube'
 import { utilService } from '../services/util.service'
 import { trackService } from '../services/track.service'
+import { stationService } from '../services/station.service'
 import {
   setCurrentTime,
   setIsPlaying,
@@ -11,7 +12,7 @@ import {
 } from '../store/player.actions'
 import { useSelector } from 'react-redux'
 import { svgService } from '../services/svg.service'
-import { loadStations, setCurrStation } from '../store/station.actions'
+import { loadStations, updateStation } from '../store/station.actions'
 import emptyStation from '../assets/img/empty-station-img.jpg'
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
@@ -230,8 +231,30 @@ export function StationPlayer() {
     setIsShuffle(!isShuffle)
   }
 
-  function onLikeSong() {
-    setIsLiked(!isLiked)
+  // function onLikeSong() {
+  //   setIsLiked(!isLiked)
+  // }
+  async function onLikeSong(likedSongId) {
+    const [likedSong] = currStation.songs.filter(
+      (song) => song._id === likedSongId
+    )
+    const updatedSongs = currStation.songs.map((song) =>
+      song._id === likedSong._id ? { ...song, isLiked: !song.isLiked } : song
+    )
+    const updatedStation = { ...currStation, songs: updatedSongs }
+    await updateStation(updatedStation)
+    const likedSongsStation = stations.find(
+      (station) => station.name === 'Liked Songs'
+    )
+    if (!likedSong.isLiked) {
+      await stationService.addToLikedSongsStation(likedSong, likedSongsStation)
+    } else {
+      await stationService.removeFromLikedSongsStation(
+        likedSong,
+        likedSongsStation
+      )
+    }
+    loadStations()
   }
 
   return (
@@ -261,8 +284,13 @@ export function StationPlayer() {
             </span>
           </div>
           {currStation && (
-            <button onClick={onLikeSong} className="btn-like-song flex">
-              {isLiked ? svgService.likedSongIcon : svgService.heartIcon}
+            <button
+              onClick={() => onLikeSong(songPlaying.songId)}
+              className="btn-like-song flex"
+            >
+              {currStation.songs[songPlaying?.songIdx]?.isLiked
+                ? svgService.likedSongIcon
+                : svgService.heartIcon}
             </button>
           )}
         </div>
