@@ -14,6 +14,7 @@ import {
   setCurrStation,
   removeSong,
   updateStation,
+  loadStations,
 } from '../store/station.actions'
 import { AddSong } from '../cmps/add-song'
 import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
@@ -164,6 +165,36 @@ export function StationDetails() {
     }
   }
 
+  async function onLikeSong(likedSong) {
+    const updatedSongs = currStation.songs.map((song) =>
+      song._id === likedSong._id ? { ...song, isLiked: !song.isLiked } : song
+    )
+    const updatedStation = { ...currStation, songs: updatedSongs }
+    await updateStation(updatedStation)
+    const likedSongsStation = stations.find(
+      (station) => station.name === 'Liked Songs'
+    )
+    if (!likedSong.isLiked) {
+      await addToLikedSongsStation(likedSong, likedSongsStation)
+    } else {
+      await removeFromLikedSongsStation(likedSong, likedSongsStation)
+    }
+    loadStations()
+  }
+
+  function removeFromLikedSongsStation(likedSong, likedSongsStation) {
+    const updatedSongs = likedSongsStation.songs.filter(
+      (song) => song._id !== likedSong._id
+    )
+    const updatedStation = { ...likedSongsStation, songs: updatedSongs }
+    return updateStation(updatedStation)
+  }
+
+  function addToLikedSongsStation(likedSong, likedSongsStation) {
+    likedSongsStation.songs.push(likedSong)
+    return updateStation(likedSongsStation)
+  }
+
   if (!currStation) return loaderService.threeDots
   return (
     <section className="details-layout-container">
@@ -307,8 +338,13 @@ export function StationDetails() {
                       {new Date(song.addedAt).toLocaleDateString()}
                     </div>
                     <div className="list-options flex">
-                      <button className="btn-like-song">
-                        {svgService.heartIcon}
+                      <button
+                        className="btn-like-song"
+                        onClick={() => onLikeSong(song)}
+                      >
+                        {song.isLiked
+                          ? svgService.likedSongIcon
+                          : svgService.heartIcon}
                       </button>
                       <div className="song-duration">{song.duration}</div>
 

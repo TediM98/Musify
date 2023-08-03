@@ -1,8 +1,19 @@
 import { useNavigate } from 'react-router-dom'
 import { svgService } from '../services/svg.service'
+import { useEffect, useState } from 'react'
 
 export const UserStationPreview = ({ station }) => {
+  console.log(
+    '🚀 ~ file: user-station-preview.jsx:6 ~ UserStationPreview ~ station:',
+    station
+  )
   const navigate = useNavigate()
+  const [songsLength, setSongsLength] = useState(station.songs.length)
+
+  useEffect(() => {
+    setSongsLength(station.songs.length)
+    console.log('songLength', songsLength)
+  }, [station.songs.length])
 
   async function navToStation(stationId) {
     try {
@@ -20,7 +31,7 @@ export const UserStationPreview = ({ station }) => {
       <img src={station.createdBy.imgUrl} alt={station.name} />
       <div className="station-info">
         <h3>{station.name}</h3>
-        <span>{station.songs.length} songs</span>
+        <span>{songsLength} songs</span>
       </div>
       <div className="playlist-actions"></div>
     </li>

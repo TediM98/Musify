@@ -75,10 +75,10 @@ export async function addStation(station) {
 
 
 export async function updateStation(station) {
-
+    console.log('updated station from update func', station)
     try {
         const savedStation = await stationService.save(station)
-        setCurrStation(savedStation)
+        if (station.name !== 'Liked Songs') setCurrStation(savedStation)
         return savedStation
     }
     catch (err) {
