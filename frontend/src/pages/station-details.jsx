@@ -28,7 +28,6 @@ export function StationDetails() {
   const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [bgc, setBgc] = useState('rgb(223, 101, 223)')
   const [isOpen, setIsOpen] = useState(false)
-  const [songPlayingOnList, setSongPlayingOnList] = useState(null)
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
@@ -142,7 +141,6 @@ export function StationDetails() {
   }
 
   function onChangeSongPlaying(songId = '', songIdx) {
-    setSongPlayingOnList(songId)
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo()
@@ -313,7 +311,7 @@ export function StationDetails() {
                       className="handle-song-icon-container"
                       onClick={() => onChangeSongPlaying(song._id, idx)}
                     >
-                      {songPlayingOnList === song._id && isPlaying
+                      {songPlaying?.songId === song._id && isPlaying
                         ? svgService.playerPauseTrackIcon
                         : svgService.playerPlayTrackIcon}
                     </div>
@@ -328,7 +326,7 @@ export function StationDetails() {
                       <div className="song-title">
                         <span
                           className={`song-name ${
-                            songPlayingOnList === song._id && isPlaying
+                            songPlaying?.songId === song._id
                               ? 'active'
                               : 'inactive'
                           }`}
