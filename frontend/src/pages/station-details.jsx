@@ -31,7 +31,6 @@ export function StationDetails() {
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
-
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -45,6 +44,10 @@ export function StationDetails() {
   const { stationId } = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const totalLikedSongs = currStation?.songs.filter(
+    (song) => song.isLiked
+  ).length
+
   getBgc()
   useEffect(() => {
     if (stationId) {
@@ -195,7 +198,6 @@ export function StationDetails() {
   //   likedSongsStation.songs.push(likedSong)
   //   return updateStation(likedSongsStation)
   // }
-
   if (!currStation) return loaderService.threeDots
   return (
     <section className="details-layout-container">
@@ -234,7 +236,11 @@ export function StationDetails() {
               </div>
               <span>Musify</span>
               <span className="song-detail">
-                {currStation.likedByUsers?.length} likes
+                {totalLikedSongs === 0
+                  ? '0 likes'
+                  : `${totalLikedSongs} ${
+                      totalLikedSongs === 1 ? 'like' : 'likes'
+                    }`}
               </span>
               <span className="song-detail">
                 {currStation.songs.length} songs
