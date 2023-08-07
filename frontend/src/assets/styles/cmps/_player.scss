@@ -1,7 +1,7 @@
 .main-player-section {
   grid-area: 2/1/2/3;
   @media (max-width: $mobile-breakpoint) {
-    position: sticky;
+    // position: sticky;
     bottom: -1px;
     width: 100vw;
     background-color: black;
