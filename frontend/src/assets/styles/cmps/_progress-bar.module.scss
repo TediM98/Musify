@@ -22,7 +22,7 @@
   }
 }
 
-@media (max-width: 460px) {
+@media (max-width: $mobile-breakpoint) {
   .progress-bar-element {
     width: 90vw;
   }

@@ -42,7 +42,7 @@
   }
 
   & .song-detail::before {
-    content: '•';
+    content: "•";
     margin: 0 4px;
     font-size: 0.7rem;
   }
@@ -389,10 +389,10 @@
   display: grid;
   grid-template: 32px 132px 32px auto / 180px 1fr;
   grid-template-areas:
-    'album-image title'
-    'album-image description'
-    '. save-button'
-    'disclaimer disclaimer';
+    "album-image title"
+    "album-image description"
+    ". save-button"
+    "disclaimer disclaimer";
   padding: 0 24px 24px;
 }
 
@@ -584,7 +584,7 @@
   display: none;
 }
 
-@media (max-width: 460px) {
+@media (max-width: $mobile-breakpoint) {
   .layout-conatiner {
     margin-top: 0px;
   }
@@ -613,6 +613,7 @@
       margin: 0.58em -1px 0.12em;
     }
   }
+
   .song-list {
     grid-area: 4/1/5/3;
     font-size: 10px;

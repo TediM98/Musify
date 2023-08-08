@@ -46,13 +46,12 @@ export function StationSearch() {
     }
   }
 
-  console.log(searchRes)
   return (
     <section>
       <div
         onClick={() => handleToggleOptions()}
         className={`options-close-search ${isOpen ? "active" : "inactive"}`}
-      ></div>
+        ></div>
       <div>
         {searchRes ? (
           <>

@@ -69,7 +69,7 @@
 }
 
 
-@media (max-width: 460px) {
+@media (max-width: $mobile-breakpoint) {
   .station-card{
     width: 11em;
     height: 15em;

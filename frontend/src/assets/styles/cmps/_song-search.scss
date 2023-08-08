@@ -115,11 +115,10 @@
   border: 0;
 }
 
-@media (max-width: 460px) {
+@media (max-width:$mobile-breakpoint) {
   .station-song-search {
     svg {
       top: 13.3em;
-      // left: 1.2em;
     }
   }
 }

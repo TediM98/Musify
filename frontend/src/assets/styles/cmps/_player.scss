@@ -246,7 +246,7 @@
   }
 }
 
-@media (max-width: 460px) {
+@media (max-width: $mobile-breakpoint) {
   .volume-container {
     display: none;
   }
