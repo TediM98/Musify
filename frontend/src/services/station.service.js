@@ -3,7 +3,7 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import emptyStationImg from '../assets/img/empty-station-img.jpg'
 import { SOCKET_EMIT_UPDATE_STATION, socketService } from './socket.service.js'
-
+import { updateStation } from '../store/station.actions.js'
 const STORAGE_KEY = 'station'
 const BASE_URL = 'station/'
 
@@ -13,6 +13,8 @@ export const stationService = {
     save,
     remove,
     removeSong,
+    removeFromLikedSongsStation,
+    addToLikedSongsStation,
     getEmptyStation,
 }
 window.cs = stationService // FOR DEBUGGING ONLY
@@ -45,8 +47,8 @@ function removeSong(songId, station) {
 
 async function remove(stationId) {
     try {
-        const songToDelete = await getById(stationId)
-        if (songToDelete.name === 'Liked Songs') return
+        const stationToDelete = await getById(stationId)
+        if (stationToDelete.name === 'Liked Songs') return
         return httpService.delete(BASE_URL + stationId)
     }
     catch (err) {
@@ -71,6 +73,19 @@ async function save(station) {
         console.log('Could not save station')
         throw err
     }
+}
+
+function removeFromLikedSongsStation(likedSong, likedSongsStation) {
+    const updatedSongs = likedSongsStation.songs.filter(
+        (song) => song._id !== likedSong._id
+    )
+    const updatedStation = { ...likedSongsStation, songs: updatedSongs }
+    return updateStation(updatedStation)
+}
+
+function addToLikedSongsStation(likedSong, likedSongsStation) {
+    likedSongsStation.songs.push(likedSong)
+    return updateStation(likedSongsStation)
 }
 
 function getEmptyStation() {

@@ -54,7 +54,6 @@ export async function loadStations() {
         console.log('Cannot load stations', err)
         throw err
     }
-
 }
 
 export async function removeStation(stationId) {

@@ -28,11 +28,9 @@ export function StationDetails() {
   const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [bgc, setBgc] = useState("rgb(223, 101, 223)")
   const [isOpen, setIsOpen] = useState(false)
-  const [songPlayingOnList, setSongPlayingOnList] = useState(null)
   const currStation = useSelector(
     (storeState) => storeState.stationModule.currStation
   )
-
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
   )
@@ -46,6 +44,10 @@ export function StationDetails() {
   const { stationId } = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const totalLikedSongs = currStation?.songs.filter(
+    (song) => song.isLiked
+  ).length
+
   getBgc()
   useEffect(() => {
     if (stationId) {
@@ -141,9 +143,7 @@ export function StationDetails() {
     }
   }
 
-  function onChangeSongPlaying(songId = "", songIdx) {
-    setSongPlayingOnList(songId)
-    console.log(setSongPlayingOnList)
+  function onChangeSongPlaying(songId = '', songIdx) {
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo()
@@ -176,26 +176,28 @@ export function StationDetails() {
       (station) => station.name === "Liked Songs"
     )
     if (!likedSong.isLiked) {
-      await addToLikedSongsStation(likedSong, likedSongsStation)
+      await stationService.addToLikedSongsStation(likedSong, likedSongsStation)
     } else {
-      await removeFromLikedSongsStation(likedSong, likedSongsStation)
+      await stationService.removeFromLikedSongsStation(
+        likedSong,
+        likedSongsStation
+      )
     }
     loadStations()
   }
 
-  function removeFromLikedSongsStation(likedSong, likedSongsStation) {
-    const updatedSongs = likedSongsStation.songs.filter(
-      (song) => song._id !== likedSong._id
-    )
-    const updatedStation = { ...likedSongsStation, songs: updatedSongs }
-    return updateStation(updatedStation)
-  }
+  // function removeFromLikedSongsStation(likedSong, likedSongsStation) {
+  //   const updatedSongs = likedSongsStation.songs.filter(
+  //     (song) => song._id !== likedSong._id
+  //   )
+  //   const updatedStation = { ...likedSongsStation, songs: updatedSongs }
+  //   return updateStation(updatedStation)
+  // }
 
-  function addToLikedSongsStation(likedSong, likedSongsStation) {
-    likedSongsStation.songs.push(likedSong)
-    return updateStation(likedSongsStation)
-  }
-
+  // function addToLikedSongsStation(likedSong, likedSongsStation) {
+  //   likedSongsStation.songs.push(likedSong)
+  //   return updateStation(likedSongsStation)
+  // }
   if (!currStation) return loaderService.threeDots
   return (
     <section className="details-layout-container">
@@ -234,7 +236,11 @@ export function StationDetails() {
               </div>
               <span>Musify</span>
               <span className="song-detail">
-                {currStation.likedByUsers?.length} likes
+                {totalLikedSongs === 0
+                  ? '0 likes'
+                  : `${totalLikedSongs} ${
+                      totalLikedSongs === 1 ? 'like' : 'likes'
+                    }`}
               </span>
               <span className="song-detail">
                 {currStation.songs.length} songs
@@ -311,7 +317,7 @@ export function StationDetails() {
                       className="handle-song-icon-container"
                       onClick={() => onChangeSongPlaying(song._id, idx)}
                     >
-                      {songPlayingOnList === song._id && isPlaying
+                      {songPlaying?.songId === song._id && isPlaying
                         ? svgService.playerPauseTrackIcon
                         : svgService.playerPlayTrackIcon}
                     </div>
@@ -326,9 +332,9 @@ export function StationDetails() {
                       <div className="song-title">
                         <span
                           className={`song-name ${
-                            songPlayingOnList === song._id && isPlaying
-                              ? "active"
-                              : "inactive"
+                            songPlaying?.songId === song._id
+                              ? 'active'
+                              : 'inactive'
                           }`}
                         >
                           {song.title}

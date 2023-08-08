@@ -65,7 +65,11 @@ export function SideNav() {
               {activePage.page === "home"
                 ? activePage.icon
                 : svgService.homeIcon}
-              <span>Home</span>
+              <span
+                className={`home ${activePage.page === 'home' ? 'active' : ''}`}
+              >
+                Home
+              </span>
             </a>
           </li>
           <li

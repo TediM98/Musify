@@ -88,6 +88,10 @@ export function Modal({ closeModal, saveModalData }) {
                     src={currStation.createdBy.imgUrl}
                     alt=""
                   />
+                  <div className="edit-modal-change-img flex">
+                    {svgService.editImgIcon}
+                    <span className="choose-photo">Choose photo</span>
+                  </div>
                 </label>
               </div>
               <input

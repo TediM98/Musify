@@ -187,123 +187,6 @@ export const svgService = {
     </svg>
   ),
 
-  playerFwdTrackIcon: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      height="16"
-      width="16"
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      data-encore-id="icon"
-      className="go-fwd-icon ldgdZj"
-    >
-      <path d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z" />
-    </svg>
-  ),
-  palyerBtnPreview: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      height="16"
-      width="16"
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      data-encore-id="icon"
-      className="svg"
-    >
-      <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z" />
-    </svg>
-  ),
-
-  volumeIcon33: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="#b3b3b3"
-      role="presentation"
-      height="16"
-      width="16"
-      aria-hidden="true"
-      aria-label="Volume low"
-      id="volume-icon"
-      viewBox="0 0 16 16"
-      data-encore-id="icon"
-      className="Svg-sc-ytk21e-0 ldgdZj"
-    >
-      <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88z" />
-    </svg>
-  ),
-  volumeIcon0: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="#b3b3b3"
-      role="presentation"
-      height="16"
-      width="16"
-      aria-hidden="true"
-      aria-label="Volume off"
-      id="volume-icon"
-      viewBox="0 0 16 16"
-      data-encore-id="icon"
-      className="Svg-sc-ytk21e-0 ldgdZj"
-    >
-      <path d="M13.86 5.47a.75.75 0 0 0-1.061 0l-1.47 1.47-1.47-1.47A.75.75 0 0 0 8.8 6.53L10.269 8l-1.47 1.47a.75.75 0 1 0 1.06 1.06l1.47-1.47 1.47 1.47a.75.75 0 0 0 1.06-1.06L12.39 8l1.47-1.47a.75.75 0 0 0 0-1.06z" />
-      <path d="M10.116 1.5A.75.75 0 0 0 8.991.85l-6.925 4a3.642 3.642 0 0 0-1.33 4.967 3.639 3.639 0 0 0 1.33 1.332l6.925 4a.75.75 0 0 0 1.125-.649v-1.906a4.73 4.73 0 0 1-1.5-.694v1.3L2.817 9.852a2.141 2.141 0 0 1-.781-2.92c.187-.324.456-.594.78-.782l5.8-3.35v1.3c.45-.313.956-.55 1.5-.694V1.5z" />
-    </svg>
-  ),
-
-  volumeIcon66: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      role="presentation"
-      height="16"
-      width="16"
-      fill="#b3b3b3"
-      aria-hidden="true"
-      aria-label="Volume medium"
-      id="volume-icon"
-      viewBox="0 0 16 16"
-      data-encore-id="icon"
-      className="Svg-sc-ytk21e-0 ldgdZj"
-    >
-      <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 6.087a4.502 4.502 0 0 0 0-8.474v1.65a2.999 2.999 0 0 1 0 5.175v1.649z" />
-    </svg>
-  ),
-  exitIcon: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      height="24"
-      width="24"
-      aria-hidden="true"
-      aria-label="Close"
-      viewBox="0 0 24 24"
-      data-encore-id="icon"
-      className="exit-songs-list"
-    >
-      <path d="M3.293 3.293a1 1 0 0 1 1.414 0L12 10.586l7.293-7.293a1 1 0 1 1 1.414 1.414L13.414 12l7.293 7.293a1 1 0 0 1-1.414 1.414L12 13.414l-7.293 7.293a1 1 0 0 1-1.414-1.414L10.586 12 3.293 4.707a1 1 0 0 1 0-1.414z" />
-    </svg>
-  ),
-
-  volumeIcon100: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      role="presentation"
-      height="16"
-      width="16"
-      fill="#b3b3b3"
-      aria-hidden="true"
-      aria-label="Volume high"
-      id="volume-icon"
-      viewBox="0 0 16 16"
-      data-encore-id="icon"
-      className="Svg-sc-ytk21e-0 ldgdZj"
-    >
-      <path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88z " />
-      <path d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z" />
-    </svg>
-  ),
-
   mutedIcon: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -351,7 +234,6 @@ export const svgService = {
       <path d="M1.126 10.558c0-5.14 4.226-9.28 9.407-9.28 5.18 0 9.407 4.14 9.407 9.28a9.157 9.157 0 0 1-2.077 5.816l4.344 4.344a1 1 0 0 1-1.414 1.414l-4.353-4.353a9.454 9.454 0 0 1-5.907 2.058c-5.18 0-9.407-4.14-9.407-9.28zm9.407-7.28c-4.105 0-7.407 3.274-7.407 7.28s3.302 7.279 7.407 7.279 7.407-3.273 7.407-7.28c0-4.005-3.302-7.278-7.407-7.278z" />
     </svg>
   ),
-
   repeatOnIcon: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -434,11 +316,25 @@ export const svgService = {
       height="16"
       width="16"
       aria-hidden="true"
-      className="Svg-sc-ytk21e-0 haNxPq mOLTJ2mxkzHJj6Y9_na_"
+      class="Svg-sc-ytk21e-0 haNxPq mOLTJ2mxkzHJj6Y9_na_"
       viewBox="0 0 16 16"
       data-encore-id="icon"
     >
       <path d="M7 1.75a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5zM.25 7a6.75 6.75 0 1 1 12.096 4.12l3.184 3.185a.75.75 0 1 1-1.06 1.06L11.304 12.2A6.75 6.75 0 0 1 .25 7z" />
     </svg>
   ),
-};
+  editImgIcon: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      height="48"
+      width="48"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      data-encore-id="icon"
+      className="edit-img-icon"
+    >
+      <path d="M17.318 1.975a3.329 3.329 0 1 1 4.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 0 1-1.28-1.28l1.581-4.376a4.726 4.726 0 0 1 1.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 0 0-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 0 0 1.001-.636L20.611 5.268a1.329 1.329 0 0 0 0-1.879z" />
+    </svg>
+  ),
+}
