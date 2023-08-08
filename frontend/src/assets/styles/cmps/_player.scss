@@ -1,10 +1,21 @@
 .main-player-section {
   grid-area: 2/1/2/3;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  justify-content: center;
+  height: 0;
+
   @media (max-width: $mobile-breakpoint) {
-    // position: sticky;
-    bottom: -1px;
-    width: 100vw;
-    background-color: black;
+    width: 95vw;
+    height: 56px;
+    z-index: 1;
+    position: absolute;
+    background-color: $bgclr-mobile-player;
+    bottom: 12%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    border-radius: 6px;
   }
 }
 
@@ -137,6 +148,7 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 0.5em;
+  margin: auto 1em;
 
   .station-img {
     height: 56px;
@@ -256,9 +268,22 @@
   .repeat-off-icon {
     display: none;
   }
-  .btn-like-song {
-    margin: 0 0 0 23em;
+
+  .left-controls .btn-like-song {
+    position: absolute;
+    top: 13px;
+    right: 4em;
+
+    .heart-icon {
+      width: 24px;
+      height: 24px;
+    }
+    .liked-song-icon {
+      width: 24px;
+      height: 24px;
+    }
   }
+
   .time-stamp {
     display: none;
   }
@@ -268,11 +293,26 @@
     white-space: nowrap;
     margin: 0em 0em 5em 3em;
     margin-inline-start: 1.5em;
+    top: 0;
+    left: 26px;
+
+    @keyframes scrollText {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+    
+    width: 13em;
+    overflow: hidden;
+    .song-name {
+      font-size: 12px;
+      animation: scrollText 13s linear infinite;
+    }
   }
-  .center-controls {
-    position: absolute;
-    margin: 1em;
-  }
+
   .song-list .song-list-header {
     position: unset;
   }
@@ -288,5 +328,33 @@
     text-align: center;
     align-items: center;
     justify-self: center;
+  }
+  .progress-bar {
+    position: relative;
+    top: 18px;
+    right: 15px;
+  }
+
+  .top-center-controls .playBtn {
+    background: transparent;
+    fill: white;
+    border: none;
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  .left-controls .station-img {
+    position: absolute;
+    top: 5px;
+
+    img {
+      height: 40px;
+      width: 40px;
+    }
   }
 }

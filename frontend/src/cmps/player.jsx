@@ -1,19 +1,19 @@
-import React, { useState, useEffect, cloneElement } from 'react'
-import YouTube from 'react-youtube'
-import { utilService } from '../services/util.service'
-import { trackService } from '../services/track.service'
-import { stationService } from '../services/station.service'
+import React, { useState, useEffect, cloneElement } from "react"
+import YouTube from "react-youtube"
+import { utilService } from "../services/util.service"
+import { trackService } from "../services/track.service"
+import { stationService } from "../services/station.service"
 import {
   setCurrentTime,
   setIsPlaying,
   setPlayer,
   setSongDuration,
   setSongPlaying,
-} from '../store/player.actions'
-import { useSelector } from 'react-redux'
-import { svgService } from '../services/svg.service'
-import { loadStations, updateStation } from '../store/station.actions'
-import emptyStation from '../assets/img/empty-station-img.jpg'
+} from "../store/player.actions"
+import { useSelector } from "react-redux"
+import { svgService } from "../services/svg.service"
+import { loadStations, updateStation } from "../store/station.actions"
+import emptyStation from "../assets/img/empty-station-img.jpg"
 export function StationPlayer() {
   const [progressValue, setProgressValue] = useState(0)
   const [volumeValue, setVolumeValue] = useState(25)
@@ -244,7 +244,7 @@ export function StationPlayer() {
     const updatedStation = { ...currStation, songs: updatedSongs }
     await updateStation(updatedStation)
     const likedSongsStation = stations.find(
-      (station) => station.name === 'Liked Songs'
+      (station) => station.name === "Liked Songs"
     )
     if (!likedSong.isLiked) {
       await stationService.addToLikedSongsStation(likedSong, likedSongsStation)
@@ -259,14 +259,10 @@ export function StationPlayer() {
 
   return (
     <div className="main-player-section full">
+
+      {/* LEFT */}
       <div className="left-controls">
-        <div className="player-container flex">
-          <YouTube
-            videoId={songPlaying?.songId}
-            opts={opts}
-            onReady={handlePlayerReady}
-            onStateChange={onChangePlayerStatus}
-          />
+       
 
           <div className="station-img">
             <img
@@ -277,23 +273,34 @@ export function StationPlayer() {
               }
               alt="station-img"
             />
+
+<div className="player-container">
+          <YouTube
+            videoId={songPlaying?.songId}
+            opts={opts}
+            onReady={handlePlayerReady}
+            onStateChange={onChangePlayerStatus}
+          />
+
           </div>
           <div className="artist-details">
             <span className="song-name">
               {currStation?.songs[songPlaying?.songIdx || 0]?.title}
             </span>
           </div>
+        </div>
           {currStation && (
             <button
               onClick={() => onLikeSong(songPlaying.songId)}
-              className="btn-like-song flex"
+              className="btn-like-song"
             >
               {currStation.songs[songPlaying?.songIdx]?.isLiked
                 ? svgService.likedSongIcon
                 : svgService.heartIcon}
             </button>
           )}
-        </div>
+      </div>
+          {/* CENTER */}
         <div className="center-controls">
           <div className="top-center-controls">
             <button onClick={onShuffle} className="shuffle">
@@ -351,8 +358,9 @@ export function StationPlayer() {
                 </svg>
               )}
             </button>
-          </div>
-          <div className="bottom-center-controls flex">
+        </div>
+
+          <div className="bottom-center-controls">
             <div className="progress-bar flex">
               <div className="time-stamp start">
                 {utilService.convertTime(currentTime) || "-:--"}
@@ -376,7 +384,9 @@ export function StationPlayer() {
             </div>
           </div>
         </div>
-        <div className="right-controls flex">
+
+        {/* RIGHT */}
+        <div className="right-controls ">
           <div className="volume-container">
             <button className="btn-mute" onClick={handleMute}>
               {!isMuted ? getVolumeIcon() : svgService.mutedIcon}
@@ -396,6 +406,5 @@ export function StationPlayer() {
           </div>
         </div>
       </div>
-    </div>
   )
 }
