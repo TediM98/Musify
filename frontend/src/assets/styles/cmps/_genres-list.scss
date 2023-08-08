@@ -5,11 +5,7 @@
   padding: 24px;
 }
 
-///////CARDS
-
 .search-card-category {
-  //GENERAL STRUCTURE
-  //display: flex;
   height: 12rem;
   width: 12rem;
   overflow: hidden;
@@ -29,9 +25,14 @@
   }
 }
 
-@media (max-width:$mobile-breakpoint) {
-  .genres-cards-container{
-    padding:0;
+@media (max-width: $mobile-breakpoint) {
+  .genres-cards-container {
+    padding: 0;
     gap: 10px;
+  }
+
+  .search-card-category {
+    height: 10rem;
+    width: 10rem;
   }
 }

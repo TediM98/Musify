@@ -1,32 +1,32 @@
-import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { stationService } from '../services/station.service'
-import logo from '../assets/img/musify-logo.jpg'
-import play from '../assets/img/play-station.svg'
-import { bgcService } from '../services/bgc.service'
-import { useDispatch, useSelector } from 'react-redux'
-import { DropDownItem } from '../cmps/dropdown-item'
-import { svgService } from '../services/svg.service'
-import { setIsPlaying, setSongPlaying } from '../store/player.actions'
-import { loaderService } from '../services/loader-service'
+import { useEffect, useState } from "react"
+import { useParams, useNavigate } from "react-router-dom"
+import { stationService } from "../services/station.service"
+import logo from "../assets/img/musify-logo.jpg"
+import play from "../assets/img/play-station.svg"
+import { bgcService } from "../services/bgc.service"
+import { useDispatch, useSelector } from "react-redux"
+import { DropDownItem } from "../cmps/dropdown-item"
+import { svgService } from "../services/svg.service"
+import { setIsPlaying, setSongPlaying } from "../store/player.actions"
+import { loaderService } from "../services/loader-service"
 import {
   removeStation,
   setCurrStation,
   removeSong,
   updateStation,
   loadStations,
-} from '../store/station.actions'
-import { AddSong } from '../cmps/add-song'
-import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
+} from "../store/station.actions"
+import { AddSong } from "../cmps/add-song"
+import { Modal } from "../cmps/edit-modal" //////////////////////////////modal
 import {
   SOCKET_EVENT_UPDATE_STATION,
   socketService,
-} from '../services/socket.service'
+} from "../services/socket.service"
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
   const [isEditModalOpen, setEditModalOpen] = useState(false)
-  const [bgc, setBgc] = useState('rgb(223, 101, 223)')
+  const [bgc, setBgc] = useState("rgb(223, 101, 223)")
   const [isOpen, setIsOpen] = useState(false)
   const [songPlayingOnList, setSongPlayingOnList] = useState(null)
   const currStation = useSelector(
@@ -55,12 +55,12 @@ export function StationDetails() {
 
   useEffect(() => {
     socketService.on(SOCKET_EVENT_UPDATE_STATION, (station) => {
-      console.log('station', station)
+      console.log("station", station)
       setCurrStation(station)
     })
     return () => {
       socketService.off(SOCKET_EVENT_UPDATE_STATION, (station) => {
-        console.log('station', station)
+        console.log("station", station)
       })
       // botTimeoutRef.current && clearTimeout(botTimeoutRef.current)
     }
@@ -69,7 +69,7 @@ export function StationDetails() {
   async function saveModalData(inputValue, descValue) {
     toggleEditModal()
     try {
-      console.log(currStation, ' from details check')
+      console.log(currStation, " from details check")
       const updatedStation = {
         ...currStation,
         name: inputValue,
@@ -78,7 +78,7 @@ export function StationDetails() {
 
       dispatch(updateStation(updatedStation))
     } catch (err) {
-      console.log('Error could not edit playlist name')
+      console.log("Error could not edit playlist name")
     }
   }
 
@@ -93,12 +93,12 @@ export function StationDetails() {
 
   function toggleModal(buttonName) {
     setIsOpen(buttonName === isOpen ? null : buttonName)
-    console.log('modal check', buttonName)
+    console.log("modal check", buttonName)
   }
 
-  function changePrimaryClr(color = 'gray') {
-    let r = document.querySelector(':root')
-    r.style.setProperty('--primary-color', color)
+  function changePrimaryClr(color = "gray") {
+    let r = document.querySelector(":root")
+    r.style.setProperty("--primary-color", color)
   }
 
   async function getBgc() {
@@ -109,7 +109,7 @@ export function StationDetails() {
       changePrimaryClr(color)
       setBgc(color)
     } catch (err) {
-      console.log('Could not load color', err)
+      console.log("Could not load color", err)
     }
   }
 
@@ -119,8 +119,8 @@ export function StationDetails() {
       setCurrStation(station)
       return currStation
     } catch (err) {
-      console.error('Cannot load station', err)
-      navigate('/')
+      console.error("Cannot load station", err)
+      navigate("/")
     }
   }
 
@@ -141,8 +141,9 @@ export function StationDetails() {
     }
   }
 
-  function onChangeSongPlaying(songId = '', songIdx) {
+  function onChangeSongPlaying(songId = "", songIdx) {
     setSongPlayingOnList(songId)
+    console.log(setSongPlayingOnList)
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo()
@@ -159,9 +160,9 @@ export function StationDetails() {
   async function onRemoveStation(stationId) {
     try {
       await removeStation(stationId)
-      navigate('/')
+      navigate("/")
     } catch (err) {
-      console.error('Could not remove station')
+      console.error("Could not remove station")
     }
   }
 
@@ -172,7 +173,7 @@ export function StationDetails() {
     const updatedStation = { ...currStation, songs: updatedSongs }
     await updateStation(updatedStation)
     const likedSongsStation = stations.find(
-      (station) => station.name === 'Liked Songs'
+      (station) => station.name === "Liked Songs"
     )
     if (!likedSong.isLiked) {
       await addToLikedSongsStation(likedSong, likedSongsStation)
@@ -202,7 +203,7 @@ export function StationDetails() {
         onClick={() => {
           setIsOpen(!isOpen)
         }}
-        className={`options-close ${isOpen ? 'active' : 'inactive'}`}
+        className={`options-close ${isOpen ? "active" : "inactive"}`}
       ></div>
       <section className="details-container details-layout">
         <div className="station-details-container full">
@@ -274,7 +275,7 @@ export function StationDetails() {
               <div className="dropdown-container">
                 <div
                   className={`dropdown-menu ${
-                    isOpen === stationId ? 'active' : 'inactive'
+                    isOpen === stationId ? "active" : "inactive"
                   }`}
                 >
                   <ul className=" clean-list">
@@ -326,8 +327,8 @@ export function StationDetails() {
                         <span
                           className={`song-name ${
                             songPlayingOnList === song._id && isPlaying
-                              ? 'active'
-                              : 'inactive'
+                              ? "active"
+                              : "inactive"
                           }`}
                         >
                           {song.title}
@@ -360,8 +361,8 @@ export function StationDetails() {
                           <div
                             className={`dropdown-menu ${
                               isOpen === song._id
-                                ? 'active ' + 'list-options'
-                                : 'inactive'
+                                ? "active " + "list-options"
+                                : "inactive"
                             }`}
                           >
                             <ul className=" clean-list">

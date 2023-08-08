@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { uploadService } from '../services/upload.service'
+import { useState } from "react"
+import { uploadService } from "../services/upload.service"
 
 export function ImgUploader({ onUploaded = null }) {
   const [imgData, setImgData] = useState({
@@ -18,13 +18,18 @@ export function ImgUploader({ onUploaded = null }) {
   }
 
   function getUploadLabel() {
-    if (imgData.imgUrl) return 'Upload Another?'
-    return isUploading ? 'Uploading....' : 'Upload Image'
+    if (imgData.imgUrl) return "Upload Another?"
+    return isUploading ? "Uploading...." : "Upload Image"
   }
 
   return (
     <div className="upload-preview">
-      {imgData.imgUrl && <img src={imgData.imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
+      {imgData.imgUrl && (
+        <img
+          src={imgData.imgUrl}
+          style={{ maxWidth: "200px", float: "right" }}
+        />
+      )}
       <label htmlFor="imgUpload">{getUploadLabel()}</label>
       <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
     </div>

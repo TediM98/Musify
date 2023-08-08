@@ -44,7 +44,6 @@ export function AddSong({ station, onAddSong }) {
       >
         <div className="search-input">
           <h1>Let's find something for your playlist</h1>
-          {/* <label htmlFor="songName"></label> */}
           <input
             className="add-song-input"
             type="search"
@@ -57,7 +56,6 @@ export function AddSong({ station, onAddSong }) {
         </div>
         <div className="flex align-center">
           <button className="close-songs-list">
-            {/* {svgService.exitIcon} */}
           </button>
         </div>
       </section>
@@ -69,7 +67,7 @@ export function AddSong({ station, onAddSong }) {
                 <div className="song-img">
                   <img src={track.imgUrl} alt={track.title} />
                 </div>
-                <div className="btn-play-pause">{/* svg play pause */}</div>
+                <div className="btn-play-pause"></div>
               </div>
               <div className="song-title">
                 <span className="artist-name">{track.title}</span>

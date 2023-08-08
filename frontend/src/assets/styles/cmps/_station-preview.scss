@@ -67,3 +67,19 @@
     }
   }
 }
+
+
+@media (max-width: 460px) {
+  .station-card{
+    width: 11em;
+    height: 15em;
+    img{
+      height: 152px;
+      width: 152px;
+    }
+    .content{
+      line-height: 0.5;
+      margin-top: 0;
+    }
+  }
+}

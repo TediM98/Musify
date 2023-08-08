@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux'
-import { StationPreview } from '../cmps/station-preview'
-import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { loadStations } from '../store/station.actions'
+import { useSelector } from "react-redux"
+import { StationPreview } from "../cmps/station-preview"
+import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { loadStations } from "../store/station.actions"
 
 export function Genres() {
   const stations = useSelector(
@@ -26,13 +26,12 @@ export function Genres() {
       )
       setCurrGenreStations(genreStations)
     } catch (err) {
-      console.log('Could not load Genres', err)
+      console.log("Could not load Genres", err)
     }
   }
 
-
-  const capitalizedGenre = stationGenre.charAt(0).toUpperCase() +
-    stationGenre.slice(1);
+  const capitalizedGenre =
+    stationGenre.charAt(0).toUpperCase() + stationGenre.slice(1)
 
   return (
     <section className="genre-stations">

@@ -1,6 +1,6 @@
 import { stationService } from "../services/station.service.js"
 import { store } from './store.js'
-import { ADD_STATION, REMOVE_SONG, REMOVE_STATION, SET_CURRENT_STATION, SET_STATIONS, UPDATE_STATION } from "./station.reducer.js"
+import { ADD_STATION, REMOVE_SONG, REMOVE_STATION, SET_CURRENT_STATION, SET_SEARCHRES, SET_STATIONS, UPDATE_STATION } from "./station.reducer.js"
 
 // Action Creators:
 export function getActionRemoveStation(stationId) {
@@ -25,6 +25,11 @@ export function getActionUpdateStation(station) {
 
 export function setCurrStation(currStation) {
     store.dispatch({ type: SET_CURRENT_STATION, currStation })
+}
+
+
+export function setSearchRes(searchRes) {
+    store.dispatch({ type: SET_SEARCHRES, searchRes })
 }
 
 export async function removeSong(songId, currStation) {

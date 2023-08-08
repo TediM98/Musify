@@ -1,12 +1,12 @@
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { loadStations, setCurrStation } from '../store/station.actions.js'
-import { StationList } from '../cmps/station-list.jsx'
-import { HighLightsTable } from '../cmps/station-table.jsx'
-import { utilService } from '../services/util.service.js'
-import { setIsPlaying, setSongPlaying } from '../store/player.actions.js'
-import { stationService } from '../services/station.service.js'
-import { loaderService } from '../services/loader-service.js'
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { loadStations, setCurrStation } from "../store/station.actions.js"
+import { StationList } from "../cmps/station-list.jsx"
+import { HighLightsTable } from "../cmps/station-table.jsx"
+import { utilService } from "../services/util.service.js"
+import { setIsPlaying, setSongPlaying } from "../store/player.actions.js"
+import { stationService } from "../services/station.service.js"
+import { loaderService } from "../services/loader-service.js"
 
 export function StationIndex() {
   const stations = useSelector(
@@ -53,67 +53,67 @@ export function StationIndex() {
       setCurrStation(reqStation)
       playSong(reqStation)
     } catch (err) {
-      console.log('cannot find currstation', err)
+      console.log("cannot find currstation", err)
     }
   }
 
-  if (!stations) return (loaderService.threeDots)
+  if (!stations) return loaderService.threeDots
   return (
     <section className="main-layout home-page scrollable-container">
       <section className="station-table main-layout">
-        <h3 className='greeting'>{utilService.getGreetings()}</h3>
+        <h3 className="greeting">{utilService.getGreetings()}</h3>
         <HighLightsTable stations={stations} onPlayStation={onPlayStation} />
       </section>
       <section className="station-list-container">
         <span>Rock</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('rock')}
+          stations={renderStationsByTag("rock")}
         />
         <span>Pop</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('pop')}
+          stations={renderStationsByTag("pop")}
         />
         <span>Relaxing</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('relaxing')}
+          stations={renderStationsByTag("relaxing")}
         />
         <span>Hip-Hop</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('Hip-Hop')}
+          stations={renderStationsByTag("Hip-Hop")}
         />
         <span>Country</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('country')}
+          stations={renderStationsByTag("country")}
         />
         <span>Jazz</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('jazz')}
+          stations={renderStationsByTag("jazz")}
         />
         <span>Classical</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('classical')}
+          stations={renderStationsByTag("classical")}
         />
         <span>Electronic</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('electronic')}
+          stations={renderStationsByTag("electronic")}
         />
         <span>R&B</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('R&B')}
+          stations={renderStationsByTag("R&B")}
         />
         <span>Metal</span>
         <StationList
           onPlayStation={onPlayStation}
-          stations={renderStationsByTag('metal')}
+          stations={renderStationsByTag("metal")}
         />
       </section>
     </section>

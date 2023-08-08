@@ -4,20 +4,18 @@
   grid-template-rows: 1fr 72px;
   grid-area: main;
   grid-template-areas:
-    'header main'
-    'player player ';
+    "header main"
+    "player player ";
   font-family: CircularMedium, Rubik-Light;
 
   @media (max-width: $mobile-breakpoint) {
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
+    .layout-conatiner {
+      border-radius: 0;
+    }
   }
-
-  // .app-nav{
-  //   background-color: none;
-  //   flex-direction: none;
-  // }
 }
 
 .layout-conatiner {
@@ -79,7 +77,7 @@
 }
 
 .details-layout::after {
-  content: '';
+  content: "";
   height: 232px;
   z-index: 0;
   grid-area: 2/1/5/-1;
@@ -121,5 +119,3 @@
 .station-list::-webkit-scrollbar-thumb:active {
   background-color: #999999;
 }
-
-

@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
-import { svgService } from '../services/svg.service'
-import React from 'react'
-import { useSelector } from 'react-redux'
+import { Link } from "react-router-dom"
+import { svgService } from "../services/svg.service"
+import React from "react"
+import { useSelector } from "react-redux"
 
 export function StationPreview({ station, onPlayStation }) {
   const isPlaying = useSelector(
@@ -22,7 +22,6 @@ export function StationPreview({ station, onPlayStation }) {
                 <div title={station.songs[0].title}>
                   {station.songs[0].title.slice(0, 20)}
                 </div>
-                {/* <div title={station.songs[1].title}>{station.songs[1].title.slice(0, 20)}...</div> */}
               </>
             ) : (
               <div></div>

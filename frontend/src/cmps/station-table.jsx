@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { svgService } from '../services/svg.service'
-import { bgcService } from '../services/bgc.service'
-
+import React, { useState } from "react"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { svgService } from "../services/svg.service"
+import { bgcService } from "../services/bgc.service"
 
 export function HighLightsTable({ onPlayStation }) {
   const stations = useSelector(
@@ -13,22 +12,20 @@ export function HighLightsTable({ onPlayStation }) {
     (storeState) => storeState.playerModule.isPlaying
   )
   const navigate = useNavigate()
-  const [bgc, setBgc] = useState('rgb(223, 101, 223)')
+  const [bgc, setBgc] = useState("rgb(223, 101, 223)")
 
-  function changePrimaryClr(color = 'gray') {
-    let r = document.querySelector(':root')
-    r.style.setProperty('--primary-color', color)
+  function changePrimaryClr(color = "gray") {
+    let r = document.querySelector(":root")
+    r.style.setProperty("--primary-color", color)
   }
 
   async function getBgc(imgUrl) {
     try {
-      const color = await bgcService.getColorFromUrl(
-        imgUrl
-      )
+      const color = await bgcService.getColorFromUrl(imgUrl)
       changePrimaryClr(color)
       setBgc(color)
     } catch (err) {
-      console.log('Could not load color', err)
+      console.log("Could not load color", err)
     }
   }
 
@@ -36,17 +33,17 @@ export function HighLightsTable({ onPlayStation }) {
     try {
       navigate(`/station/${stationId}`)
     } catch (error) {
-      console.error('Error navigating to station:', error)
+      console.error("Error navigating to station:", error)
     }
   }
-
 
   return (
     <section className="section-highlights">
       {stations.slice(1, 7).map((station) => (
-        <div className="table-data flex" key={station._id}
+        <div
+          className="table-data flex"
+          key={station._id}
           onMouseEnter={() => getBgc(station.createdBy.imgUrl)}
-
         >
           <img src={station.createdBy.imgUrl} alt="" />
           <div
@@ -55,7 +52,10 @@ export function HighLightsTable({ onPlayStation }) {
           >
             <h4>{station.name}</h4>
           </div>
-          <button onClick={() => onPlayStation(station._id)} className='btn-play-playlist'>
+          <button
+            onClick={() => onPlayStation(station._id)}
+            className="btn-play-playlist"
+          >
             {isPlaying
               ? svgService.playerPauseTrackIcon
               : svgService.playerPlayTrackIcon}

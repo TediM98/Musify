@@ -1,7 +1,7 @@
 .genres-page {
-  width: 83vw;
-  height: calc(100vh);
   background-color: $bgclr2;
+  width: 83vw;
+  height: 83vh;
   .browse-all {
     padding-top: rem(30px);
     font-size: 2rem;
@@ -51,4 +51,21 @@
   position: absolute;
   margin-left: 4em;
   margin-top: 1em;
+}
+
+@media (max-width: 460px) {
+  .genres-page,
+  .genre-stations {
+    width: 100vw;
+  }
+  .genres-cards-container {
+    background-color: $bgclr2;
+    place-items: center;
+  }
+
+  .genre-stations-list {
+    gap: 25px;
+    place-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 2fr));
+  }
 }

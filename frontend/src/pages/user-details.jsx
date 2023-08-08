@@ -1,14 +1,14 @@
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 
-import { loadUser } from '../store/user.actions'
-import { store } from '../store/store'
+import { loadUser } from "../store/user.actions"
+import { store } from "../store/store"
 import {
   socketService,
   SOCKET_EVENT_USER_UPDATED,
   SOCKET_EMIT_USER_WATCH,
-} from '../services/socket.service'
+} from "../services/socket.service"
 
 export function UserDetails() {
   const params = useParams()
@@ -29,7 +29,7 @@ export function UserDetails() {
     console.log(
       `This user ${user.fullname} just got updated from socket, new score: ${user.score}`
     )
-    store.dispatch({ type: 'SET_WATCHED_USER', user })
+    store.dispatch({ type: "SET_WATCHED_USER", user })
   }
 
   return (

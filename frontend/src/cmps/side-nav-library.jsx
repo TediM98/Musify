@@ -9,12 +9,14 @@ export function SideNavLibrary({ onAddStation }) {
           {svgService.libraryIcon}
           <span>Your Library</span>
         </Link>
-        <button title="Add station" onClick={onAddStation}
+        <button
+          title="Add station"
+          onClick={onAddStation}
           className="add-station-btn"
         >
           {svgService.addSationBtn}
         </button>
       </li>
-    </section >
+    </section>
   )
 }
