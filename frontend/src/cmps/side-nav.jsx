@@ -104,7 +104,7 @@ export function SideNav() {
           {stations
             .filter(
               (station) =>
-                station.createdBy?.owner === "tedi" &&
+                station.createdBy?.owner === "admin" &&
                 station.name !== "Liked Songs"
             )
             .map((station) => (

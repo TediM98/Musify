@@ -94,7 +94,7 @@ function getEmptyStation() {
         description: '',
         tags: [],
         createdBy: {
-            owner: 'tedi',
+            owner: 'admin',
             imgUrl: emptyStationImg
         },
         likedByUsers: [],

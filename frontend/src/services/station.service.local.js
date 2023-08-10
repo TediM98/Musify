@@ -69,7 +69,7 @@ function getEmptyStation() {
         tags: [],
         createdBy: {
             _id: utilService.makeId(),
-            owner: "tedi",
+            owner: "admin",
             imgUrl: emptyStationImg
         },
         likedByUsers: [],
@@ -85,7 +85,7 @@ const demoStation =
                 "liked",
             ],
             "createdBy": {
-                "owner": "tedi",
+                "owner": "admin",
                 "imgUrl": "https://misc.scdn.co/liked-songs/liked-songs-64.png"
             },
             "likedByUsers": [],
