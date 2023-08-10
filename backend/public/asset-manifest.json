@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.fbc3a183.css",
-    "main.js": "/static/js/main.cd7dfa69.js",
+    "main.css": "/static/css/main.db5d9a12.css",
+    "main.js": "/static/js/main.0d2983ad.js",
+    "static/media/user-image.jpg": "/static/media/user-image.561ddff2bdfb80e5d8bf.jpg",
     "static/media/3.jpeg": "/static/media/3.e891cfd68a52b5065f92.jpeg",
     "static/media/Rubik-SemiBold.ttf": "/static/media/Rubik-SemiBold.ed27f03ae2fc929c3f03.ttf",
     "static/media/Rubik-Regular.ttf": "/static/media/Rubik-Regular.42535d1e2d489e27b525.ttf",
@@ -15,7 +16,6 @@
     "static/media/CircularSpotifyText-Book.otf": "/static/media/CircularSpotifyText-Book.27bc05ead5cc509ef2ba.otf",
     "service-worker.js": "/service-worker.js",
     "static/media/METAL.jpeg": "/static/media/METAL.fd75dcfe9342983df50f.jpeg",
-    "static/media/user-image.jpg": "/static/media/user-image.6bc9f5d79e6e72182223.jpg",
     "static/media/JAZZ.jpg": "/static/media/JAZZ.052cef2348eacf248023.jpg",
     "static/media/17.jpeg": "/static/media/17.fdabe23d9374f26e670d.jpeg",
     "static/media/CLASSIC.jpeg": "/static/media/CLASSIC.e2b1844f24d621858828.jpeg",
@@ -30,11 +30,11 @@
     "static/media/9.jpeg": "/static/media/9.65abd7c875b1d4623aba.jpeg",
     "static/media/play-station.svg": "/static/media/play-station.6d4209c6bd1ba97f3f84a7e22186074b.svg",
     "index.html": "/index.html",
-    "main.fbc3a183.css.map": "/static/css/main.fbc3a183.css.map",
-    "main.cd7dfa69.js.map": "/static/js/main.cd7dfa69.js.map"
+    "main.db5d9a12.css.map": "/static/css/main.db5d9a12.css.map",
+    "main.0d2983ad.js.map": "/static/js/main.0d2983ad.js.map"
   },
   "entrypoints": [
-    "static/css/main.fbc3a183.css",
-    "static/js/main.cd7dfa69.js"
+    "static/css/main.db5d9a12.css",
+    "static/js/main.0d2983ad.js"
   ]
 }

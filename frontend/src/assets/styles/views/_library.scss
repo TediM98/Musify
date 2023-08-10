@@ -1,0 +1,46 @@
+.lib-container {
+  width: 100vw;
+  .app-nav {
+    background-color: transparent;
+    justify-content: space-between;
+    &.library {
+      padding: 15px 20px;
+      margin: 0;
+    }
+    li {
+      width: 100vw;
+      justify-content: space-between;
+    }
+
+    span {
+      font-size: rem(24px);
+      color: $clr1;
+      justify-content: center;
+      align-items: center;
+      font-weight: 900;
+    }
+    a {
+      svg {
+        display: none;
+      }
+    }
+  }
+  .user-station-preview {
+    display: flex;
+    gap: 20px;
+    padding: 15px 20px;
+
+    align-items: center;
+    span {
+      font-size: rem(16px);
+      color: $clr2;
+    }
+    h3 {
+      font-size: rem(18px);
+    }
+    img {
+      width: 70px;
+      height: 70px;
+    }
+  }
+}

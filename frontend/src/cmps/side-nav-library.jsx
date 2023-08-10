@@ -5,7 +5,7 @@ export function SideNavLibrary({ onAddStation }) {
   return (
     <section className="app-nav library">
       <li className="flex library-add-station-btn">
-        <Link to={`/station/library`}>
+        <Link to={`library`}>
           {svgService.libraryIcon}
           <span>Your Library</span>
         </Link>

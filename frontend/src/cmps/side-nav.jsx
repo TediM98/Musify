@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { SideNavLibrary } from "./side-nav-library"
 import { svgService } from "../services/svg.service"
 import { addStation, loadStations } from "../store/station.actions"
@@ -66,7 +66,7 @@ export function SideNav() {
                 ? activePage.icon
                 : svgService.homeIcon}
               <span
-                className={`home ${activePage.page === 'home' ? 'active' : ''}`}
+                className={`home ${activePage.page === "home" ? "active" : ""}`}
               >
                 Home
               </span>
@@ -79,7 +79,7 @@ export function SideNav() {
           >
             <a
               href="/search"
-              className={`router-link ${
+              className={`search ${
                 activePage.page === "search" ? "active" : ""
               }`}
               aria-current="page"
@@ -88,6 +88,17 @@ export function SideNav() {
                 ? activePage.icon
                 : svgService.searchHomePageIcon}
               <span>Search</span>
+            </a>
+          </li>
+          <li onClick={() => setActivePage({ page: "library" })}>
+            <a
+              href="library"
+              className={`library ${
+                activePage.page === "library" ? "active" : ""
+              }`}
+            >
+              {svgService.libraryIcon}
+              <span>Your Library</span>
             </a>
           </li>
         </ul>

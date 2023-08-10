@@ -25,7 +25,6 @@ import {
 import { trackService } from "../services/track.service"
 
 export function StationDetails() {
-  // const [station, setStation] = useState(null)
   const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [bgc, setBgc] = useState("rgb(223, 101, 223)")
   const [isOpen, setIsOpen] = useState(false)
@@ -65,7 +64,6 @@ export function StationDetails() {
       socketService.off(SOCKET_EVENT_UPDATE_STATION, (station) => {
         console.log("station", station)
       })
-      // botTimeoutRef.current && clearTimeout(botTimeoutRef.current)
     }
   }, [])
 
@@ -187,19 +185,6 @@ export function StationDetails() {
     loadStations()
   }
 
-  // function removeFromLikedSongsStation(likedSong, likedSongsStation) {
-  //   const updatedSongs = likedSongsStation.songs.filter(
-  //     (song) => song._id !== likedSong._id
-  //   )
-  //   const updatedStation = { ...likedSongsStation, songs: updatedSongs }
-  //   return updateStation(updatedStation)
-  // }
-
-  // function addToLikedSongsStation(likedSong, likedSongsStation) {
-  //   likedSongsStation.songs.push(likedSong)
-  //   return updateStation(likedSongsStation)
-  // }
-
   if (!currStation) return loaderService.threeDots
   return (
     <section className="details-layout-container">
@@ -268,10 +253,6 @@ export function StationDetails() {
                 </span>
               </button>
             </div>
-
-            <button className="like-station-icon">
-              {svgService.heartIcon}
-            </button>
             <div className="options-container">
               <button
                 onClick={() => toggleModal(stationId)}
