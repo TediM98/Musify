@@ -22,6 +22,7 @@ import {
   SOCKET_EVENT_UPDATE_STATION,
   socketService,
 } from "../services/socket.service"
+import { trackService } from "../services/track.service"
 
 export function StationDetails() {
   // const [station, setStation] = useState(null)
@@ -143,7 +144,7 @@ export function StationDetails() {
     }
   }
 
-  function onChangeSongPlaying(songId = '', songIdx) {
+  function onChangeSongPlaying(songId = "", songIdx) {
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
         player.pauseVideo()
@@ -198,6 +199,7 @@ export function StationDetails() {
   //   likedSongsStation.songs.push(likedSong)
   //   return updateStation(likedSongsStation)
   // }
+
   if (!currStation) return loaderService.threeDots
   return (
     <section className="details-layout-container">
@@ -237,9 +239,9 @@ export function StationDetails() {
               <span>Musify</span>
               <span className="song-detail">
                 {totalLikedSongs === 0
-                  ? '0 likes'
+                  ? "0 likes"
                   : `${totalLikedSongs} ${
-                      totalLikedSongs === 1 ? 'like' : 'likes'
+                      totalLikedSongs === 1 ? "like" : "likes"
                     }`}
               </span>
               <span className="song-detail">
@@ -324,6 +326,7 @@ export function StationDetails() {
                     <div className="artist-details flex">
                       <div className="song-img-container">
                         <img
+                          onClick={() => onChangeSongPlaying(song._id, idx)}
                           src={song.imgUrl}
                           alt="song-img"
                           className="song-img"
@@ -331,13 +334,14 @@ export function StationDetails() {
                       </div>
                       <div className="song-title">
                         <span
+                          onClick={() => onChangeSongPlaying(song._id, idx)}
                           className={`song-name ${
                             songPlaying?.songId === song._id
-                              ? 'active'
-                              : 'inactive'
+                              ? "active"
+                              : "inactive"
                           }`}
                         >
-                          {song.title}
+                          {trackService.getCleanTitle(song.title)}
                         </span>
                       </div>
                     </div>

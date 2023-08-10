@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { trackService } from '../services/track.service'
-import { svgService } from '../services/svg.service'
+import React, { useEffect, useState } from "react"
+import { trackService } from "../services/track.service"
+import { svgService } from "../services/svg.service"
 
-export function AddSong({ station, onAddSong }) {
-  const [searchTerm, setSearchTerm] = useState('')
+export function AddSong({ station, onAddSong, getCleanTitle }) {
+  const [searchTerm, setSearchTerm] = useState("")
   const [tracks, setTracks] = useState([])
 
   useEffect(() => {
@@ -18,11 +18,11 @@ export function AddSong({ station, onAddSong }) {
   async function fetchData() {
     if (!searchTerm) return
     try {
-      console.log('searchTerm', searchTerm)
+      console.log("searchTerm", searchTerm)
       const response = await trackService.getVideos(searchTerm, 10)
       setTracks(response)
     } catch (error) {
-      console.error('Error fetching tracks:', error)
+      console.error("Error fetching tracks:", error)
     }
   }
 
@@ -39,7 +39,7 @@ export function AddSong({ station, onAddSong }) {
     <React.Fragment>
       <section
         className={`station-song-search flex ${
-          station.songs?.length === 0 ? 'no-border' : ''
+          station.songs?.length === 0 ? "no-border" : ""
         }`}
       >
         <div className="search-input">
@@ -55,8 +55,7 @@ export function AddSong({ station, onAddSong }) {
           {svgService.searchHomePageIcon}
         </div>
         <div className="flex align-center">
-          <button className="close-songs-list">
-          </button>
+          <button className="close-songs-list"></button>
         </div>
       </section>
       <div className="station-search-list">
@@ -70,7 +69,7 @@ export function AddSong({ station, onAddSong }) {
                 <div className="btn-play-pause"></div>
               </div>
               <div className="song-title">
-                <span className="artist-name">{track.title}</span>
+                {trackService.getCleanTitle(track.title)}
               </div>
               <button
                 className="btn-add-song"

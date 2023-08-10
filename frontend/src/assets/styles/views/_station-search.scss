@@ -69,7 +69,7 @@
 }
 
 .song-list-header {
-  position: sticky;
+  // position: sticky;
   top: 0;
   display: grid;
   grid-template-columns: 0 40px 40px 2fr 1fr 120px;
@@ -98,11 +98,9 @@
   justify-content: end;
 }
 .song-list-header {
-  position: sticky;
+  // position: sticky;
   top: 0;
   display: grid;
-  // grid-template-columns: 0 40px 40px 2fr 1fr 120px;
-  // grid-template-columns: 16px 0fr 0fr 1.5fr minmax(120px, 1fr);
   border-bottom: 1px solid $clr3-dark;
   border-radius: 0;
   margin-left: 15px;
@@ -139,7 +137,6 @@
 
 .search-result-song {
   display: grid;
-
   grid-template-columns: 16px 17fr 4fr 5fr 3em;
   font-size: 0.875rem;
   height: 56px;
@@ -193,7 +190,7 @@
     }
   }
 }
-@media (max-width:$mobile-breakpoint) {
+@media (max-width: $mobile-breakpoint) {
   .search-result-song {
     grid-template-columns: 16px 17fr 4fr 0fr 0em;
   }

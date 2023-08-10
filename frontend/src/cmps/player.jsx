@@ -24,6 +24,7 @@ export function StationPlayer() {
   const [isProgressBarHovered, setIsProgressBarHovered] = useState(false)
   const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false)
   const [isPlayerReady, setIsPlayerReady] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(true)
 
   const songDuration = useSelector(
     (storeState) => storeState.playerModule.songDuration
@@ -61,13 +62,26 @@ export function StationPlayer() {
     setProgressValue((currentTime / songDuration) * 100)
   }, [currentTime, songDuration])
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768) // You can adjust this threshold
+    }
+
+    handleResize() // Call it initially
+
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
   const handlePlay = () => {
     if (player) {
       !isPlaying ? player.playVideo() : player.pauseVideo()
       setIsPlaying(!isPlaying)
     }
   }
-
   //PLAYER CONTROLS
   const handleForward = () => {
     if (player) {
@@ -231,9 +245,6 @@ export function StationPlayer() {
     setIsShuffle(!isShuffle)
   }
 
-  // function onLikeSong() {
-  //   setIsLiked(!isLiked)
-  // }
   async function onLikeSong(likedSongId) {
     const [likedSong] = currStation.songs.filter(
       (song) => song._id === likedSongId
@@ -259,51 +270,84 @@ export function StationPlayer() {
 
   return (
     <div className="main-player-section full">
-
       {/* LEFT */}
       <div className="left-controls">
-       
-
-          <div className="station-img">
-            <img
-              src={
-                songPlaying
-                  ? currStation?.songs[songPlaying?.songIdx]?.imgUrl
-                  : emptyStation
-              }
-              alt="station-img"
-            />
-
-<div className="player-container">
-          <YouTube
-            videoId={songPlaying?.songId}
-            opts={opts}
-            onReady={handlePlayerReady}
-            onStateChange={onChangePlayerStatus}
+        <div className="station-img">
+          <img
+            src={
+              songPlaying
+                ? currStation?.songs[songPlaying?.songIdx]?.imgUrl
+                : emptyStation
+            }
+            alt="station-img"
           />
-
+          <div className="player-container">
+            <YouTube
+              videoId={songPlaying?.songId}
+              opts={opts}
+              onReady={handlePlayerReady}
+              onStateChange={onChangePlayerStatus}
+            />
           </div>
           <div className="artist-details">
-            <span className="song-name">
-              {currStation?.songs[songPlaying?.songIdx || 0]?.title}
+            <span
+              className="song-name"
+              title={currStation?.songs[songPlaying?.songIdx || 0]?.title}
+            >
+              {isDesktop
+                ? trackService.truncateTitle(
+                    trackService.getCleanTitle(
+                      currStation?.songs[songPlaying?.songIdx || 0]?.title
+                    )
+                  )
+                : trackService.getCleanTitle(
+                    currStation?.songs[songPlaying?.songIdx || 0]?.title
+                  )}
             </span>
           </div>
         </div>
-          {currStation && (
-            <button
-              onClick={() => onLikeSong(songPlaying.songId)}
-              className="btn-like-song"
-            >
-              {currStation.songs[songPlaying?.songIdx]?.isLiked
-                ? svgService.likedSongIcon
-                : svgService.heartIcon}
-            </button>
-          )}
+        {currStation && (
+          <button
+            onClick={() => onLikeSong(songPlaying.songId)}
+            className="btn-like-song"
+          >
+            {currStation.songs[songPlaying?.songIdx]?.isLiked
+              ? svgService.likedSongIcon
+              : svgService.heartIcon}
+          </button>
+        )}
       </div>
-          {/* CENTER */}
-        <div className="center-controls">
-          <div className="top-center-controls">
-            <button onClick={onShuffle} className="shuffle">
+
+      {/* CENTER */}
+      <div className="center-controls">
+        <div className="top-center-controls">
+          <button onClick={onShuffle} className="shuffle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              height="16"
+              width="16"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              className={`shuffle-song ${isShuffle ? "active" : "inactive"}`}
+            >
+              <path d="M13.151.922a.75.75 0 10-1.06 1.06L13.109 3H11.16a3.75 3.75 0 00-2.873 1.34l-6.173 7.356A2.25 2.25 0 01.39 12.5H0V14h.391a3.75 3.75 0 002.873-1.34l6.173-7.356a2.25 2.25 0 011.724-.804h1.947l-1.017 1.018a.75.75 0 001.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 00.39 3.5z" />
+              <path d="M7.5 10.723l.98-1.167.957 1.14a2.25 2.25 0 001.724.804h1.947l-1.017-1.018a.75.75 0 111.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 11-1.06-1.06L13.109 13H11.16a3.75 3.75 0 01-2.873-1.34l-.787-.938z" />
+            </svg>
+          </button>
+          <button className="backBtn" onClick={() => onChangeSong(false)}>
+            {svgService.goBackIcon}
+          </button>
+          <button className="playBtn" onClick={handlePlay}>
+            {isPlaying
+              ? svgService.playerPauseTrackIcon
+              : svgService.playerPlayTrackIcon}
+          </button>
+          <button className="fwdBtn" onClick={() => onChangeSong(true)}>
+            {svgService.playerFwdTrackIcon}
+          </button>
+          <button onClick={onRepeatClick}>
+            {isRepeat ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 role="img"
@@ -311,100 +355,73 @@ export function StationPlayer() {
                 width="16"
                 aria-hidden="true"
                 viewBox="0 0 16 16"
-                className={`shuffle-song ${isShuffle ? "active" : "inactive"}`}
+                className={`repeat-on-icon ${
+                  isRepeat ? "active" : "inatctive"
+                } uPxdw loop-song`}
               >
-                <path d="M13.151.922a.75.75 0 10-1.06 1.06L13.109 3H11.16a3.75 3.75 0 00-2.873 1.34l-6.173 7.356A2.25 2.25 0 01.39 12.5H0V14h.391a3.75 3.75 0 002.873-1.34l6.173-7.356a2.25 2.25 0 011.724-.804h1.947l-1.017 1.018a.75.75 0 001.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 00.39 3.5z" />
-                <path d="M7.5 10.723l.98-1.167.957 1.14a2.25 2.25 0 001.724.804h1.947l-1.017-1.018a.75.75 0 111.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 11-1.06-1.06L13.109 13H11.16a3.75 3.75 0 01-2.873-1.34l-.787-.938z" />
+                <path d="M0 4.75A3.75 3.75 0 013.75 1h.75v1.5h-.75A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5zM12.25 2.5h-.75V1h.75A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25z" />
+                <path d="M9.12 8V1H7.787c-.128.72-.76 1.293-1.787 1.313V3.36h1.57V8h1.55z" />
               </svg>
-            </button>
-            <button className="backBtn" onClick={() => onChangeSong(false)}>
-              {svgService.goBackIcon}
-            </button>
-            <button className="playBtn" onClick={handlePlay}>
-              {isPlaying
-                ? svgService.playerPauseTrackIcon
-                : svgService.playerPlayTrackIcon}
-            </button>
-            <button className="fwdBtn" onClick={() => onChangeSong(true)}>
-              {svgService.playerFwdTrackIcon}
-            </button>
-            <button onClick={onRepeatClick}>
-              {isRepeat ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  height="16"
-                  width="16"
-                  aria-hidden="true"
-                  viewBox="0 0 16 16"
-                  className={`repeat-on-icon ${
-                    isRepeat ? "active" : "inatctive"
-                  } uPxdw loop-song`}
-                >
-                  <path d="M0 4.75A3.75 3.75 0 013.75 1h.75v1.5h-.75A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5zM12.25 2.5h-.75V1h.75A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25z" />
-                  <path d="M9.12 8V1H7.787c-.128.72-.76 1.293-1.787 1.313V3.36h1.57V8h1.55z" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  height="16"
-                  width="16"
-                  aria-hidden="true"
-                  viewBox="0 0 16 16"
-                  className="repeat-off-icon uPxdw loop-song"
-                >
-                  <path d="M0 4.75A3.75 3.75 0 013.75 1h8.5A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25h-8.5A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5z" />
-                </svg>
-              )}
-            </button>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                height="16"
+                width="16"
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                className="repeat-off-icon uPxdw loop-song"
+              >
+                <path d="M0 4.75A3.75 3.75 0 013.75 1h8.5A3.75 3.75 0 0116 4.75v5a3.75 3.75 0 01-3.75 3.75H9.81l1.018 1.018a.75.75 0 11-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 111.06 1.06L9.811 12h2.439a2.25 2.25 0 002.25-2.25v-5a2.25 2.25 0 00-2.25-2.25h-8.5A2.25 2.25 0 001.5 4.75v5A2.25 2.25 0 003.75 12H5v1.5H3.75A3.75 3.75 0 010 9.75v-5z" />
+              </svg>
+            )}
+          </button>
         </div>
+        <div className="bottom-center-controls">
+          <div className="progress-bar flex">
+            <div className="time-stamp start">
+              {utilService.convertTime(currentTime) || "-:--"}
+            </div>
+            <input
+              className="progress-bar-element"
+              name="progressControl"
+              type="range"
+              min="0"
+              max="100"
+              value={progressValue || 0}
+              onMouseEnter={handleProgressBarMouseEnter}
+              onMouseLeave={handleProgressBarMouseLeave}
+              onChange={handleProgressChange}
+              style={progressBarStyle}
+            />
 
-          <div className="bottom-center-controls">
-            <div className="progress-bar flex">
-              <div className="time-stamp start">
-                {utilService.convertTime(currentTime) || "-:--"}
-              </div>
-              <input
-                className="progress-bar-element"
-                name="progressControl"
-                type="range"
-                min="0"
-                max="100"
-                value={progressValue || 0}
-                onMouseEnter={handleProgressBarMouseEnter}
-                onMouseLeave={handleProgressBarMouseLeave}
-                onChange={handleProgressChange}
-                style={progressBarStyle}
-              />
-
-              <div className="time-stamp end">
-                {utilService.convertTime(songDuration) || "--:--"}
-              </div>
+            <div className="time-stamp end">
+              {utilService.convertTime(songDuration) || "--:--"}
             </div>
           </div>
         </div>
+      </div>
 
-        {/* RIGHT */}
-        <div className="right-controls ">
-          <div className="volume-container">
-            <button className="btn-mute" onClick={handleMute}>
-              {!isMuted ? getVolumeIcon() : svgService.mutedIcon}
-            </button>
-            <input
-              className="volume-bar-element"
-              type="range"
-              name="volumeControl"
-              min="0"
-              max="100"
-              value={volumeValue}
-              onMouseEnter={handleVolumeBarMouseEnter}
-              onMouseLeave={handleVolumeBarMouseLeave}
-              onChange={handleVolumeChange}
-              style={volumeBarStyle}
-            />
-          </div>
+      {/* RIGHT */}
+      <div className="right-controls ">
+        <div className="volume-container">
+          <button className="btn-mute" onClick={handleMute}>
+            {!isMuted ? getVolumeIcon() : svgService.mutedIcon}
+          </button>
+          <input
+            className="volume-bar-element"
+            type="range"
+            name="volumeControl"
+            min="0"
+            max="100"
+            value={volumeValue}
+            onMouseEnter={handleVolumeBarMouseEnter}
+            onMouseLeave={handleVolumeBarMouseLeave}
+            onChange={handleVolumeChange}
+            style={volumeBarStyle}
+          />
         </div>
       </div>
+    </div>
   )
 }

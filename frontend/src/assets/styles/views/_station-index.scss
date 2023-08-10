@@ -16,7 +16,7 @@
 
 .greeting {
   @media (max-width: $mobile-breakpoint) {
-    display: none;
+    // display: none;
   }
 }
 .circle-animation {

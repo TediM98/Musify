@@ -12,7 +12,7 @@
     z-index: 1;
     position: absolute;
     background-color: $bgclr-mobile-player;
-    bottom: 12%;
+    bottom: 101px;
     left: 50%;
     transform: translate(-50%, 50%);
     border-radius: 6px;
@@ -100,13 +100,6 @@
       }
     }
 
-    // .repeat-on-icon:hover,
-    // .repeat-off-icon:hover,
-    // .go-fwd-icon:hover,
-    // .go-back-icon:hover,
-    // .repeat-off-icon:hover,
-    // .shuffle-song:hover {
-
     .repeat-on-icon.active,
     .shuffle-song.active,
     .repeat-off-icon.active {
@@ -147,9 +140,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 0.5em;
   margin: auto 1em;
-
+  width: 18em;
+  @media (max-width: $mobile-breakpoint) {
+    width: auto;
+  }
   .station-img {
     height: 56px;
     width: 56px;
@@ -193,13 +188,16 @@
     max-height: 68px;
     line-height: 22.5px;
     margin-inline-end: 10px;
+    position: absolute;
+    top: 18px;
+    left: 57px;
 
     .song-name {
-      width: 10em;
+      width: max-content;
       color: $clr1;
       font-size: 14px;
       font-family: CircularBook, Rubik-Light;
-      margin-inline-start: 16px;
+      margin-inline-start: 6px;
       font-weight: 400;
 
       &:hover {
@@ -287,6 +285,7 @@
   .time-stamp {
     display: none;
   }
+
   .left-controls .artist-details {
     display: flex;
     position: absolute;
@@ -304,11 +303,11 @@
         transform: translateX(100%);
       }
     }
-    
+
     width: 13em;
     overflow: hidden;
     .song-name {
-      font-size: 12px;
+      font-size: 0.8125rem;
       animation: scrollText 13s linear infinite;
     }
   }
@@ -320,7 +319,7 @@
     margin-left: 1em;
   }
   .station-song-search input {
-    width: 105%;
+    width: 100%;
   }
   .left-controls .artist-details .song-name {
     width: max-content;

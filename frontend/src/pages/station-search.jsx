@@ -3,6 +3,7 @@ import { svgService } from "../services/svg.service"
 import { setIsPlaying, setSongPlaying } from "../store/player.actions"
 import { useSelector } from "react-redux"
 import { GenreList } from "../cmps/genre-list"
+import { trackService } from "../services/track.service"
 
 export function StationSearch() {
   const [isOpen, setIsOpen] = useState(null)
@@ -46,12 +47,19 @@ export function StationSearch() {
     }
   }
 
+  // function getCleanTitle(title) {
+  //   if (typeof title !== "string") return ""
+  //   const regex = /^[a-zA-Z0-9\s'"-]+/
+  //   const match = title.match(regex)
+  //   return match?.[0] ?? ""
+  // }
+
   return (
     <section>
       <div
         onClick={() => handleToggleOptions()}
         className={`options-close-search ${isOpen ? "active" : "inactive"}`}
-        ></div>
+      ></div>
       <div>
         {searchRes ? (
           <>
@@ -92,7 +100,9 @@ export function StationSearch() {
                     >
                       <img src={song.imgUrl} alt="" />
                     </div>
-                    <div className="song-title ">{song.title}</div>
+                    <div className="song-title ">
+                      <span>{trackService.getCleanTitle(song.title)}</span>
+                    </div>
                   </div>
                   <div className="song-duration flex">{song.duration}</div>
                   <div className="options-container">
