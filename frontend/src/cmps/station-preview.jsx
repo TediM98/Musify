@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { svgService } from "../services/svg.service"
 import React from "react"
 import { useSelector } from "react-redux"
+import { trackService } from "../services/track.service"
 
 export function StationPreview({ station, onPlayStation }) {
   const isPlaying = useSelector(
@@ -20,7 +21,7 @@ export function StationPreview({ station, onPlayStation }) {
             {station.songs.length > 0 ? (
               <>
                 <div title={station.songs[0].title}>
-                  {station.songs[0].title.slice(0, 20)}
+                  {trackService.getCleanTitle(station.songs[0].title)}
                 </div>
               </>
             ) : (
