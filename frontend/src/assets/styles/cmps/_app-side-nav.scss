@@ -83,14 +83,13 @@
 
   @media (max-width: $mobile-breakpoint) {
     flex-direction: row;
-    position: sticky;
     padding: 0;
   }
 }
 
 .parmanent-nav {
-  position: sticky;
-  top: 8px;
+  // position: sticky;
+  // top: 8px;
   li:hover {
     svg,
     span {
@@ -108,13 +107,11 @@
   grid-area: header;
 
   @media (max-width: $mobile-breakpoint) {
-    // position: fixed;
     position: absolute;
-    width: 100vw;
     display: flex;
+    width: 100%;
     bottom: 0;
     left: 0;
-    width: 100%;
     height: rem(70px);
     padding: 0;
   }
