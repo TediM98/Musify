@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.26b549dd.css",
-    "main.js": "/static/js/main.b1d0493a.js",
+    "main.css": "/static/css/main.fbc3a183.css",
+    "main.js": "/static/js/main.cd7dfa69.js",
     "static/media/3.jpeg": "/static/media/3.e891cfd68a52b5065f92.jpeg",
     "static/media/Rubik-SemiBold.ttf": "/static/media/Rubik-SemiBold.ed27f03ae2fc929c3f03.ttf",
     "static/media/Rubik-Regular.ttf": "/static/media/Rubik-Regular.42535d1e2d489e27b525.ttf",
@@ -14,29 +14,27 @@
     "static/media/CircularSpotifyText-Light.otf": "/static/media/CircularSpotifyText-Light.5e12df08ca91cc19e9e7.otf",
     "static/media/CircularSpotifyText-Book.otf": "/static/media/CircularSpotifyText-Book.27bc05ead5cc509ef2ba.otf",
     "service-worker.js": "/service-worker.js",
+    "static/media/METAL.jpeg": "/static/media/METAL.fd75dcfe9342983df50f.jpeg",
     "static/media/user-image.jpg": "/static/media/user-image.6bc9f5d79e6e72182223.jpg",
-    "static/media/18.jpeg": "/static/media/18.70165b0de804c6dd4b74.jpeg",
+    "static/media/JAZZ.jpg": "/static/media/JAZZ.052cef2348eacf248023.jpg",
     "static/media/17.jpeg": "/static/media/17.fdabe23d9374f26e670d.jpeg",
-    "static/media/11.jpeg": "/static/media/11.9151954358e6df9861be.jpeg",
-    "static/media/5.jpeg": "/static/media/5.4be3b3b5b0839aefba87.jpeg",
-    "static/media/8.jpeg": "/static/media/8.650adcda50a08218c9f8.jpeg",
-    "static/media/4.jpeg": "/static/media/4.f3c6485012b8e73faadb.jpeg",
+    "static/media/CLASSIC.jpeg": "/static/media/CLASSIC.e2b1844f24d621858828.jpeg",
+    "static/media/SLEEP.jpeg": "/static/media/SLEEP.44c526f78ed232cbbe67.jpeg",
     "static/media/6.jpeg": "/static/media/6.fd72616690fa3825b9bc.jpeg",
-    "static/media/13.jpeg": "/static/media/13.354899d76439d28d38d4.jpeg",
+    "static/media/ALT.jpeg": "/static/media/ALT.03455d24cd7891d8afb1.jpeg",
     "static/media/16.jpeg": "/static/media/16.7a4298361a09871c10eb.jpeg",
     "static/media/7.jpeg": "/static/media/7.7140637daf126159ddb4.jpeg",
-    "static/media/2.jpeg": "/static/media/2.b2816df799b159b22b24.jpeg",
     "static/media/14.jpeg": "/static/media/14.ec4a1ee590b5b4d2c077.jpeg",
     "static/media/12.jpeg": "/static/media/12.c4382d49e3578e3cd55d.jpeg",
-    "static/media/1.jpeg": "/static/media/1.68cf530b319066b43031.jpeg",
+    "static/media/chill.jpeg": "/static/media/chill.218566ff78d0ae5598e4.jpeg",
     "static/media/9.jpeg": "/static/media/9.65abd7c875b1d4623aba.jpeg",
     "static/media/play-station.svg": "/static/media/play-station.6d4209c6bd1ba97f3f84a7e22186074b.svg",
     "index.html": "/index.html",
-    "main.26b549dd.css.map": "/static/css/main.26b549dd.css.map",
-    "main.b1d0493a.js.map": "/static/js/main.b1d0493a.js.map"
+    "main.fbc3a183.css.map": "/static/css/main.fbc3a183.css.map",
+    "main.cd7dfa69.js.map": "/static/js/main.cd7dfa69.js.map"
   },
   "entrypoints": [
-    "static/css/main.26b549dd.css",
-    "static/js/main.b1d0493a.js"
+    "static/css/main.fbc3a183.css",
+    "static/js/main.cd7dfa69.js"
   ]
 }
