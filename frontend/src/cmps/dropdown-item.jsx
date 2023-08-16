@@ -17,9 +17,11 @@ export function DropDownItem({
           <article onClick={() => onRemoveSong(songId)}>Delete song</article>
         )}
       </li>
-      <li className="dropdown-item clean-list">
-        <article>Add to playlist</article>
-      </li>
+      {!stationId && (
+        <li className="dropdown-item clean-list">
+          <article>Add to playlist</article>
+        </li>
+      )}
     </React.Fragment>
   )
 }
