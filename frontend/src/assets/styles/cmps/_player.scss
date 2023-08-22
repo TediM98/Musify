@@ -315,12 +315,16 @@
   .song-list .song-list-header {
     position: unset;
   }
+
   .station-song-search {
     margin-left: 1em;
+    height: 230px;
   }
+
   .station-song-search input {
     width: 100%;
   }
+
   .left-controls .artist-details .song-name {
     width: max-content;
     margin-inline-start: 0;
@@ -328,6 +332,7 @@
     align-items: center;
     justify-self: center;
   }
+
   .progress-bar {
     position: relative;
     top: 18px;
