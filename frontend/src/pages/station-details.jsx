@@ -57,7 +57,6 @@ export function StationDetails() {
 
   useEffect(() => {
     socketService.on(SOCKET_EVENT_UPDATE_STATION, (station) => {
-      console.log("station", station)
       setCurrStation(station)
     })
     return () => {
@@ -94,7 +93,6 @@ export function StationDetails() {
 
   function toggleModal(buttonName) {
     setIsOpen(buttonName === isOpen ? null : buttonName)
-    console.log("modal check", buttonName)
   }
 
   function changePrimaryClr(color = "gray") {

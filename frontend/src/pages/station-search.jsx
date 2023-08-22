@@ -47,13 +47,6 @@ export function StationSearch() {
     }
   }
 
-  // function getCleanTitle(title) {
-  //   if (typeof title !== "string") return ""
-  //   const regex = /^[a-zA-Z0-9\s'"-]+/
-  //   const match = title.match(regex)
-  //   return match?.[0] ?? ""
-  // }
-
   return (
     <section>
       <div
