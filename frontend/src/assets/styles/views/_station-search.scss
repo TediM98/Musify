@@ -96,6 +96,15 @@
 .options-container {
   display: flex;
   justify-content: end;
+
+  .dropdown-container {
+    position: relative;
+  }
+
+  .dropdown-menu.active {
+    top: 30px;
+    left: -250px;
+  }
 }
 .song-list-header {
   // position: sticky;
