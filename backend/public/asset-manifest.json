@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a5c87e4f.css",
-    "main.js": "/static/js/main.7eb37cec.js",
+    "main.css": "/static/css/main.5c33dc61.css",
+    "main.js": "/static/js/main.a4be7b89.js",
     "static/media/user-image.jpg": "/static/media/user-image.561ddff2bdfb80e5d8bf.jpg",
     "static/media/3.jpeg": "/static/media/3.e891cfd68a52b5065f92.jpeg",
     "static/media/Rubik-SemiBold.ttf": "/static/media/Rubik-SemiBold.ed27f03ae2fc929c3f03.ttf",
@@ -30,11 +30,11 @@
     "static/media/9.jpeg": "/static/media/9.65abd7c875b1d4623aba.jpeg",
     "static/media/play-station.svg": "/static/media/play-station.30d2088c7ebfaffeed263151ab9d9cee.svg",
     "index.html": "/index.html",
-    "main.a5c87e4f.css.map": "/static/css/main.a5c87e4f.css.map",
-    "main.7eb37cec.js.map": "/static/js/main.7eb37cec.js.map"
+    "main.5c33dc61.css.map": "/static/css/main.5c33dc61.css.map",
+    "main.a4be7b89.js.map": "/static/js/main.a4be7b89.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5c87e4f.css",
-    "static/js/main.7eb37cec.js"
+    "static/css/main.5c33dc61.css",
+    "static/js/main.a4be7b89.js"
   ]
 }

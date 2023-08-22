@@ -700,6 +700,7 @@
   .song-list {
     grid-area: 4/1/5/3;
     font-size: 10px;
+    margin-bottom: 10em;
   }
   .song-list .song-wrapper {
     grid-template-columns: 0.1fr 0.66fr;
