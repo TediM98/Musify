@@ -116,9 +116,10 @@
 }
 
 @media (max-width:$mobile-breakpoint) {
-  .station-song-search {
-    svg {
-      top: 13.3em;
-    }
+  .search-container{
+    position: relative;
   }
+  .station-song-search svg {
+    top: 13px;
+}
 }

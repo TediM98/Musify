@@ -15,7 +15,6 @@ export const stationService = {
     remove,
     getEmptyStation,
     removeSong,
-    // addStationMsg
 }
 window.cs = stationService
 
@@ -33,7 +32,6 @@ function getById(stationId) {
 }
 
 async function remove(stationId) {
-    // throw new Error('Nope')
     await storageService.remove(STORAGE_KEY, stationId)
 }
 

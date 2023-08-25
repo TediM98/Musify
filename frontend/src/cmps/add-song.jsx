@@ -44,6 +44,7 @@ export function AddSong({ station, onAddSong, getCleanTitle }) {
       >
         <div className="search-input">
           <h1>Let's find something for your playlist</h1>
+          <div className="search-container">
           <input
             className="add-song-input"
             type="search"
@@ -53,6 +54,7 @@ export function AddSong({ station, onAddSong, getCleanTitle }) {
             value={searchTerm}
           />
           {svgService.searchHomePageIcon}
+          </div>
         </div>
         <div className="flex align-center">
           <button className="close-songs-list"></button>

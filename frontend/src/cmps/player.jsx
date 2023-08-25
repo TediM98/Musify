@@ -64,10 +64,10 @@ export function StationPlayer() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768) // You can adjust this threshold
+      setIsDesktop(window.innerWidth >= 768)
     }
 
-    handleResize() // Call it initially
+    handleResize()
 
     window.addEventListener("resize", handleResize)
 
@@ -82,6 +82,7 @@ export function StationPlayer() {
       setIsPlaying(!isPlaying)
     }
   }
+
   //PLAYER CONTROLS
   const handleForward = () => {
     if (player) {
@@ -267,7 +268,6 @@ export function StationPlayer() {
     }
     loadStations()
   }
-
   return (
     <div className="main-player-section full">
       {/* LEFT */}

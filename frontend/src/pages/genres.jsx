@@ -29,18 +29,23 @@ export function Genres() {
       console.log("Could not load Genres", err)
     }
   }
-
+  
   const capitalizedGenre =
     stationGenre.charAt(0).toUpperCase() + stationGenre.slice(1)
 
   return (
     <section className="genre-stations">
       <h1>{capitalizedGenre}</h1>
+
       <div className="genre-stations-list">
-        {currGenreStations &&
+        {currGenreStations && currGenreStations.length === 0 ? (
+          <h2 className="no-playlist">No playlist available right now</h2>
+        ) : (
+          currGenreStations &&
           currGenreStations.map((station) => (
-            <StationPreview station={station} />
-          ))}
+            <StationPreview key={station.id} station={station} />
+          ))
+        )}
       </div>
     </section>
   )

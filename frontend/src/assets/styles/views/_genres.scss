@@ -16,6 +16,17 @@
   }
 }
 
+.no-playlist {
+  padding-top: rem(30px);
+  font-size: 2rem;
+  text-align: center;
+  padding-left: rem(23px);
+  transition: background-color 0s ease;
+  grid-column: 1/-1;
+  padding: 1em 1em 2em 0.5em;
+  height: 7vh;
+}
+
 .genre-stations-list {
   display: grid;
   gap: 46px;
