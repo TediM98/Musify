@@ -1,12 +1,22 @@
-import React, { useState } from "react"
-import { svgService } from "../services/svg.service"
-import { setIsPlaying, setSongPlaying } from "../store/player.actions"
-import { useSelector } from "react-redux"
-import { GenreList } from "../cmps/genre-list"
-import { trackService } from "../services/track.service"
+import React, { useState } from 'react'
+import { svgService } from '../services/svg.service'
+import { setIsPlaying, setSongPlaying } from '../store/player.actions'
+import { useSelector } from 'react-redux'
+import { GenreList } from '../cmps/genre-list'
+import { trackService } from '../services/track.service'
+import { stationService } from '../services/station.service'
+import { updateStation } from '../store/station.actions'
+import { useNavigate } from 'react-router-dom'
 
 export function StationSearch() {
+  const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(null)
+  const stations = useSelector(
+    (storeState) => storeState.stationModule.stations
+  )
+  const currStation = useSelector(
+    (storeState) => storeState.stationModule.currStation
+  )
   const [songPlayingOnList, setSongPlayingOnList] = useState(null)
   const isPlaying = useSelector(
     (storeState) => storeState.playerModule.isPlaying
@@ -18,8 +28,30 @@ export function StationSearch() {
   const searchRes = useSelector(
     (storeState) => storeState.stationModule.searchRes
   )
+  const [showPlaylistModal, setShowPlaylistModal] = useState(false)
 
-  function onPlaySong(songId = "", songIdx) {
+  function handleAddToPlaylistClick() {
+    setShowPlaylistModal(true)
+  }
+
+  async function handlePlaylistSelect(reqId, song) {
+    try {
+      const stationToUpdate = await stationService.getById(reqId)
+      addToStation(song, stationToUpdate)
+    } catch (err) {
+      console.error(err)
+    }
+    setShowPlaylistModal(false)
+    navigate(`/station/${reqId}`)
+  }
+
+  function addToStation(track, stationToUpdate = currStation) {
+    const updatedStation = { ...stationToUpdate }
+    updatedStation.songs.push(track)
+    updateStation(updatedStation)
+  }
+
+  function onPlaySong(songId = '', songIdx) {
     setSongPlayingOnList(songId)
     if (songPlaying && songId === songPlaying.songId) {
       if (isPlaying) {
@@ -58,7 +90,7 @@ export function StationSearch() {
     <section>
       <div
         onClick={() => handleToggleOptions()}
-        className={`options-close-search ${isOpen ? "active" : "inactive"}`}
+        className={`options-close-search ${isOpen ? 'active' : 'inactive'}`}
       ></div>
       <div>
         {searchRes ? (
@@ -117,7 +149,7 @@ export function StationSearch() {
                         <div className="dropdown-container">
                           <div
                             className={`dropdown-menu ${
-                              isOpen ? "active" : "inactive"
+                              isOpen ? 'active' : 'inactive'
                             }`}
                           >
                             <ul className="clean-list">
@@ -128,8 +160,38 @@ export function StationSearch() {
                                   <article>Delete song</article>
                                 )}
                               </li>
-                              <li className="dropdown-item">
+                              <li
+                                className="dropdown-item clean-list"
+                                onMouseEnter={handleAddToPlaylistClick}
+                                onMouseLeave={() => setShowPlaylistModal(false)}
+                              >
                                 <article>Add to playlist</article>
+                                {showPlaylistModal && (
+                                  <div className="playlist-modal">
+                                    <ul className="clean-list">
+                                      {stations
+                                        .filter(
+                                          (station) =>
+                                            station.createdBy?.owner ===
+                                              'admin' &&
+                                            station.name !== 'Liked Songs'
+                                        )
+                                        .map((station) => (
+                                          <li
+                                            key={station._id}
+                                            onClick={() =>
+                                              handlePlaylistSelect(
+                                                station._id,
+                                                song
+                                              )
+                                            }
+                                          >
+                                            {station.name}
+                                          </li>
+                                        ))}
+                                    </ul>
+                                  </div>
+                                )}
                               </li>
                             </ul>
                           </div>

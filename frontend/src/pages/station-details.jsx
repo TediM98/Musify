@@ -124,8 +124,8 @@ export function StationDetails() {
     }
   }
 
-  function addToStation(track) {
-    const updatedStation = { ...currStation }
+  function addToStation(track, stationToUpdate = currStation) {
+    const updatedStation = { ...stationToUpdate }
     updatedStation.songs.push(track)
     updateStation(updatedStation)
   }
@@ -270,6 +270,7 @@ export function StationDetails() {
                     <DropDownItem
                       onRemoveStation={onRemoveStation}
                       stationId={stationId}
+                      stations={stations}
                     />
                   </ul>
                 </div>
@@ -363,6 +364,9 @@ export function StationDetails() {
                               <DropDownItem
                                 onRemoveSong={onRemoveSong}
                                 songId={song._id}
+                                stations={stations}
+                                currStation={currStation}
+                                addToStation={addToStation}
                               />
                             </ul>
                           </div>
