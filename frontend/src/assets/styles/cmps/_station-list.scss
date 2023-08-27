@@ -7,12 +7,12 @@
   margin-bottom: 1.5em;
   .station-card {
     flex: 0 0 auto;
-
     @media (max-width: $mobile-breakpoint) {
       height: 14.8rem;
     }
   }
 }
+
 @media (max-width: 768px) {
   .station-list {
     flex: 0 0 calc(33.33% - 24px);

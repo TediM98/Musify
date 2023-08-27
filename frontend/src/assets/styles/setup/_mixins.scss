@@ -1,33 +1,9 @@
-/* Breakpoint mixins */
-
 @mixin for-mobile-layout {
   @media (max-width: calc($mobile-breakpoint + 40px)) {
     @content;
-
     .left-controls {
       display: none;
     }
-    // .layout-conatiner::-webkit-scrollbar,
-    // .user-station::-webkit-scrollbar {
-    //   display: none;
-    // }
-
-    // .station-list::-webkit-scrollbar {
-    //   display: none;
-    // }
-
-    // .main-layout {
-    //   width: 100%;
-    //   max-width: 100%;
-    // }
-
-    // .section-highlights {
-    //   // display: none
-    //   display: flex;
-    //   padding-top: 50px;
-    //   flex-wrap: wrap;
-    //   justify-content: center;
-    // }
   }
 }
 
@@ -56,11 +32,10 @@
 
   &::before {
     display: block;
-    content: '';
+    content: "";
     width: 100%;
     padding-top: calc(($height / $width) * 100%);
   }
-
   > * {
     position: absolute;
     top: 0;
@@ -68,7 +43,6 @@
     right: 0;
     bottom: 0;
   }
-
   > img {
     height: 100%;
     object-fit: cover;

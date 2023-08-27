@@ -17,7 +17,7 @@ import {
   loadStations,
 } from '../store/station.actions'
 import { AddSong } from '../cmps/add-song'
-import { Modal } from '../cmps/edit-modal' //////////////////////////////modal
+import { Modal } from '../cmps/edit-modal' 
 import {
   SOCKET_EVENT_UPDATE_STATION,
   socketService,
@@ -57,12 +57,10 @@ export function StationDetails() {
 
   useEffect(() => {
     socketService.on(SOCKET_EVENT_UPDATE_STATION, (station) => {
-      console.log('station', station)
       setCurrStation(station)
     })
     return () => {
       socketService.off(SOCKET_EVENT_UPDATE_STATION, (station) => {
-        console.log('station', station)
       })
     }
   }, [])
@@ -70,7 +68,6 @@ export function StationDetails() {
   async function saveModalData(inputValue, descValue) {
     toggleEditModal()
     try {
-      console.log(currStation, ' from details check')
       const updatedStation = {
         ...currStation,
         name: inputValue,
@@ -79,7 +76,7 @@ export function StationDetails() {
 
       dispatch(updateStation(updatedStation))
     } catch (err) {
-      console.log('Error could not edit playlist name')
+      console.error('Error could not edit playlist name')
     }
   }
 
@@ -109,7 +106,7 @@ export function StationDetails() {
       changePrimaryClr(color)
       setBgc(color)
     } catch (err) {
-      console.log('Could not load color', err)
+      console.error('Could not load color', err)
     }
   }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, cloneElement } from "react"
+import React, { useState, useEffect } from "react"
 import YouTube from "react-youtube"
 import { utilService } from "../services/util.service"
 import { trackService } from "../services/track.service"
@@ -23,7 +23,6 @@ export function StationPlayer() {
   const [isShuffle, setIsShuffle] = useState(false)
   const [isProgressBarHovered, setIsProgressBarHovered] = useState(false)
   const [isVolumeBarHovered, setIsVolumeBarHovered] = useState(false)
-  const [isPlayerReady, setIsPlayerReady] = useState(false)
   const [isDesktop, setIsDesktop] = useState(true)
 
   const songDuration = useSelector(
@@ -66,11 +65,8 @@ export function StationPlayer() {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 768)
     }
-
     handleResize()
-
     window.addEventListener("resize", handleResize)
-
     return () => {
       window.removeEventListener("resize", handleResize)
     }
@@ -83,22 +79,6 @@ export function StationPlayer() {
     }
   }
 
-  //PLAYER CONTROLS
-  const handleForward = () => {
-    if (player) {
-      const newTime = currentTime + 15
-      player.seekTo(newTime, true)
-      setCurrentTime(newTime)
-    }
-  }
-
-  const handleBackward = () => {
-    if (player) {
-      const newTime = currentTime - 15
-      player.seekTo(newTime, true)
-      setCurrentTime(newTime)
-    }
-  }
   const handleMute = () => {
     if (player.isMuted()) {
       player.unMute()
@@ -121,7 +101,6 @@ export function StationPlayer() {
     },
   }
 
-  //VOLUME BAR
   const handleVolumeChange = (event) => {
     player.setVolume(event.target.value)
     setVolumeValue(event.target.value)
@@ -153,7 +132,6 @@ export function StationPlayer() {
       : `linear-gradient(to right, #fff 0%, #fff ${volumeValue}%, hsla(0,0%,100%,.3) ${volumeValue}%, hsla(0,0%,100%,.3) 100%)`,
   }
 
-  //PROGRESS BAR
   async function handleProgressChange(event) {
     try {
       const targetTime = (event.target.value / 100) * songDuration
@@ -161,7 +139,7 @@ export function StationPlayer() {
       setCurrentTime(targetTime)
       setProgressValue(event.target.value)
     } catch (err) {
-      console.log("Could not load progress", err)
+      console.error("Could not load progress", err)
     }
   }
 
@@ -236,7 +214,6 @@ export function StationPlayer() {
         songIdx: songPlaying.songIdx - 1,
       }
       setSongPlaying(prevSong)
-      console.log("songPlaying from else", songPlaying)
       player.playVideo()
     }
   }

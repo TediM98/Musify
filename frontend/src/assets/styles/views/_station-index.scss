@@ -14,11 +14,6 @@
   }
 }
 
-.greeting {
-  @media (max-width: $mobile-breakpoint) {
-    // display: none;
-  }
-}
 .circle-animation {
   animation: rotate 1s linear infinite;
 }

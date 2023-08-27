@@ -11,13 +11,13 @@
   font-family: CircularBlack, Rubik-Light;
   transition: opacity 0.5s;
   position: relative;
+
   .btn-play-playlist {
     height: 48px;
     width: 48px;
     background-color: $clr4;
     padding: 10px;
     border-radius: 50%;
-
     border: none;
     position: absolute;
     top: 41%;
@@ -29,13 +29,16 @@
     justify-content: center;
     align-items: center;
   }
+
   .img-conatiner {
     text-align: center;
   }
+
   h3 {
     margin-top: 1em;
     font-size: 16px;
   }
+
   img {
     cursor: pointer;
     height: 155px;
@@ -43,6 +46,7 @@
     border-radius: 5px;
     object-fit: cover;
   }
+
   & .content {
     color: $clr2;
     font-size: 0.8em;
@@ -50,9 +54,9 @@
     line-height: 1.5em;
     margin-top: 1em;
   }
+
   &:hover {
     background-color: #282828;
-
     & .btn-play-playlist {
       border: none;
       background-color: #1ed760;
@@ -68,16 +72,16 @@
   }
 }
 
-
 @media (max-width: $mobile-breakpoint) {
-  .station-card{
+  .station-card {
     width: 11em;
     height: 15em;
-    img{
+
+    img {
       height: 152px;
       width: 152px;
     }
-    .content{
+    .content {
       line-height: 0.5;
       margin-top: 0;
     }

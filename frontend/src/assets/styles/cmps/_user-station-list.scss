@@ -5,12 +5,9 @@
   overflow: auto;
   margin-top: 10px;
   border-radius: 10px;
-
-  
-    @media (max-width:$mobile-breakpoint) {
-      display: none;
-     
-    }
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
+  }
 
   .user-station-preview {
     display: flex;
@@ -36,7 +33,6 @@
 
   .user-station-preview .station-info {
     flex-grow: 1;
-    // margin-top: 5px;
     align-self: center;
     font-style: circularBlack;
   }
@@ -50,9 +46,5 @@
   .user-station-preview .station-info span {
     font-size: 12px;
     color: #a7a7a7;
-  }
-
-  .user-station-preview .playlist-actions {
-    /* Add styles for playlist actions here */
   }
 }

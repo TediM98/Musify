@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { stationService } from '../services/station.service'
-import { setCurrStation } from '../store/station.actions'
+import React, { useState } from "react"
+import { stationService } from "../services/station.service"
 
 export function DropDownItem({
   onRemoveStation,
@@ -54,8 +53,8 @@ export function DropDownItem({
                 {stations
                   .filter(
                     (station) =>
-                      station.createdBy?.owner === 'admin' &&
-                      station.name !== 'Liked Songs'
+                      station.createdBy?.owner === "admin" &&
+                      station.name !== "Liked Songs"
                   )
                   .map((station) => (
                     <li

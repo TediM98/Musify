@@ -1,6 +1,4 @@
-import { stationService } from "./station.service.local"
 import { utilService } from "./util.service.js"
-import { httpService } from "./http.service.js"
 import axios from "axios"
 
 export const trackService = {
@@ -14,8 +12,6 @@ const apiKey = "AIzaSyBRKY6ERVlaMGjytOb4wV1GWgyjr8d0tL0"
 function getVideos(term, amount = 5) {
   const termVideosMap = utilService.loadFromStorage(KEY) || {}
   if (termVideosMap[term]) return Promise.resolve(termVideosMap[term])
-
-  console.log("Getting from Network")
   return axios
     .get(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${amount}&q=${term}&key=${apiKey}`
@@ -92,6 +88,5 @@ function truncateTitle(title, maxLength = 20) {
     return title
   }
   const truncatedTitle = title.slice(0, maxLength) + "..."
-  console.log(truncatedTitle)
   return truncatedTitle
 }

@@ -43,7 +43,7 @@ export async function removeSong(songId, currStation) {
     stationService.removeSong(songId, currStation)
     await store.dispatch({ type: REMOVE_SONG, currStation })
   } catch (err) {
-    console.log("Could not remove song")
+    console.error("Could not remove song", err)
   }
 }
 
@@ -55,7 +55,7 @@ export async function loadStations() {
       stations,
     })
   } catch (err) {
-    console.log("Cannot load stations", err)
+    console.error("Cannot load stations", err)
     throw err
   }
 }
@@ -65,7 +65,7 @@ export async function removeStation(stationId) {
     await stationService.remove(stationId)
     store.dispatch(getActionRemoveStation(stationId))
   } catch (err) {
-    console.log("Cannot remove station", err)
+    console.error("Cannot remove station", err)
     throw err
   }
 }
@@ -76,7 +76,7 @@ export async function addStation(station) {
     setCurrStation(savedStation)
     return savedStation
   } catch (err) {
-    console.log("Cannot add station", err)
+    console.error("Cannot add station", err)
     throw err
   }
 }
@@ -87,29 +87,7 @@ export async function updateStation(station) {
     if (station.name !== "Liked Songs") setCurrStation(savedStation)
     return savedStation
   } catch (err) {
-    console.log("Cannot save station", err)
+    console.error("Cannot save station", err)
     throw err
   }
 }
-
-// Demo for Optimistic Mutation
-// (IOW - Assuming the server call will work, so updating the UI first)
-// export function onRemoveStationOptimistic(stationId) {
-//     store.dispatch({
-//         type: REMOVE_STATION,
-//         stationId
-//     })
-//     showSuccessMsg('Station removed')
-
-//     stationService.remove(stationId)
-//         .then(() => {
-//             console.log('Server Reported - Deleted Succesfully')
-//         })
-//         .catch(err => {
-//             showErrorMsg('Cannot remove station')
-//             console.log('Cannot load stations', err)
-//             store.dispatch({
-//                 type: UNDO_REMOVE_STATION,
-//             })
-//         })
-// }

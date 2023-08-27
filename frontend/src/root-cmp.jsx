@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { Routes, Route } from 'react-router'
-
-import { StationPlayer } from './cmps/player.jsx'
-import routes from './routes.js'
-import { SideNav } from './cmps/side-nav.jsx'
-import { AppHeader } from './cmps/app-header.jsx'
-import { UserDetails } from './pages/user-details.jsx'
-import { socketService } from './services/socket.service.js'
+import { Routes, Route } from "react-router"
+import { StationPlayer } from "./cmps/player.jsx"
+import routes from "./routes.js"
+import { SideNav } from "./cmps/side-nav.jsx"
+import { AppHeader } from "./cmps/app-header.jsx"
 
 export function RootCmp() {
   return (
@@ -24,7 +20,6 @@ export function RootCmp() {
               path={route.path}
             />
           ))}
-          <Route path="user/:id" element={<UserDetails />} />
         </Routes>
       </main>
       <StationPlayer />

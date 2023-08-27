@@ -30,7 +30,7 @@ export function AppHeader() {
         </nav>
         <section className="btn-login-signup-wrapper">
           <div className="user-image-container">
-            <img src={userImage} title="user image" alt="user profile"/>
+            <img src={userImage} title="user image" alt="user profile" />
           </div>
         </section>
       </div>

@@ -18,7 +18,6 @@ export function AddSong({ station, onAddSong, getCleanTitle }) {
   async function fetchData() {
     if (!searchTerm) return
     try {
-      console.log("searchTerm", searchTerm)
       const response = await trackService.getVideos(searchTerm, 10)
       setTracks(response)
     } catch (error) {
@@ -45,15 +44,15 @@ export function AddSong({ station, onAddSong, getCleanTitle }) {
         <div className="search-input">
           <h1>Let's find something for your playlist</h1>
           <div className="search-container">
-          <input
-            className="add-song-input"
-            type="search"
-            id="songName"
-            placeholder="Search for songs"
-            onChange={handleInputChange}
-            value={searchTerm}
-          />
-          {svgService.searchHomePageIcon}
+            <input
+              className="add-song-input"
+              type="search"
+              id="songName"
+              placeholder="Search for songs"
+              onChange={handleInputChange}
+              value={searchTerm}
+            />
+            {svgService.searchHomePageIcon}
           </div>
         </div>
         <div className="flex align-center">

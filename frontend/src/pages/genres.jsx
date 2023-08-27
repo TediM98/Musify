@@ -26,10 +26,10 @@ export function Genres() {
       )
       setCurrGenreStations(genreStations)
     } catch (err) {
-      console.log("Could not load Genres", err)
+      console.error("Could not load Genres", err)
     }
   }
-  
+
   const capitalizedGenre =
     stationGenre.charAt(0).toUpperCase() + stationGenre.slice(1)
 

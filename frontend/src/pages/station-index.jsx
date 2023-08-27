@@ -53,7 +53,7 @@ export function StationIndex() {
       setCurrStation(reqStation)
       playSong(reqStation)
     } catch (err) {
-      console.log("cannot find currstation", err)
+      console.error("cannot find currstation", err)
     }
   }
 

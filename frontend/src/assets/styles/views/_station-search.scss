@@ -1,10 +1,7 @@
-///SVG  CSS SETTINGS
-
 .search-icon-magGlass {
   position: absolute;
   z-index: 6;
   margin: 1em 0 0 0.8em;
-
   svg {
     fill: $clr2;
   }
@@ -69,10 +66,9 @@
 }
 
 .song-list-header {
-  // position: sticky;
-  top: 0;
-  display: grid;
   grid-template-columns: 0 40px 40px 2fr 1fr 120px;
+  display: grid;
+  top: 0;
   border-bottom: 1px solid $clr3-dark;
   border-radius: 0;
   margin-bottom: 15px;
@@ -107,9 +103,8 @@
   }
 }
 .song-list-header {
-  // position: sticky;
-  top: 0;
   display: grid;
+  top: 0;
   border-bottom: 1px solid $clr3-dark;
   border-radius: 0;
   margin-left: 15px;
@@ -145,8 +140,8 @@
 }
 
 .search-result-song {
-  display: grid;
   grid-template-columns: 16px 17fr 4fr 5fr 3em;
+  display: grid;
   font-size: 0.875rem;
   height: 56px;
   align-items: center;

@@ -13,7 +13,7 @@
     display: flex;
     flex-wrap: wrap;
     background-color: $bgclr2;
-    
+
     .layout-conatiner {
       border-radius: 0;
     }
@@ -33,7 +33,6 @@
 
 .main-layout {
   font-family: CircularMedium, Rubik-Light;
-
   > * {
     grid-column: 2;
     &.full {
@@ -68,9 +67,7 @@
 
 .details-layout {
   display: grid;
-  // grid-template-columns: 20px 1fr 20px;
   grid-template-columns: 20px 1fr;
-
   > * {
     grid-column: 2;
     &.full {
@@ -96,11 +93,6 @@
 
 .station-list::-webkit-scrollbar {
   display: none;
-}
-
-.layout-conatinery::-webkit-scrollbar-track,
-.user-station::-webkit-scrollbar-track {
-  // background-color: #282828;
 }
 
 .layout-conatiner::-webkit-scrollbar-thumb,

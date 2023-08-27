@@ -1,28 +1,25 @@
-@import '../setup/variables';
+@import "../setup/variables";
 
 .section-highlights {
   grid-gap: var(--row-gap) var(--column-gap);
   display: grid;
-  grid-template: auto/repeat(auto-fill, minmax(max(var(--min-column-width), 25%), 1fr));
-
+  grid-template: auto/repeat(
+    auto-fill,
+    minmax(max(var(--min-column-width), 25%), 1fr)
+  );
   & :hover {
     background-color: #f7f7f729;
-
     h4 {
       background-color: transparent;
     }
   }
 
-  @media (max-width:$mobile-breakpoint) {
-    // display: none
+  @media (max-width: $mobile-breakpoint) {
     display: flex;
     padding-top: 50px;
     flex-wrap: wrap;
     justify-content: center;
-
   }
-
-
 
   img {
     min-height: var(--item-height);
@@ -40,10 +37,6 @@
     width: 80px;
     height: 80px;
     object-fit: cover;
-
- 
-
-
   }
 
   .btn-play-playlist {
@@ -118,16 +111,14 @@ h4 {
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
 
-
-  @media (max-width:$mobile-breakpoint) {
+  @media (max-width: $mobile-breakpoint) {
     width: 6em;
     height: 2.5em;
-
-    .btn-play-playlist{
+    .btn-play-playlist {
       display: none;
     }
-    h4{
-      font-size: 10px
+    h4 {
+      font-size: 10px;
     }
   }
 }

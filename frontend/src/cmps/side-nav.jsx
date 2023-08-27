@@ -1,14 +1,13 @@
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { SideNavLibrary } from "./side-nav-library"
 import { svgService } from "../services/svg.service"
 import { addStation, loadStations } from "../store/station.actions"
 import { stationService } from "../services/station.service"
 import { UserStationPreview } from "./user-station-preview"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 
 export function SideNav() {
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
   const stations = useSelector(

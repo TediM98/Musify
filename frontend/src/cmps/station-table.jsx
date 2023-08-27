@@ -25,7 +25,7 @@ export function HighLightsTable({ onPlayStation }) {
       changePrimaryClr(color)
       setBgc(color)
     } catch (err) {
-      console.log("Could not load color", err)
+      console.error("Could not load color", err)
     }
   }
 

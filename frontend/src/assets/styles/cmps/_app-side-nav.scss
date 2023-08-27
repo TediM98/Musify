@@ -89,15 +89,12 @@
 }
 
 .parmanent-nav {
-  // position: sticky;
-  // top: 8px;
   li:hover {
     svg,
     span {
       color: $clr1;
     }
   }
-
   @media (max-width: $mobile-breakpoint) {
     width: 100%;
   }
@@ -106,7 +103,6 @@
 .main-nav {
   padding: 8px;
   grid-area: header;
-
   @media (max-width: $mobile-breakpoint) {
     position: absolute;
     display: flex;

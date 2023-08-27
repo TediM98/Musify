@@ -27,7 +27,6 @@
   width: 14em;
   @media (max-width: $mobile-breakpoint) {
     width: 1em;
-
     .station-img {
       display: none;
     }
@@ -57,11 +56,9 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-
     &:hover {
       transform: scale(1.15);
     }
-
     height: 32px;
     width: 32px;
     border: 1px solid #fff;
@@ -77,15 +74,12 @@
   align-items: center;
   justify-content: center;
   height: 58px;
-
   button {
     border: 0;
     background-color: transparent;
-
     .repeat-on-icon {
       fill: $clr2;
     }
-
     .repeat-off-icon,
     .shuffle-song,
     .go-fwd-icon,
@@ -99,13 +93,11 @@
         fill: $clr-1;
       }
     }
-
     .repeat-on-icon.active,
     .shuffle-song.active,
     .repeat-off-icon.active {
       fill: #1db954;
     }
-
     .repeat-on-icon.active:hover,
     .shuffle-song.active:hover,
     .repeat-off-icon.active:hover {
@@ -149,7 +141,6 @@
     height: 56px;
     width: 56px;
     position: relative;
-
     img {
       height: 56px;
       width: 56px;
@@ -165,16 +156,13 @@
     width: 32px;
     justify-content: center;
     align-items: center;
-
     .liked-song-icon {
       fill: $clr4;
     }
-
     .heart-icon {
       fill: $clr2;
       height: 16px;
       width: 16px;
-
       &:hover {
         fill: $clr1;
       }
@@ -191,7 +179,6 @@
     position: absolute;
     top: 18px;
     left: 57px;
-
     .song-name {
       width: max-content;
       color: $clr1;
@@ -199,7 +186,6 @@
       font-family: CircularBook, Rubik-Light;
       margin-inline-start: 6px;
       font-weight: 400;
-
       &:hover {
         text-decoration: underline;
         cursor: pointer;
@@ -241,14 +227,12 @@
   transition: width 0.3s ease;
   width: 97%;
   height: 4px;
-
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 5px;
     height: 5px;
     background-color: transparent;
   }
-
   &:hover::-webkit-slider-thumb {
     border-radius: 50%;
     transform: scale(3);
@@ -294,7 +278,6 @@
     margin-inline-start: 1.5em;
     top: 0;
     left: 26px;
-
     @keyframes scrollText {
       0% {
         transform: translateX(-100%);
@@ -303,7 +286,6 @@
         transform: translateX(100%);
       }
     }
-
     width: 13em;
     overflow: hidden;
     .song-name {

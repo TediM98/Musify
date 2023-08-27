@@ -26,7 +26,7 @@ export function HeaderSearch() {
         console.error(error)
       }
     }, 450)
-    
+
     delayedSearch()
     return () => {
       clearTimeout(delayedSearch)

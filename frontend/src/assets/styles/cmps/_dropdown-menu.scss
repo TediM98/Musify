@@ -5,10 +5,8 @@
   font-weight: 600;
   padding: 4px;
   left: 5px;
-  // right: -85px;
   top: 40px;
   width: 150px;
-  // box-shadow: 0 16px 24px #0000004d, 0 6px 8px #0003;
   font-size: 0.875rem;
   font-family: CircularLight;
 }
@@ -29,20 +27,12 @@
   color: #fff;
 }
 
-.dropdown-menu li {
-  // border-bottom: 1px solid #b3b3b32e;
-}
-
 .dropdown-menu.active {
   display: block;
   position: absolute;
   transition: 0.5ms ease;
   background-color: #282828;
   width: 220px;
-
-  // &.list-options {
-  //   left: -200px;
-  // }
 }
 
 .dropdown-menu.inactive {

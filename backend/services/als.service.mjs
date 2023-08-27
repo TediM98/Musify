@@ -1,5 +1,2 @@
-
-import { AsyncLocalStorage } from 'async_hooks'
-// The AsyncLocalStorage singleton
+import { AsyncLocalStorage } from "async_hooks"
 export const asyncLocalStorage = new AsyncLocalStorage()
-

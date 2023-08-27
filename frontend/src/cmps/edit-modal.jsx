@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { updateStation } from '../store/station.actions'
-import { svgService } from '../services/svg.service'
-import { uploadService } from '../services/upload.service'
+import React, { useState } from "react"
+import { useSelector } from "react-redux"
+import { updateStation } from "../store/station.actions"
+import { svgService } from "../services/svg.service"
+import { uploadService } from "../services/upload.service"
 
 export function Modal({ closeModal, saveModalData }) {
   const currStation = useSelector(
@@ -27,13 +27,11 @@ export function Modal({ closeModal, saveModalData }) {
   async function onUploadImgClick(ev) {
     try {
       const imgUrl = await uploadService.uploadImg(ev)
-      console.log('imgurl in the onclick', imgUrl)
       const updatedValues = { ...currStation.createdBy, imgUrl: imgUrl.url }
-      console.log(updatedValues, 'updatedValues')
       const updatedStation = { ...currStation, createdBy: updatedValues }
       await updateStation(updatedStation)
     } catch (err) {
-      console.error('Failed to upload image', err)
+      console.error("Failed to upload image", err)
     }
   }
 
@@ -49,13 +47,11 @@ export function Modal({ closeModal, saveModalData }) {
   async function onUploadImgClick(ev) {
     try {
       const imgUrl = await uploadService.uploadImg(ev)
-      console.log('imgurl in the onclick', imgUrl)
       const updatedValues = { ...currStation.createdBy, imgUrl: imgUrl.url }
-      console.log(updatedValues, 'updatedValues')
       const updatedStation = { ...currStation, createdBy: updatedValues }
       await updateStation(updatedStation)
     } catch (err) {
-      console.error('Failed to upload image', err)
+      console.error("Failed to upload image", err)
     }
   }
 
